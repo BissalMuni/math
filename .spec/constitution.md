@@ -7,12 +7,19 @@
 
 ## Tech Stack
 
-- **Framework**: Next.js (App Router, src directory)
+- **Framework**: Next.js 16 (App Router, src directory)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
 - **Package Manager**: pnpm
 - **Testing**: vitest
+- **Math Rendering**: KaTeX (SSR 지원, 빠른 렌더링)
+- **Interactive Visualization**: Mafs (React 네이티브 수학 시각화)
 - **Deployment**: Vercel (target)
+
+## Data Management
+
+- 교육과정 데이터: JSON/TS 파일로 관리 (DB 없음)
+- 학습 진도: localStorage 저장 (인증 없음)
 
 ## Coding Conventions
 

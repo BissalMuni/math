@@ -43,6 +43,10 @@ LLM 수학 레퍼런스:
 - **Styling:** Tailwind CSS v4
 - **Package manager:** pnpm
 - **Testing:** vitest
+- **Math rendering:** KaTeX
+- **Visualization:** Mafs (React 수학 시각화)
+- **Data:** JSON/TS files (no DB)
+- **Progress storage:** localStorage (no auth)
 - **Code comments:** Korean
 - **Import alias:** `@/*` → `src/*`
 

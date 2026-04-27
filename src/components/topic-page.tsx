@@ -1,5 +1,6 @@
 import { Breadcrumb } from "@/components/breadcrumb";
 import { TopicContent } from "@/components/topic-content";
+import { CommentSection } from "@/components/comments/CommentSection";
 import { isLeafNode, type TreeNode, type CategoryRoot } from "@/data";
 import Link from "next/link";
 
@@ -18,12 +19,16 @@ export function TopicPage({
   // breadcrumb 아이템 생성
   const breadcrumbItems = buildBreadcrumb(category, slugs, basePath);
 
+  // content_path: 의견 저장 키 (URL 경로)
+  const contentPath = `/${basePath}/${slugs.join("/")}`;
+
   // leaf 노드 → 콘텐츠 표시
   if (isLeafNode(node)) {
     return (
       <div className="max-w-4xl mx-auto px-6 py-12 lg:pl-8">
         <Breadcrumb items={breadcrumbItems} />
         <TopicContent node={node} />
+        <CommentSection contentPath={contentPath} />
       </div>
     );
   }
@@ -54,6 +59,7 @@ export function TopicPage({
           })}
         </div>
       )}
+      <CommentSection contentPath={contentPath} />
     </div>
   );
 }

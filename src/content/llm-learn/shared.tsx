@@ -71,7 +71,7 @@ export function Arrow({ op }: { op?: string }) {
 export function CalcBox({ children, title }: { children: React.ReactNode; title?: string }) {
   return (
     <div className="rounded-xl border border-sidebar-border bg-sidebar-bg p-5 mb-6">
-      {title && <h4 className="font-semibold mb-3 text-accent">{title}</h4>}
+      {title && <h2 className="font-semibold mb-3 text-accent text-base">{title}</h2>}
       {children}
     </div>
   );

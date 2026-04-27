@@ -27,32 +27,45 @@ export function AutoSectionComment({
     const root = containerRef.current;
     if (!root) return;
 
+    // slug 생성 헬퍼
+    const toSlug = (text: string) =>
+      text
+        .replace(/[^\w가-힣]/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "")
+        .toLowerCase();
+
     const inject = () => {
-      const sections = root.querySelectorAll("section");
       const added: Portal[] = [];
 
-      sections.forEach((section) => {
+      // ① section > h2 (중학교 등 기존 콘텐츠)
+      root.querySelectorAll("section").forEach((section) => {
         const h2 = section.querySelector("h2");
         if (!h2 || injectedRef.current.has(h2)) return;
-
         injectedRef.current.add(h2);
 
-        // section id 우선, 없으면 제목으로 slug 생성
         const rawId = section.getAttribute("id");
         const rawTitle = h2.textContent?.trim() ?? "";
-        const slug =
-          rawId ||
-          rawTitle
-            .replace(/[^\w가-힣]/g, "-")
-            .replace(/-+/g, "-")
-            .replace(/^-|-$/g, "")
-            .toLowerCase();
+        const slug = rawId || toSlug(rawTitle);
 
-        // h2 안에 주입 컨테이너 삽입
         const host = document.createElement("span");
         host.className = "sc-host inline-block ml-2 align-middle";
         h2.appendChild(host);
+        added.push({ host, sectionSlug: slug, sectionTitle: rawTitle });
+      });
 
+      // ② section 밖의 h2 (llm-learn 등 CalcBox 콘텐츠)
+      root.querySelectorAll("h2").forEach((h2) => {
+        if (injectedRef.current.has(h2)) return;
+        if (h2.closest("section")) return; // ①에서 이미 처리
+        injectedRef.current.add(h2);
+
+        const rawTitle = h2.textContent?.trim() ?? "";
+        const slug = toSlug(rawTitle);
+
+        const host = document.createElement("span");
+        host.className = "sc-host inline-block ml-2 align-middle";
+        h2.appendChild(host);
         added.push({ host, sectionSlug: slug, sectionTitle: rawTitle });
       });
 

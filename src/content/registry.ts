@@ -129,6 +129,27 @@ const registry: Record<string, () => Promise<{ default: ComponentType }>> = {
   "llm-p-s14-t2": () => import("./llm/pipeline/rlhf"),
   "llm-p-s14-t3": () => import("./llm/pipeline/quantization"),
   "llm-p-s14-t4": () => import("./llm/pipeline/quantization"),
+
+  // ── LLM 학습 (트랜스포머 완전 가이드) ─────────────────────────────────
+
+  // 1. 토큰화
+  "ll-ch1-1": () => import("./llm-learn/ch1-tokenization"),
+  "ll-ch1-2": () => import("./llm-learn/ch1-tokenization"),
+  "ll-ch1-3": () => import("./llm-learn/ch1-tokenization"),
+  "ll-ch1-4": () => import("./llm-learn/ch1-tokenization"),
+
+  // 2. 임베딩
+  "ll-ch2-1": () => import("./llm-learn/ch2-embedding"),
+  "ll-ch2-2": () => import("./llm-learn/ch2-embedding"),
+  "ll-ch2-3": () => import("./llm-learn/ch2-embedding"),
+  "ll-ch2-4": () => import("./llm-learn/ch2-embedding"),
+
+  // 4. Q·K·V 어텐션 (핵심 — 실제 벡터 계산)
+  "ll-ch4-1": () => import("./llm-learn/ch4-qkv"),
+  "ll-ch4-2": () => import("./llm-learn/ch4-qkv"),
+  "ll-ch4-3": () => import("./llm-learn/ch4-qkv"),
+  "ll-ch4-4": () => import("./llm-learn/ch4-qkv"),
+  "ll-ch4-5": () => import("./llm-learn/ch4-qkv"),
 };
 
 /** topicId로 콘텐츠 컴포넌트 가져오기 (없으면 null) */

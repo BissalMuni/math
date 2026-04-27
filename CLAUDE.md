@@ -61,6 +61,18 @@ pnpm test           # Run tests (vitest)
 pnpm test -- --run  # Run tests once without watch
 ```
 
+## Content Authoring Rules
+
+### 소목차별 의견 버튼 (필수)
+
+모든 소단원 콘텐츠 파일에는 **각 소목차마다 💬 의견 버튼이 자동으로 표시**되어야 한다.
+
+- `AutoSectionComment` 컴포넌트가 `MutationObserver`로 컨테이너 내의 `<h2>` 요소를 감지해 자동 주입한다.
+- **중학교/고등학교 스타일** 콘텐츠: `<section id="slug"><h2>제목</h2>...</section>` 구조 사용.
+- **LLM 학습 스타일** 콘텐츠: `<CalcBox title="제목">` 사용 (내부적으로 `<h2>` 렌더링).
+- 새 콘텐츠 파일을 작성할 때 반드시 위 두 패턴 중 하나를 사용해 h2 헤딩이 포함되도록 한다.
+- 절대로 소목차 없이 평문만 렌더링하지 말 것 — 의견 버튼이 표시되지 않는다.
+
 ## Next.js Note
 
 This project uses Next.js 16 which may have breaking changes from earlier versions. Read `node_modules/next/dist/docs/` before writing Next.js code.

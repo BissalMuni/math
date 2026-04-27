@@ -150,6 +150,68 @@ const registry: Record<string, () => Promise<{ default: ComponentType }>> = {
   "ll-ch4-3": () => import("./llm-learn/ch4-qkv"),
   "ll-ch4-4": () => import("./llm-learn/ch4-qkv"),
   "ll-ch4-5": () => import("./llm-learn/ch4-qkv"),
+
+  // 0. 서막 (ch1-tokenization 임시 사용)
+  "ll-p1": () => import("./llm-learn/ch1-tokenization"),
+  "ll-p2": () => import("./llm-learn/ch1-tokenization"),
+  "ll-p3": () => import("./llm-learn/ch1-tokenization"),
+  "ll-p4": () => import("./llm-learn/ch1-tokenization"),
+
+  // 3. 위치 인코딩
+  "ll-ch3-1": () => import("./llm-learn/ch3-positional-encoding"),
+  "ll-ch3-2": () => import("./llm-learn/ch3-positional-encoding"),
+  "ll-ch3-3": () => import("./llm-learn/ch3-positional-encoding"),
+
+  // 5. Softmax
+  "ll-ch5-1": () => import("./llm-learn/ch5-softmax"),
+  "ll-ch5-2": () => import("./llm-learn/ch5-softmax"),
+  "ll-ch5-3": () => import("./llm-learn/ch5-softmax"),
+
+  // 6. Multi-Head Attention
+  "ll-ch6-1": () => import("./llm-learn/ch6-multi-head"),
+  "ll-ch6-2": () => import("./llm-learn/ch6-multi-head"),
+  "ll-ch6-3": () => import("./llm-learn/ch6-multi-head"),
+  "ll-ch6-4": () => import("./llm-learn/ch6-multi-head"),
+  "ll-ch6-5": () => import("./llm-learn/ch6-multi-head"),
+
+  // 7. 잔차 연결
+  "ll-ch7-1": () => import("./llm-learn/ch7-residual"),
+  "ll-ch7-2": () => import("./llm-learn/ch7-residual"),
+  "ll-ch7-3": () => import("./llm-learn/ch7-residual"),
+
+  // 8. Layer Normalization
+  "ll-ch8-1": () => import("./llm-learn/ch8-layer-norm"),
+  "ll-ch8-2": () => import("./llm-learn/ch8-layer-norm"),
+  "ll-ch8-3": () => import("./llm-learn/ch8-layer-norm"),
+  "ll-ch8-4": () => import("./llm-learn/ch8-layer-norm"),
+
+  // 9. Feed-Forward Network
+  "ll-ch9-1": () => import("./llm-learn/ch9-ffn"),
+  "ll-ch9-2": () => import("./llm-learn/ch9-ffn"),
+  "ll-ch9-3": () => import("./llm-learn/ch9-ffn"),
+
+  // 10. Linear + Softmax (Output)
+  "ll-ch10-1": () => import("./llm-learn/ch10-output"),
+  "ll-ch10-2": () => import("./llm-learn/ch10-output"),
+  "ll-ch10-3": () => import("./llm-learn/ch10-output"),
+  "ll-ch10-4": () => import("./llm-learn/ch10-output"),
+
+  // 11. 역전파 (Backpropagation)
+  "ll-ch11-1": () => import("./llm-learn/ch11-backprop"),
+  "ll-ch11-2": () => import("./llm-learn/ch11-backprop"),
+  "ll-ch11-3": () => import("./llm-learn/ch11-backprop"),
+  "ll-ch11-4": () => import("./llm-learn/ch11-backprop"),
+
+  // 12. 학습 (ch11-backprop 임시 재사용)
+  "ll-ch12-1": () => import("./llm-learn/ch11-backprop"),
+  "ll-ch12-2": () => import("./llm-learn/ch11-backprop"),
+  "ll-ch12-3": () => import("./llm-learn/ch11-backprop"),
+  "ll-ch12-4": () => import("./llm-learn/ch11-backprop"),
+
+  // 13. 인코더 vs 디코더
+  "ll-ch13-1": () => import("./llm-learn/ch13-enc-dec"),
+  "ll-ch13-2": () => import("./llm-learn/ch13-enc-dec"),
+  "ll-ch13-3": () => import("./llm-learn/ch13-enc-dec"),
 };
 
 /** topicId로 콘텐츠 컴포넌트 가져오기 (없으면 null) */

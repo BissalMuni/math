@@ -1,15 +1,16 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useContentPath } from "@/components/content-path-context";
+import { usePathname } from "next/navigation";
 import type { Comment } from "@/lib/types";
 
-/** 소목차(section) 단위 의견 버튼 + 인라인 폼
+/**
+ * 소목차(section) 단위 의견 버튼 + 인라인 폼
  *
  * 사용법:
  *   <SectionComment sectionSlug="prime-composite" sectionTitle="소수와 합성수" />
  *
- * content_path = {pagePath}/{sectionSlug}
+ * content_path = {현재URL}/{sectionSlug}  (usePathname 사용)
  * author = "익명" (고정)
  */
 export function SectionComment({
@@ -19,9 +20,8 @@ export function SectionComment({
   sectionSlug: string;
   sectionTitle: string;
 }) {
-  const basePath = useContentPath();
-  // 섹션 고유 경로: /middle/grade1/prime-factorization-concept/prime-composite
-  const contentPath = `${basePath}/${sectionSlug}`;
+  const pathname = usePathname();
+  const contentPath = `${pathname}/${sectionSlug}`;
 
   const [open, setOpen] = useState(false);
   const [comments, setComments] = useState<Comment[]>([]);
@@ -90,21 +90,20 @@ export function SectionComment({
   };
 
   return (
-    <div className="mt-1">
-      {/* 의견 토글 버튼 */}
+    <span className="inline-block">
+      {/* 의견 버튼 */}
       <button
+        type="button"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1 text-xs text-muted hover:text-accent transition-colors"
-        aria-expanded={open}
+        className="inline-flex items-center gap-1 rounded-full border border-sidebar-border px-2 py-0.5 text-xs text-muted hover:border-accent hover:text-accent transition-colors"
+        aria-expanded={open ? "true" : "false"}
       >
-        <span>💬</span>
-        <span>의견 {comments.length > 0 ? `(${comments.length})` : ""}</span>
-        <span>{open ? "▲" : "▼"}</span>
+        💬 의견{comments.length > 0 ? ` (${comments.length})` : ""}
       </button>
 
       {/* 인라인 패널 */}
       {open && (
-        <div className="mt-3 rounded-xl border border-sidebar-border bg-sidebar-bg p-4 space-y-3">
+        <div className="mt-2 rounded-xl border border-sidebar-border bg-sidebar-bg p-4 space-y-3">
           {/* 기존 의견 */}
           {!fetched ? (
             <p className="text-xs text-muted">불러오는 중...</p>
@@ -114,7 +113,7 @@ export function SectionComment({
             <ul className="space-y-2">
               {comments.map((c) => (
                 <li key={c.id} className="flex gap-2 text-sm group">
-                  <span className="shrink-0 font-mono text-xs text-muted mt-0.5">
+                  <span className="shrink-0 text-xs text-muted mt-0.5">
                     {new Date(c.created_at).toLocaleDateString("ko-KR", {
                       month: "short",
                       day: "numeric",
@@ -122,6 +121,7 @@ export function SectionComment({
                   </span>
                   <span className="flex-1 whitespace-pre-wrap break-words">{c.body}</span>
                   <button
+                    type="button"
                     onClick={() => handleDelete(c.id)}
                     className="shrink-0 text-[10px] text-muted opacity-0 group-hover:opacity-100 hover:text-red-500 transition-opacity"
                   >
@@ -132,8 +132,9 @@ export function SectionComment({
             </ul>
           )}
 
-          {/* 입력 폼 */}
           {error && <p className="text-xs text-red-500">{error}</p>}
+
+          {/* 입력 폼 */}
           <div className="flex gap-2">
             <textarea
               value={body}
@@ -141,13 +142,14 @@ export function SectionComment({
               onKeyDown={(e) => {
                 if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) handleSubmit();
               }}
-              placeholder={`"${sectionTitle}" 에 대한 의견 (Ctrl+Enter)`}
+              placeholder={`"${sectionTitle}" 의견 (Ctrl+Enter)`}
               rows={2}
               maxLength={3000}
               className="flex-1 resize-none rounded-lg border border-sidebar-border bg-transparent px-3 py-2 text-sm focus:border-accent focus:outline-none"
             />
             <button
               onClick={handleSubmit}
+              type="button"
               disabled={loading || !body.trim()}
               className="shrink-0 self-end rounded-lg bg-accent px-3 py-2 text-xs font-medium text-white disabled:opacity-40 hover:opacity-90"
             >
@@ -156,6 +158,6 @@ export function SectionComment({
           </div>
         </div>
       )}
-    </div>
+    </span>
   );
 }

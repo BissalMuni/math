@@ -1,18 +1,13 @@
 "use client";
 
 import { InlineMath, BlockMath } from "@/components/math-formula";
-import { SectionComment } from "@/components/section-comment";
 
 /** 중1 > 수와 연산 > 소인수분해 > 소인수분해 */
 export default function PrimeFactorizationConcept() {
   return (
     <div className="space-y-6">
-      {/* 소수와 합성수 */}
-      <section>
-        <div className="flex items-center gap-3 mb-3">
-          <h2 className="text-xl font-semibold">소수와 합성수</h2>
-          <SectionComment sectionSlug="prime-composite" sectionTitle="소수와 합성수" />
-        </div>
+      <section id="prime-composite">
+        <h2 className="text-xl font-semibold mb-3">소수와 합성수</h2>
         <p>
           <strong>소수</strong>는 1보다 큰 자연수 중에서 1과 자기 자신만을 약수로 가지는 수입니다.
         </p>
@@ -26,12 +21,8 @@ export default function PrimeFactorizationConcept() {
         </div>
       </section>
 
-      {/* 소인수분해 */}
-      <section>
-        <div className="flex items-center gap-3 mb-3">
-          <h2 className="text-xl font-semibold">소인수분해</h2>
-          <SectionComment sectionSlug="factorization" sectionTitle="소인수분해" />
-        </div>
+      <section id="factorization">
+        <h2 className="text-xl font-semibold mb-3">소인수분해</h2>
         <p>
           자연수를 <strong>소인수</strong>(소수인 인수)들의 곱으로 나타내는 것을 <strong>소인수분해</strong>라고 합니다.
         </p>
@@ -43,12 +34,8 @@ export default function PrimeFactorizationConcept() {
         </div>
       </section>
 
-      {/* 소인수분해 방법 */}
-      <section>
-        <div className="flex items-center gap-3 mb-3">
-          <h2 className="text-xl font-semibold">소인수분해 방법</h2>
-          <SectionComment sectionSlug="method" sectionTitle="소인수분해 방법" />
-        </div>
+      <section id="method">
+        <h2 className="text-xl font-semibold mb-3">소인수분해 방법</h2>
         <p>
           자연수 <InlineMath math="n" />을 가장 작은 소수부터 차례로 나누어 갑니다.
         </p>
@@ -65,12 +52,8 @@ export default function PrimeFactorizationConcept() {
         </div>
       </section>
 
-      {/* 약수의 개수 */}
-      <section>
-        <div className="flex items-center gap-3 mb-3">
-          <h2 className="text-xl font-semibold">약수의 개수 공식</h2>
-          <SectionComment sectionSlug="divisor-count" sectionTitle="약수의 개수 공식" />
-        </div>
+      <section id="divisor-count">
+        <h2 className="text-xl font-semibold mb-3">약수의 개수 공식</h2>
         <p>
           자연수 <InlineMath math="n = p_1^{a_1} \times p_2^{a_2} \times \cdots \times p_k^{a_k}" />일 때,
         </p>

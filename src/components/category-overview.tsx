@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import type { CategoryRoot, TreeNode } from "@/data";
 
@@ -39,20 +41,30 @@ function SubjectCard({
         <div className="space-y-2">
           {node.children.map((chapter) => (
             <div key={chapter.id}>
-              <h3 className="text-sm font-medium text-muted mb-1">
-                {chapter.title}
-              </h3>
-              {chapter.children && (
-                <div className="ml-4 space-y-0.5">
-                  {chapter.children.map((section) => (
-                    <SectionLink
-                      key={section.id}
-                      node={section}
-                      basePath={basePath}
-                      parentSlugs={[node.slug, chapter.slug]}
-                    />
-                  ))}
-                </div>
+              {/* chapter가 leaf인 경우(e.g. prologue sub-items) → 바로 링크 */}
+              {!chapter.children ? (
+                <Link
+                  href={`/${basePath}/${node.slug}/${chapter.slug}`}
+                  className="block text-sm text-muted hover:text-accent py-0.5"
+                >
+                  {chapter.title}
+                </Link>
+              ) : (
+                <>
+                  <h3 className="text-sm font-medium text-muted mb-1">
+                    {chapter.title}
+                  </h3>
+                  <div className="ml-4 space-y-0.5">
+                    {chapter.children.map((section) => (
+                      <SectionLink
+                        key={section.id}
+                        node={section}
+                        basePath={basePath}
+                        parentSlugs={[node.slug, chapter.slug]}
+                      />
+                    ))}
+                  </div>
+                </>
               )}
             </div>
           ))}

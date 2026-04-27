@@ -16,14 +16,14 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  let body: { content_path?: string; author?: string; body?: string };
+  let body: { content_path?: string; author?: string; body?: string; section_title?: string };
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "잘못된 요청" }, { status: 400 });
   }
 
-  const { content_path, author, body: commentBody } = body;
+  const { content_path, author, body: commentBody, section_title } = body;
   if (!content_path || !author || !commentBody) {
     return NextResponse.json({ error: "content_path, author, body 필요" }, { status: 400 });
   }
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const data = await createComment(content_path.trim(), trimmedAuthor, trimmedBody);
+    const data = await createComment(content_path.trim(), trimmedAuthor, trimmedBody, section_title?.trim());
     return NextResponse.json({ data }, { status: 201 });
   } catch {
     return NextResponse.json({ error: "등록 실패" }, { status: 500 });

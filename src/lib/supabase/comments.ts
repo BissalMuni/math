@@ -18,12 +18,13 @@ export async function getComments(contentPath: string): Promise<Comment[]> {
 export async function createComment(
   contentPath: string,
   author: string,
-  body: string
+  body: string,
+  sectionTitle?: string
 ): Promise<Comment> {
   const supabase = getSupabase();
   const { data, error } = await supabase
     .from("comments")
-    .insert({ content_path: contentPath, author, body })
+    .insert({ content_path: contentPath, author, body, section_title: sectionTitle ?? null })
     .select()
     .single();
 

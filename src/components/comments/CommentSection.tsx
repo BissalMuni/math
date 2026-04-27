@@ -6,22 +6,14 @@ import { CommentItem } from "./CommentItem";
 import { CommentForm } from "./CommentForm";
 import { ImageGrid } from "./ImageGrid";
 
-const AUTHOR_KEY = "math-comment-author";
-
-/** 목차 페이지별 의견 + 이미지 섹션 */
+/** 페이지 하단 전체 의견 + 이미지 섹션 (익명 고정) */
 export function CommentSection({ contentPath }: { contentPath: string }) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [images, setImages] = useState<TopicImage[]>([]);
   const [loading, setLoading] = useState(true);
-  const [author, setAuthor] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState("");
-
-  // localStorage에서 닉네임 복원
-  useEffect(() => {
-    setAuthor(localStorage.getItem(AUTHOR_KEY) || "");
-  }, []);
 
   const fetchAll = useCallback(async () => {
     try {
@@ -44,25 +36,19 @@ export function CommentSection({ contentPath }: { contentPath: string }) {
   }, [fetchAll]);
 
   const handleSubmit = async (body: string) => {
-    if (!author.trim()) {
-      setError("닉네임을 먼저 입력해주세요");
-      return;
-    }
     setSubmitting(true);
     setError("");
     try {
       const res = await fetch("/api/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content_path: contentPath, author: author.trim(), body }),
+        body: JSON.stringify({ content_path: contentPath, author: "익명", body }),
       });
       if (!res.ok) {
         const err = await res.json();
         setError(err.error || "등록 실패");
         return;
       }
-      // 닉네임 저장
-      localStorage.setItem(AUTHOR_KEY, author.trim());
       await fetchAll();
     } catch {
       setError("등록 실패");
@@ -73,10 +59,9 @@ export function CommentSection({ contentPath }: { contentPath: string }) {
 
   const handleDeleteComment = async (id: string) => {
     try {
-      const res = await fetch(
-        `/api/comments/${id}?author=${encodeURIComponent(author)}`,
-        { method: "DELETE" }
-      );
+      const res = await fetch(`/api/comments/${id}?author=${encodeURIComponent("익명")}`, {
+        method: "DELETE",
+      });
       if (res.ok) await fetchAll();
     } catch {
       // 무시
@@ -84,17 +69,13 @@ export function CommentSection({ contentPath }: { contentPath: string }) {
   };
 
   const handleUploadImage = async (file: File) => {
-    if (!author.trim()) {
-      setError("닉네임을 먼저 입력해주세요");
-      return;
-    }
     setUploading(true);
     setError("");
     try {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("content_path", contentPath);
-      formData.append("uploaded_by", author.trim());
+      formData.append("uploaded_by", "익명");
 
       const res = await fetch("/api/images", { method: "POST", body: formData });
       if (!res.ok) {
@@ -102,7 +83,6 @@ export function CommentSection({ contentPath }: { contentPath: string }) {
         setError(err.error || "업로드 실패");
         return;
       }
-      localStorage.setItem(AUTHOR_KEY, author.trim());
       await fetchAll();
     } catch {
       setError("업로드 실패");
@@ -113,10 +93,9 @@ export function CommentSection({ contentPath }: { contentPath: string }) {
 
   const handleDeleteImage = async (id: string) => {
     try {
-      const res = await fetch(
-        `/api/images/${id}?uploaded_by=${encodeURIComponent(author)}`,
-        { method: "DELETE" }
-      );
+      const res = await fetch(`/api/images/${id}?uploaded_by=${encodeURIComponent("익명")}`, {
+        method: "DELETE",
+      });
       if (res.ok) await fetchAll();
     } catch {
       // 무시
@@ -125,36 +104,16 @@ export function CommentSection({ contentPath }: { contentPath: string }) {
 
   return (
     <section className="mt-16 border-t border-sidebar-border pt-8">
-      <h2 className="text-lg font-semibold mb-6">의견 / 참고 이미지</h2>
+      <h2 className="text-lg font-semibold mb-6">페이지 전체 의견 / 이미지</h2>
 
-      {/* 닉네임 입력 */}
-      <div className="mb-6 flex items-center gap-2">
-        <label className="text-sm text-muted whitespace-nowrap">내 닉네임</label>
-        <input
-          type="text"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-          onBlur={() => author.trim() && localStorage.setItem(AUTHOR_KEY, author.trim())}
-          placeholder="닉네임 입력"
-          maxLength={50}
-          className="rounded border border-sidebar-border bg-transparent px-3 py-1 text-sm focus:border-accent focus:outline-none w-40"
-        />
-        <span className="text-xs text-muted">※ 자신이 작성한 글/이미지만 삭제 가능</span>
-      </div>
-
-      {error && (
-        <p className="mb-4 text-sm text-red-500">{error}</p>
-      )}
+      {error && <p className="mb-4 text-sm text-red-500">{error}</p>}
 
       {loading ? (
         <p className="text-sm text-muted">불러오는 중...</p>
       ) : (
         <>
-          {/* 의견 목록 */}
           <div className="mb-8">
-            <h3 className="text-sm font-medium text-muted mb-3">
-              의견 ({comments.length})
-            </h3>
+            <h3 className="text-sm font-medium text-muted mb-3">의견 ({comments.length})</h3>
             <div className="space-y-1 mb-4">
               {comments.length === 0 && (
                 <p className="text-sm text-muted py-2">첫 의견을 남겨보세요.</p>
@@ -163,7 +122,7 @@ export function CommentSection({ contentPath }: { contentPath: string }) {
                 <CommentItem
                   key={c.id}
                   comment={c}
-                  currentAuthor={author}
+                  currentAuthor="익명"
                   onDelete={handleDeleteComment}
                 />
               ))}
@@ -171,14 +130,13 @@ export function CommentSection({ contentPath }: { contentPath: string }) {
             <CommentForm onSubmit={handleSubmit} loading={submitting} />
           </div>
 
-          {/* 이미지 섹션 */}
           <div>
             <h3 className="text-sm font-medium text-muted mb-3">
               참고 이미지 ({images.length})
             </h3>
             <ImageGrid
               images={images}
-              currentAuthor={author}
+              currentAuthor="익명"
               onDelete={handleDeleteImage}
               onUpload={handleUploadImage}
               uploading={uploading}

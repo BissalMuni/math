@@ -27,7 +27,7 @@ export function TopicPage({
     return (
       <div className="max-w-4xl mx-auto px-6 py-12 lg:pl-8">
         <Breadcrumb items={breadcrumbItems} />
-        <TopicContent node={node} />
+        <TopicContent node={node} contentPath={contentPath} />
         <CommentSection contentPath={contentPath} />
       </div>
     );

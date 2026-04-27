@@ -4,6 +4,8 @@ export interface Comment {
   content_path: string;
   author: string;
   body: string;
+  /** 소목차 제목 (예: "소수와 합성수") */
+  section_title?: string | null;
   created_at: string;
 }
 

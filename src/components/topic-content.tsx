@@ -3,6 +3,7 @@
 import { Suspense, useRef } from "react";
 import { ProgressCheck } from "@/components/progress-check";
 import { AutoSectionComment } from "@/components/auto-section-comment";
+import { SectionComment } from "@/components/section-comment";
 import { getContentComponent } from "@/content/registry";
 import type { TreeNode } from "@/data";
 
@@ -14,7 +15,13 @@ export function TopicContent({ node, contentPath }: { node: TreeNode; contentPat
   return (
     <>
       <div className="flex items-start justify-between gap-4 mb-8">
-        <h1 className="text-2xl font-bold">{node.title}</h1>
+        <h1 className="text-2xl font-bold">
+          {node.title}
+          {/* 소목차 전체에 대한 의견 버튼 */}
+          <span className="ml-2 align-middle">
+            <SectionComment sectionSlug={node.id} sectionTitle={node.title} />
+          </span>
+        </h1>
         <ProgressCheck topicId={node.id} />
       </div>
 

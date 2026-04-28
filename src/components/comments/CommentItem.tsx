@@ -12,6 +12,7 @@ interface Props {
 export function CommentItem({ comment, currentAuthor, onDelete }: Props) {
   const isOwner = comment.author === currentAuthor && currentAuthor !== "";
   const date = new Date(comment.created_at).toLocaleString("ko-KR", {
+    timeZone: "Asia/Seoul",
     month: "short",
     day: "numeric",
     hour: "2-digit",

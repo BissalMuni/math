@@ -16,6 +16,60 @@ export default function Tokenization() {
         <h2 className="text-xl font-semibold mb-3">빈도/확률 — BPE 병합</h2>
         <p>BPE: 가장 빈도 높은 바이트 쌍을 반복 병합합니다.</p>
         <BlockMath math="\text{freq}(a,b) = \frac{\text{count}(ab)}{\text{total}}" />
+
+        <div className="mt-6 rounded-lg border border-sidebar-border bg-sidebar-bg p-5">
+          <h3 className="font-semibold mb-3">BPE 계산 예제</h3>
+          <p className="text-sm text-muted mb-4">
+            코퍼스: &ldquo;low&rdquo;(5회), &ldquo;lower&rdquo;(2회), &ldquo;newest&rdquo;(6회), &ldquo;widest&rdquo;(3회)
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="text-left border-b border-sidebar-border">
+                  <th className="pr-4 pb-2 font-medium">단계</th>
+                  <th className="pr-4 pb-2 font-medium">최빈 쌍</th>
+                  <th className="pr-4 pb-2 font-medium">빈도</th>
+                  <th className="pb-2 font-medium">결과</th>
+                </tr>
+              </thead>
+              <tbody className="text-muted font-mono text-xs">
+                <tr className="border-b border-sidebar-border">
+                  <td className="pr-4 py-2">초기</td>
+                  <td className="pr-4 py-2">—</td>
+                  <td className="pr-4 py-2">—</td>
+                  <td className="py-2">l o w · l o w e r · n e w e s t · w i d e s t</td>
+                </tr>
+                <tr className="border-b border-sidebar-border">
+                  <td className="pr-4 py-2">1</td>
+                  <td className="pr-4 py-2">(e, s)</td>
+                  <td className="pr-4 py-2">9</td>
+                  <td className="py-2">l o w · l o w e r · n e w <strong>es</strong> t · w i d <strong>es</strong> t</td>
+                </tr>
+                <tr className="border-b border-sidebar-border">
+                  <td className="pr-4 py-2">2</td>
+                  <td className="pr-4 py-2">(es, t)</td>
+                  <td className="pr-4 py-2">9</td>
+                  <td className="py-2">l o w · l o w e r · n e w <strong>est</strong> · w i d <strong>est</strong></td>
+                </tr>
+                <tr className="border-b border-sidebar-border">
+                  <td className="pr-4 py-2">3</td>
+                  <td className="pr-4 py-2">(l, o)</td>
+                  <td className="pr-4 py-2">7</td>
+                  <td className="py-2"><strong>lo</strong> w · <strong>lo</strong> w e r · n e w est · w i d est</td>
+                </tr>
+                <tr>
+                  <td className="pr-4 py-2">4</td>
+                  <td className="pr-4 py-2">(lo, w)</td>
+                  <td className="pr-4 py-2">7</td>
+                  <td className="py-2"><strong>low</strong> · <strong>low</strong> e r · n e w est · w i d est</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-sm text-muted mt-3">
+            이 과정을 수만 회 반복하면 GPT의 어휘 사전(~100K 토큰)이 자동 구축됩니다.
+          </p>
+        </div>
       </section>
 
       <section>

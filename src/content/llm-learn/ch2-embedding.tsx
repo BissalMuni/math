@@ -128,14 +128,84 @@ export default function EmbeddingContent() {
         </Insight>
       </CalcBox>
 
+      {/* ── 수식 요소 설명 ── */}
+      <CalcBox title="수식 요소 하나씩 뜯어보기">
+        <div className="mb-4">
+          <BlockMath math="X = E[\text{token\_ids}] \quad \in \mathbb{R}^{T \times d}" />
+        </div>
+        <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
+          <div className="divide-y divide-sidebar-border">
+            {[
+              ["X", "임베딩 결과 행렬 — 문장 전체의 벡터 표현"],
+              ["E", "임베딩 테이블 (V×d 행렬) — 학습으로 결정되는 파라미터"],
+              ["token_ids", "토큰화 결과 ID 배열 — 예: [1, 2, 3]"],
+              ["E[token_ids]", "테이블에서 해당 ID의 행을 꺼내서 쌓는 연산"],
+              ["ℝ^{T×d}", "결과의 크기: T개 토큰 × d차원 벡터"],
+              ["T", "토큰 수 (문장 길이). 예: 3"],
+              ["d", "임베딩 차원 (벡터 길이). 예: 4 (실제: 512~4096)"],
+            ].map(([sym, desc]) => (
+              <div key={sym} className="flex px-4 py-2 gap-4">
+                <span className="font-mono text-accent w-24 shrink-0">{sym}</span>
+                <span className="text-muted">{desc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </CalcBox>
+
+      {/* ── 코사인 유사도 ── */}
+      <CalcBox title="코사인 유사도로 의미 거리 측정">
+        <p className="text-sm mb-3">
+          두 벡터가 얼마나 비슷한 방향인지를 <strong>코사인 유사도</strong>로 측정합니다.
+          값이 1에 가까우면 비슷, 0이면 무관, -1이면 반대입니다.
+        </p>
+        <BlockMath math="\cos(\theta) = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{a}\| \, \|\mathbf{b}\|}" />
+        <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mt-4 space-y-3">
+          <div>
+            <div className="text-muted font-sans mb-1">&ldquo;나는&rdquo; vs &ldquo;사과를&rdquo;</div>
+            <div>a = [1.00, 0.00, -1.00, 0.50]</div>
+            <div>b = [0.50, 1.00, 0.00, -0.50]</div>
+            <div className="mt-1">a·b = (1×0.5) + (0×1) + (-1×0) + (0.5×-0.5) = 0.25</div>
+            <div>|a| = √(1+0+1+0.25) = 1.50</div>
+            <div>|b| = √(0.25+1+0+0.25) = 1.22</div>
+            <div className="text-accent font-bold mt-1">cos(θ) = 0.25 / (1.50 × 1.22) ≈ 0.14 (거의 무관)</div>
+          </div>
+          <div className="border-t border-sidebar-border pt-3">
+            <div className="text-muted font-sans mb-1">유사한 단어끼리는 cos ≈ 0.8~0.95 (매우 가까움)</div>
+            <div className="text-muted font-sans">예: &ldquo;왕&rdquo;과 &ldquo;여왕&rdquo;, &ldquo;강아지&rdquo;와 &ldquo;개&rdquo;</div>
+          </div>
+        </div>
+      </CalcBox>
+
+      {/* ── 위치 인코딩 연결 ── */}
+      <CalcBox title="다음 단계: 위치 인코딩 더하기">
+        <p className="text-sm mb-3">
+          임베딩 행렬 X에는 <strong>단어의 순서 정보가 없습니다</strong>.
+          &ldquo;나는 사과를 좋아한다&rdquo;와 &ldquo;사과를 나는 좋아한다&rdquo;의 X가 같은 행으로 구성됩니다
+          (순서만 다를 뿐).
+        </p>
+        <p className="text-sm mb-3">
+          그래서 <strong>위치 인코딩(Positional Encoding)</strong> 벡터 P를 더해줍니다:
+        </p>
+        <BlockMath math="X_{\text{final}} = E[\text{token\_ids}] + P" />
+        <div className="font-mono text-xs text-muted bg-sidebar-bg border border-sidebar-border rounded-lg p-4 space-y-1">
+          <div>E[token_ids] = 의미 정보 (어떤 단어인가)</div>
+          <div>P&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 순서 정보 (몇 번째 위치인가)</div>
+          <div className="text-accent pt-1">X_final&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 의미 + 순서 → 트랜스포머 블록 입력</div>
+        </div>
+        <Insight>
+          위치 인코딩의 자세한 계산 방법은 다음 챕터(3. 위치 인코딩)에서 다룹니다.
+        </Insight>
+      </CalcBox>
+
       {/* ── 의미 공간 직관 ── */}
       <CalcBox title="임베딩 공간 직관">
         <p className="text-sm mb-3">
           학습이 끝난 임베딩에서는 의미 관계가 벡터 연산으로 나타납니다:
         </p>
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded p-4 space-y-1">
-          <div>v("왕") - v("남자") + v("여자") ≈ v("여왕")</div>
-          <div>v("서울") - v("한국") + v("일본") ≈ v("도쿄")</div>
+          <div>v(&ldquo;왕&rdquo;) - v(&ldquo;남자&rdquo;) + v(&ldquo;여자&rdquo;) ≈ v(&ldquo;여왕&rdquo;)</div>
+          <div>v(&ldquo;서울&rdquo;) - v(&ldquo;한국&rdquo;) + v(&ldquo;일본&rdquo;) ≈ v(&ldquo;도쿄&rdquo;)</div>
         </div>
         <p className="text-sm text-muted mt-3">
           이 관계는 누가 프로그래밍한 게 아니라, 수십억 문장에서 다음 토큰 예측 학습을 통해

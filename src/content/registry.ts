@@ -151,11 +151,11 @@ const registry: Record<string, () => Promise<{ default: ComponentType }>> = {
   "ll-ch4-4": () => import("./llm-learn/ch4-qkv"),
   "ll-ch4-5": () => import("./llm-learn/ch4-qkv"),
 
-  // 0. 서막 (ch1-tokenization 임시 사용)
-  "ll-p1": () => import("./llm-learn/ch1-tokenization"),
-  "ll-p2": () => import("./llm-learn/ch1-tokenization"),
-  "ll-p3": () => import("./llm-learn/ch1-tokenization"),
-  "ll-p4": () => import("./llm-learn/ch1-tokenization"),
+  // 0. 서막
+  "ll-p1": () => import("./llm-learn/ch0-why-llm"),
+  "ll-p2": () => import("./llm-learn/ch0-neural-net"),
+  "ll-p3": () => import("./llm-learn/ch0-parameter"),
+  "ll-p4": () => import("./llm-learn/ch0-matrix-basic"),
 
   // 3. 위치 인코딩
   "ll-ch3-1": () => import("./llm-learn/ch3-positional-encoding"),

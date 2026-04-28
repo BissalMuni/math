@@ -75,9 +75,62 @@ export default function TokenizationContent() {
             </div>
           ))}
         </div>
-        <p className="text-sm text-muted">
-          "##"는 앞 토큰에 붙는 조각을 의미합니다. "사과"+"##를" = "사과를"
+        <p className="text-sm text-muted mb-3">
+          &ldquo;##&rdquo;는 앞 토큰에 붙는 조각을 의미합니다. &ldquo;사과&rdquo;+&ldquo;##를&rdquo; = &ldquo;사과를&rdquo;
         </p>
+        <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-4 text-sm space-y-2">
+          <p className="font-semibold text-accent">왜 &ldquo;나는&rdquo;은 안 쪼개질까?</p>
+          <p className="text-muted">
+            &ldquo;사과를&rdquo;은 &ldquo;사과&rdquo;+&ldquo;를&rdquo;로 쪼개지는데
+            &ldquo;나는&rdquo;은 하나의 토큰입니다.
+            이유: <strong>BPE는 학습 데이터에서 자주 등장하는 조합을 하나로 유지</strong>합니다.
+          </p>
+          <p className="text-muted">
+            &ldquo;나는&rdquo;은 한국어 텍스트에서 매우 빈번하므로 그 자체가 하나의 토큰으로 등록됩니다.
+            반면 &ldquo;사과를&rdquo;은 상대적으로 드물어 &ldquo;사과&rdquo;+&ldquo;##를&rdquo;로 분리됩니다.
+          </p>
+          <div className="font-mono text-xs bg-black/5 dark:bg-white/5 rounded p-3 space-y-1">
+            <div>&ldquo;나는&rdquo; — 빈도 매우 높음 → 토큰 1개로 유지</div>
+            <div>&ldquo;사과를&rdquo; — 빈도 낮음 → &ldquo;사과&rdquo; + &ldquo;##를&rdquo;로 분리</div>
+            <div>&ldquo;좋아한다&rdquo; — 빈도 낮음 → &ldquo;좋아&rdquo; + &ldquo;##한다&rdquo;로 분리</div>
+          </div>
+        </div>
+      </CalcBox>
+
+      {/* ── BPE 병합 과정 예제 ── */}
+      <CalcBox title="BPE 병합 과정 — 단계별 예제">
+        <p className="text-sm mb-4">
+          BPE가 어떻게 글자 단위에서 시작해 토큰을 만들어가는지 &ldquo;low&rdquo;, &ldquo;lower&rdquo;, &ldquo;newest&rdquo;
+          세 단어로 따라가 봅시다.
+        </p>
+        <div className="space-y-3 text-sm font-mono bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
+          <div>
+            <div className="text-muted font-sans mb-1">초기: 글자 단위로 분리</div>
+            <div>l o w  (빈도 5)</div>
+            <div>l o w e r  (빈도 2)</div>
+            <div>n e w e s t  (빈도 6)</div>
+          </div>
+          <div className="border-t border-sidebar-border pt-3">
+            <div className="text-accent font-sans mb-1">1회차: 가장 빈번한 쌍 = (e, s) → 8회</div>
+            <div>l o w  ·  l o w e r  ·  n e w <strong>es</strong> t</div>
+          </div>
+          <div className="border-t border-sidebar-border pt-3">
+            <div className="text-accent font-sans mb-1">2회차: (es, t) → 6회</div>
+            <div>l o w  ·  l o w e r  ·  n e w <strong>est</strong></div>
+          </div>
+          <div className="border-t border-sidebar-border pt-3">
+            <div className="text-accent font-sans mb-1">3회차: (l, o) → 7회</div>
+            <div><strong>lo</strong> w  ·  <strong>lo</strong> w e r  ·  n e w est</div>
+          </div>
+          <div className="border-t border-sidebar-border pt-3">
+            <div className="text-accent font-sans mb-1">4회차: (lo, w) → 7회</div>
+            <div><strong>low</strong>  ·  <strong>low</strong> e r  ·  n e w est</div>
+          </div>
+        </div>
+        <Insight>
+          이 과정을 수만 번 반복하면 자주 쓰이는 단어 조각이 자동으로 토큰이 됩니다.
+          사람이 규칙을 정하는 게 아니라 <strong>빈도 통계가 토큰을 결정</strong>합니다.
+        </Insight>
       </CalcBox>
 
       {/* ── 어휘 사전 ── */}

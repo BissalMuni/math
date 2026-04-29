@@ -159,8 +159,8 @@ const registry: Record<string, () => Promise<{ default: ComponentType }>> = {
 
   // 3. 위치 인코딩
   "ll-ch3-1": () => import("./llm-learn/ch3-positional-encoding"),
-  "ll-ch3-2": () => import("./llm-learn/ch3-positional-encoding"),
-  "ll-ch3-3": () => import("./llm-learn/ch3-positional-encoding"),
+  "ll-ch3-2": () => import("./llm-learn/ch3-2-sin-cos"),
+  "ll-ch3-3": () => import("./llm-learn/ch3-3-add-to-embed"),
 
   // 5. Softmax
   "ll-ch5-1": () => import("./llm-learn/ch5-softmax"),

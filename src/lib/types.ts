@@ -9,6 +9,24 @@ export interface Comment {
   created_at: string;
 }
 
+/** 역할 */
+export type { Role } from "@/lib/auth/constants";
+
+/** 콘텐츠 수정 이력 */
+export interface ContentChange {
+  id: string;
+  role: string;
+  actor: string;
+  change_type: "content_edit" | "structure_edit" | "automated_feedback" | "rollback";
+  file_path: string;
+  diff?: string | null;
+  before_content?: string | null;
+  after_content?: string | null;
+  commit_sha?: string | null;
+  metadata?: Record<string, unknown> | null;
+  created_at: string;
+}
+
 /** 참고 이미지 */
 export interface TopicImage {
   id: string;

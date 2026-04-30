@@ -19,7 +19,7 @@ export function TopicContent({ node, contentPath }: { node: TreeNode; contentPat
           {node.title}
           {/* 소목차 전체에 대한 의견 버튼 */}
           <span className="ml-2 align-middle">
-            <SectionComment sectionSlug={node.id} sectionTitle={node.title} />
+            <SectionComment sectionSlug={node.id} sectionTitle={node.title} level="minor" />
           </span>
         </h1>
         <ProgressCheck topicId={node.id} />

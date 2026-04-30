@@ -1,11 +1,21 @@
+/** 의견 편집 종류 */
+export type FeedbackType = "content" | "structure";
+
+/** 의견 대상 목차 레벨 */
+export type FeedbackLevel = "major" | "medium" | "minor" | "section";
+
 /** 의견(댓글) */
 export interface Comment {
   id: string;
   content_path: string;
   author: string;
   body: string;
-  /** 소목차 제목 (예: "소수와 합성수") */
+  /** 소목차/섹션 제목 (예: "소수와 합성수") */
   section_title?: string | null;
+  /** 편집 종류: content(내용 편집) | structure(구조 편집) */
+  feedback_type: FeedbackType;
+  /** 목차 레벨: major(대목차) | medium(중목차) | minor(소목차) | section(h2 섹션) */
+  level: FeedbackLevel;
   created_at: string;
 }
 

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { CategoryRoot, TreeNode } from "@/data";
+import { SectionComment } from "@/components/section-comment";
 
 /** 카테고리 개요 페이지 (학년/과목 목록 표시) */
 export function CategoryOverview({ category }: { category: CategoryRoot }) {
@@ -23,7 +24,7 @@ export function CategoryOverview({ category }: { category: CategoryRoot }) {
   );
 }
 
-/** 과목/학년 카드 */
+/** 학년/과목 카드 — 그 아래 chapter(=대단원) / section(=중단원) 단위로 의견 버튼 노출 */
 function SubjectCard({
   node,
   basePath,
@@ -31,7 +32,6 @@ function SubjectCard({
   node: TreeNode;
   basePath: string;
 }) {
-  // leaf 수 계산
   const leafCount = countLeaves(node);
 
   return (
@@ -41,7 +41,7 @@ function SubjectCard({
         <div className="space-y-2">
           {node.children.map((chapter) => (
             <div key={chapter.id}>
-              {/* chapter가 leaf인 경우(e.g. prologue sub-items) → 바로 링크 */}
+              {/* chapter가 leaf인 경우(e.g. prologue 단발 항목) → 바로 링크 */}
               {!chapter.children ? (
                 <Link
                   href={`/${basePath}/${node.slug}/${chapter.slug}`}
@@ -51,8 +51,14 @@ function SubjectCard({
                 </Link>
               ) : (
                 <>
-                  <h3 className="text-sm font-medium text-muted mb-1">
-                    {chapter.title}
+                  <h3 className="text-sm font-medium text-muted mb-1 flex items-center gap-2">
+                    <span>{chapter.title}</span>
+                    {/* 대목차 — 대단원 */}
+                    <SectionComment
+                      sectionSlug={chapter.id}
+                      sectionTitle={chapter.title}
+                      level="major"
+                    />
                   </h3>
                   <div className="ml-4 space-y-0.5">
                     {chapter.children.map((section) => (
@@ -75,7 +81,7 @@ function SubjectCard({
   );
 }
 
-/** 중단원 링크 (소단원 나열) */
+/** 중단원/소단원 링크 노드 */
 function SectionLink({
   node,
   basePath,
@@ -86,9 +92,18 @@ function SectionLink({
   parentSlugs: string[];
 }) {
   if (node.children && node.children.length > 0) {
+    // node = 중단원 (children = 소단원 leaf)
     return (
       <div className="mb-1">
-        <span className="text-sm text-foreground">{node.title}</span>
+        <span className="text-sm text-foreground inline-flex items-center gap-2">
+          {node.title}
+          {/* 중목차 — 중단원 */}
+          <SectionComment
+            sectionSlug={node.id}
+            sectionTitle={node.title}
+            level="medium"
+          />
+        </span>
         <div className="ml-3 mt-0.5 space-y-0.5">
           {node.children.map((topic) => (
             <Link

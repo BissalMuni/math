@@ -11,8 +11,7 @@
       "Bash(vercel whoami:*)"
     ],
     "additionalDirectories": [
-      "d:\\Coding\\math\\.claude",
-      "d:\\Coding\\math\\src\\app\\middle"
+
     ]
   }
 }

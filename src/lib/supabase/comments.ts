@@ -43,21 +43,19 @@ export async function createComment(input: CreateCommentInput): Promise<Comment>
   return data as Comment;
 }
 
-/** 의견 삭제 (작성자 본인만) */
+/** 의견 삭제 (super_admin 권한으로 무조건 삭제) */
 export async function deleteComment(
-  id: string,
-  author: string
+  id: string
 ): Promise<{ success: boolean; error?: string }> {
   const supabase = getSupabase();
 
   const { data: existing, error: fetchError } = await supabase
     .from("comments")
-    .select("author")
+    .select("id")
     .eq("id", id)
     .single();
 
   if (fetchError || !existing) return { success: false, error: "의견을 찾을 수 없습니다" };
-  if (existing.author !== author) return { success: false, error: "작성자만 삭제할 수 있습니다" };
 
   const { error } = await supabase.from("comments").delete().eq("id", id);
   if (error) throw error;

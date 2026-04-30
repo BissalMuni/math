@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { allCategories, type TreeNode } from "@/data";
+import { SidebarAuth } from "@/components/sidebar-auth";
 
 /** 사이드바 네비게이션 */
 export function Sidebar() {
@@ -38,9 +39,12 @@ export function Sidebar() {
         `}
       >
         <div className="p-4">
-          <Link href="/" className="block text-lg font-bold mb-4" onClick={() => setIsOpen(false)}>
-            📐 수학 학습
-          </Link>
+          <div className="flex items-center justify-between mb-4">
+            <Link href="/" className="text-lg font-bold" onClick={() => setIsOpen(false)}>
+              📐 수학 학습
+            </Link>
+            <SidebarAuth />
+          </div>
           <nav>
             {allCategories.map((category) => (
               <CategorySection

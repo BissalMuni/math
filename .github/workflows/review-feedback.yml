@@ -1,7 +1,7 @@
 name: Review Feedback
 on:
   schedule:
-    - cron: '17 */1 * * *' # 매시간 :17분 (UTC)
+    - cron: '17 */6 * * *' # 6시간마다 :17분 (UTC) — 하루 4회
   workflow_dispatch: {} # 수동 실행 가능
 
 jobs:

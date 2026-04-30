@@ -24,7 +24,13 @@ if [[ -z "${SUPABASE_URL:-}" || -z "${SUPABASE_SERVICE_ROLE_KEY:-}" ]]; then
 fi
 
 API="${SUPABASE_URL}/rest/v1"
-HEADERS=(-H "apikey: ${SUPABASE_SERVICE_ROLE_KEY}" -H "Authorization: Bearer ${SUPABASE_SERVICE_ROLE_KEY}")
+# math 전용 스키마 사용 (Accept-Profile: 읽기, Content-Profile: 쓰기)
+HEADERS=(
+  -H "apikey: ${SUPABASE_SERVICE_ROLE_KEY}"
+  -H "Authorization: Bearer ${SUPABASE_SERVICE_ROLE_KEY}"
+  -H "Accept-Profile: math"
+  -H "Content-Profile: math"
+)
 COMMIT_SHA="$(cd "$PROJECT_DIR" && git rev-parse --short HEAD 2>/dev/null || echo 'unknown')"
 NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 

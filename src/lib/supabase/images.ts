@@ -1,7 +1,7 @@
 import { getSupabase } from "./client";
 import type { TopicImage } from "@/lib/types";
 
-const BUCKET = "topic-images";
+const BUCKET = "math-topic-images";
 const MAX_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED = ["image/jpeg", "image/png", "image/gif", "image/webp"];
 

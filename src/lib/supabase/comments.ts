@@ -1,5 +1,5 @@
 import { getSupabase } from "./client";
-import type { Comment } from "@/lib/types";
+import type { Comment, FeedbackType, FeedbackLevel } from "@/lib/types";
 
 /** 해당 경로의 의견 목록 조회 */
 export async function getComments(contentPath: string): Promise<Comment[]> {
@@ -14,17 +14,28 @@ export async function getComments(contentPath: string): Promise<Comment[]> {
   return (data || []) as Comment[];
 }
 
+export interface CreateCommentInput {
+  contentPath: string;
+  author: string;
+  body: string;
+  sectionTitle?: string;
+  feedbackType?: FeedbackType;
+  level?: FeedbackLevel;
+}
+
 /** 의견 등록 */
-export async function createComment(
-  contentPath: string,
-  author: string,
-  body: string,
-  sectionTitle?: string
-): Promise<Comment> {
+export async function createComment(input: CreateCommentInput): Promise<Comment> {
   const supabase = getSupabase();
   const { data, error } = await supabase
     .from("comments")
-    .insert({ content_path: contentPath, author, body, section_title: sectionTitle ?? null })
+    .insert({
+      content_path: input.contentPath,
+      author: input.author,
+      body: input.body,
+      section_title: input.sectionTitle ?? null,
+      feedback_type: input.feedbackType ?? "content",
+      level: input.level ?? "section",
+    })
     .select()
     .single();
 
@@ -32,21 +43,19 @@ export async function createComment(
   return data as Comment;
 }
 
-/** 의견 삭제 (작성자 본인만) */
+/** 의견 삭제 (super_admin 권한으로 무조건 삭제) */
 export async function deleteComment(
-  id: string,
-  author: string
+  id: string
 ): Promise<{ success: boolean; error?: string }> {
   const supabase = getSupabase();
 
   const { data: existing, error: fetchError } = await supabase
     .from("comments")
-    .select("author")
+    .select("id")
     .eq("id", id)
     .single();
 
   if (fetchError || !existing) return { success: false, error: "의견을 찾을 수 없습니다" };
-  if (existing.author !== author) return { success: false, error: "작성자만 삭제할 수 있습니다" };
 
   const { error } = await supabase.from("comments").delete().eq("id", id);
   if (error) throw error;

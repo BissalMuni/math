@@ -1,22 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { deleteComment } from "@/lib/supabase/comments";
+import { requirePermission } from "@/lib/auth/require-role";
 
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = await params;
-  const author = request.nextUrl.searchParams.get("author");
+  // 댓글 삭제는 super_admin 만 (rollback 권한과 동급)
+  const denied = requirePermission(request, "rollback");
+  if (denied) return denied;
 
-  if (!author) {
-    return NextResponse.json({ error: "author 필요" }, { status: 400 });
-  }
+  const { id } = await params;
 
   try {
-    const result = await deleteComment(id, author);
+    const result = await deleteComment(id);
     if (!result.success) {
-      const status = result.error?.includes("찾을 수") ? 404 : 403;
-      return NextResponse.json({ error: result.error }, { status });
+      return NextResponse.json({ error: result.error }, { status: 404 });
     }
     return NextResponse.json({ success: true });
   } catch {

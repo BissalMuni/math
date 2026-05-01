@@ -1,10 +1,13 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { invalidateSession } from "@/lib/auth/use-session";
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const next = searchParams.get("next") || "/";
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -28,7 +31,10 @@ export default function LoginPage() {
         return;
       }
 
-      router.push("/admin");
+      // 세션 캐시 무효화 후 원래 위치로
+      invalidateSession();
+      router.push(next);
+      router.refresh();
     } catch {
       setError("서버 연결 실패");
     } finally {

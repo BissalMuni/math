@@ -67,13 +67,16 @@ export function Arrow({ op }: { op?: string }) {
   );
 }
 
-/** 계산 단계 박스 */
+/** 계산 단계 박스
+ *  AutoSectionComment가 <section><h2> 패턴을 찾아 의견 버튼을 주입하므로
+ *  CalcBox는 의도적으로 section + h2로 마크업한다.
+ *  h2 기본 폰트 크기를 무력화하기 위해 text-base를 명시. */
 export function CalcBox({ children, title }: { children: React.ReactNode; title?: string }) {
   return (
-    <div className="rounded-xl border border-sidebar-border bg-sidebar-bg p-5 mb-6">
-      {title && <h4 className="font-semibold mb-3 text-accent">{title}</h4>}
+    <section className="rounded-xl border border-sidebar-border bg-sidebar-bg p-5 mb-6">
+      {title && <h2 className="text-base font-semibold mb-3 text-accent">{title}</h2>}
       {children}
-    </div>
+    </section>
   );
 }
 

@@ -8,7 +8,19 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git remote:*)",
-      "Bash(vercel whoami:*)"
+      "Bash(vercel whoami:*)",
+      "Bash(ls -la /d/Coding/math/.env*)",
+      "Bash(find /d/Coding/math -path */supabase* -type f)",
+      "Bash(grep -i \"comment\\\\|feedback\\\\|opinion\\\\|의견\" /d/Coding/math/.spec/*.md)",
+      "Bash(xargs -I {} grep -l \"AutoSectionComment\" {})",
+      "Bash(bash d:/Coding/math/scripts/fetch-feedback.sh)",
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); print\\(f''''{len\\(data\\)}건 미처리''''\\)\")",
+      "Bash(node -e \"let d='''''''';process.stdin.on\\(''''data'''',c=>d+=c\\);process.stdin.on\\(''''end'''',\\(\\)=>console.log\\(JSON.parse\\(d\\).length+''''건 미처리''''\\)\\)\")",
+      "Bash(bash d:/Coding/math/scripts/fetch-feedback.sh --mark-all-unprocessed)",
+      "Bash(gh secret:*)",
+      "Bash(gh workflow:*)",
+      "Bash(cmd.exe //c \"schtasks /delete /tn MathFeedbackReview /f\")",
+      "Bash(xargs grep:*)"
     ],
     "additionalDirectories": [
       "d:\\Coding\\math\\.claude",

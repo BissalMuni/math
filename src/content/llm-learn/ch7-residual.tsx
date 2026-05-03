@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "./shared";
+import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 잔차 연결 (Residual Connection) 예제:
@@ -27,7 +27,6 @@ const gradients_residual = [1.0, 1.1, 1.05, 0.98, 1.02, 1.0];
 export default function ResidualContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">7. 잔차 연결 (Residual Connection)</h1>
       <p className="text-muted mb-8">
         깊은 신경망의 고질적 문제인 <strong>기울기 소실</strong>을 해결하는 핵심 기법입니다.
         원본 신호를 그대로 더함으로써 역전파 신호가 살아남습니다.

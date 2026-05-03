@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "./shared";
+import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 인코더/디코더 아키텍처 비교:
@@ -30,7 +30,6 @@ const bertExample = {
 export default function EncoderDecoderContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">13. 인코더 vs 디코더</h1>
       <p className="text-muted mb-8">
         트랜스포머는 목적에 따라 세 가지 변형이 있습니다.
         어텐션이 "어떤 방향으로" 흐를 수 있는지가 핵심 차이입니다.

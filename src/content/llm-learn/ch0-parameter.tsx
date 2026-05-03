@@ -1,4 +1,4 @@
-import { CalcBox, Insight, Matrix } from "./shared";
+import { CalcBox, Insight, Matrix } from "@/components/content/shared";
 
 /** 서막 0-3: 파라미터란 */
 export default function ParameterContent() {
@@ -13,7 +13,6 @@ export default function ParameterContent() {
 
   return (
     <article className="max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">0-3. 파라미터란</h1>
       <p className="text-muted mb-8">
         &ldquo;GPT-4는 1조 8천억 개의 파라미터를 가지고 있다&rdquo; —
         이 파라미터가 정확히 무엇인지 이해합니다.

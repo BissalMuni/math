@@ -1,10 +1,9 @@
-import { CalcBox, Insight } from "./shared";
+import { CalcBox, Insight } from "@/components/content/shared";
 
 /** 서막 0-1: 왜 LLM인가 */
 export default function WhyLlmContent() {
   return (
     <article className="max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">0-1. 왜 LLM인가</h1>
       <p className="text-muted mb-8">
         대규모 언어 모델(Large Language Model)이 왜 중요한지,
         이 가이드에서 무엇을 배우게 되는지 큰 그림을 그립니다.

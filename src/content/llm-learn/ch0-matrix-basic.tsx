@@ -1,5 +1,5 @@
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, CalcBox, Insight, Matrix, Arrow } from "./shared";
+import { Step, CalcBox, Insight, Matrix, Arrow } from "@/components/content/shared";
 
 /** 서막 0-4: 행렬 곱셈 기초 */
 export default function MatrixBasicContent() {
@@ -21,7 +21,6 @@ export default function MatrixBasicContent() {
 
   return (
     <article className="max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">0-4. 행렬 곱셈 기초</h1>
       <p className="text-muted mb-8">
         트랜스포머의 모든 연산은 <strong>행렬 곱셈</strong>입니다.
         어텐션, 임베딩, FFN — 전부 행렬을 곱합니다.

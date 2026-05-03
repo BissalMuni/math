@@ -1,6 +1,6 @@
 "use client";
 
-import { CalcBox, Insight } from "./shared";
+import { CalcBox, Insight } from "@/components/content/shared";
 
 /** 3-1. 왜 필요한가 */
 function Bullets({ items }: { items: React.ReactNode[] }) {
@@ -16,7 +16,6 @@ function Bullets({ items }: { items: React.ReactNode[] }) {
 export default function WhyPositionContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">3-1. 왜 필요한가</h1>
       <p className="text-muted mb-8">
         트랜스포머는 모든 토큰을 <strong>동시에</strong> 처리합니다 — RNN처럼 순서대로 읽지 않습니다.
         그래서 "나는 사과를 좋아한다"와 "사과를 나는 좋아한다"를 구분할 수 없습니다.

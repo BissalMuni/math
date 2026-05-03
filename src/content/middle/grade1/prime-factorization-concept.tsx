@@ -1,13 +1,13 @@
 "use client";
 
 import { InlineMath, BlockMath } from "@/components/math/math-formula";
+import { CalcBox } from "@/components/content/shared";
 
 /** 중1 > 수와 연산 > 소인수분해 > 소인수분해 */
 export default function PrimeFactorizationConcept() {
   return (
     <div className="space-y-6">
-      <section id="prime-composite">
-        <h2 className="text-xl font-semibold mb-3">소수와 합성수</h2>
+      <CalcBox title="소수와 합성수">
         <p>
           <strong>소수</strong>는 1보다 큰 자연수 중에서 1과 자기 자신만을 약수로 가지는 수입니다.
         </p>
@@ -19,10 +19,9 @@ export default function PrimeFactorizationConcept() {
         <div className="mt-3 rounded-lg bg-accent-light p-4 text-sm">
           <strong>참고:</strong> 1은 소수도 합성수도 아닙니다.
         </div>
-      </section>
+      </CalcBox>
 
-      <section id="factorization">
-        <h2 className="text-xl font-semibold mb-3">소인수분해</h2>
+      <CalcBox title="소인수분해">
         <p>
           자연수를 <strong>소인수</strong>(소수인 인수)들의 곱으로 나타내는 것을 <strong>소인수분해</strong>라고 합니다.
         </p>
@@ -32,10 +31,9 @@ export default function PrimeFactorizationConcept() {
           <p>예시: 360을 소인수분해하면</p>
           <BlockMath math="360 = 2^3 \times 3^2 \times 5" />
         </div>
-      </section>
+      </CalcBox>
 
-      <section id="method">
-        <h2 className="text-xl font-semibold mb-3">소인수분해 방법</h2>
+      <CalcBox title="소인수분해 방법">
         <p>
           자연수 <InlineMath math="n" />을 가장 작은 소수부터 차례로 나누어 갑니다.
         </p>
@@ -50,10 +48,9 @@ export default function PrimeFactorizationConcept() {
           </div>
           <BlockMath math="72 = 2^3 \times 3^2" />
         </div>
-      </section>
+      </CalcBox>
 
-      <section id="divisor-count">
-        <h2 className="text-xl font-semibold mb-3">약수의 개수 공식</h2>
+      <CalcBox title="약수의 개수 공식">
         <p>
           자연수 <InlineMath math="n = p_1^{a_1} \times p_2^{a_2} \times \cdots \times p_k^{a_k}" />일 때,
         </p>
@@ -62,7 +59,7 @@ export default function PrimeFactorizationConcept() {
           예: <InlineMath math="72 = 2^3 \times 3^2" />의 약수의 개수는{" "}
           <InlineMath math="(3+1)(2+1) = 12" />개입니다.
         </p>
-      </section>
+      </CalcBox>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { CalcBox, Insight, Matrix, Arrow } from "./shared";
+import { CalcBox, Insight, Matrix, Arrow } from "@/components/content/shared";
 
 /** 서막 0-2: 신경망이란 */
 export default function NeuralNetContent() {
@@ -12,7 +12,6 @@ export default function NeuralNetContent() {
 
   return (
     <article className="max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">0-2. 신경망이란</h1>
       <p className="text-muted mb-8">
         LLM의 기반인 인공 신경망의 핵심 아이디어를 이해합니다.
         복잡해 보이지만 기본 단위는 <strong>곱하고 더하는 것</strong>뿐입니다.

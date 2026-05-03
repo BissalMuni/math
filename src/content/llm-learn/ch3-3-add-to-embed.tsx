@@ -1,6 +1,6 @@
 "use client";
 
-import { Matrix, Arrow, CalcBox, Insight } from "./shared";
+import { Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 예제 설정:
@@ -45,7 +45,6 @@ function Bullets({ items }: { items: React.ReactNode[] }) {
 export default function AddToEmbedContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">3-3. 임베딩에 더하기</h1>
       <p className="text-muted mb-8">
         계산된 위치 인코딩 벡터를 단어 임베딩 벡터에 더합니다.
         이후 학습 과정에서 PE는 고정이지만 단어 벡터는 계속 갱신됩니다.

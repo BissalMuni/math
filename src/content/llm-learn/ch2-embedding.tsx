@@ -1,5 +1,5 @@
 import { BlockMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "./shared";
+import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 임베딩 예제
@@ -24,7 +24,6 @@ const looked = tokenIds.map(id => embTable[id]);
 export default function EmbeddingContent() {
   return (
     <article className="max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">2. 임베딩</h1>
       <p className="text-muted mb-8">
         토큰 ID(숫자)는 순서 정보뿐입니다. ID 1과 ID 2의 차이 1은 아무 의미가 없습니다.
         임베딩은 각 ID를 <strong>의미가 담긴 고차원 벡터</strong>로 변환합니다.

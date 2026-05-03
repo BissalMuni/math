@@ -1,4 +1,4 @@
-import { ComingSoon } from "./shared";
+import { ComingSoon } from "@/components/content/shared";
 import type { TreeNode } from "@/structure";
 
 /** 준비 중 stub — node.title을 받아서 표시 */

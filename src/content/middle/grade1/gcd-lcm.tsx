@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import { InlineMath, BlockMath } from "@/components/math/math-formula";
+import { CalcBox } from "@/components/content/shared";
 
 /** 중1 > 수와 연산 > 소인수분해 > 최대공약수와 최소공배수 */
 export default function GcdLcm() {
   return (
     <div className="space-y-6">
       {/* 최대공약수 */}
-      <section>
-        <h2 className="text-xl font-semibold mb-3">최대공약수 (GCD)</h2>
+      <CalcBox title="최대공약수 (GCD)">
         <p>
           두 개 이상의 자연수의 공통인 약수 중에서 가장 큰 수를 <strong>최대공약수</strong>라고 합니다.
         </p>
@@ -23,11 +23,10 @@ export default function GcdLcm() {
           </p>
           <BlockMath math="\gcd(72, 48) = 2^3 \times 3 = 24" />
         </div>
-      </section>
+      </CalcBox>
 
       {/* 최소공배수 */}
-      <section>
-        <h2 className="text-xl font-semibold mb-3">최소공배수 (LCM)</h2>
+      <CalcBox title="최소공배수 (LCM)">
         <p>
           두 개 이상의 자연수의 공통인 배수 중에서 가장 작은 수를 <strong>최소공배수</strong>라고 합니다.
         </p>
@@ -41,11 +40,10 @@ export default function GcdLcm() {
           </p>
           <BlockMath math="\text{lcm}(72, 48) = 2^4 \times 3^2 = 144" />
         </div>
-      </section>
+      </CalcBox>
 
       {/* GCD × LCM 관계 */}
-      <section>
-        <h2 className="text-xl font-semibold mb-3">최대공약수와 최소공배수의 관계</h2>
+      <CalcBox title="최대공약수와 최소공배수의 관계">
         <p>
           두 자연수 <InlineMath math="a" />, <InlineMath math="b" />에 대해:
         </p>
@@ -54,13 +52,12 @@ export default function GcdLcm() {
           검증: <InlineMath math="72 \times 48 = 3456" />,{" "}
           <InlineMath math="24 \times 144 = 3456" /> ✓
         </p>
-      </section>
+      </CalcBox>
 
       {/* 인터랙티브 계산기 */}
-      <section>
-        <h2 className="text-xl font-semibold mb-3">직접 계산해 보기</h2>
+      <CalcBox title="직접 계산해 보기">
         <GcdLcmCalculator />
-      </section>
+      </CalcBox>
     </div>
   );
 }

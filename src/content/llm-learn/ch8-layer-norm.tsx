@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "./shared";
+import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * Layer Normalization 예제:
@@ -34,7 +34,6 @@ const afterNorm_var = normalized.reduce((s, x) => s + (x - afterNorm_mean) ** 2,
 export default function LayerNormContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">8. Layer Normalization</h1>
       <p className="text-muted mb-8">
         각 레이어 출력값의 범위를 안정화해 학습을 빠르고 안정적으로 만듭니다.
         트랜스포머에서 잔차 연결 직후에 적용됩니다: <strong>LayerNorm(x + f(x))</strong>

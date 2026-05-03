@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "./shared";
+import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 출력 레이어 (LM Head) 예제:
@@ -38,7 +38,6 @@ const topIdx = prob_T10.indexOf(Math.max(...prob_T10));
 export default function OutputContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">10. 출력 레이어 (LM Head)</h1>
       <p className="text-muted mb-8">
         모든 트랜스포머 블록을 통과한 마지막 벡터를 어휘 사전 크기의 확률 분포로 변환합니다.
         가장 높은 확률의 토큰이 다음 단어로 선택됩니다.

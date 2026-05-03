@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "./shared";
+import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 역전파 (Backpropagation) 예제:
@@ -40,7 +40,6 @@ const W_after = W_before.map((w, i) => w - lr * dW[i]);
 export default function BackpropContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">11. 역전파 (Backpropagation)</h1>
       <p className="text-muted mb-8">
         "손실을 줄이려면 각 파라미터를 얼마나 어느 방향으로 바꿔야 하나" —
         이 질문에 미분(기울기)으로 답하고, 모든 파라미터를 동시에 업데이트합니다.

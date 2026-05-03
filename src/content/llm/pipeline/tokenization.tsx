@@ -1,19 +1,18 @@
 "use client";
 
 import { InlineMath, BlockMath } from "@/components/math/math-formula";
+import { CalcBox } from "@/components/content/shared";
 
 export default function Tokenization() {
   return (
     <div className="space-y-8">
       <p className="text-muted">텍스트를 토큰(정수 ID) 시퀀스로 변환합니다. BPE(Byte Pair Encoding) 등의 알고리즘을 사용합니다.</p>
 
-      <section>
-        <h2 className="text-xl font-semibold mb-3">집합론 — 어휘집</h2>
+      <CalcBox title="집합론 — 어휘집">
         <p>어휘집 <InlineMath math="V = \{t_1, t_2, \ldots, t_n\}" />은 유한 집합입니다. 부분 문자열 집합을 관리합니다.</p>
-      </section>
+      </CalcBox>
 
-      <section>
-        <h2 className="text-xl font-semibold mb-3">빈도/확률 — BPE 병합</h2>
+      <CalcBox title="빈도/확률 — BPE 병합">
         <p>BPE: 가장 빈도 높은 바이트 쌍을 반복 병합합니다.</p>
         <BlockMath math="\text{freq}(a,b) = \frac{\text{count}(ab)}{\text{total}}" />
 
@@ -70,22 +69,19 @@ export default function Tokenization() {
             이 과정을 수만 회 반복하면 GPT의 어휘 사전(~100K 토큰)이 자동 구축됩니다.
           </p>
         </div>
-      </section>
+      </CalcBox>
 
-      <section>
-        <h2 className="text-xl font-semibold mb-3">조합론 — 시퀀스 경우의 수</h2>
+      <CalcBox title="조합론 — 시퀀스 경우의 수">
         <p>어휘 크기 <InlineMath math="V" />, 시퀀스 길이 <InlineMath math="T" /> → 가능한 시퀀스 수:</p>
         <BlockMath math="V^T" />
-      </section>
+      </CalcBox>
 
-      <section>
-        <h2 className="text-xl font-semibold mb-3">정보이론 — 최적 부호화</h2>
+      <CalcBox title="정보이론 — 최적 부호화">
         <p>최적 토큰 길이는 Shannon 부호화 이론을 따릅니다:</p>
         <BlockMath math="\text{최적 길이} \approx -\log_2 P(\text{token})" />
-      </section>
+      </CalcBox>
 
-      <section className="border-t border-sidebar-border pt-8">
-        <h2 className="text-xl font-semibold mb-1">연결고리 — BPE에서 스마트시티까지</h2>
+      <CalcBox title="연결고리 — BPE에서 스마트시티까지">
         <p className="text-muted text-sm mb-6">
           토크나이저 하나가 어떻게 정보이론 → 인공지능 → 도시 설계까지 이어지는지 추적합니다.
         </p>
@@ -368,7 +364,7 @@ export default function Tokenization() {
           </div>
 
         </div>
-      </section>
+      </CalcBox>
     </div>
   );
 }

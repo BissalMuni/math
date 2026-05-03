@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "./shared";
+import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * Feed-Forward Network (FFN) 예제:
@@ -64,7 +64,6 @@ const zeroed = h_pre.filter(v => v <= 0).length;
 export default function FeedForwardContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">9. Feed-Forward Network (FFN)</h1>
       <p className="text-muted mb-8">
         어텐션이 토큰 간 관계를 파악한다면, FFN은 각 토큰에 독립적으로 적용되는
         <strong>"지식 저장소"</strong>입니다. 모델 파라미터의 약 2/3를 차지합니다.

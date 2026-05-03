@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "./shared";
+import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * Softmax 예제:
@@ -41,7 +41,6 @@ const sm_T20 = softmaxWithTemp(baseScores, 2.0);
 export default function SoftmaxContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">5. Softmax — 점수를 확률로</h1>
       <p className="text-muted mb-8">
         어텐션 점수 <InlineMath math="Q \cdot K^T / \sqrt{d_k}" /> 를 확률 분포로 변환합니다.
         "모든 토큰에 어느 정도의 주의를 주되, 중요한 토큰에 집중"하는 원리입니다.

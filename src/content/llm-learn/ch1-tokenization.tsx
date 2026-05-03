@@ -1,4 +1,4 @@
-import { Step, CalcBox, Insight, Matrix, Arrow } from "./shared";
+import { Step, CalcBox, Insight, Matrix, Arrow } from "@/components/content/shared";
 
 /** 토큰화 — 컴퓨터는 글자를 모른다 */
 export default function TokenizationContent() {
@@ -20,7 +20,6 @@ export default function TokenizationContent() {
 
   return (
     <article className="max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">1. 토큰화</h1>
       <p className="text-muted mb-8">
         LLM은 텍스트를 바로 읽지 못합니다. 먼저 문장을 <strong>토큰(조각)</strong>으로 쪼개고,
         각 토큰을 <strong>숫자 ID</strong>로 바꿔야 합니다.

@@ -1,5 +1,5 @@
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "./shared";
+import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 문장: "나는 사과를 좋아한다"
@@ -89,7 +89,6 @@ function toMatData(m: number[][]): number[][] { return m; }
 export default function QkvContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">4. Q · K · V — 어텐션 전체 계산</h1>
       <p className="text-muted mb-8">
         예제 문장 <strong>"나는 사과를 좋아한다"</strong>로 Q·K·V 계산을 처음부터 끝까지 따라갑니다.
         차원은 실제(512) 대신 <strong>4</strong>로 축소했습니다.

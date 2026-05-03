@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "./shared";
+import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * Multi-Head Attention 예제 (축소):
@@ -107,7 +107,6 @@ const finalOutput = matMul(concat, Wo);  // 3×8
 export default function MultiHeadContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">6. Multi-Head Attention</h1>
       <p className="text-muted mb-8">
         단일 어텐션 = "한 관점으로만" 문장을 읽는 것.
         멀티헤드 어텐션 = <strong>"8개의 관점으로 동시에"</strong> 문장을 읽는 것.

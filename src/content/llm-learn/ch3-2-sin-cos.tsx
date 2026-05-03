@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Matrix, CalcBox, Insight } from "./shared";
+import { Matrix, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 예제 설정:
@@ -38,7 +38,6 @@ function Bullets({ items }: { items: React.ReactNode[] }) {
 export default function SinCosContent() {
   return (
     <article className="prose-like max-w-3xl">
-      <h1 className="text-2xl font-bold mb-2">3-2. sin/cos 함수로 위치 표현</h1>
       <p className="text-muted mb-8">
         각 위치를 sin/cos 함수 조합으로 표현합니다.
         차원마다 주파수가 다르기 때문에 모든 위치가 고유한 벡터를 갖게 됩니다.

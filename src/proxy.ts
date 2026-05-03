@@ -13,7 +13,7 @@ function getSecret() {
 }
 
 /** super_admin 전용 경로 */
-const SUPER_ADMIN_PATHS = ["/admin/changes/", "/api/admin/rollback"];
+const SUPER_ADMIN_PATHS = ["/admin/changes/", "/admin/structure", "/api/admin/rollback", "/api/admin/structure"];
 
 /** 역할이 super_admin 전용 경로에 접근 가능한지 확인 */
 function requiresSuperAdmin(pathname: string): boolean {

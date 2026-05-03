@@ -12,6 +12,9 @@ export function AdminNav({ role }: { role: Role }) {
   const links = [
     { href: "/admin", label: "대시보드" },
     { href: "/admin/changes", label: "수정 이력" },
+    ...(role === "super_admin"
+      ? [{ href: "/admin/structure", label: "구조 편집" }]
+      : []),
   ];
 
   async function handleLogout() {

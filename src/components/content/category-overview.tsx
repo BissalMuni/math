@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import type { CategoryRoot, TreeNode } from "@/data";
-import { SectionComment } from "@/components/section-comment";
+import type { CategoryRoot, TreeNode } from "@/structure";
+import { SectionComment } from "@/components/feedback/section-comment";
 
 /** 카테고리 개요 페이지 (학년/과목 목록 표시) */
 export function CategoryOverview({ category }: { category: CategoryRoot }) {

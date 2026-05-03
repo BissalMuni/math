@@ -1,11 +1,11 @@
 "use client";
 
 import { Suspense, useRef } from "react";
-import { ProgressCheck } from "@/components/progress-check";
-import { AutoSectionComment } from "@/components/auto-section-comment";
-import { SectionComment } from "@/components/section-comment";
-import { getContentComponent } from "@/content/registry";
-import type { TreeNode } from "@/data";
+import { ProgressCheck } from "@/components/progress/progress-check";
+import { AutoSectionComment } from "@/components/feedback/auto-section-comment";
+import { SectionComment } from "@/components/feedback/section-comment";
+import { getContentComponent } from "@/map";
+import type { TreeNode } from "@/structure";
 
 /** 소단원 콘텐츠 표시 + 모든 section h2 옆에 의견 버튼 자동 주입 */
 export function TopicContent({ node, contentPath }: { node: TreeNode; contentPath: string }) {

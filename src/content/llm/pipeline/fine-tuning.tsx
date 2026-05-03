@@ -1,6 +1,6 @@
 "use client";
 
-import { InlineMath, BlockMath } from "@/components/math-formula";
+import { InlineMath, BlockMath } from "@/components/math/math-formula";
 
 export default function FineTuning() {
   return (

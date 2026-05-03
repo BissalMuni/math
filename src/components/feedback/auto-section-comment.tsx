@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { SectionComment } from "@/components/section-comment";
+import { SectionComment } from "@/components/feedback/section-comment";
 
 interface Portal {
   host: HTMLElement;

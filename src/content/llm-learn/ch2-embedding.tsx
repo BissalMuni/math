@@ -1,4 +1,4 @@
-import { BlockMath } from "@/components/math-formula";
+import { BlockMath } from "@/components/math/math-formula";
 import { Step, Matrix, Arrow, CalcBox, Insight } from "./shared";
 
 /**

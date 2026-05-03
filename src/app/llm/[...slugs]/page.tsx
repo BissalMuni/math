@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { llmConceptTree, findNodeBySlugs } from "@/data";
-import { TopicPage } from "@/components/topic-page";
+import { llmConceptTree, findNodeBySlugs } from "@/structure";
+import { TopicPage } from "@/components/content/topic-page";
 
 export default async function LlmCatchAll({
   params,

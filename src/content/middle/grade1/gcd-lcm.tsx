@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { InlineMath, BlockMath } from "@/components/math-formula";
+import { InlineMath, BlockMath } from "@/components/math/math-formula";
 
 /** 중1 > 수와 연산 > 소인수분해 > 최대공약수와 최소공배수 */
 export default function GcdLcm() {

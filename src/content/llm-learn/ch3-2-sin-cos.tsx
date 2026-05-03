@@ -1,6 +1,6 @@
 "use client";
 
-import { BlockMath, InlineMath } from "@/components/math-formula";
+import { BlockMath, InlineMath } from "@/components/math/math-formula";
 import { Matrix, CalcBox, Insight } from "./shared";
 
 /**

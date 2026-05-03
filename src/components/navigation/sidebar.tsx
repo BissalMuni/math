@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { allCategories, type TreeNode } from "@/data";
-import { SidebarAuth } from "@/components/sidebar-auth";
+import { allCategories, type TreeNode } from "@/structure";
+import { SidebarAuth } from "@/components/navigation/sidebar-auth";
 
 /** 사이드바 네비게이션 */
 export function Sidebar() {

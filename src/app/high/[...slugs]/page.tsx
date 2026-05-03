@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { highSchool, findNodeBySlugs } from "@/data";
-import { TopicPage } from "@/components/topic-page";
+import { highSchool, findNodeBySlugs } from "@/structure";
+import { TopicPage } from "@/components/content/topic-page";
 
 export default async function HighCatchAll({
   params,

@@ -1,6 +1,6 @@
 "use client";
 
-import { InlineMath, BlockMath } from "@/components/math-formula";
+import { InlineMath, BlockMath } from "@/components/math/math-formula";
 
 /** 중1 > 수와 연산 > 소인수분해 > 소인수분해 */
 export default function PrimeFactorizationConcept() {

@@ -61,6 +61,22 @@ pnpm test           # Run tests (vitest)
 pnpm test -- --run  # Run tests once without watch
 ```
 
+## Component Organization
+
+`src/components/` is organized by **domain purpose**:
+
+```text
+src/components/
+├── navigation/   # 사이드바, 브레드크럼, context provider
+├── content/      # 페이지 뷰 (소단원, 카테고리 개요, LLM 뷰)
+├── math/         # 수식 렌더링 (KaTeX), 시각화 (Mafs)
+├── feedback/     # 의견 버튼, 댓글 폼/목록, 이미지 그리드
+├── progress/     # 학습 진도 체크
+└── admin/        # 관리자 대시보드, 변경내역, 롤백
+```
+
+When adding a new component, place it in the matching domain folder. If no existing folder fits, create a new domain folder with a clear purpose — do not place files directly under `src/components/`.
+
 ## Content Authoring Rules
 
 ### 소목차별 의견 버튼 (필수)

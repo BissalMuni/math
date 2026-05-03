@@ -6,7 +6,7 @@ import {
   llmFields,
   llmCurriculumGroups,
   type LlmConcept,
-} from "@/data/llm-concepts";
+} from "@/structure/llm-concepts";
 
 /** 개념 → URL */
 function conceptUrl(c: LlmConcept) {

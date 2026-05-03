@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { allCategories } from "@/data";
+import { allCategories } from "@/structure";
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
-import { llmLearning } from "@/data/llm-learning";
-import { findNodeBySlugs } from "@/data";
-import { TopicPage } from "@/components/topic-page";
+import { llmLearning } from "@/structure/llm-learning";
+import { findNodeBySlugs } from "@/structure";
+import { TopicPage } from "@/components/content/topic-page";
 
 export default async function LlmLearnCatchAll({
   params,

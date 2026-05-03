@@ -1,4 +1,4 @@
-import { LlmByPipeline } from "@/components/llm-view";
+import { LlmByPipeline } from "@/components/content/llm-view";
 
 export default function ByPipelinePage() {
   return <LlmByPipeline />;

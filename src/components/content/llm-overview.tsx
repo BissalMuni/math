@@ -7,7 +7,7 @@ import {
   llmFields,
   llmCurriculumGroups,
   type LlmConcept,
-} from "@/data/llm-concepts";
+} from "@/structure/llm-concepts";
 
 type Tab = "pipeline" | "field" | "curriculum";
 

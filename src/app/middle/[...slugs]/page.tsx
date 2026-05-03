@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
-import { middleSchool, findNodeBySlugs } from "@/data";
-import { TopicPage } from "@/components/topic-page";
+import { middleSchool, findNodeBySlugs } from "@/structure";
+import { TopicPage } from "@/components/content/topic-page";
 
 export default async function MiddleCatchAll({
   params,

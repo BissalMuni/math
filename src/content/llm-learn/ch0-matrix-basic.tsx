@@ -1,4 +1,4 @@
-import { BlockMath, InlineMath } from "@/components/math-formula";
+import { BlockMath, InlineMath } from "@/components/math/math-formula";
 import { Step, CalcBox, Insight, Matrix, Arrow } from "./shared";
 
 /** 서막 0-4: 행렬 곱셈 기초 */

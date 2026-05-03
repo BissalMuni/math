@@ -1,4 +1,4 @@
-import { Step, CalcBox, Insight, Matrix, Arrow } from "@/components/content/shared";
+import { CalcBox, Insight, Matrix, Arrow } from "@/components/content/shared";
 
 /** 토큰화 — 컴퓨터는 글자를 모른다 */
 export default function TokenizationContent() {
@@ -19,7 +19,7 @@ export default function TokenizationContent() {
   ];
 
   return (
-    <article className="max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         LLM은 텍스트를 바로 읽지 못합니다. 먼저 문장을 <strong>토큰(조각)</strong>으로 쪼개고,
         각 토큰을 <strong>숫자 ID</strong>로 바꿔야 합니다.
@@ -63,8 +63,7 @@ export default function TokenizationContent() {
       </CalcBox>
 
       {/* ── BPE 과정 ── */}
-      <Step n={1} label={`"${sentence}" 토큰화`} />
-      <CalcBox>
+      <CalcBox title="① &ldquo;나는 사과를 좋아한다&rdquo; 토큰화">
         <p className="text-sm mb-4">BPE(Byte Pair Encoding)는 자주 붙어 나오는 글자쌍을 합쳐 토큰을 만듭니다.</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {tokens.map((t, i) => (
@@ -133,8 +132,7 @@ export default function TokenizationContent() {
       </CalcBox>
 
       {/* ── 어휘 사전 ── */}
-      <Step n={2} label="어휘 사전(Vocabulary) 조회" />
-      <CalcBox>
+      <CalcBox title="② 어휘 사전(Vocabulary) 조회">
         <p className="text-sm mb-4">
           GPT-4는 약 <strong>100,000개</strong>의 토큰을 가진 어휘 사전을 씁니다.
           토큰 → ID 변환은 이 사전에서 단순 조회(O(1)).
@@ -151,8 +149,7 @@ export default function TokenizationContent() {
       </CalcBox>
 
       {/* ── 최종 결과 ── */}
-      <Step n={3} label="문장 → 숫자 ID 배열" />
-      <CalcBox>
+      <CalcBox title="③ 문장 → 숫자 ID 배열">
         <div className="flex flex-wrap items-center gap-3">
           <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg px-4 py-3">
             "{sentence}"
@@ -169,6 +166,6 @@ export default function TokenizationContent() {
           의미 벡터로 변환합니다.
         </Insight>
       </CalcBox>
-    </article>
+    </div>
   );
 }

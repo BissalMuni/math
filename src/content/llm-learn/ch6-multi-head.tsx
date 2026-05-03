@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
+import { Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * Multi-Head Attention 예제 (축소):
@@ -106,7 +106,7 @@ const finalOutput = matMul(concat, Wo);  // 3×8
 
 export default function MultiHeadContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         단일 어텐션 = "한 관점으로만" 문장을 읽는 것.
         멀티헤드 어텐션 = <strong>"8개의 관점으로 동시에"</strong> 문장을 읽는 것.
@@ -139,8 +139,7 @@ export default function MultiHeadContent() {
       </CalcBox>
 
       {/* ── 차원 분할 ── */}
-      <Step n={1} label="차원 분할: d_model → 헤드 수 × d_k" />
-      <CalcBox>
+      <CalcBox title="① 차원 분할: d_model → 헤드 수 × d_k">
         <p className="text-sm mb-4">
           d_model=512를 8개 헤드로 나누면 각 헤드가 64차원을 담당합니다.
           파라미터 수는 단일 헤드와 동일합니다.
@@ -159,8 +158,7 @@ export default function MultiHeadContent() {
       </CalcBox>
 
       {/* ── STEP 2: 예제 (d_model=8, 2헤드) ── */}
-      <Step n={2} label="단계별 계산 (d_model=8, 2헤드, 각 4차원)" />
-      <CalcBox>
+      <CalcBox title="② 단계별 계산 (d_model=8, 2헤드, 각 4차원)">
         <p className="text-sm mb-4">
           입력 X: 3토큰 × 8차원. 각 헤드는 8×4 가중치 행렬로 4차원 공간에 투영합니다.
         </p>
@@ -204,8 +202,7 @@ export default function MultiHeadContent() {
       </CalcBox>
 
       {/* ── STEP 3: Concat + Wo ── */}
-      <Step n={3} label="Concat → Wo 투영 → 최종 출력" />
-      <CalcBox>
+      <CalcBox title="③ Concat → Wo 투영 → 최종 출력">
         <p className="text-sm mb-4">
           두 헤드 출력을 가로로 이어 붙인 후, Wo(8×8) 행렬로 최종 출력을 만듭니다.
         </p>
@@ -246,6 +243,6 @@ export default function MultiHeadContent() {
         동시에 포착할 수 있습니다.
         총 파라미터 수는 같으면서 표현력은 훨씬 풍부해집니다.
       </Insight>
-    </article>
+    </div>
   );
 }

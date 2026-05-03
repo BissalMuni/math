@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
+import { Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * Feed-Forward Network (FFN) 예제:
@@ -63,7 +63,7 @@ const zeroed = h_pre.filter(v => v <= 0).length;
 
 export default function FeedForwardContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         어텐션이 토큰 간 관계를 파악한다면, FFN은 각 토큰에 독립적으로 적용되는
         <strong>"지식 저장소"</strong>입니다. 모델 파라미터의 약 2/3를 차지합니다.
@@ -106,8 +106,7 @@ export default function FeedForwardContent() {
       </CalcBox>
 
       {/* ── STEP 1: W1 계산 ── */}
-      <Step n={1} label="W1·x + b1 — 차원 확장 (4 → 16)" />
-      <CalcBox>
+      <CalcBox title="① W1·x + b1 — 차원 확장 (4 → 16)">
         <p className="text-sm mb-4">
           입력 x를 더 넓은 공간으로 투영합니다.
           더 많은 뉴런 = 더 다양한 패턴 포착 가능.
@@ -124,8 +123,7 @@ export default function FeedForwardContent() {
       </CalcBox>
 
       {/* ── STEP 2: ReLU ── */}
-      <Step n={2} label="ReLU — 음수 제거" />
-      <CalcBox>
+      <CalcBox title="② ReLU — 음수 제거">
         <BlockMath math="\text{ReLU}(h_i) = \max(0, h_i)" />
         <p className="text-sm mb-4">
           "뉴런이 발화(활성화)하거나 침묵하는 것" —
@@ -149,8 +147,7 @@ export default function FeedForwardContent() {
       </CalcBox>
 
       {/* ── STEP 3: W2 계산 ── */}
-      <Step n={3} label="W2·ReLU(h) + b2 — 차원 복원 (16 → 4)" />
-      <CalcBox>
+      <CalcBox title="③ W2·ReLU(h) + b2 — 차원 복원 (16 → 4)">
         <BlockMath math="\text{FFN}(x) = W_2 \cdot \text{ReLU}(W_1 x + b_1) + b_2" />
         <div className="flex flex-wrap gap-3 items-center mb-4">
           <Matrix data={[h_relu.slice(0, 8)]} label="ReLU(h) 앞 8차원" color="green" />
@@ -203,6 +200,6 @@ export default function FeedForwardContent() {
         실험적으로 FFN 뉴런들은 특정 사실을 저장하는 "키-값 메모리"처럼 작동합니다.
         이것이 GPT가 학습 데이터의 사실을 "기억"하는 원리입니다.
       </Insight>
-    </article>
+    </div>
   );
 }

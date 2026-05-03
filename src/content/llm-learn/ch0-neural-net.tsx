@@ -11,7 +11,7 @@ export default function NeuralNetContent() {
   const output = Math.max(0, sum); // ReLU
 
   return (
-    <article className="max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         LLM의 기반인 인공 신경망의 핵심 아이디어를 이해합니다.
         복잡해 보이지만 기본 단위는 <strong>곱하고 더하는 것</strong>뿐입니다.
@@ -107,6 +107,6 @@ export default function NeuralNetContent() {
           이 가이드의 4~9장이 트랜스포머 블록 내부를 단계별로 해부합니다.
         </p>
       </CalcBox>
-    </article>
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
+import { Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 출력 레이어 (LM Head) 예제:
@@ -37,7 +37,7 @@ const topIdx = prob_T10.indexOf(Math.max(...prob_T10));
 
 export default function OutputContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         모든 트랜스포머 블록을 통과한 마지막 벡터를 어휘 사전 크기의 확률 분포로 변환합니다.
         가장 높은 확률의 토큰이 다음 단어로 선택됩니다.
@@ -61,8 +61,7 @@ export default function OutputContent() {
       </CalcBox>
 
       {/* ── STEP 1: LM Head 규모 ── */}
-      <Step n={1} label="LM Head 행렬 크기 (GPT-2 기준)" />
-      <CalcBox>
+      <CalcBox title="① LM Head 행렬 크기 (GPT-2 기준)">
         <p className="text-sm mb-4">
           GPT-2의 어휘 크기는 50,257개 (BPE 토큰 기준).
           마지막 벡터를 선형 변환으로 logits를 만듭니다.
@@ -77,8 +76,7 @@ export default function OutputContent() {
       </CalcBox>
 
       {/* ── STEP 2: 예제 계산 ── */}
-      <Step n={2} label="Softmax로 확률 변환 (축소 예제: vocab=5)" />
-      <CalcBox>
+      <CalcBox title="② Softmax로 확률 변환 (축소 예제: vocab=5)">
         <p className="text-sm mb-4">
           어휘를 5개로 축소한 예제입니다.
           logits = {JSON.stringify(logits)}
@@ -118,8 +116,7 @@ export default function OutputContent() {
       </CalcBox>
 
       {/* ── STEP 3: 온도 효과 ── */}
-      <Step n={3} label="온도(Temperature)로 다양성 조절" />
-      <CalcBox>
+      <CalcBox title="③ 온도(Temperature)로 다양성 조절">
         <p className="text-sm mb-4">
           logits를 온도 T로 나눈 뒤 Softmax를 적용합니다.
           T가 낮을수록 더 결정적, 높을수록 더 무작위적인 출력이 나옵니다.
@@ -204,6 +201,6 @@ export default function OutputContent() {
         이는 "같은 단어의 입력 표현과 출력 표현이 일관성을 가져야 한다"는
         직관과도 일치합니다.
       </Insight>
-    </article>
+    </div>
   );
 }

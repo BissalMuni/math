@@ -3,7 +3,7 @@ import { CalcBox, Insight } from "@/components/content/shared";
 /** 서막 0-1: 왜 LLM인가 */
 export default function WhyLlmContent() {
   return (
-    <article className="max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         대규모 언어 모델(Large Language Model)이 왜 중요한지,
         이 가이드에서 무엇을 배우게 되는지 큰 그림을 그립니다.
@@ -100,6 +100,6 @@ export default function WhyLlmContent() {
           그 원리를 이해하는 것이 이 가이드의 목표입니다.
         </p>
       </CalcBox>
-    </article>
+    </div>
   );
 }

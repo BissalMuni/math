@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
+import { Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * Softmax 예제:
@@ -40,7 +40,7 @@ const sm_T20 = softmaxWithTemp(baseScores, 2.0);
 
 export default function SoftmaxContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         어텐션 점수 <InlineMath math="Q \cdot K^T / \sqrt{d_k}" /> 를 확률 분포로 변환합니다.
         "모든 토큰에 어느 정도의 주의를 주되, 중요한 토큰에 집중"하는 원리입니다.
@@ -66,8 +66,7 @@ export default function SoftmaxContent() {
       </CalcBox>
 
       {/* ── STEP 1: 양수 점수 예제 ── */}
-      <Step n={1} label="기본 예제: 점수 [2.0, 1.0, 0.1] → Softmax" />
-      <CalcBox>
+      <CalcBox title="① 기본 예제: 점수 [2.0, 1.0, 0.1] → Softmax">
         <p className="text-sm mb-4">
           Q·Kᵀ/√dk 결과로 세 토큰의 어텐션 점수 [2.0, 1.0, 0.1]이 나왔다고 가정합니다.
         </p>
@@ -101,8 +100,7 @@ export default function SoftmaxContent() {
       </CalcBox>
 
       {/* ── STEP 2: 음수 점수 ── */}
-      <Step n={2} label="음수 점수 처리: [-1.0, 2.0, -0.5]" />
-      <CalcBox>
+      <CalcBox title="② 음수 점수 처리: [-1.0, 2.0, -0.5]">
         <p className="text-sm mb-4">
           음수 점수도 e^x를 거치면 양수가 됩니다 (단지 작아질 뿐).
           음수 점수 = "별로 관련 없는 토큰"이지만 완전히 무시하진 않습니다.
@@ -129,8 +127,7 @@ export default function SoftmaxContent() {
       </CalcBox>
 
       {/* ── STEP 3: 온도 효과 ── */}
-      <Step n={3} label="온도(Temperature)로 분포 조절" />
-      <CalcBox>
+      <CalcBox title="③ 온도(Temperature)로 분포 조절">
         <p className="text-sm mb-4">
           점수를 온도 T로 나눈 후 Softmax를 적용합니다:{" "}
           <InlineMath math="\text{softmax}(x/T)" />
@@ -173,6 +170,6 @@ export default function SoftmaxContent() {
         중요한 토큰에 훨씬 큰 가중치를 줍니다.
         온도 T를 낮추면 더 결정적(greedy), 높이면 더 다양한 출력이 나옵니다.
       </Insight>
-    </article>
+    </div>
   );
 }

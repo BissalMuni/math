@@ -1,5 +1,5 @@
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, CalcBox, Insight, Matrix, Arrow } from "@/components/content/shared";
+import { CalcBox, Insight, Matrix, Arrow } from "@/components/content/shared";
 
 /** 서막 0-4: 행렬 곱셈 기초 */
 export default function MatrixBasicContent() {
@@ -20,7 +20,7 @@ export default function MatrixBasicContent() {
   ];
 
   return (
-    <article className="max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         트랜스포머의 모든 연산은 <strong>행렬 곱셈</strong>입니다.
         어텐션, 임베딩, FFN — 전부 행렬을 곱합니다.
@@ -56,8 +56,7 @@ export default function MatrixBasicContent() {
       </CalcBox>
 
       {/* ── 실제 계산 ── */}
-      <Step n={1} label="행렬 곱셈 계산 — 행 × 열을 내적" />
-      <CalcBox>
+      <CalcBox title="① 행렬 곱셈 계산 — 행 × 열을 내적">
         <p className="text-sm mb-4">
           C의 각 원소는 A의 <strong>한 행</strong>과 B의 <strong>한 열</strong>을 원소별로 곱해서 합산한 것입니다.
         </p>
@@ -81,8 +80,7 @@ export default function MatrixBasicContent() {
         </div>
       </CalcBox>
 
-      <Step n={2} label="결과" />
-      <CalcBox>
+      <CalcBox title="② 결과">
         <div className="flex flex-wrap items-center gap-4">
           <Matrix data={A} label="A (2×3)" color="blue" />
           <Arrow op="×" />
@@ -115,6 +113,6 @@ export default function MatrixBasicContent() {
           &ldquo;행 × 열 내적&rdquo;만 기억하면 이후 모든 챕터를 따라갈 수 있습니다.
         </Insight>
       </CalcBox>
-    </article>
+    </div>
   );
 }

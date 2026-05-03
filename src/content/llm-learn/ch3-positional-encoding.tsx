@@ -15,7 +15,7 @@ function Bullets({ items }: { items: React.ReactNode[] }) {
 
 export default function WhyPositionContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         트랜스포머는 모든 토큰을 <strong>동시에</strong> 처리합니다 — RNN처럼 순서대로 읽지 않습니다.
         그래서 "나는 사과를 좋아한다"와 "사과를 나는 좋아한다"를 구분할 수 없습니다.
@@ -98,6 +98,6 @@ export default function WhyPositionContent() {
         <strong>핵심:</strong> 트랜스포머는 모든 토큰을 동시에 처리해 순서를 알 수 없다.
         위치 인코딩은 각 위치에 고유한 벡터를 부여해 이 문제를 해결한다.
       </Insight>
-    </article>
+    </div>
   );
 }

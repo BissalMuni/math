@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
+import { Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 잔차 연결 (Residual Connection) 예제:
@@ -26,7 +26,7 @@ const gradients_residual = [1.0, 1.1, 1.05, 0.98, 1.02, 1.0];
 
 export default function ResidualContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         깊은 신경망의 고질적 문제인 <strong>기울기 소실</strong>을 해결하는 핵심 기법입니다.
         원본 신호를 그대로 더함으로써 역전파 신호가 살아남습니다.
@@ -58,8 +58,7 @@ export default function ResidualContent() {
       </CalcBox>
 
       {/* ── STEP 1: 해결책 ── */}
-      <Step n={1} label="해결책: x + f(x) — 원본 신호를 그대로 더하기" />
-      <CalcBox>
+      <CalcBox title="① 해결책: x + f(x) — 원본 신호를 그대로 더하기">
         <p className="text-sm mb-4">
           서브레이어(어텐션 또는 FFN) 출력 f(x)에 원본 입력 x를 더합니다.
           네트워크는 f(x) = 변화량만 학습하면 됩니다.
@@ -74,8 +73,7 @@ export default function ResidualContent() {
       </CalcBox>
 
       {/* ── STEP 2: 실제 수치 예제 ── */}
-      <Step n={2} label="수치 예제: 벡터 덧셈" />
-      <CalcBox>
+      <CalcBox title="② 수치 예제: 벡터 덧셈">
         <p className="text-sm mb-4">
           어텐션 서브레이어를 통과한 결과에 잔차 연결을 적용합니다.
         </p>
@@ -100,8 +98,7 @@ export default function ResidualContent() {
       </CalcBox>
 
       {/* ── STEP 3: 역전파 수학 ── */}
-      <Step n={3} label="왜 기울기 소실이 해결되는가? — 미분" />
-      <CalcBox>
+      <CalcBox title="③ 왜 기울기 소실이 해결되는가? — 미분">
         <p className="text-sm mb-4">
           잔차 연결이 있는 함수를 x에 대해 미분합니다:
         </p>
@@ -162,6 +159,6 @@ export default function ResidualContent() {
         원본 x가 그대로 전달되므로, 불필요한 레이어는 자연스럽게 항등함수(identity)가 됩니다.
         이것이 ResNet(이미지), GPT(언어) 등 현대 딥러닝의 공통 기반입니다.
       </Insight>
-    </article>
+    </div>
   );
 }

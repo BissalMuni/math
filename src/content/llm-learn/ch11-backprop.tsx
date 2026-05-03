@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
+import { Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 역전파 (Backpropagation) 예제:
@@ -39,15 +39,14 @@ const W_after = W_before.map((w, i) => w - lr * dW[i]);
 
 export default function BackpropContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         "손실을 줄이려면 각 파라미터를 얼마나 어느 방향으로 바꿔야 하나" —
         이 질문에 미분(기울기)으로 답하고, 모든 파라미터를 동시에 업데이트합니다.
       </p>
 
       {/* ── STEP 1: 손실 함수 ── */}
-      <Step n={1} label="Cross-Entropy 손실 계산" />
-      <CalcBox>
+      <CalcBox title="① Cross-Entropy 손실 계산">
         <p className="text-sm mb-4">
           모델이 예측한 확률 분포와 정답의 차이를 수치로 표현합니다.
           정답 토큰의 확률이 낮을수록 손실이 커집니다.
@@ -83,8 +82,7 @@ export default function BackpropContent() {
       </CalcBox>
 
       {/* ── STEP 2: 연쇄법칙 ── */}
-      <Step n={2} label="연쇄법칙 (Chain Rule) — 기울기 역방향 전파" />
-      <CalcBox>
+      <CalcBox title="② 연쇄법칙 (Chain Rule) — 기울기 역방향 전파">
         <p className="text-sm mb-4">
           손실 L이 파라미터 x에 어떻게 의존하는지 계산합니다.
           여러 레이어를 거친다면 각 레이어의 기울기를 곱해 나갑니다.
@@ -111,8 +109,7 @@ export default function BackpropContent() {
       </CalcBox>
 
       {/* ── STEP 3: Softmax+CE 기울기 ── */}
-      <Step n={3} label="Softmax + Cross-Entropy 결합 기울기" />
-      <CalcBox>
+      <CalcBox title="③ Softmax + Cross-Entropy 결합 기울기">
         <p className="text-sm mb-4">
           Softmax와 Cross-Entropy를 합쳐 미분하면 놀랍도록 단순해집니다:
         </p>
@@ -148,8 +145,7 @@ export default function BackpropContent() {
       </CalcBox>
 
       {/* ── STEP 4: 파라미터 업데이트 ── */}
-      <Step n={4} label="파라미터 업데이트: W ← W - lr × ∂L/∂W" />
-      <CalcBox>
+      <CalcBox title="④ 파라미터 업데이트: W ← W - lr × ∂L/∂W">
         <BlockMath math="W \leftarrow W - \eta \cdot \frac{\partial \mathcal{L}}{\partial W}" />
         <p className="text-sm mb-4">
           학습률 lr = {lr} 예제 (실제 Adam 옵티마이저는 더 복잡하지만 기본 원리는 동일):
@@ -187,6 +183,6 @@ export default function BackpropContent() {
         수천억 개의 파라미터를 동시에 조금씩 조정하여
         "다음 토큰 예측"을 점점 잘하게 됩니다 — 이것이 LLM 학습의 전부입니다.
       </Insight>
-    </article>
+    </div>
   );
 }

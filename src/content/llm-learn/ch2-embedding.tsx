@@ -1,5 +1,5 @@
 import { BlockMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
+import { Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 임베딩 예제
@@ -23,7 +23,7 @@ const looked = tokenIds.map(id => embTable[id]);
 
 export default function EmbeddingContent() {
   return (
-    <article className="max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         토큰 ID(숫자)는 순서 정보뿐입니다. ID 1과 ID 2의 차이 1은 아무 의미가 없습니다.
         임베딩은 각 ID를 <strong>의미가 담긴 고차원 벡터</strong>로 변환합니다.
@@ -83,8 +83,7 @@ export default function EmbeddingContent() {
       </CalcBox>
 
       {/* ── 조회 과정 ── */}
-      <Step n={1} label="토큰 ID → 임베딩 벡터 조회 (단순 인덱스 접근)" />
-      <CalcBox>
+      <CalcBox title="① 토큰 ID → 임베딩 벡터 조회 (단순 인덱스 접근)">
         <p className="text-sm mb-4">
           임베딩 조회는 복잡한 계산 없이 <strong>테이블에서 해당 행을 꺼내는 것</strong>입니다.
         </p>
@@ -105,8 +104,7 @@ export default function EmbeddingContent() {
       </CalcBox>
 
       {/* ── 최종 행렬 ── */}
-      <Step n={2} label="문장 전체 임베딩 행렬 X (3×4)" />
-      <CalcBox>
+      <CalcBox title="② 문장 전체 임베딩 행렬 X (3×4)">
         <p className="text-sm mb-4">
           3개 토큰의 임베딩 벡터를 쌓으면 입력 행렬 X가 됩니다.
           이 X가 어텐션 연산의 실제 입력입니다.
@@ -211,6 +209,6 @@ export default function EmbeddingContent() {
           자동으로 형성됩니다.
         </p>
       </CalcBox>
-    </article>
+    </div>
   );
 }

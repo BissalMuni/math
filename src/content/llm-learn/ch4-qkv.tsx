@@ -88,7 +88,7 @@ function toMatData(m: number[][]): number[][] { return m; }
 
 export default function QkvContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         예제 문장 <strong>"나는 사과를 좋아한다"</strong>로 Q·K·V 계산을 처음부터 끝까지 따라갑니다.
         차원은 실제(512) 대신 <strong>4</strong>로 축소했습니다.
@@ -115,8 +115,7 @@ export default function QkvContent() {
       </CalcBox>
 
       {/* ── STEP 1: Q, K, V 생성 ── */}
-      <Step n={1} label="Wq · Wk · Wv 행렬로 Q, K, V 생성" />
-      <CalcBox>
+      <CalcBox title="① Wq · Wk · Wv 행렬로 Q, K, V 생성">
         <p className="text-sm mb-4">
           Q = X · Wq &nbsp;|&nbsp; K = X · Wk &nbsp;|&nbsp; V = X · Wv
           <br />
@@ -140,8 +139,7 @@ export default function QkvContent() {
       </CalcBox>
 
       {/* ── STEP 2: Q · Kᵀ ── */}
-      <Step n={2} label="Q · Kᵀ — 어텐션 점수 계산" />
-      <CalcBox>
+      <CalcBox title="② Q · Kᵀ — 어텐션 점수 계산">
         <p className="text-sm mb-4">
           각 토큰의 Q와 모든 토큰의 K를 내적(dot product)합니다.
           결과는 <strong>3×3 점수 행렬</strong> — (i,j) = 토큰 i가 토큰 j에 얼마나 주목하는가.
@@ -159,8 +157,7 @@ export default function QkvContent() {
       </CalcBox>
 
       {/* ── STEP 3: √dk 스케일링 ── */}
-      <Step n={3} label="√dk 스케일링" />
-      <CalcBox>
+      <CalcBox title="③ √dk 스케일링">
         <p className="text-sm mb-4">
           dk=4이므로 √dk=2. 모든 점수를 2로 나눕니다.
           <br />
@@ -174,8 +171,7 @@ export default function QkvContent() {
       </CalcBox>
 
       {/* ── STEP 4: Softmax ── */}
-      <Step n={4} label="Softmax → 어텐션 가중치" />
-      <CalcBox>
+      <CalcBox title="④ Softmax → 어텐션 가중치">
         <p className="text-sm mb-4">
           각 행(토큰)에 Softmax를 적용해 확률 분포로 변환.
           행의 합 = 1.0 (각 토큰이 다른 토큰에 쏟는 주의의 총합 = 100%).
@@ -194,8 +190,7 @@ export default function QkvContent() {
       </CalcBox>
 
       {/* ── STEP 5: × V ── */}
-      <Step n={5} label="A × V — 최종 출력 (가중합)" />
-      <CalcBox>
+      <CalcBox title="⑤ A × V — 최종 출력 (가중합)">
         <p className="text-sm mb-4">
           어텐션 가중치로 V 벡터들을 가중 합산.
           각 토큰의 출력 벡터 = 전체 문장 정보를 담은 새 벡터.
@@ -225,6 +220,6 @@ export default function QkvContent() {
           <div>⑤ × V → 최종 출력 (문장 정보가 압축된 벡터)</div>
         </div>
       </CalcBox>
-    </article>
+    </div>
   );
 }

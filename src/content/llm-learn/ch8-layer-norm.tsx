@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
+import { Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * Layer Normalization 예제:
@@ -33,7 +33,7 @@ const afterNorm_var = normalized.reduce((s, x) => s + (x - afterNorm_mean) ** 2,
 
 export default function LayerNormContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         각 레이어 출력값의 범위를 안정화해 학습을 빠르고 안정적으로 만듭니다.
         트랜스포머에서 잔차 연결 직후에 적용됩니다: <strong>LayerNorm(x + f(x))</strong>
@@ -64,8 +64,7 @@ export default function LayerNormContent() {
       </CalcBox>
 
       {/* ── STEP 1: 평균 ── */}
-      <Step n={1} label="평균(μ) 계산" />
-      <CalcBox>
+      <CalcBox title="① 평균(μ) 계산">
         <p className="text-sm mb-3">
           입력 벡터 v = [{v.join(", ")}]의 평균을 구합니다.
         </p>
@@ -73,8 +72,7 @@ export default function LayerNormContent() {
       </CalcBox>
 
       {/* ── STEP 2: 분산 ── */}
-      <Step n={2} label="분산(σ²) 계산" />
-      <CalcBox>
+      <CalcBox title="② 분산(σ²) 계산">
         <BlockMath math="\sigma^2 = \frac{1}{d}\sum_{i=1}^{d}(v_i - \mu)^2" />
         <div className="text-sm font-mono space-y-1 p-3 rounded-lg bg-sidebar-bg border border-sidebar-border mb-3">
           <div>(2.0 - 2.5)² = (-0.5)² = <strong>0.25</strong></div>
@@ -88,8 +86,7 @@ export default function LayerNormContent() {
       </CalcBox>
 
       {/* ── STEP 3: 표준편차 ── */}
-      <Step n={3} label="표준편차(σ) 계산" />
-      <CalcBox>
+      <CalcBox title="③ 표준편차(σ) 계산">
         <BlockMath math="\sigma = \sqrt{\sigma^2} = \sqrt{1.25} \approx 1.118" />
         <p className="text-sm text-muted">
           실제 구현에서는 수치 안정성을 위해 <InlineMath math="\sqrt{\sigma^2 + \epsilon}" /> 사용
@@ -98,8 +95,7 @@ export default function LayerNormContent() {
       </CalcBox>
 
       {/* ── STEP 4: 정규화 ── */}
-      <Step n={4} label="정규화: (v - μ) / σ" />
-      <CalcBox>
+      <CalcBox title="④ 정규화: (v - μ) / σ">
         <BlockMath math="\hat{v}_i = \frac{v_i - \mu}{\sigma}" />
         <div className="text-sm font-mono space-y-1 p-3 rounded-lg bg-sidebar-bg border border-sidebar-border mb-3">
           {v.map((val, i) => (
@@ -120,8 +116,7 @@ export default function LayerNormContent() {
       </CalcBox>
 
       {/* ── STEP 5: γ, β 학습 파라미터 ── */}
-      <Step n={5} label="학습 파라미터 γ(scale), β(shift) 적용" />
-      <CalcBox>
+      <CalcBox title="⑤ 학습 파라미터 γ(scale), β(shift) 적용">
         <p className="text-sm mb-4">
           정규화 후 고정 범위(평균=0, 분산=1)로만 있으면 표현력이 제한됩니다.
           학습 가능한 γ와 β로 최적 범위를 모델이 스스로 학습합니다.
@@ -170,6 +165,6 @@ export default function LayerNormContent() {
         학습자가 독립적으로 도출한 통찰 — "Norm이 값 범위를 안정화한다" — 이
         바로 이 원리입니다. γ, β로 이후 학습에서 최적 범위로 조정됩니다.
       </Insight>
-    </article>
+    </div>
   );
 }

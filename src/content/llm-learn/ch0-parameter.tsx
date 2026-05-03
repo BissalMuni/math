@@ -12,7 +12,7 @@ export default function ParameterContent() {
   ];
 
   return (
-    <article className="max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         &ldquo;GPT-4는 1조 8천억 개의 파라미터를 가지고 있다&rdquo; —
         이 파라미터가 정확히 무엇인지 이해합니다.
@@ -110,6 +110,6 @@ export default function ParameterContent() {
           (Chinchilla 논문, 2022). 작은 모델도 좋은 데이터로 잘 학습하면 큰 모델을 이길 수 있습니다.
         </Insight>
       </CalcBox>
-    </article>
+    </div>
   );
 }

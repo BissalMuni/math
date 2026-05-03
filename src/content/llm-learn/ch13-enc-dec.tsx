@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Step, Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
+import { Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
 
 /**
  * 인코더/디코더 아키텍처 비교:
@@ -29,7 +29,7 @@ const bertExample = {
 
 export default function EncoderDecoderContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         트랜스포머는 목적에 따라 세 가지 변형이 있습니다.
         어텐션이 "어떤 방향으로" 흐를 수 있는지가 핵심 차이입니다.
@@ -108,8 +108,7 @@ export default function EncoderDecoderContent() {
       </CalcBox>
 
       {/* ── STEP 1: BERT MLM ── */}
-      <Step n={1} label="Encoder-only: BERT의 Masked Language Modeling" />
-      <CalcBox>
+      <CalcBox title="① Encoder-only: BERT의 Masked Language Modeling">
         <p className="text-sm mb-4">
           입력의 15%를 [MASK]로 가리고, 양방향 컨텍스트를 활용해 원래 단어를 예측합니다.
           "나는 _____ 좋아한다" → 앞뒤 문맥 모두 활용 가능.
@@ -151,8 +150,7 @@ export default function EncoderDecoderContent() {
       </CalcBox>
 
       {/* ── STEP 2: 인과 마스크 ── */}
-      <Step n={2} label="Decoder-only: 인과 마스크 (Causal Mask)" />
-      <CalcBox>
+      <CalcBox title="② Decoder-only: 인과 마스크 (Causal Mask)">
         <p className="text-sm mb-4">
           GPT는 디코더 전용이라 <strong>자기가 생성한 내용만 볼 수 있습니다</strong>.
           어텐션 점수 행렬에 삼각형 마스크를 씌워 미래 토큰을 차단합니다.
@@ -191,8 +189,7 @@ export default function EncoderDecoderContent() {
       </CalcBox>
 
       {/* ── STEP 3: Cross-Attention ── */}
-      <Step n={3} label="Encoder+Decoder: Cross-Attention" />
-      <CalcBox>
+      <CalcBox title="③ Encoder+Decoder: Cross-Attention">
         <p className="text-sm mb-4">
           Encoder+Decoder 구조에서 디코더는 두 종류의 어텐션을 수행합니다:
         </p>
@@ -259,6 +256,6 @@ export default function EncoderDecoderContent() {
         새 텍스트를 생성하는 것은 자연스럽지 않습니다.
         어떤 아키텍처가 낫다기보다 목적에 맞는 구조를 선택합니다.
       </Insight>
-    </article>
+    </div>
   );
 }

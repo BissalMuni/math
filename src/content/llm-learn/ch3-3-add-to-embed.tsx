@@ -44,7 +44,7 @@ function Bullets({ items }: { items: React.ReactNode[] }) {
 
 export default function AddToEmbedContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         계산된 위치 인코딩 벡터를 단어 임베딩 벡터에 더합니다.
         이후 학습 과정에서 PE는 고정이지만 단어 벡터는 계속 갱신됩니다.
@@ -110,6 +110,6 @@ export default function AddToEmbedContent() {
         <strong>핵심:</strong> PE는 입력 단계에서 단 한 번만 더해진다.
         이후 모든 블록에 위치 정보가 흘러가며, PE 자체는 고정이지만 단어 벡터는 학습으로 계속 갱신된다.
       </Insight>
-    </article>
+    </div>
   );
 }

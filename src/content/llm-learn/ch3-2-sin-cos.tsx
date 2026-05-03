@@ -37,7 +37,7 @@ function Bullets({ items }: { items: React.ReactNode[] }) {
 
 export default function SinCosContent() {
   return (
-    <article className="prose-like max-w-3xl">
+    <div className="space-y-8">
       <p className="text-muted mb-8">
         각 위치를 sin/cos 함수 조합으로 표현합니다.
         차원마다 주파수가 다르기 때문에 모든 위치가 고유한 벡터를 갖게 됩니다.
@@ -186,6 +186,6 @@ export default function SinCosContent() {
         <strong>핵심:</strong> sin/cos 조합은 차원마다 주기가 달라 모든 위치에 고유한 좌표를 만든다.
         단, 저정밀도 양자화에서는 느린 차원 값이 뭉개져 긴 문장에서 위치 구분이 약해진다.
       </Insight>
-    </article>
+    </div>
   );
 }

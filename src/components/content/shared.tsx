@@ -80,6 +80,18 @@ export function CalcBox({ children, title }: { children: React.ReactNode; title?
   );
 }
 
+/** CalcBox 내부 소소목차
+ *  AutoSectionComment가 <h3> 도 감지해 의견 버튼을 주입한다.
+ *  CalcBox(h2) 안에서 세부 주제를 나눌 때 사용. */
+export function SubSection({ children, title }: { children: React.ReactNode; title: string }) {
+  return (
+    <div className="mt-6 first:mt-0">
+      <h3 className="text-sm font-semibold mb-3">{title}</h3>
+      {children}
+    </div>
+  );
+}
+
 /** 인사이트 박스 */
 export function Insight({ children }: { children: React.ReactNode }) {
   return (

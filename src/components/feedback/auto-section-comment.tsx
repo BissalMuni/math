@@ -11,7 +11,9 @@ interface Portal {
 }
 
 /**
- * 컨텐츠 영역의 모든 <section> <h2> 옆에 SectionComment 버튼 자동 주입.
+ * 컨텐츠 영역의 모든 <h2>, <h3> 옆에 SectionComment 버튼 자동 주입.
+ * - h2: CalcBox 소목차 (level="section")
+ * - h3: SubSection 소소목차 (level="section")
  * React.lazy 로 늦게 로드된 컨텐츠도 MutationObserver 로 감지.
  */
 export function AutoSectionComment({
@@ -28,30 +30,31 @@ export function AutoSectionComment({
     if (!root) return;
 
     const inject = () => {
-      const sections = root.querySelectorAll("section");
+      // h2 (CalcBox 소목차) + h3 (SubSection 소소목차) 모두 감지
+      const headings = root.querySelectorAll("h2, h3");
       const added: Portal[] = [];
 
-      sections.forEach((section) => {
-        const h2 = section.querySelector("h2");
-        if (!h2 || injectedRef.current.has(h2)) return;
+      headings.forEach((heading) => {
+        if (injectedRef.current.has(heading)) return;
+        injectedRef.current.add(heading);
 
-        injectedRef.current.add(h2);
-
-        // section id 우선, 없으면 제목으로 slug 생성
-        const rawId = section.getAttribute("id");
-        const rawTitle = h2.textContent?.trim() ?? "";
+        // 부모 section의 id 우선, 없으면 제목으로 slug 생성
+        const parentSection = heading.closest("section");
+        const rawId = parentSection?.getAttribute("id");
+        const rawTitle = heading.textContent?.trim() ?? "";
         const slug =
-          rawId ||
-          rawTitle
-            .replace(/[^\w가-힣]/g, "-")
-            .replace(/-+/g, "-")
-            .replace(/^-|-$/g, "")
-            .toLowerCase();
+          rawId && heading.tagName === "H2"
+            ? rawId
+            : rawTitle
+                .replace(/[^\w가-힣]/g, "-")
+                .replace(/-+/g, "-")
+                .replace(/^-|-$/g, "")
+                .toLowerCase();
 
-        // h2 안에 주입 컨테이너 삽입
+        // heading 안에 주입 컨테이너 삽입
         const host = document.createElement("span");
         host.className = "sc-host inline-block ml-2 align-middle";
-        h2.appendChild(host);
+        heading.appendChild(host);
 
         added.push({ host, sectionSlug: slug, sectionTitle: rawTitle });
       });

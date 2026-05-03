@@ -291,7 +291,7 @@ export function StructureTreeEditor({ categories }: Props) {
     return (
       <div key={node.id} className="select-none">
         <div
-          className={`group flex items-center gap-2 rounded px-2 py-1.5 hover:bg-gray-50 ${
+          className={`group flex items-center gap-2 rounded px-2 py-1.5 hover:bg-accent-light ${
             depth === 0 ? "font-medium" : ""
           }`}
           style={{ paddingLeft: `${depth * 20 + 8}px` }}
@@ -299,7 +299,7 @@ export function StructureTreeEditor({ categories }: Props) {
           {/* 펼치기/접기 */}
           <button
             onClick={() => toggleExpand(node.id)}
-            className="flex h-5 w-5 items-center justify-center text-gray-400 hover:text-gray-600"
+            className="flex h-5 w-5 items-center justify-center text-muted hover:text-foreground"
           >
             {hasChildren ? (isExpanded ? "▾" : "▸") : "·"}
           </button>
@@ -313,7 +313,7 @@ export function StructureTreeEditor({ categories }: Props) {
                 onChange={(e) =>
                   setEditingNode({ ...editingNode, title: e.target.value })
                 }
-                className="rounded border px-2 py-0.5 text-sm"
+                className="rounded border border-sidebar-border bg-background px-2 py-0.5 text-sm text-foreground"
                 placeholder="제목"
                 autoFocus
               />
@@ -323,18 +323,18 @@ export function StructureTreeEditor({ categories }: Props) {
                 onChange={(e) =>
                   setEditingNode({ ...editingNode, slug: e.target.value })
                 }
-                className="rounded border px-2 py-0.5 text-sm font-mono"
+                className="rounded border border-sidebar-border bg-background px-2 py-0.5 text-sm font-mono text-foreground"
                 placeholder="slug"
               />
               <button
                 onClick={saveEdit}
-                className="text-xs text-blue-600 hover:text-blue-800"
+                className="text-xs text-accent hover:brightness-125"
               >
                 확인
               </button>
               <button
                 onClick={() => setEditingNode(null)}
-                className="text-xs text-gray-400 hover:text-gray-600"
+                className="text-xs text-muted hover:text-foreground"
               >
                 취소
               </button>
@@ -342,12 +342,12 @@ export function StructureTreeEditor({ categories }: Props) {
           ) : (
             <>
               <span
-                className="flex-1 cursor-pointer text-sm"
+                className="flex-1 cursor-pointer text-sm text-foreground"
                 onClick={() => toggleExpand(node.id)}
               >
                 {node.title}
               </span>
-              <span className="font-mono text-xs text-gray-400">
+              <span className="font-mono text-xs text-muted">
                 {node.slug}
               </span>
 
@@ -361,7 +361,7 @@ export function StructureTreeEditor({ categories }: Props) {
                       slug: node.slug,
                     })
                   }
-                  className="rounded px-1.5 py-0.5 text-xs text-gray-500 hover:bg-gray-200"
+                  className="rounded px-1.5 py-0.5 text-xs text-muted hover:bg-accent-light hover:text-foreground"
                   title="수정"
                 >
                   ✏
@@ -372,28 +372,28 @@ export function StructureTreeEditor({ categories }: Props) {
                     setNewNodeTitle("");
                     setNewNodeSlug("");
                   }}
-                  className="rounded px-1.5 py-0.5 text-xs text-green-600 hover:bg-green-50"
+                  className="rounded px-1.5 py-0.5 text-xs text-green-500 hover:bg-accent-light"
                   title="하위 추가"
                 >
                   +
                 </button>
                 <button
                   onClick={() => moveUp(node.id)}
-                  className="rounded px-1.5 py-0.5 text-xs text-gray-500 hover:bg-gray-200"
+                  className="rounded px-1.5 py-0.5 text-xs text-muted hover:bg-accent-light hover:text-foreground"
                   title="위로"
                 >
                   ↑
                 </button>
                 <button
                   onClick={() => moveDown(node.id)}
-                  className="rounded px-1.5 py-0.5 text-xs text-gray-500 hover:bg-gray-200"
+                  className="rounded px-1.5 py-0.5 text-xs text-muted hover:bg-accent-light hover:text-foreground"
                   title="아래로"
                 >
                   ↓
                 </button>
                 <button
                   onClick={() => deleteNode(node.id)}
-                  className="rounded px-1.5 py-0.5 text-xs text-red-500 hover:bg-red-50"
+                  className="rounded px-1.5 py-0.5 text-xs text-red-500 hover:bg-red-500/10"
                   title="삭제"
                 >
                   ×
@@ -413,7 +413,7 @@ export function StructureTreeEditor({ categories }: Props) {
               type="text"
               value={newNodeTitle}
               onChange={(e) => setNewNodeTitle(e.target.value)}
-              className="rounded border px-2 py-0.5 text-sm"
+              className="rounded border border-sidebar-border bg-background px-2 py-0.5 text-sm text-foreground"
               placeholder="제목"
               autoFocus
             />
@@ -421,18 +421,18 @@ export function StructureTreeEditor({ categories }: Props) {
               type="text"
               value={newNodeSlug}
               onChange={(e) => setNewNodeSlug(e.target.value)}
-              className="w-32 rounded border px-2 py-0.5 text-sm font-mono"
+              className="w-32 rounded border border-sidebar-border bg-background px-2 py-0.5 text-sm font-mono text-foreground"
               placeholder="slug"
             />
             <button
               onClick={() => addNode(node.id)}
-              className="text-xs text-blue-600 hover:text-blue-800"
+              className="text-xs text-accent hover:brightness-125"
             >
               추가
             </button>
             <button
               onClick={() => setAddingTo(null)}
-              className="text-xs text-gray-400 hover:text-gray-600"
+              className="text-xs text-muted hover:text-foreground"
             >
               취소
             </button>
@@ -454,7 +454,7 @@ export function StructureTreeEditor({ categories }: Props) {
   return (
     <div className="space-y-4">
       {/* 카테고리 탭 */}
-      <div className="flex gap-2 border-b pb-2">
+      <div className="flex gap-2 border-b border-sidebar-border pb-2">
         {categories.map((cat) => (
           <button
             key={cat.id}
@@ -465,8 +465,8 @@ export function StructureTreeEditor({ categories }: Props) {
             }}
             className={`rounded-t px-4 py-2 text-sm font-medium ${
               selectedCategoryId === cat.id
-                ? "border-b-2 border-blue-600 text-blue-600"
-                : "text-gray-500 hover:text-gray-700"
+                ? "border-b-2 border-accent text-accent"
+                : "text-muted hover:text-foreground"
             }`}
           >
             {cat.title}
@@ -475,20 +475,20 @@ export function StructureTreeEditor({ categories }: Props) {
       </div>
 
       {/* 트리 */}
-      <div className="rounded border bg-white">
+      <div className="rounded border border-sidebar-border bg-sidebar-bg">
         <div className="max-h-[600px] overflow-y-auto p-2">
           {currentTree.map((node) => renderNode(node, 0))}
         </div>
 
         {/* 루트 노드 추가 */}
-        <div className="border-t p-2">
+        <div className="border-t border-sidebar-border p-2">
           {addingTo === "__root__" ? (
             <div className="flex items-center gap-2 px-2">
               <input
                 type="text"
                 value={newNodeTitle}
                 onChange={(e) => setNewNodeTitle(e.target.value)}
-                className="rounded border px-2 py-0.5 text-sm"
+                className="rounded border border-sidebar-border bg-background px-2 py-0.5 text-sm text-foreground"
                 placeholder="제목"
                 autoFocus
               />
@@ -496,18 +496,18 @@ export function StructureTreeEditor({ categories }: Props) {
                 type="text"
                 value={newNodeSlug}
                 onChange={(e) => setNewNodeSlug(e.target.value)}
-                className="w-32 rounded border px-2 py-0.5 text-sm font-mono"
+                className="w-32 rounded border border-sidebar-border bg-background px-2 py-0.5 text-sm font-mono text-foreground"
                 placeholder="slug"
               />
               <button
                 onClick={addRootNode}
-                className="text-xs text-blue-600 hover:text-blue-800"
+                className="text-xs text-accent hover:brightness-125"
               >
                 추가
               </button>
               <button
                 onClick={() => setAddingTo(null)}
-                className="text-xs text-gray-400 hover:text-gray-600"
+                className="text-xs text-muted hover:text-foreground"
               >
                 취소
               </button>
@@ -519,7 +519,7 @@ export function StructureTreeEditor({ categories }: Props) {
                 setNewNodeTitle("");
                 setNewNodeSlug("");
               }}
-              className="text-sm text-green-600 hover:text-green-800"
+              className="text-sm text-green-500 hover:text-green-400"
             >
               + 루트 노드 추가
             </button>
@@ -532,8 +532,8 @@ export function StructureTreeEditor({ categories }: Props) {
         <div
           className={`rounded px-4 py-2 text-sm ${
             message.type === "success"
-              ? "bg-green-50 text-green-700"
-              : "bg-red-50 text-red-700"
+              ? "bg-green-500/10 text-green-500"
+              : "bg-red-500/10 text-red-500"
           }`}
         >
           {message.text}
@@ -547,14 +547,14 @@ export function StructureTreeEditor({ categories }: Props) {
           disabled={!hasChanges || saving}
           className={`rounded px-6 py-2 text-sm font-medium text-white ${
             hasChanges && !saving
-              ? "bg-blue-600 hover:bg-blue-700"
-              : "cursor-not-allowed bg-gray-300"
+              ? "bg-accent hover:brightness-110"
+              : "cursor-not-allowed bg-muted/50"
           }`}
         >
           {saving ? "저장 중..." : "GitHub에 저장"}
         </button>
         {hasChanges && (
-          <span className="text-xs text-amber-600">변경사항이 있습니다</span>
+          <span className="text-xs text-amber-500">변경사항이 있습니다</span>
         )}
       </div>
     </div>

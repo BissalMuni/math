@@ -23,10 +23,10 @@ export function AdminNav({ role }: { role: Role }) {
   }
 
   return (
-    <nav className="border-b border-gray-200 bg-white px-6 py-3">
+    <nav className="border-b border-sidebar-border bg-sidebar-bg px-6 py-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-6">
-          <Link href="/admin" className="text-lg font-bold">
+          <Link href="/admin" className="text-lg font-bold text-foreground">
             관리자
           </Link>
           <div className="flex gap-4">
@@ -36,8 +36,8 @@ export function AdminNav({ role }: { role: Role }) {
                 href={link.href}
                 className={`text-sm ${
                   pathname === link.href
-                    ? "font-semibold text-blue-600"
-                    : "text-gray-600 hover:text-gray-900"
+                    ? "font-semibold text-accent"
+                    : "text-muted hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -46,12 +46,12 @@ export function AdminNav({ role }: { role: Role }) {
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <span className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700">
+          <span className="rounded-full bg-accent-light px-3 py-1 text-xs font-medium text-foreground">
             {ROLE_LABELS[role]}
           </span>
           <button
             onClick={handleLogout}
-            className="text-sm text-gray-500 hover:text-gray-700"
+            className="text-sm text-muted hover:text-foreground"
           >
             로그아웃
           </button>

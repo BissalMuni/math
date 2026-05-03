@@ -101,12 +101,20 @@ export default function TokenizationContent() {
           BPE가 어떻게 글자 단위에서 시작해 토큰을 만들어가는지 &ldquo;low&rdquo;, &ldquo;lower&rdquo;, &ldquo;newest&rdquo;
           세 단어로 따라가 봅시다.
         </p>
+        <div className="text-sm text-muted bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-3">
+          <p className="font-medium mb-1">전제</p>
+          <ul className="list-disc pl-5 space-y-1">
+            <li>대규모 텍스트(코퍼스)에서 단어별 등장 횟수를 먼저 셉니다.</li>
+            <li>아래 숫자는 예시를 위한 가정입니다 — 실제 BPE 훈련에서는 수십억 단어에서 빈도를 집계합니다.</li>
+            <li>각 단어를 글자 단위로 쪼갠 뒤, 빈도가 가장 높은 인접 쌍부터 하나씩 병합합니다.</li>
+          </ul>
+        </div>
         <div className="space-y-3 text-sm font-mono bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
           <div>
-            <div className="text-muted font-sans mb-1">초기: 글자 단위로 분리</div>
-            <div>l o w  (빈도 5)</div>
-            <div>l o w e r  (빈도 2)</div>
-            <div>n e w e s t  (빈도 6)</div>
+            <div className="text-muted font-sans mb-1">초기: 글자 단위로 분리 (코퍼스 등장 횟수)</div>
+            <div>l o w  (5회)</div>
+            <div>l o w e r  (2회)</div>
+            <div>n e w e s t  (6회)</div>
           </div>
           <div className="border-t border-sidebar-border pt-3">
             <div className="text-accent font-sans mb-1">1회차: 가장 빈번한 쌍 = (w, e) → 8회 (lower×2 + newest×6)</div>

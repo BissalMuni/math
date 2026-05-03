@@ -1,7 +1,7 @@
 "use client";
 
 import { InlineMath, BlockMath } from "@/components/math/math-formula";
-import { CalcBox } from "@/components/content/shared";
+import { CalcBox, SubSection } from "@/components/content/shared";
 
 export default function Tokenization() {
   return (
@@ -16,8 +16,8 @@ export default function Tokenization() {
         <p>BPE: 가장 빈도 높은 바이트 쌍을 반복 병합합니다.</p>
         <BlockMath math="\text{freq}(a,b) = \frac{\text{count}(ab)}{\text{total}}" />
 
-        <div className="mt-6 rounded-lg border border-sidebar-border bg-sidebar-bg p-5">
-          <h3 className="font-semibold mb-3">BPE 계산 예제</h3>
+        <SubSection title="BPE 계산 예제">
+          <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-5">
           <p className="text-sm text-muted mb-4">
             코퍼스: &ldquo;low&rdquo;(5회), &ldquo;lower&rdquo;(2회), &ldquo;newest&rdquo;(6회), &ldquo;widest&rdquo;(3회)
           </p>
@@ -68,7 +68,8 @@ export default function Tokenization() {
           <p className="text-sm text-muted mt-3">
             이 과정을 수만 회 반복하면 GPT의 어휘 사전(~100K 토큰)이 자동 구축됩니다.
           </p>
-        </div>
+          </div>
+        </SubSection>
       </CalcBox>
 
       <CalcBox title="조합론 — 시퀀스 경우의 수">
@@ -89,8 +90,7 @@ export default function Tokenization() {
         <div className="space-y-6 text-sm">
 
           {/* ── 1. BPE 역사 ── */}
-          <div>
-            <h3 className="font-semibold mb-3">① BPE의 역사</h3>
+          <SubSection title="① BPE의 역사">
             <div className="rounded-lg border border-sidebar-border overflow-hidden">
               <table className="w-full text-sm">
                 <thead className="bg-accent-light">
@@ -132,11 +132,10 @@ export default function Tokenization() {
               핵심: 1994년 파일 압축용으로 나온 알고리즘을 Sennrich가 2016년 언어 처리에 전용한 것이 현재 LLM 토크나이저의 기원입니다.
               파일도 텍스트도 결국 <strong>기호의 나열</strong>이라는 점에서 같은 수학이 작동합니다.
             </p>
-          </div>
+          </SubSection>
 
           {/* ── 2. 정보이론의 경과 ── */}
-          <div>
-            <h3 className="font-semibold mb-3">② 정보이론의 경과</h3>
+          <SubSection title="② 정보이론의 경과">
             <div className="space-y-3 text-muted">
               <div className="flex gap-3">
                 <span className="font-mono text-accent shrink-0 w-10 pt-0.5">1928</span>
@@ -212,11 +211,10 @@ export default function Tokenization() {
                 </div>
               </div>
             </div>
-          </div>
+          </SubSection>
 
           {/* ── 3. 압축 = 예측 = 지능 ── */}
-          <div>
-            <h3 className="font-semibold mb-3">③ 압축 = 예측 = 지능</h3>
+          <SubSection title="③ 압축 = 예측 = 지능">
             <div className="rounded-lg bg-accent-light p-4 space-y-3 text-muted">
               <p>
                 BPE는 자주 함께 나오는 글자 쌍을 하나의 토큰으로 묶습니다. 이것이 <strong>압축</strong>입니다.
@@ -257,11 +255,10 @@ export default function Tokenization() {
                 이것이 암기가 아니라 이해에 가까운 이유입니다.
               </p>
             </div>
-          </div>
+          </SubSection>
 
           {/* ── 4. 압축의 층위 ── */}
-          <div>
-            <h3 className="font-semibold mb-3">④ 압축의 층위</h3>
+          <SubSection title="④ 압축의 층위">
             <div className="rounded-lg border border-sidebar-border overflow-hidden">
               <table className="w-full text-sm">
                 <thead className="bg-accent-light">
@@ -309,11 +306,10 @@ export default function Tokenization() {
             <p className="text-muted mt-2 pl-1">
               인간의 추상화 자체가 압축입니다. 감각 → 지각 → 개념 → 언어 → 요약 → 법칙 — 매 단계가 손실 압축입니다.
             </p>
-          </div>
+          </SubSection>
 
           {/* ── 5. 공항 → 스마트시티 ── */}
-          <div>
-            <h3 className="font-semibold mb-3">⑤ 공항 동선에서 스마트시티까지</h3>
+          <SubSection title="⑤ 공항 동선에서 스마트시티까지">
             <div className="rounded-lg bg-accent-light p-4 space-y-3 text-muted">
               <div className="space-y-1">
                 <p className="font-medium text-foreground">공항 동선 = LLM 학습과 같은 구조</p>
@@ -342,7 +338,7 @@ export default function Tokenization() {
                 이 수업에서 배우는 선형대수(행렬 처리), 확률통계(패턴 분석), 최적화(에너지 최소화), 정보이론(압축·예측)이 전부 그 안에 들어갑니다.
               </p>
             </div>
-          </div>
+          </SubSection>
 
           {/* ── 흐름 요약 ── */}
           <div className="rounded-lg border border-sidebar-border p-4">

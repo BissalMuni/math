@@ -1,11 +1,11 @@
-name: Review Feedback (Content)
+name: Update Structure
 on:
   schedule:
-    - cron: '17 3 * * *' # 매일 03:17 UTC (한국시간 12:17)
+    - cron: '47 3 * * *' # 매일 03:47 UTC (한국시간 12:47) — content와 30분 간격
   workflow_dispatch: {} # 수동 실행 가능
 
 jobs:
-  review:
+  update:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -18,14 +18,14 @@ jobs:
         with:
           node-version: 20
 
-      # 3) 미처리 내용 수정 의견 확인 — 없으면 조기 종료
-      - name: Check unprocessed content comments
+      # 3) 미처리 구조 수정 의견 확인 — 없으면 조기 종료
+      - name: Check unprocessed structure comments
         id: check
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
-          COMMENTS=$(bash scripts/fetch-feedback.sh --type=content)
+          COMMENTS=$(bash scripts/fetch-feedback.sh --type=structure)
           if [ "$COMMENTS" = "[]" ]; then
             echo "skip=true" >> $GITHUB_OUTPUT
           else
@@ -39,8 +39,8 @@ jobs:
         if: steps.check.outputs.skip == 'false'
         run: npm install -g @anthropic-ai/claude-code
 
-      # 5) Claude Code로 내용 피드백 반영
-      - name: Apply content feedback
+      # 5) Claude Code로 구조 피드백 반영
+      - name: Apply structure feedback
         if: steps.check.outputs.skip == 'false'
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -51,14 +51,26 @@ jobs:
             --allowedTools "Bash,Read,Edit,Write,Glob,Grep" \
             -p "$(cat src/content/RULES.md)
 
-          이 레포에서 내용 피드백 반영 작업을 수행해줘.
-          절대 규칙:
-          - src/content/ 과 scripts/ 내의 파일만 수정 가능
-          - src/structure/, src/map/ 등 다른 경로는 읽기만 가능
-          - bash scripts/fetch-feedback.sh --type=content 로 미처리 내용 의견 조회
-          - 내용이 합리적이면 src/content/ 콘텐츠에 반영
-          - 비합리적이거나 단순 감상은 processed만 표시
-          - 변경 후 bash scripts/fetch-feedback.sh --type=content --mark-all-unprocessed 실행
+          이 레포에서 구조(목차) 피드백 반영 작업을 수행해줘.
+
+          == 구조 파일 설명 ==
+          - src/structure/*.ts — 트리 노드 정의 (id, slug, title, children)
+          - src/map/index.ts — topicId → 콘텐츠 컴포넌트 매핑 (lazy import)
+          - src/content/**/*.tsx — 실제 콘텐츠 파일
+
+          == 절대 규칙 ==
+          - bash scripts/fetch-feedback.sh --type=structure 로 미처리 구조 의견 조회
+          - 수정 가능 파일: src/structure/*.ts, src/map/index.ts, src/content/**/*.tsx
+          - 그 외 파일은 읽기만 가능
+          - 구조 변경 시 반드시 3곳을 동기화:
+            1. src/structure/ — 트리 노드 추가/삭제/이동
+            2. src/map/index.ts — 새 topicId 매핑 등록 (삭제 시 제거)
+            3. src/content/ — 새 leaf node는 빈 템플릿 TSX 파일 생성
+          - 기존 콘텐츠 파일이 있는 노드를 삭제하면 해당 파일도 삭제
+          - id 네이밍 규칙: 기존 패턴을 따를 것 (예: m1-t1, llm-f-la-t1)
+          - slug는 영문 케밥케이스, URL에 사용됨
+          - 비합리적이거나 모호한 요청은 processed만 표시
+          - 변경 후 bash scripts/fetch-feedback.sh --type=structure --mark-all-unprocessed 실행
           - git commit/push는 하지 말 것 (아래 step에서 처리)"
 
       # 6) 변경사항 커밋 & main에 푸시
@@ -68,13 +80,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A src/content/
+          git add -A src/structure/ src/map/ src/content/
           if git diff --cached --quiet; then
-            echo "No content changes to commit"
+            echo "No structure changes to commit"
             echo "has_changes=false" >> $GITHUB_OUTPUT
           else
             git commit -m "$(cat <<'EOF'
-          Apply content feedback (${{ steps.check.outputs.count }} comments)
+          Apply structure feedback (${{ steps.check.outputs.count }} comments)
 
           Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
           EOF
@@ -84,7 +96,7 @@ jobs:
           fi
 
       # 7) 수정 이력을 Supabase에 기록
-      - name: Log content changes
+      - name: Log structure changes
         if: steps.check.outputs.skip == 'false' && steps.commit.outputs.has_changes == 'true'
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}

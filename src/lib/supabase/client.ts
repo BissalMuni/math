@@ -1,9 +1,11 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-let _supabase: SupabaseClient | null = null;
+type MathClient = SupabaseClient<any, "math">;
 
-/** 서버사이드 Supabase 클라이언트 (service role) */
-export function getSupabase(): SupabaseClient {
+let _supabase: MathClient | null = null;
+
+/** 서버사이드 Supabase 클라이언트 (service role, math 스키마) */
+export function getSupabase(): MathClient {
   if (_supabase) return _supabase;
 
   const url = process.env.SUPABASE_URL;

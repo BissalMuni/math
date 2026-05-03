@@ -341,23 +341,24 @@ export default function Tokenization() {
           </SubSection>
 
           {/* ── 흐름 요약 ── */}
-          <div className="rounded-lg border border-sidebar-border p-4">
-            <p className="font-medium mb-3 text-center">오늘의 흐름 요약</p>
-            <div className="font-mono text-xs text-muted text-center space-y-0.5">
-              <p>BPE 토크나이저 (1994 파일압축 → 2016 NLP)</p>
-              <p>↓</p>
-              <p>vocab = 패턴의 사전</p>
-              <p>↓</p>
-              <p>압축 = 패턴 추출 = 예측 (Shannon 1948)</p>
-              <p>↓</p>
-              <p>LLM 학습 = 언어의 손실 압축</p>
-              <p>↓</p>
-              <p>공항 동선 = 이동의 손실 압축</p>
-              <p>↓</p>
-              <p>도시 설계에 적용 → 스마트시티</p>
-              <p className="pt-1 text-accent">수학이라는 하나의 언어로 언어·도시·지능이 모두 연결됩니다.</p>
+          <SubSection title="오늘의 흐름 요약">
+            <div className="rounded-lg border border-sidebar-border p-4">
+              <div className="font-mono text-xs text-muted text-center space-y-0.5">
+                <p>BPE 토크나이저 (1994 파일압축 → 2016 NLP)</p>
+                <p>↓</p>
+                <p>vocab = 패턴의 사전</p>
+                <p>↓</p>
+                <p>압축 = 패턴 추출 = 예측 (Shannon 1948)</p>
+                <p>↓</p>
+                <p>LLM 학습 = 언어의 손실 압축</p>
+                <p>↓</p>
+                <p>공항 동선 = 이동의 손실 압축</p>
+                <p>↓</p>
+                <p>도시 설계에 적용 → 스마트시티</p>
+                <p className="pt-1 text-accent">수학이라는 하나의 언어로 언어·도시·지능이 모두 연결됩니다.</p>
+              </div>
             </div>
-          </div>
+          </SubSection>
 
         </div>
       </CalcBox>

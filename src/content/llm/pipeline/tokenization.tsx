@@ -18,8 +18,14 @@ export default function Tokenization() {
 
         <SubSection title="BPE 계산 예제">
           <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-5">
+          <p className="text-sm text-muted mb-2 font-medium">전제</p>
+          <ul className="text-sm text-muted mb-4 list-disc pl-5 space-y-1">
+            <li>대규모 텍스트(코퍼스)에서 단어별 등장 횟수를 먼저 셉니다.</li>
+            <li>아래 숫자는 예시를 위한 가정입니다 — 실제 BPE 훈련에서는 수십억 단어에서 빈도를 집계합니다.</li>
+            <li>각 단어를 글자 단위로 쪼갠 뒤, 빈도가 가장 높은 인접 쌍부터 하나씩 병합합니다.</li>
+          </ul>
           <p className="text-sm text-muted mb-4">
-            코퍼스: &ldquo;low&rdquo;(5회), &ldquo;lower&rdquo;(2회), &ldquo;newest&rdquo;(6회), &ldquo;widest&rdquo;(3회)
+            코퍼스 등장 횟수(가정): &ldquo;low&rdquo;(5회), &ldquo;lower&rdquo;(2회), &ldquo;newest&rdquo;(6회), &ldquo;widest&rdquo;(3회)
           </p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">

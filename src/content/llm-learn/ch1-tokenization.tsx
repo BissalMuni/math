@@ -109,20 +109,20 @@ export default function TokenizationContent() {
             <div>n e w e s t  (빈도 6)</div>
           </div>
           <div className="border-t border-sidebar-border pt-3">
-            <div className="text-accent font-sans mb-1">1회차: 가장 빈번한 쌍 = (e, s) → 8회</div>
-            <div>l o w  ·  l o w e r  ·  n e w <strong>es</strong> t</div>
+            <div className="text-accent font-sans mb-1">1회차: 가장 빈번한 쌍 = (w, e) → 8회 (lower×2 + newest×6)</div>
+            <div>l o w  ·  l o <strong>we</strong> r  ·  n e <strong>we</strong> s t</div>
           </div>
           <div className="border-t border-sidebar-border pt-3">
-            <div className="text-accent font-sans mb-1">2회차: (es, t) → 6회</div>
-            <div>l o w  ·  l o w e r  ·  n e w <strong>est</strong></div>
+            <div className="text-accent font-sans mb-1">2회차: (l, o) → 7회</div>
+            <div><strong>lo</strong> w  ·  <strong>lo</strong> we r  ·  n e we s t</div>
           </div>
           <div className="border-t border-sidebar-border pt-3">
-            <div className="text-accent font-sans mb-1">3회차: (l, o) → 7회</div>
-            <div><strong>lo</strong> w  ·  <strong>lo</strong> w e r  ·  n e w est</div>
+            <div className="text-accent font-sans mb-1">3회차: (we, s) → 6회 — 1회차 토큰 재활용</div>
+            <div>lo w  ·  lo we r  ·  n e <strong>wes</strong> t</div>
           </div>
           <div className="border-t border-sidebar-border pt-3">
-            <div className="text-accent font-sans mb-1">4회차: (lo, w) → 7회</div>
-            <div><strong>low</strong>  ·  <strong>low</strong> e r  ·  n e w est</div>
+            <div className="text-accent font-sans mb-1">4회차: (wes, t) → 6회</div>
+            <div>lo w  ·  lo we r  ·  n e <strong>west</strong></div>
           </div>
         </div>
         <Insight>

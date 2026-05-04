@@ -1,7 +1,0 @@
-import { ComingSoon } from "@/components/content/shared";
-import type { TreeNode } from "@/structure";
-
-/** 준비 중 stub — node.title을 받아서 표시 */
-export function StubContent({ node }: { node: TreeNode }) {
-  return <ComingSoon title={node.title} />;
-}

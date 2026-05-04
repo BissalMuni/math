@@ -13,7 +13,7 @@ export default async function AdminStructurePage() {
     redirect("/admin");
   }
 
-  // 편집 가능한 카테고리만 (llm-concepts는 복합 구조라 제외)
+  // 편집 가능한 카테고리만 (llm-math는 복합 구조라 제외)
   const editable = allCategories.filter(
     (c) => getCategoryMeta(c.id) !== null
   );

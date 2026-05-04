@@ -1,0 +1,18 @@
+"use client";
+
+import { CalcBox } from "@/components/content/shared";
+
+/** 고등학교 수학 > 인공지능 수학 > Ⅲ. 정보와 확률 > 2. 정보와 엔트로피 > 2. 정보와 엔트로피 */
+export default function InformationEntropy() {
+  return (
+    <div className="space-y-8">
+      <CalcBox title="정보량">
+        <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
+      </CalcBox>
+
+      <CalcBox title="엔트로피">
+        <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
+      </CalcBox>
+    </div>
+  );
+}

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requirePermission } from "@/lib/auth/require-role";
 import { allCategories } from "@/structure";
 import {
-  serializeCategoryToTS,
+  serializeCategoryToJSON,
   collectLeafIds,
   getCategoryMeta,
 } from "@/lib/structure-serializer";
@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
   const denied = requirePermission(request, "edit_structure");
   if (denied) return denied;
 
-  // llm-concepts는 llm-concepts.ts + llm-math.ts로 구성되어 별도 처리 필요 → 제외
+  // llm-math는 llmConceptTree + llmMath 두 export를 가진 복합 구조 → 제외
   const editable = allCategories.filter(
     (c) => getCategoryMeta(c.id) !== null
   );
@@ -97,8 +97,8 @@ export async function PUT(request: NextRequest) {
     );
     const latestSha = ref.object.sha;
 
-    // 2) 구조 파일 내용 생성
-    const structureContent = serializeCategoryToTS(category);
+    // 2) 구조 파일 내용 생성 (JSON)
+    const structureContent = serializeCategoryToJSON(category);
     const structurePath = `src/structure/${meta.fileName}`;
 
     // 3) 새 leaf node에 대한 빈 콘텐츠 파일 생성

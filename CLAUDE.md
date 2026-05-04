@@ -27,14 +27,65 @@ LLM 수학 레퍼런스:
 - `llm-math.md` — 수학 분야별 분류 (선형대수, 미적분, 확률통계, 정보이론, 최적화, 수치해석)
 - `llm-pipeline-math.md` — LLM 처리 절차 14단계별 수학 매핑
 
-## Tree Depth Structure
+## Tree Structure
 
-목차 depth: **4단계**
+콘텐츠 트리는 **책 → 카테고리 → 학년/과목 → 대단원 → 중단원 → 소단원** 구조입니다.
 
-1. 학년/과목 (e.g., 중1, 수학Ⅰ)
-2. 대단원 (e.g., Ⅰ. 수와 연산)
-3. 중단원 (e.g., 1. 소인수분해)
-4. 소단원 (e.g., 소수와 합성수) — leaf node, contains actual learning content
+### 책 (Book) — 최상위 컨테이너
+`CategoryRoot` 타입으로 정의된 최상위 단위.
+
+- **수학** (`math`) — 중등수학 + 고등수학 + LLM 수학을 한 권으로 묶음
+- **LLM** (`llm-learn`) — 트랜스포머 입력→출력 학습서
+
+새 과목(국어/영어 등)을 추가할 땐 별도의 `Subject` 타입을 도입하지 말고 새 책(CategoryRoot)을 추가합니다.
+
+### 표준 트리 깊이 — **최대 5단계, 자연 깊이 우선**
+
+CategoryRoot(책) 컨테이너 1개 안에 **최대 5단계**의 노드. 마지막이 leaf(실제 콘텐츠 1개 파일).
+
+```
+[수학 책 — 5단계]
+1. 카테고리      예: 중등수학, 고등수학, LLM 수학
+2. 학년/과목     예: 중1, 수학Ⅰ
+3. 대단원        예: Ⅰ. 수와 연산
+4. 중단원        예: 1. 소인수분해             ← 학교 수학은 여기가 leaf
+5. (사용 안 함)
+
+[LLM 수학 — 3단계]
+1. 카테고리      예: LLM 수학
+2. 분류          예: 분야별, 파이프라인
+3. 분야          예: 1. 선형대수               ← LLM 수학은 여기가 leaf
+```
+
+- **5단계는 *상한*** — 자연 깊이가 더 얕으면 그 깊이에서 leaf로 둔다 (인위 레이어 추가 X)
+- **leaf** = `children`이 없거나 빈 배열인 TreeNode → 실제 학습 콘텐츠 1개 파일 보유
+- **내부 노드** = `children`이 있는 TreeNode → 네비게이션·목차 역할
+
+### 콘텐츠 파일 깊이 — **최대 3 depth**
+
+각 leaf 콘텐츠 TSX 파일 내부의 헤딩 계층:
+
+```
+h1 (자동)        node.title (TopicContent가 렌더링)
+  h2             CalcBox title — 소목차
+    h3           SubSection title — 세부 주제
+```
+
+- **3 depth는 *상한*** — h3가 필요 없으면 h2까지만 사용
+- 자세한 작성 규칙은 `src/content/RULES.md`
+
+### 노드 vs 리프
+- **노드**: 트리의 모든 요소 (큰 개념)
+- **리프**: 자식이 없는 말단 노드 = 소단원 (작은 개념, 노드의 부분집합)
+
+### URL 매핑
+- 책 basePath가 URL prefix가 됨: `/math/...`, `/llm-learn/...`
+- TreeNode의 `slug`가 각 세그먼트: `/math/middle/1/number-operation/prime-factorization/prime-composite`
+
+### 데이터 위치
+- `src/structure/data/*.json` — 카테고리별 트리 데이터 (middle, high, llm-math, llm-learning)
+- `src/structure/math.ts` — 중등/고등/LLM수학을 묶는 **수학 책** 런타임 조립
+- `src/structure/index.ts` — `allBooks`(사이드바·홈), `allCategories`(어드민) 두 뷰 노출
 
 ## Tech Stack
 

@@ -54,19 +54,45 @@ src/
 
 ### 라우팅: 동적 세그먼트 + slug 매핑
 
-- URL: `/middle/1/number-operation/prime-factorization/prime-composite`
+- URL: `/math/middle/1/number-operation/prime-factorization/prime-composite`
+- 책(`math`, `llm-learn`) basePath가 prefix
 - 트리 데이터의 각 노드에 `slug` 필드 → URL 세그먼트로 사용
 - 동적 라우트 페이지에서 slug로 콘텐츠 컴포넌트를 동적 import
+
+### 트리 구조 — **최대 5단계, 자연 깊이 우선**
+
+CategoryRoot(책) 컨테이너 1개 안에 최대 5개 노드(마지막이 leaf):
+
+```
+[학교 수학 (5단계 = 4 내부 + 1 leaf)]
+카테고리 → 학년/과목 → 대단원 → 중단원(leaf, 콘텐츠 1개 파일)
+
+[LLM 수학 (3단계, 자연 깊이)]
+카테고리 → 분류(분야별/파이프라인) → 분야/단계(leaf)
+```
+
+- **leaf 단위 = 콘텐츠 파일 1개** (학교 수학은 중단원 = leaf, LLM 수학은 분야 = leaf)
+- **콘텐츠 내부 깊이 최대 3**: h1(자동) → h2(CalcBox) → h3(SubSection)
+- **5단계는 상한**, 자연 깊이가 짧으면 그대로 둠 (인위 레이어 X)
+- **책 추가 원칙**: 새 과목은 별도 `Subject` 타입 도입 X, 새 `CategoryRoot`(책) 추가
+- **수학 책**은 `src/structure/math.ts`에서 중등/고등/LLM수학을 런타임 조립 — 어드민은 raw 카테고리(middle/high/llm-math/llm-learn)를 편집
 
 ### 트리 데이터 타입
 
 ```typescript
+interface CategoryRoot {
+  id: string;
+  basePath: string;     // URL prefix (예: "math", "llm-learn")
+  title: string;
+  description: string;
+  children: TreeNode[];
+}
+
 interface TreeNode {
-  id: string;           // 고유 ID
-  slug: string;         // URL 세그먼트
-  title: string;        // 표시 이름
-  children?: TreeNode[];
-  contentPath?: string; // leaf node만: 콘텐츠 컴포넌트 경로
+  id: string;
+  slug: string;
+  title: string;
+  children?: TreeNode[]; // 없거나 빈 배열 = leaf (소단원)
 }
 ```
 

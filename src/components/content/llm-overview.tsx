@@ -13,7 +13,7 @@ const pipelineBranch = llmConceptTree.children.find((c) => c.slug === "pipeline"
 function CardLink({ basePath, node }: { basePath: string; node: TreeNode }) {
   return (
     <Link
-      href={`/llm/${basePath}/${node.slug}`}
+      href={`/math/llm-math/${basePath}/${node.slug}`}
       className="block rounded-xl border border-sidebar-border p-5 hover:border-accent hover:bg-accent-light transition-colors"
     >
       <h2 className="text-base font-semibold">{node.title}</h2>

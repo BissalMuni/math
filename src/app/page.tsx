@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { allCategories } from "@/structure";
+import { allBooks } from "@/structure";
 
 export default function Home() {
   return (
@@ -9,19 +9,19 @@ export default function Home() {
         중·고등 수학과 LLM 수학을 인터랙티브하게 학습하세요.
       </p>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {allCategories.map((category) => (
+      <div className="grid gap-6 sm:grid-cols-2">
+        {allBooks.map((book) => (
           <Link
-            key={category.id}
-            href={`/${category.basePath}`}
+            key={book.id}
+            href={`/${book.basePath}`}
             className="group rounded-xl border border-sidebar-border p-6 transition-colors hover:border-accent hover:bg-accent-light"
           >
             <h2 className="text-xl font-semibold mb-2 group-hover:text-accent">
-              {category.title}
+              {book.title}
             </h2>
-            <p className="text-sm text-muted">{category.description}</p>
+            <p className="text-sm text-muted">{book.description}</p>
             <p className="mt-3 text-xs text-muted">
-              {category.children.length}개 과목/학년
+              {book.children.length}개 카테고리
             </p>
           </Link>
         ))}

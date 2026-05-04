@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { allCategories, type TreeNode } from "@/structure";
+import { allBooks, type TreeNode } from "@/structure";
 import { SidebarAuth } from "@/components/navigation/sidebar-auth";
 
 /** 사이드바 네비게이션 */
@@ -39,19 +39,19 @@ export function Sidebar() {
         `}
       >
         <div className="p-4">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col gap-3 mb-4">
             <Link href="/" className="text-lg font-bold" onClick={() => setIsOpen(false)}>
-              📐 수학 학습
+              📐 Learning
             </Link>
             <SidebarAuth />
           </div>
           <nav>
-            {allCategories.map((category) => (
+            {allBooks.map((book) => (
               <CategorySection
-                key={category.id}
-                basePath={category.basePath}
-                title={category.title}
-                nodes={category.children}
+                key={book.id}
+                basePath={book.basePath}
+                title={book.title}
+                nodes={book.children}
                 onNavigate={() => setIsOpen(false)}
               />
             ))}
@@ -62,7 +62,7 @@ export function Sidebar() {
   );
 }
 
-/** 카테고리 섹션 (중학교, 고등학교, LLM) */
+/** 책 섹션 (수학, LLM) */
 function CategorySection({
   basePath,
   title,

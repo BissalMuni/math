@@ -2,8 +2,8 @@ import { getSessionFromCookies } from "@/lib/auth/session";
 import { hasPermission } from "@/lib/auth/constants";
 import { redirect } from "next/navigation";
 import { StructureTreeEditor } from "@/components/admin/structure-tree-editor";
-import { allCategories } from "@/book";
-import { getCategoryMeta } from "@/lib/structure-serializer";
+import { allBooks } from "@/book";
+import { getBookMeta } from "@/lib/structure-serializer";
 
 export default async function AdminStructurePage() {
   const session = await getSessionFromCookies();
@@ -13,9 +13,9 @@ export default async function AdminStructurePage() {
     redirect("/admin");
   }
 
-  // 편집 가능한 카테고리만 (llm-math는 복합 구조라 제외)
-  const editable = allCategories.filter(
-    (c) => getCategoryMeta(c.id) !== null
+  // 편집 가능한 책만 (llm-math는 복합 구조라 제외)
+  const editable = allBooks.filter(
+    (b) => getBookMeta(b.id) !== null
   );
 
   return (
@@ -27,7 +27,7 @@ export default async function AdminStructurePage() {
         </p>
       </div>
 
-      <StructureTreeEditor categories={editable} />
+      <StructureTreeEditor books={editable} />
     </div>
   );
 }

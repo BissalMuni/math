@@ -17,7 +17,7 @@ export default async function LlmLearnCatchAll({
       node={node}
       slugs={slugs}
       basePath="llm-learning"
-      category={llmLearning}
+      book={llmLearning}
     />
   );
 }

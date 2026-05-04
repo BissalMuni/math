@@ -17,7 +17,7 @@ export default async function LlmMathCatchAll({
       node={node}
       slugs={slugs}
       basePath="llm-math"
-      category={llmMath}
+      book={llmMath}
     />
   );
 }

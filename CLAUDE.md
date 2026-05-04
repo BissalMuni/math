@@ -43,9 +43,8 @@ Refer to `.spec/` for project specifications.
 ### book/ — 책 데이터·로더
 - `src/book/data/*.json` — 책별 원본 트리 (`middle-school.json`, `high-school.json`, `llm-math.json`, `llm-learning.json`)
 - `src/book/<book-id>.ts` — 각 JSON을 `Book`으로 import하는 얇은 로더 (4개)
-- `src/book/llm-curriculum.ts` — LLM 수학 노드 ↔ 교육과정(고등/대학) 매핑 보조 데이터
-- `src/book/index.ts` — `allBooks` (4권), `getBookByPath` 노출. `allCategories`/`getCategoryByPath`는 deprecated 별칭
-- `src/book/types.ts` — `Book`, `TreeNode` 타입 + `findNodePath`, `findNodeBySlugs`, `isLeafNode` 유틸. `CategoryRoot`는 deprecated 별칭
+- `src/book/index.ts` — `allBooks` (4권), `getBookByPath` 노출
+- `src/book/types.ts` — `Book`, `TreeNode` 타입 + `findNodePath`, `findNodeBySlugs`, `isLeafNode` 유틸
 
 ### basket/ — 바구니 메타
 - `src/basket/<basket-id>.ts` — 한 바구니 정의 (`{ id, title, bookIds }`)
@@ -63,6 +62,49 @@ Refer to `.spec/` for project specifications.
 ### URL 매핑
 - 책 `basePath`가 URL prefix: `/middle-school/...`, `/high-school/...`, `/llm-math/...`, `/llm-learning/...`
 - TreeNode의 `slug`가 각 세그먼트로 이어짐
+
+### lib/ — 유틸리티·인프라
+
+- `src/lib/types.ts` — 공통 타입 (`Comment`, `TopicImage`, `ContentChange` 등)
+- `src/lib/progress.ts` — 학습 진도 (localStorage)
+- `src/lib/structure-serializer.ts` — 트리 구조 직렬화
+
+#### lib/auth/ — 인증
+
+- `src/lib/auth/constants.ts` — 역할 상수 (admin 등)
+- `src/lib/auth/session.ts` — 서버 세션 (JWT/jose)
+- `src/lib/auth/use-session.ts` — 클라이언트 세션 훅
+- `src/lib/auth/require-role.ts` — 역할 기반 권한 체크
+
+#### lib/supabase/ — DB 접근
+
+- `src/lib/supabase/client.ts` — Supabase 클라이언트 (math 스키마, 싱글턴)
+- `src/lib/supabase/comments.ts` — 댓글 CRUD
+- `src/lib/supabase/content-changes.ts` — 콘텐츠 변경 이력 기록/조회/통계
+- `src/lib/supabase/images.ts` — 이미지 업로드/삭제 (5MB, jpg/png/gif/webp)
+
+### app/api/ — API 라우트
+
+- `api/auth/` — 로그인·로그아웃·현재 사용자 (`login`, `logout`, `me`)
+- `api/comments/` — 댓글 목록/등록/삭제
+- `api/images/` — 이미지 목록/업로드/삭제
+- `api/admin/changes/` — 변경 이력 목록/상세/통계
+- `api/admin/rollback/` — 콘텐츠 롤백
+- `api/admin/structure/` — 트리 구조 수정
+
+### app/admin/ — 관리자 페이지
+
+- `admin/` — 대시보드 (변경 통계)
+- `admin/changes/` — 변경 이력 목록 + `[id]` 상세
+- `admin/structure/` — 트리 구조 편집기
+
+### proxy.ts — 미들웨어
+
+- `src/proxy.ts` — JWT 인증 + 역할 기반 라우트 보호 (Next.js middleware)
+
+### supabase/ — DB 마이그레이션
+
+- `supabase/migrations/` — SQL 마이그레이션 5개 (최종: `005_namespace_to_math_schema.sql`에 통합)
 
 ## Tech Stack
 

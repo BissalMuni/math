@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { llmConceptTree } from "@/book/llm-math";
+import { llmMath } from "@/book/llm-math";
 import type { TreeNode } from "@/book";
 
 type Tab = "pipeline" | "field";
 
-const fieldsBranch = llmConceptTree.children.find((c) => c.slug === "fields");
-const pipelineBranch = llmConceptTree.children.find((c) => c.slug === "pipeline");
+const fieldsBranch = llmMath.children.find((c) => c.slug === "fields");
+const pipelineBranch = llmMath.children.find((c) => c.slug === "pipeline");
 
 function CardLink({ basePath, node }: { basePath: string; node: TreeNode }) {
   return (

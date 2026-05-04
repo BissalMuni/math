@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import type { TreeNode, CategoryRoot } from "@/book/types";
+import type { TreeNode, Book } from "@/book/types";
 
 // ─── 타입 ────────────────────────────────────────────────────────────────────
 
 interface Props {
-  categories: CategoryRoot[];
+  books: Book[];
 }
 
 interface EditingNode {
@@ -64,14 +64,14 @@ function isValidSlug(slug: string): boolean {
 
 // ─── 메인 컴포넌트 ──────────────────────────────────────────────────────────
 
-export function StructureTreeEditor({ categories }: Props) {
-  const [selectedCategoryId, setSelectedCategoryId] = useState(
-    categories[0]?.id ?? ""
+export function StructureTreeEditor({ books }: Props) {
+  const [selectedBookId, setSelectedBookId] = useState(
+    books[0]?.id ?? ""
   );
   const [trees, setTrees] = useState<Record<string, TreeNode[]>>(() => {
     const map: Record<string, TreeNode[]> = {};
-    for (const cat of categories) {
-      map[cat.id] = cloneTree(cat.children);
+    for (const book of books) {
+      map[book.id] = cloneTree(book.children);
     }
     return map;
   });
@@ -88,14 +88,14 @@ export function StructureTreeEditor({ categories }: Props) {
     new Set()
   );
 
-  const currentCategory = categories.find(
-    (c) => c.id === selectedCategoryId
+  const currentBook = books.find(
+    (b) => b.id === selectedBookId
   );
-  const currentTree = trees[selectedCategoryId] ?? [];
+  const currentTree = trees[selectedBookId] ?? [];
 
   // 변경 여부 확인
-  const originalTree = categories.find(
-    (c) => c.id === selectedCategoryId
+  const originalTree = books.find(
+    (b) => b.id === selectedBookId
   )?.children;
   const hasChanges =
     JSON.stringify(currentTree) !== JSON.stringify(originalTree);
@@ -105,10 +105,10 @@ export function StructureTreeEditor({ categories }: Props) {
     (updater: (nodes: TreeNode[]) => TreeNode[]) => {
       setTrees((prev) => ({
         ...prev,
-        [selectedCategoryId]: updater(cloneTree(prev[selectedCategoryId] ?? [])),
+        [selectedBookId]: updater(cloneTree(prev[selectedBookId] ?? [])),
       }));
     },
-    [selectedCategoryId]
+    [selectedBookId]
   );
 
   /** 토글 펼치기/접기 */
@@ -205,7 +205,7 @@ export function StructureTreeEditor({ categories }: Props) {
     }
 
     updateTree((nodes) => {
-      const newId = `${selectedCategoryId}-root${nodes.length + 1}`;
+      const newId = `${selectedBookId}-root${nodes.length + 1}`;
       nodes.push({
         id: newId,
         slug: newNodeSlug.trim(),
@@ -242,7 +242,7 @@ export function StructureTreeEditor({ categories }: Props) {
 
   /** GitHub에 저장 */
   const handleSave = async () => {
-    if (!currentCategory || !hasChanges) return;
+    if (!currentBook || !hasChanges) return;
 
     setSaving(true);
     setMessage(null);
@@ -252,8 +252,8 @@ export function StructureTreeEditor({ categories }: Props) {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          category: {
-            ...currentCategory,
+          book: {
+            ...currentBook,
             children: currentTree,
           },
         }),
@@ -453,23 +453,23 @@ export function StructureTreeEditor({ categories }: Props) {
 
   return (
     <div className="space-y-4">
-      {/* 카테고리 탭 */}
+      {/* 책 탭 */}
       <div className="flex gap-2 border-b border-sidebar-border pb-2">
-        {categories.map((cat) => (
+        {books.map((book) => (
           <button
-            key={cat.id}
+            key={book.id}
             onClick={() => {
-              setSelectedCategoryId(cat.id);
+              setSelectedBookId(book.id);
               setEditingNode(null);
               setAddingTo(null);
             }}
             className={`rounded-t px-4 py-2 text-sm font-medium ${
-              selectedCategoryId === cat.id
+              selectedBookId === book.id
                 ? "border-b-2 border-accent text-accent"
                 : "text-muted hover:text-foreground"
             }`}
           >
-            {cat.title}
+            {book.title}
           </button>
         ))}
       </div>

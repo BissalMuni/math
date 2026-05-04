@@ -12,9 +12,6 @@ export interface Book {
   children: TreeNode[];
 }
 
-/** @deprecated `Book`을 사용. 점진적 마이그레이션을 위해 유지. */
-export type CategoryRoot = Book;
-
 /** 교육과정 트리 노드 타입 */
 export interface TreeNode {
   /** 고유 ID (예: "m1-prime-composite") */

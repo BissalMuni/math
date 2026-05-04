@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requirePermission } from "@/lib/auth/require-role";
-import { allCategories } from "@/book";
+import { allBooks } from "@/book";
 import {
-  serializeCategoryToJSON,
+  serializeBookToJSON,
   collectLeafIds,
-  getCategoryMeta,
+  getBookMeta,
 } from "@/lib/structure-serializer";
-import type { CategoryRoot } from "@/book/types";
+import type { Book } from "@/book/types";
 
 /** GitHub API 기본 설정 */
 function getGitHubConfig() {
@@ -44,12 +44,12 @@ export async function GET(request: NextRequest) {
   const denied = requirePermission(request, "edit_structure");
   if (denied) return denied;
 
-  // llm-math는 llmConceptTree + llmMath 두 export를 가진 복합 구조 → 제외
-  const editable = allCategories.filter(
-    (c) => getCategoryMeta(c.id) !== null
+  // llm-math는 복합 구조라 제외
+  const editable = allBooks.filter(
+    (b) => getBookMeta(b.id) !== null
   );
 
-  return NextResponse.json({ categories: editable });
+  return NextResponse.json({ books: editable });
 }
 
 /** PUT: 구조 변경 사항을 GitHub에 커밋 */
@@ -65,25 +65,25 @@ export async function PUT(request: NextRequest) {
     );
   }
 
-  let body: { category: CategoryRoot; newLeafIds?: string[] };
+  let body: { book: Book; newLeafIds?: string[] };
   try {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "잘못된 요청" }, { status: 400 });
   }
 
-  const { category } = body;
-  if (!category?.id || !category?.children) {
+  const { book } = body;
+  if (!book?.id || !book?.children) {
     return NextResponse.json(
-      { error: "category 데이터 필요" },
+      { error: "book 데이터 필요" },
       { status: 400 }
     );
   }
 
-  const meta = getCategoryMeta(category.id);
+  const meta = getBookMeta(book.id);
   if (!meta) {
     return NextResponse.json(
-      { error: `편집 불가능한 카테고리: ${category.id}` },
+      { error: `편집 불가능한 책: ${book.id}` },
       { status: 400 }
     );
   }
@@ -98,14 +98,14 @@ export async function PUT(request: NextRequest) {
     const latestSha = ref.object.sha;
 
     // 2) 구조 파일 내용 생성 (JSON)
-    const structureContent = serializeCategoryToJSON(category);
+    const structureContent = serializeBookToJSON(book);
     const structurePath = `src/structure/${meta.fileName}`;
 
     // 3) 새 leaf node에 대한 빈 콘텐츠 파일 생성
     const currentLeafIds = collectLeafIds(
-      allCategories.find((c) => c.id === category.id)?.children ?? []
+      allBooks.find((b) => b.id === book.id)?.children ?? []
     );
-    const newLeafIds = collectLeafIds(category.children).filter(
+    const newLeafIds = collectLeafIds(book.children).filter(
       (id) => !currentLeafIds.includes(id)
     );
 
@@ -116,10 +116,10 @@ export async function PUT(request: NextRequest) {
 
     // 새 leaf node에 대한 빈 콘텐츠 파일
     for (const leafId of newLeafIds) {
-      const node = findLeafById(category.children, leafId);
+      const node = findLeafById(book.children, leafId);
       if (!node) continue;
 
-      const contentPath = `src/content/${category.basePath}/${node.slug}.tsx`;
+      const contentPath = `src/content/${book.basePath}/${node.slug}.tsx`;
       const componentName = slugToComponentName(node.slug);
       const templateContent = generateContentTemplate(
         componentName,
@@ -170,7 +170,7 @@ export async function PUT(request: NextRequest) {
     );
 
     // 커밋 생성
-    const commitMessage = `structure(${category.id}): update via admin UI`;
+    const commitMessage = `structure(${book.id}): update via admin UI`;
     const newCommit = await githubFetch(
       gh.repo,
       "git/commits",
@@ -215,7 +215,7 @@ export async function PUT(request: NextRequest) {
 
 /** 트리에서 id로 leaf node 찾기 */
 function findLeafById(
-  nodes: CategoryRoot["children"],
+  nodes: Book["children"],
   id: string
 ): { slug: string; title: string } | null {
   for (const node of nodes) {

@@ -5,7 +5,7 @@ import { ProgressCheck } from "@/components/progress/progress-check";
 import { AutoSectionComment } from "@/components/feedback/auto-section-comment";
 import { SectionComment } from "@/components/feedback/section-comment";
 import { getContentComponent } from "@/map";
-import type { CategoryRoot, TreeNode } from "@/book";
+import type { Book, TreeNode } from "@/book";
 
 /** 소단원 콘텐츠 표시 + 모든 section h2 옆에 의견 버튼 자동 주입 */
 export function TopicContent({
@@ -15,7 +15,7 @@ export function TopicContent({
 }: {
   node: TreeNode;
   contentPath: string;
-  book: CategoryRoot;
+  book: Book;
 }) {
   const Content = getContentComponent(book, node);
   const containerRef = useRef<HTMLDivElement>(null);

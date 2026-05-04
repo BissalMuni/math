@@ -1,7 +1,7 @@
 import { Breadcrumb } from "@/components/navigation/breadcrumb";
 import { TopicContent } from "@/components/content/topic-content";
 import { CommentSection } from "@/components/feedback/CommentSection";
-import { isLeafNode, type TreeNode, type CategoryRoot } from "@/book";
+import { isLeafNode, type TreeNode, type Book } from "@/book";
 import Link from "next/link";
 
 /** 소단원(leaf) 콘텐츠 페이지 또는 중간 노드 목록 */
@@ -9,15 +9,15 @@ export function TopicPage({
   node,
   slugs,
   basePath,
-  category,
+  book,
 }: {
   node: TreeNode;
   slugs: string[];
   basePath: string;
-  category: CategoryRoot;
+  book: Book;
 }) {
   // breadcrumb 아이템 생성
-  const breadcrumbItems = buildBreadcrumb(category, slugs, basePath);
+  const breadcrumbItems = buildBreadcrumb(book, slugs, basePath);
 
   // content_path: 의견 저장 키 (URL 경로)
   const contentPath = `/${basePath}/${slugs.join("/")}`;
@@ -27,7 +27,7 @@ export function TopicPage({
     return (
       <div className="max-w-4xl mx-auto px-6 py-12 lg:pl-8">
         <Breadcrumb items={breadcrumbItems} />
-        <TopicContent node={node} contentPath={contentPath} book={category} />
+        <TopicContent node={node} contentPath={contentPath} book={book} />
         <CommentSection contentPath={contentPath} />
       </div>
     );
@@ -66,15 +66,15 @@ export function TopicPage({
 
 /** slug 경로에서 breadcrumb 아이템 생성 */
 function buildBreadcrumb(
-  category: CategoryRoot,
+  book: Book,
   slugs: string[],
   basePath: string
 ) {
   const items: { label: string; href?: string }[] = [
-    { label: category.title, href: `/${basePath}` },
+    { label: book.title, href: `/${basePath}` },
   ];
 
-  let currentNodes = category.children;
+  let currentNodes = book.children;
   const pathParts: string[] = [];
 
   for (let i = 0; i < slugs.length; i++) {

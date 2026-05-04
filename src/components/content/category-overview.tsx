@@ -1,22 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import type { CategoryRoot, TreeNode } from "@/book";
+import type { Book, TreeNode } from "@/book";
 import { SectionComment } from "@/components/feedback/section-comment";
 
 /** 카테고리 개요 페이지 (학년/과목 목록 표시) */
-export function CategoryOverview({ category }: { category: CategoryRoot }) {
+export function CategoryOverview({ book }: { book: Book }) {
   return (
     <div className="max-w-4xl mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold mb-2">{category.title}</h1>
-      <p className="text-muted mb-8">{category.description}</p>
+      <h1 className="text-3xl font-bold mb-2">{book.title}</h1>
+      <p className="text-muted mb-8">{book.description}</p>
 
       <div className="space-y-6">
-        {category.children.map((node) => (
+        {book.children.map((node) => (
           <SubjectCard
             key={node.id}
             node={node}
-            basePath={category.basePath}
+            basePath={book.basePath}
           />
         ))}
       </div>

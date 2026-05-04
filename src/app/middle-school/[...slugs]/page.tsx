@@ -17,7 +17,7 @@ export default async function MiddleSchoolCatchAll({
       node={node}
       slugs={slugs}
       basePath="middle-school"
-      category={middleSchool}
+      book={middleSchool}
     />
   );
 }

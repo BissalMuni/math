@@ -30,8 +30,20 @@ export function SidebarAuth() {
     router.refresh();
   };
 
+  const canAccessAdmin = session.permissions.some(
+    (p) => p !== "read"
+  );
+
   return (
     <div className="flex items-center gap-1">
+      {canAccessAdmin && (
+        <Link
+          href="/admin"
+          className="rounded-full border border-sidebar-border px-2 py-0.5 text-[10px] text-muted hover:border-accent hover:text-accent transition-colors"
+        >
+          관리자
+        </Link>
+      )}
       <span
         className="rounded-full bg-accent/10 px-2 py-0.5 text-[10px] text-accent"
         title={`역할: ${session.label}`}

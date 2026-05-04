@@ -22,7 +22,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 |---|---|---|
 | **중등수학** | `/middle-school` | 수학 |
 | **고등수학** | `/high-school` | 수학 |
-| **LLM 수학** | `/llm-math` | 수학, AI/LLM |
+| **LLM 수학** | `/llm-math` | 수학 |
 | **LLM 학습** | `/llm-learning` | AI/LLM |
 
 새 주제(국어·영어·역사 등)는 별도의 책(`Book`)으로 추가하고, 적절한 바구니에 ID 등록.

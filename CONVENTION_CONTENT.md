@@ -139,3 +139,98 @@ export default function TopicName() {
 
 - 최상위 래퍼: `<div className="space-y-8">` (통일)
 - `<article>` 사용 금지
+
+## 시각화 기법
+
+텍스트 + KaTeX만으로 부족할 때, 내용에 맞는 시각화를 **적극 활용**한다.
+단, CalcBox/SubSection 헤딩 규칙은 시각화 내부에도 그대로 적용된다.
+
+### 사용 가능 기법
+
+| 기법 | 기술 | 적합한 콘텐츠 | 구현 방식 |
+| --- | --- | --- | --- |
+| **SVG 플로우 다이어그램** | `<svg>` + 노드/엣지 직접 그리기 | 프로세스 흐름, 개념 관계도, 계층 구조 | 컴포넌트 내부에 SVG 인라인. 노드 좌표는 상수로 정의 |
+| **SVG 막대/원 그래프** | `<svg>` + `<rect>` / `<circle>` | 빈도, 비율, 분포 비교 | 데이터 배열 → `.map()`으로 도형 생성 |
+| **Mafs 좌표 그래프** | `@/components/math/` (Mafs 라이브러리) | 함수 그래프, 좌표 위 점/벡터, 기하 도형 | `<Mafs>` + `<Plot.OfX>`, `<Point>`, `<Line>` 등 |
+| **인터랙티브 슬라이더** | `useState` + `<input type="range">` | 파라미터 변화에 따른 결과 실시간 확인 | 상태값이 수식/그래프에 바인딩 |
+| **호버/클릭 하이라이트** | `useState` + `onMouseEnter`/`onClick` | 데이터와 시각화 간 연결, 단계별 설명 | 활성 항목에 스타일 토글 |
+| **탭 UI** | `useState<TabKey>` + 조건부 렌더링 | 같은 주제의 다른 관점 (표 vs 그래프 vs 구조도) | 탭 버튼 배열 → 활성 탭에 따라 패널 전환 |
+| **아코디언 (펼치기/접기)** | `useState` + `onClick` 토글 | 심화 설명, 증명, 연결 개념 | 클릭 시 상세 영역 표시/숨김 |
+| **단계별 애니메이션** | `useState<number>` (현재 스텝) | 알고리즘 진행, 연쇄법칙 전파, 풀이 과정 | "다음" 버튼으로 스텝 전진, 각 스텝마다 시각 변화 |
+
+### 적용 판단 기준
+
+```text
+1. 흐름/순서가 있는가?          → SVG 플로우 다이어그램 또는 단계별 애니메이션
+2. 수치 비교/분포를 보여주는가?  → SVG 막대그래프 또는 Mafs 좌표 그래프
+3. 파라미터를 바꿔보면 이해가 되는가? → 인터랙티브 슬라이더
+4. 데이터와 표현의 대응을 보여주는가? → 호버/클릭 하이라이트
+5. 관점이 여러 개인가?          → 탭 UI
+6. 본문이 길어지지만 생략하기 아까운가? → 아코디언
+7. 텍스트+수식만으로 충분한가?    → 시각화 불필요 (과잉 금지)
+```
+
+### 구현 규칙
+
+- **`"use client"` 필수**: `useState` 등 훅을 쓰므로 파일 최상단에 선언
+- **데이터는 컴포넌트 바깥 상수**: SVG 좌표, 색상, 라벨 등은 `const`로 분리
+- **인라인 style 허용**: SVG/다이어그램은 Tailwind보다 인라인 `style`이 더 적합할 수 있음
+- **반응형**: SVG는 `width="100%" viewBox="..."` 패턴 사용
+- **다크모드 고려**: Tailwind 클래스(`dark:`) 또는 CSS 변수 활용. 하드코딩 색상 시 어두운 배경 기준으로 작성
+- **접근성**: 인터랙티브 요소에 `cursor: "pointer"`, 호버 힌트 텍스트 제공
+- **시각화는 CalcBox 안에 배치**: 헤딩 규칙 유지. 단, 페이지 전체가 하나의 시각화일 때는 예외
+
+### 예시: 탭 + SVG 다이어그램 패턴
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import { CalcBox, Insight } from "@/components/content/shared";
+import { BlockMath } from "@/components/math/math-formula";
+
+type TabKey = "formula" | "graph" | "diagram";
+
+export default function ExampleTopic() {
+  const [tab, setTab] = useState<TabKey>("formula");
+
+  return (
+    <div className="space-y-8">
+      <CalcBox title="1. 핵심 개념">
+        {/* 탭 버튼 */}
+        <div className="flex gap-1 bg-sidebar-bg rounded-lg p-1 mb-4">
+          {([
+            ["formula", "수식"],
+            ["graph",   "그래프"],
+            ["diagram", "구조도"],
+          ] as [TabKey, string][]).map(([key, label]) => (
+            <button key={key} onClick={() => setTab(key)}
+              className={`flex-1 py-1.5 rounded-md text-sm transition-colors ${
+                tab === key
+                  ? "bg-white dark:bg-gray-800 font-semibold shadow-sm"
+                  : "text-muted hover:text-foreground"
+              }`}>
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {/* 탭 패널 */}
+        {tab === "formula" && <BlockMath math="y = mx + b" />}
+        {tab === "graph" && (
+          <svg width="100%" viewBox="0 0 400 200">
+            {/* Mafs 또는 직접 SVG */}
+          </svg>
+        )}
+        {tab === "diagram" && (
+          <svg width="100%" viewBox="0 0 400 200">
+            {/* 노드 + 엣지 */}
+          </svg>
+        )}
+      </CalcBox>
+
+      <Insight>시각화와 수식을 함께 보면 이해가 빨라집니다.</Insight>
+    </div>
+  );
+}
+```

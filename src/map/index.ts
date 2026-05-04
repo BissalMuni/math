@@ -1,46 +1,50 @@
 import { type ComponentType, lazy } from "react";
-import { findNodePath, type CategoryRoot, type TreeNode } from "@/structure";
+import { findNodePath, type Book, type TreeNode } from "@/book";
 
 /**
- * 책별 path 컨벤션:
- *   수학 책:
- *     middle:   middle/grade{학년slug}/{leaf.slug}
- *     high:     high/{과목slug}/{leaf.slug}
- *     llm-math: llm-math/{branch.slug}/{leaf.slug}
- *   LLM 학습 책:
- *     llm/{leaf.slug}
+ * 책별 path 컨벤션 (책 = 폴더 1:1):
+ *   middle-school: middle-school/grade{학년slug}/{leaf.slug}
+ *   high-school:   high-school/{과목slug}/{leaf.slug}
+ *   llm-math:      llm-math/{branch.slug}/{leaf.slug}
+ *   llm-learning:  llm-learning/{leaf.slug}
  *
  * 콘텐츠 파일은 `src/content/{도출된경로}.tsx`에 있어야 함.
  * 파일이 없으면 null 반환 → "준비 중" 표시.
  */
 
-function deriveMathPath(book: CategoryRoot, leaf: TreeNode): string | null {
+function deriveMiddleSchoolPath(book: Book, leaf: TreeNode): string | null {
   const path = findNodePath(book.children, leaf.id);
   if (!path || path.length < 2) return null;
-
-  const category = path[0]; // middle / high / llm-math
-  const second = path[1]; // 학년 / 과목 / branch
-
-  if (category.slug === "middle") {
-    return `middle/grade${second.slug}/${leaf.slug}`;
-  }
-  if (category.slug === "high") {
-    return `high/${second.slug}/${leaf.slug}`;
-  }
-  if (category.slug === "llm-math") {
-    return `llm-math/${second.slug}/${leaf.slug}`;
-  }
-  return null;
+  const grade = path[0]; // 학년 slug "1" / "2" / "3"
+  return `middle-school/grade${grade.slug}/${leaf.slug}`;
 }
 
-function deriveLlmLearnPath(leaf: TreeNode): string {
-  return `llm/${leaf.slug}`;
+function deriveHighSchoolPath(book: Book, leaf: TreeNode): string | null {
+  const path = findNodePath(book.children, leaf.id);
+  if (!path || path.length < 2) return null;
+  const subject = path[0]; // 과목 slug
+  return `high-school/${subject.slug}/${leaf.slug}`;
 }
 
-function derivePath(book: CategoryRoot, leaf: TreeNode): string | null {
-  if (book.id === "math") return deriveMathPath(book, leaf);
-  if (book.id === "llm-learn") return deriveLlmLearnPath(leaf);
-  return null;
+function deriveLlmMathPath(book: Book, leaf: TreeNode): string | null {
+  const path = findNodePath(book.children, leaf.id);
+  if (!path || path.length < 2) return null;
+  const branch = path[0]; // fields / pipeline
+  return `llm-math/${branch.slug}/${leaf.slug}`;
+}
+
+function deriveLlmLearningPath(leaf: TreeNode): string {
+  return `llm-learning/${leaf.slug}`;
+}
+
+function derivePath(book: Book, leaf: TreeNode): string | null {
+  switch (book.id) {
+    case "middle-school": return deriveMiddleSchoolPath(book, leaf);
+    case "high-school":   return deriveHighSchoolPath(book, leaf);
+    case "llm-math":      return deriveLlmMathPath(book, leaf);
+    case "llm-learning":  return deriveLlmLearningPath(leaf);
+    default: return null;
+  }
 }
 
 /**
@@ -49,7 +53,7 @@ function derivePath(book: CategoryRoot, leaf: TreeNode): string | null {
  * 매핑 없거나 파일 없으면 null → "준비 중" 표시.
  */
 export function getContentComponent(
-  book: CategoryRoot,
+  book: Book,
   leaf: TreeNode
 ): ComponentType | null {
   const path = derivePath(book, leaf);

@@ -49,7 +49,7 @@ jobs:
         run: |
           claude --print --dangerously-skip-permissions \
             --allowedTools "Bash,Read,Edit,Write,Glob,Grep" \
-            -p "$(cat src/content/RULES.md)
+            -p "$(cat CONVENTION_TREE.md CONVENTION_CONTENT.md)
 
           이 레포에서 구조(목차) 피드백 반영 작업을 수행해줘.
 

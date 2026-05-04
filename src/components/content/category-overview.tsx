@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { CategoryRoot, TreeNode } from "@/structure";
+import type { CategoryRoot, TreeNode } from "@/book";
 import { SectionComment } from "@/components/feedback/section-comment";
 
 /** 카테고리 개요 페이지 (학년/과목 목록 표시) */

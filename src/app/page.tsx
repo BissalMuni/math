@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { allBooks } from "@/structure";
+import { allBooks } from "@/book";
 
 export default function Home() {
   return (

@@ -1,0 +1,325 @@
+{
+  "id": "middle-school",
+  "basePath": "middle-school",
+  "title": "중학교 수학",
+  "description": "중학교 1~3학년 수학 (2022 개정 교육과정)",
+  "children": [
+    {
+      "id": "m1",
+      "slug": "1",
+      "title": "중학교 1학년",
+      "children": [
+        {
+          "id": "m1-ch1",
+          "slug": "number-operation",
+          "title": "1장. 수와 연산",
+          "children": [
+            {
+              "id": "m1-s1",
+              "slug": "prime-factorization",
+              "title": "Ⅰ. 소인수분해"
+            },
+            {
+              "id": "m1-s2",
+              "slug": "integer-rational",
+              "title": "Ⅱ. 정수와 유리수"
+            }
+          ]
+        },
+        {
+          "id": "m1-ch2",
+          "slug": "expression",
+          "title": "2장. 문자와 식",
+          "children": [
+            {
+              "id": "m1-s3",
+              "slug": "variable-expression",
+              "title": "Ⅰ. 문자의 사용과 식의 계산"
+            },
+            {
+              "id": "m1-s4",
+              "slug": "linear-equation",
+              "title": "Ⅱ. 일차방정식"
+            }
+          ]
+        },
+        {
+          "id": "m1-ch3",
+          "slug": "coordinate-graph",
+          "title": "3장. 좌표평면과 그래프",
+          "children": [
+            {
+              "id": "m1-s5",
+              "slug": "coordinate-plane-graph",
+              "title": "Ⅰ. 좌표평면과 그래프"
+            }
+          ]
+        },
+        {
+          "id": "m1-ch4",
+          "slug": "basic-figure",
+          "title": "4장. 기본 도형과 작도",
+          "children": [
+            {
+              "id": "m1-s6",
+              "slug": "basic-figure-concept",
+              "title": "Ⅰ. 기본 도형"
+            },
+            {
+              "id": "m1-s7",
+              "slug": "construction-congruence",
+              "title": "Ⅱ. 작도와 합동"
+            }
+          ]
+        },
+        {
+          "id": "m1-ch5",
+          "slug": "plane-solid",
+          "title": "5장. 평면도형과 입체도형",
+          "children": [
+            {
+              "id": "m1-s8",
+              "slug": "plane-figure",
+              "title": "Ⅰ. 평면도형의 성질"
+            },
+            {
+              "id": "m1-s9",
+              "slug": "solid-figure",
+              "title": "Ⅱ. 입체도형의 성질"
+            }
+          ]
+        },
+        {
+          "id": "m1-ch6",
+          "slug": "data",
+          "title": "6장. 자료의 정리와 해석",
+          "children": [
+            {
+              "id": "m1-s10",
+              "slug": "data-analysis",
+              "title": "Ⅰ. 자료의 정리와 해석"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "slug": "2",
+      "title": "중학교 2학년",
+      "children": [
+        {
+          "id": "m2-ch1",
+          "slug": "number-expression",
+          "title": "1장. 수와 식",
+          "children": [
+            {
+              "id": "m2-s1",
+              "slug": "rational-repeating",
+              "title": "Ⅰ. 유리수와 순환소수"
+            },
+            {
+              "id": "m2-s2",
+              "slug": "polynomial-calc",
+              "title": "Ⅱ. 식의 계산"
+            }
+          ]
+        },
+        {
+          "id": "m2-ch2",
+          "slug": "inequality-equation",
+          "title": "2장. 부등식과 연립방정식",
+          "children": [
+            {
+              "id": "m2-s3",
+              "slug": "linear-inequality",
+              "title": "Ⅰ. 일차부등식"
+            },
+            {
+              "id": "m2-s4",
+              "slug": "simultaneous-equation",
+              "title": "Ⅱ. 연립일차방정식"
+            }
+          ]
+        },
+        {
+          "id": "m2-ch3",
+          "slug": "linear-function",
+          "title": "3장. 일차함수",
+          "children": [
+            {
+              "id": "m2-s5",
+              "slug": "linear-func-graph",
+              "title": "Ⅰ. 일차함수와 그래프"
+            },
+            {
+              "id": "m2-s6",
+              "slug": "linear-func-equation",
+              "title": "Ⅱ. 일차함수와 일차방정식의 관계"
+            }
+          ]
+        },
+        {
+          "id": "m2-ch4",
+          "slug": "triangle-quadrilateral",
+          "title": "4장. 삼각형과 사각형의 성질",
+          "children": [
+            {
+              "id": "m2-s7",
+              "slug": "triangle-property",
+              "title": "Ⅰ. 삼각형의 성질"
+            },
+            {
+              "id": "m2-s8",
+              "slug": "quadrilateral-property",
+              "title": "Ⅱ. 사각형의 성질"
+            }
+          ]
+        },
+        {
+          "id": "m2-ch5",
+          "slug": "similarity",
+          "title": "5장. 도형의 닮음",
+          "children": [
+            {
+              "id": "m2-s9",
+              "slug": "similarity-concept",
+              "title": "Ⅰ. 도형의 닮음"
+            },
+            {
+              "id": "m2-s10",
+              "slug": "parallel-line-ratio",
+              "title": "Ⅱ. 평행선과 선분의 비"
+            }
+          ]
+        },
+        {
+          "id": "m2-ch6",
+          "slug": "probability",
+          "title": "6장. 확률",
+          "children": [
+            {
+              "id": "m2-s11",
+              "slug": "counting",
+              "title": "Ⅰ. 경우의 수"
+            },
+            {
+              "id": "m2-s12",
+              "slug": "probability-concept",
+              "title": "Ⅱ. 확률"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m3",
+      "slug": "3",
+      "title": "중학교 3학년",
+      "children": [
+        {
+          "id": "m3-ch1",
+          "slug": "real-number",
+          "title": "1장. 실수와 그 계산",
+          "children": [
+            {
+              "id": "m3-s1",
+              "slug": "square-root-real",
+              "title": "Ⅰ. 제곱근과 실수"
+            },
+            {
+              "id": "m3-s2",
+              "slug": "radical-calc",
+              "title": "Ⅱ. 근호를 포함한 식의 계산"
+            }
+          ]
+        },
+        {
+          "id": "m3-ch2",
+          "slug": "polynomial-factorization",
+          "title": "2장. 다항식의 곱셈과 인수분해",
+          "children": [
+            {
+              "id": "m3-s3",
+              "slug": "polynomial-multiplication",
+              "title": "Ⅰ. 다항식의 곱셈"
+            },
+            {
+              "id": "m3-s4",
+              "slug": "factorization",
+              "title": "Ⅱ. 인수분해"
+            }
+          ]
+        },
+        {
+          "id": "m3-ch3",
+          "slug": "quadratic-equation",
+          "title": "3장. 이차방정식",
+          "children": [
+            {
+              "id": "m3-s5",
+              "slug": "solving-quadratic",
+              "title": "Ⅰ. 이차방정식의 풀이"
+            },
+            {
+              "id": "m3-s6",
+              "slug": "quadratic-eq-application",
+              "title": "Ⅱ. 이차방정식의 활용"
+            }
+          ]
+        },
+        {
+          "id": "m3-ch4",
+          "slug": "quadratic-function",
+          "title": "4장. 이차함수",
+          "children": [
+            {
+              "id": "m3-s7",
+              "slug": "quadratic-func-graph",
+              "title": "Ⅰ. 이차함수와 그래프"
+            },
+            {
+              "id": "m3-s8",
+              "slug": "quadratic-func-application",
+              "title": "Ⅱ. 이차함수의 활용"
+            }
+          ]
+        },
+        {
+          "id": "m3-ch5",
+          "slug": "pythagorean",
+          "title": "5장. 피타고라스 정리",
+          "children": [
+            {
+              "id": "m3-s9",
+              "slug": "pythagorean-theorem",
+              "title": "Ⅰ. 피타고라스 정리"
+            },
+            {
+              "id": "m3-s10",
+              "slug": "pythagorean-application",
+              "title": "Ⅱ. 피타고라스 정리의 활용"
+            }
+          ]
+        },
+        {
+          "id": "m3-ch6",
+          "slug": "statistics",
+          "title": "6장. 통계",
+          "children": [
+            {
+              "id": "m3-s11",
+              "slug": "representative-dispersion",
+              "title": "Ⅰ. 대푯값과 산포도"
+            },
+            {
+              "id": "m3-s12",
+              "slug": "correlation",
+              "title": "Ⅱ. 상관관계"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

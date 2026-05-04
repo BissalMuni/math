@@ -1,0 +1,142 @@
+{
+  "id": "llm-learning",
+  "basePath": "llm-learning",
+  "title": "LLM",
+  "description": "트랜스포머 입력부터 출력까지 — 실제 벡터 예제로 이해하는 LLM",
+  "children": [
+    {
+      "id": "ll-prologue",
+      "slug": "prologue",
+      "title": "1장. 서막",
+      "children": [
+        {
+          "id": "ll-p1",
+          "slug": "why-llm",
+          "title": "Ⅰ. 왜 LLM인가"
+        },
+        {
+          "id": "ll-p2",
+          "slug": "neural-net",
+          "title": "Ⅱ. 신경망이란"
+        },
+        {
+          "id": "ll-p3",
+          "slug": "parameter",
+          "title": "Ⅲ. 파라미터란"
+        },
+        {
+          "id": "ll-p4",
+          "slug": "matrix-basic",
+          "title": "Ⅳ. 행렬 곱셈 기초"
+        }
+      ]
+    },
+    {
+      "id": "ll-part1",
+      "slug": "part1",
+      "title": "2장. 입력 처리",
+      "children": [
+        {
+          "id": "ll-ch1",
+          "slug": "tokenization",
+          "title": "Ⅰ. 토큰화"
+        },
+        {
+          "id": "ll-ch2",
+          "slug": "embedding",
+          "title": "Ⅱ. 임베딩"
+        },
+        {
+          "id": "ll-ch3",
+          "slug": "positional-encoding",
+          "title": "Ⅲ. 위치 인코딩"
+        }
+      ]
+    },
+    {
+      "id": "ll-part2",
+      "slug": "part2",
+      "title": "3장. 어텐션 메커니즘",
+      "children": [
+        {
+          "id": "ll-ch4",
+          "slug": "qkv",
+          "title": "Ⅰ. Q · K · V"
+        },
+        {
+          "id": "ll-ch5",
+          "slug": "softmax",
+          "title": "Ⅱ. Softmax"
+        },
+        {
+          "id": "ll-ch6",
+          "slug": "multi-head",
+          "title": "Ⅲ. Multi-Head Attention"
+        }
+      ]
+    },
+    {
+      "id": "ll-part3",
+      "slug": "part3",
+      "title": "4장. 트랜스포머 블록",
+      "children": [
+        {
+          "id": "ll-ch7",
+          "slug": "residual",
+          "title": "Ⅰ. 잔차 연결"
+        },
+        {
+          "id": "ll-ch8",
+          "slug": "layer-norm",
+          "title": "Ⅱ. Layer Norm"
+        },
+        {
+          "id": "ll-ch9",
+          "slug": "feed-forward",
+          "title": "Ⅲ. Feed Forward"
+        }
+      ]
+    },
+    {
+      "id": "ll-part4",
+      "slug": "part4",
+      "title": "5장. 출력",
+      "children": [
+        {
+          "id": "ll-ch10",
+          "slug": "output",
+          "title": "Ⅰ. Linear + Softmax"
+        }
+      ]
+    },
+    {
+      "id": "ll-part5",
+      "slug": "part5",
+      "title": "6장. 학습",
+      "children": [
+        {
+          "id": "ll-ch11",
+          "slug": "backprop",
+          "title": "Ⅰ. 역전파 + 손실함수"
+        },
+        {
+          "id": "ll-ch12",
+          "slug": "training",
+          "title": "Ⅱ. 학습 전체 과정"
+        }
+      ]
+    },
+    {
+      "id": "ll-epilogue",
+      "slug": "epilogue",
+      "title": "7장. 에필로그",
+      "children": [
+        {
+          "id": "ll-ch13",
+          "slug": "enc-dec",
+          "title": "Ⅰ. Encoder vs Decoder"
+        }
+      ]
+    }
+  ]
+}

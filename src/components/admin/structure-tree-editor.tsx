@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import type { TreeNode, CategoryRoot } from "@/structure/types";
+import type { TreeNode, CategoryRoot } from "@/book/types";
 
 // ─── 타입 ────────────────────────────────────────────────────────────────────
 

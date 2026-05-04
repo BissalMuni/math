@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { llmConceptTree } from "@/structure/llm-math";
-import type { TreeNode } from "@/structure";
+import { llmConceptTree } from "@/book/llm-math";
+import type { TreeNode } from "@/book";
 
 type Tab = "pipeline" | "field";
 

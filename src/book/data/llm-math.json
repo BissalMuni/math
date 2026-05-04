@@ -1,0 +1,112 @@
+{
+  "id": "llm-math",
+  "basePath": "llm-math",
+  "title": "LLM 수학",
+  "description": "LLM에 쓰이는 수학 개념 (분야별 + 파이프라인 절차별)",
+  "children": [
+    {
+      "id": "llm-fields",
+      "slug": "fields",
+      "title": "1장. 수학 분야별",
+      "children": [
+        {
+          "id": "llm-f-la",
+          "slug": "linear-algebra",
+          "title": "Ⅰ. 선형대수"
+        },
+        {
+          "id": "llm-f-calc",
+          "slug": "calculus",
+          "title": "Ⅱ. 미적분"
+        },
+        {
+          "id": "llm-f-prob",
+          "slug": "probability",
+          "title": "Ⅲ. 확률과 통계"
+        },
+        {
+          "id": "llm-f-info",
+          "slug": "information-theory",
+          "title": "Ⅳ. 정보이론"
+        },
+        {
+          "id": "llm-f-opt",
+          "slug": "optimization",
+          "title": "Ⅴ. 최적화"
+        },
+        {
+          "id": "llm-f-num",
+          "slug": "numerical-methods",
+          "title": "Ⅵ. 수치해석"
+        }
+      ]
+    },
+    {
+      "id": "llm-pipeline",
+      "slug": "pipeline",
+      "title": "2장. LLM 처리 절차별",
+      "children": [
+        {
+          "id": "llm-p-s1",
+          "slug": "tokenization",
+          "title": "Ⅰ. 토큰화 (Tokenization)"
+        },
+        {
+          "id": "llm-p-s2",
+          "slug": "token-embedding",
+          "title": "Ⅱ. 토큰 임베딩 (Token Embedding)"
+        },
+        {
+          "id": "llm-p-s3",
+          "slug": "positional-encoding",
+          "title": "Ⅲ. 위치 인코딩 (Positional Encoding)"
+        },
+        {
+          "id": "llm-p-s4",
+          "slug": "layer-norm",
+          "title": "Ⅳ. Layer Normalization"
+        },
+        {
+          "id": "llm-p-s5",
+          "slug": "attention",
+          "title": "Ⅴ. Multi-Head Self-Attention"
+        },
+        {
+          "id": "llm-p-s7",
+          "slug": "ffn",
+          "title": "Ⅵ. Residual Connection + FFN"
+        },
+        {
+          "id": "llm-p-s9",
+          "slug": "softmax-output",
+          "title": "Ⅶ. LM Head + Softmax"
+        },
+        {
+          "id": "llm-p-s10",
+          "slug": "sampling",
+          "title": "Ⅷ. 샘플링 / 디코딩"
+        },
+        {
+          "id": "llm-p-s11",
+          "slug": "loss-function",
+          "title": "Ⅸ. 손실 함수 (Cross-Entropy Loss)"
+        },
+        {
+          "id": "llm-p-s12",
+          "slug": "backpropagation",
+          "title": "Ⅹ. 역전파 (Backpropagation)"
+        },
+        {
+          "id": "llm-p-s13",
+          "slug": "optimizer",
+          "title": "Ⅺ. 옵티마이저 (Adam/AdamW)"
+        },
+        {
+          "id": "llm-p-s14",
+          "slug": "rlhf-lora",
+          "title": "Ⅻ. RLHF / LoRA / 양자화"
+        }
+      ]
+    }
+  ]
+}

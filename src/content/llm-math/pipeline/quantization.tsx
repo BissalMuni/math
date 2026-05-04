@@ -8,19 +8,19 @@ export default function Quantization() {
     <div className="space-y-8">
       <p className="text-muted">FP32 가중치를 INT8/INT4로 압축합니다. 메모리와 추론 속도를 개선합니다.</p>
 
-      <CalcBox title="선형 양자화 (Linear Quantization)">
+      <CalcBox title="1. 선형 양자화 (Linear Quantization)">
         <BlockMath math="x_q = \text{round}\left(\frac{x}{\text{scale}} + \text{zero\_point}\right)" />
         <BlockMath math="\text{scale} = \frac{x_{\max} - x_{\min}}{2^b - 1}" />
         <p className="text-sm text-muted">b: 비트 수</p>
       </CalcBox>
 
-      <CalcBox title="양자화 오차">
+      <CalcBox title="2. 양자화 오차">
         <p>역양자화 시 오차가 발생합니다:</p>
         <BlockMath math="\hat{x} = (x_q - \text{zero\_point}) \times \text{scale}" />
         <BlockMath math="\text{오차} = |x - \hat{x}| \leq \frac{\text{scale}}{2}" />
       </CalcBox>
 
-      <CalcBox title="주요 방법">
+      <CalcBox title="3. 주요 방법">
         <div className="overflow-x-auto">
           <table className="text-sm border-collapse w-full">
             <thead>

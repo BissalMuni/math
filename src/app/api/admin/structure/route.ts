@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requirePermission } from "@/lib/auth/require-role";
-import { allCategories } from "@/structure";
+import { allCategories } from "@/book";
 import {
   serializeCategoryToJSON,
   collectLeafIds,
   getCategoryMeta,
 } from "@/lib/structure-serializer";
-import type { CategoryRoot } from "@/structure/types";
+import type { CategoryRoot } from "@/book/types";
 
 /** GitHub API 기본 설정 */
 function getGitHubConfig() {

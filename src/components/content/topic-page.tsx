@@ -1,7 +1,7 @@
 import { Breadcrumb } from "@/components/navigation/breadcrumb";
 import { TopicContent } from "@/components/content/topic-content";
 import { CommentSection } from "@/components/feedback/CommentSection";
-import { isLeafNode, type TreeNode, type CategoryRoot } from "@/structure";
+import { isLeafNode, type TreeNode, type CategoryRoot } from "@/book";
 import Link from "next/link";
 
 /** 소단원(leaf) 콘텐츠 페이지 또는 중간 노드 목록 */

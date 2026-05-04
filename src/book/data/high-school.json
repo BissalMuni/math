@@ -1,0 +1,598 @@
+{
+  "id": "high-school",
+  "basePath": "high-school",
+  "title": "고등학교 수학",
+  "description": "고등학교 수학 (2022 개정 교육과정)",
+  "children": [
+    {
+      "id": "h-cm1",
+      "slug": "common-math1",
+      "title": "공통수학1",
+      "children": [
+        {
+          "id": "h-cm1-ch1",
+          "slug": "polynomial",
+          "title": "1장. 다항식",
+          "children": [
+            {
+              "id": "h-cm1-s1",
+              "slug": "polynomial-operation",
+              "title": "Ⅰ. 다항식의 연산"
+            },
+            {
+              "id": "h-cm1-s2",
+              "slug": "remainder-factorization",
+              "title": "Ⅱ. 나머지정리와 인수분해"
+            }
+          ]
+        },
+        {
+          "id": "h-cm1-ch2",
+          "slug": "equation-inequality",
+          "title": "2장. 방정식과 부등식",
+          "children": [
+            {
+              "id": "h-cm1-s3",
+              "slug": "complex-quadratic",
+              "title": "Ⅰ. 복소수와 이차방정식"
+            },
+            {
+              "id": "h-cm1-s4",
+              "slug": "quadratic-eq-func",
+              "title": "Ⅱ. 이차방정식과 이차함수"
+            },
+            {
+              "id": "h-cm1-s5",
+              "slug": "various-eq-ineq",
+              "title": "Ⅲ. 여러 가지 방정식과 부등식"
+            }
+          ]
+        },
+        {
+          "id": "h-cm1-ch3",
+          "slug": "counting",
+          "title": "3장. 경우의 수",
+          "children": [
+            {
+              "id": "h-cm1-s6",
+              "slug": "permutation-combination",
+              "title": "Ⅰ. 순열과 조합"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h-cm2",
+      "slug": "common-math2",
+      "title": "공통수학2",
+      "children": [
+        {
+          "id": "h-cm2-ch1",
+          "slug": "function",
+          "title": "1장. 함수",
+          "children": [
+            {
+              "id": "h-cm2-s1",
+              "slug": "function-concept",
+              "title": "Ⅰ. 함수"
+            },
+            {
+              "id": "h-cm2-s2",
+              "slug": "rational-irrational-func",
+              "title": "Ⅱ. 유리함수와 무리함수"
+            }
+          ]
+        },
+        {
+          "id": "h-cm2-ch2",
+          "slug": "transformation",
+          "title": "2장. 도형의 이동",
+          "children": [
+            {
+              "id": "h-cm2-s3",
+              "slug": "figure-transformation",
+              "title": "Ⅰ. 도형의 이동"
+            }
+          ]
+        },
+        {
+          "id": "h-cm2-ch3",
+          "slug": "line-circle-eq",
+          "title": "3장. 직선과 원의 방정식",
+          "children": [
+            {
+              "id": "h-cm2-s4",
+              "slug": "line-equation",
+              "title": "Ⅰ. 직선의 방정식"
+            },
+            {
+              "id": "h-cm2-s5",
+              "slug": "circle-equation",
+              "title": "Ⅱ. 원의 방정식"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h-alg",
+      "slug": "algebra",
+      "title": "대수",
+      "children": [
+        {
+          "id": "h-alg-ch1",
+          "slug": "set-proposition",
+          "title": "1장. 집합과 명제",
+          "children": [
+            {
+              "id": "h-alg-s1",
+              "slug": "set",
+              "title": "Ⅰ. 집합"
+            },
+            {
+              "id": "h-alg-s2",
+              "slug": "proposition",
+              "title": "Ⅱ. 명제"
+            }
+          ]
+        },
+        {
+          "id": "h-alg-ch2",
+          "slug": "function-graph",
+          "title": "2장. 함수와 그래프",
+          "children": [
+            {
+              "id": "h-alg-s3",
+              "slug": "various-function",
+              "title": "Ⅰ. 함수"
+            },
+            {
+              "id": "h-alg-s4",
+              "slug": "rational-irrational-application",
+              "title": "Ⅱ. 유리함수와 무리함수의 활용"
+            }
+          ]
+        },
+        {
+          "id": "h-alg-ch3",
+          "slug": "exponent-logarithm",
+          "title": "3장. 지수와 로그",
+          "children": [
+            {
+              "id": "h-alg-s5",
+              "slug": "exponent",
+              "title": "Ⅰ. 지수"
+            },
+            {
+              "id": "h-alg-s6",
+              "slug": "logarithm",
+              "title": "Ⅱ. 로그"
+            }
+          ]
+        },
+        {
+          "id": "h-alg-ch4",
+          "slug": "exp-log-function",
+          "title": "4장. 지수함수와 로그함수",
+          "children": [
+            {
+              "id": "h-alg-s7",
+              "slug": "exp-log-func",
+              "title": "Ⅰ. 지수함수와 로그함수"
+            },
+            {
+              "id": "h-alg-s8",
+              "slug": "exp-log-equation",
+              "title": "Ⅱ. 지수방정식과 로그방정식"
+            },
+            {
+              "id": "h-alg-s9",
+              "slug": "exp-log-inequality",
+              "title": "Ⅲ. 지수부등식과 로그부등식"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h-cal1",
+      "slug": "calculus1",
+      "title": "미적분Ⅰ",
+      "children": [
+        {
+          "id": "h-cal1-ch1",
+          "slug": "sequence",
+          "title": "1장. 수열",
+          "children": [
+            {
+              "id": "h-cal1-s1",
+              "slug": "arithmetic-geometric",
+              "title": "Ⅰ. 등차수열과 등비수열"
+            },
+            {
+              "id": "h-cal1-s2",
+              "slug": "series",
+              "title": "Ⅱ. 수열의 합"
+            },
+            {
+              "id": "h-cal1-s3",
+              "slug": "mathematical-induction",
+              "title": "Ⅲ. 수학적 귀납법"
+            }
+          ]
+        },
+        {
+          "id": "h-cal1-ch2",
+          "slug": "limit-continuity",
+          "title": "2장. 함수의 극한과 연속",
+          "children": [
+            {
+              "id": "h-cal1-s4",
+              "slug": "function-limit",
+              "title": "Ⅰ. 함수의 극한"
+            },
+            {
+              "id": "h-cal1-s5",
+              "slug": "function-continuity",
+              "title": "Ⅱ. 함수의 연속"
+            }
+          ]
+        },
+        {
+          "id": "h-cal1-ch3",
+          "slug": "polynomial-differentiation",
+          "title": "3장. 다항함수의 미분법",
+          "children": [
+            {
+              "id": "h-cal1-s6",
+              "slug": "derivative",
+              "title": "Ⅰ. 미분계수와 도함수"
+            },
+            {
+              "id": "h-cal1-s7",
+              "slug": "derivative-application",
+              "title": "Ⅱ. 도함수의 활용"
+            }
+          ]
+        },
+        {
+          "id": "h-cal1-ch4",
+          "slug": "polynomial-integration",
+          "title": "4장. 다항함수의 적분법",
+          "children": [
+            {
+              "id": "h-cal1-s8",
+              "slug": "indefinite-definite-integral",
+              "title": "Ⅰ. 부정적분과 정적분"
+            },
+            {
+              "id": "h-cal1-s9",
+              "slug": "integral-application",
+              "title": "Ⅱ. 정적분의 활용"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h-ps",
+      "slug": "prob-stat",
+      "title": "확률과 통계",
+      "children": [
+        {
+          "id": "h-ps-ch1",
+          "slug": "probability",
+          "title": "1장. 확률",
+          "children": [
+            {
+              "id": "h-ps-s1",
+              "slug": "probability-usage",
+              "title": "Ⅰ. 확률의 뜻과 활용"
+            },
+            {
+              "id": "h-ps-s2",
+              "slug": "conditional-probability",
+              "title": "Ⅱ. 조건부확률"
+            }
+          ]
+        },
+        {
+          "id": "h-ps-ch2",
+          "slug": "statistics",
+          "title": "2장. 통계",
+          "children": [
+            {
+              "id": "h-ps-s3",
+              "slug": "probability-distribution",
+              "title": "Ⅰ. 확률분포"
+            },
+            {
+              "id": "h-ps-s4",
+              "slug": "statistical-estimation",
+              "title": "Ⅱ. 통계적 추정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h-cal2",
+      "slug": "calculus2",
+      "title": "미적분Ⅱ",
+      "children": [
+        {
+          "id": "h-cal2-ch1",
+          "slug": "various-differentiation",
+          "title": "1장. 여러 가지 함수의 미분법",
+          "children": [
+            {
+              "id": "h-cal2-s1",
+              "slug": "various-func-diff",
+              "title": "Ⅰ. 여러 가지 함수의 미분법"
+            },
+            {
+              "id": "h-cal2-s2",
+              "slug": "various-diff-methods",
+              "title": "Ⅱ. 여러 가지 미분법"
+            },
+            {
+              "id": "h-cal2-s3",
+              "slug": "derivative-application-2",
+              "title": "Ⅲ. 도함수의 활용"
+            }
+          ]
+        },
+        {
+          "id": "h-cal2-ch2",
+          "slug": "various-integration",
+          "title": "2장. 여러 가지 함수의 적분법",
+          "children": [
+            {
+              "id": "h-cal2-s4",
+              "slug": "various-integral-methods",
+              "title": "Ⅰ. 여러 가지 적분법"
+            },
+            {
+              "id": "h-cal2-s5",
+              "slug": "integral-application-2",
+              "title": "Ⅱ. 정적분의 활용"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h-geo",
+      "slug": "geometry",
+      "title": "기하",
+      "children": [
+        {
+          "id": "h-geo-ch1",
+          "slug": "conic-section",
+          "title": "1장. 이차곡선",
+          "children": [
+            {
+              "id": "h-geo-s1",
+              "slug": "conic-section-concept",
+              "title": "Ⅰ. 이차곡선"
+            },
+            {
+              "id": "h-geo-s2",
+              "slug": "conic-line",
+              "title": "Ⅱ. 이차곡선과 직선"
+            }
+          ]
+        },
+        {
+          "id": "h-geo-ch2",
+          "slug": "vector",
+          "title": "2장. 벡터",
+          "children": [
+            {
+              "id": "h-geo-s3",
+              "slug": "plane-vector",
+              "title": "Ⅰ. 평면벡터"
+            },
+            {
+              "id": "h-geo-s4",
+              "slug": "vector-equation",
+              "title": "Ⅱ. 직선과 원의 벡터 방정식"
+            }
+          ]
+        },
+        {
+          "id": "h-geo-ch3",
+          "slug": "space-geometry",
+          "title": "3장. 공간도형과 공간좌표",
+          "children": [
+            {
+              "id": "h-geo-s5",
+              "slug": "space-figure",
+              "title": "Ⅰ. 공간도형"
+            },
+            {
+              "id": "h-geo-s6",
+              "slug": "space-coordinate",
+              "title": "Ⅱ. 공간좌표"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h-econ",
+      "slug": "econ-math",
+      "title": "경제 수학",
+      "children": [
+        {
+          "id": "h-econ-ch1",
+          "slug": "math-economy",
+          "title": "1장. 수학과 경제",
+          "children": [
+            {
+              "id": "h-econ-s1",
+              "slug": "number-economy",
+              "title": "Ⅰ. 수와 생활경제"
+            },
+            {
+              "id": "h-econ-s2",
+              "slug": "sequence-finance",
+              "title": "Ⅱ. 수열과 금융"
+            }
+          ]
+        },
+        {
+          "id": "h-econ-ch2",
+          "slug": "function-economy",
+          "title": "2장. 함수와 경제",
+          "children": [
+            {
+              "id": "h-econ-s3",
+              "slug": "function-economy-concept",
+              "title": "Ⅰ. 함수와 경제 현상"
+            },
+            {
+              "id": "h-econ-s4",
+              "slug": "differentiation-economy",
+              "title": "Ⅱ. 미분과 경제"
+            }
+          ]
+        },
+        {
+          "id": "h-econ-ch3",
+          "slug": "data-economy",
+          "title": "3장. 자료 분석과 경제",
+          "children": [
+            {
+              "id": "h-econ-s5",
+              "slug": "data-interpretation",
+              "title": "Ⅰ. 자료의 정리와 해석"
+            },
+            {
+              "id": "h-econ-s6",
+              "slug": "decision-making",
+              "title": "Ⅱ. 의사결정"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h-ai",
+      "slug": "ai-math",
+      "title": "인공지능 수학",
+      "children": [
+        {
+          "id": "h-ai-ch1",
+          "slug": "data-representation",
+          "title": "1장. 자료의 표현",
+          "children": [
+            {
+              "id": "h-ai-s1",
+              "slug": "data-visualization",
+              "title": "Ⅰ. 자료의 정리와 시각화"
+            },
+            {
+              "id": "h-ai-s2",
+              "slug": "matrix-data",
+              "title": "Ⅱ. 행렬과 자료"
+            }
+          ]
+        },
+        {
+          "id": "h-ai-ch2",
+          "slug": "classification-prediction",
+          "title": "2장. 분류와 예측",
+          "children": [
+            {
+              "id": "h-ai-s3",
+              "slug": "relation-classification",
+              "title": "Ⅰ. 관계와 분류"
+            },
+            {
+              "id": "h-ai-s4",
+              "slug": "prediction-optimization",
+              "title": "Ⅱ. 예측과 최적화"
+            }
+          ]
+        },
+        {
+          "id": "h-ai-ch3",
+          "slug": "information-probability",
+          "title": "3장. 정보와 확률",
+          "children": [
+            {
+              "id": "h-ai-s5",
+              "slug": "conditional-prob-decision",
+              "title": "Ⅰ. 조건부확률과 의사결정"
+            },
+            {
+              "id": "h-ai-s6",
+              "slug": "information-entropy",
+              "title": "Ⅱ. 정보와 엔트로피"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h-voc",
+      "slug": "vocational-math",
+      "title": "직무 수학",
+      "children": [
+        {
+          "id": "h-voc-ch1",
+          "slug": "pattern-relation",
+          "title": "1장. 규칙과 관계",
+          "children": [
+            {
+              "id": "h-voc-s1",
+              "slug": "finding-pattern",
+              "title": "Ⅰ. 규칙 찾기"
+            },
+            {
+              "id": "h-voc-s2",
+              "slug": "ratio-proportion",
+              "title": "Ⅱ. 비와 비율"
+            }
+          ]
+        },
+        {
+          "id": "h-voc-ch2",
+          "slug": "figure-measurement",
+          "title": "2장. 도형과 측정",
+          "children": [
+            {
+              "id": "h-voc-s3",
+              "slug": "plane-measurement",
+              "title": "Ⅰ. 평면도형의 측정"
+            },
+            {
+              "id": "h-voc-s4",
+              "slug": "solid-measurement",
+              "title": "Ⅱ. 입체도형의 측정"
+            }
+          ]
+        },
+        {
+          "id": "h-voc-ch3",
+          "slug": "data-information",
+          "title": "3장. 자료와 정보",
+          "children": [
+            {
+              "id": "h-voc-s5",
+              "slug": "data-organize",
+              "title": "Ⅰ. 자료의 정리"
+            },
+            {
+              "id": "h-voc-s6",
+              "slug": "data-analysis",
+              "title": "Ⅱ. 자료의 해석"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

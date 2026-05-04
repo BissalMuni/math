@@ -1,10 +1,11 @@
-import type { CategoryRoot } from "@/structure/types";
+import type { CategoryRoot } from "@/book/types";
 
 /** 카테고리 ID → JSON 데이터 파일 경로 매핑 */
 const CATEGORY_META: Record<string, { fileName: string }> = {
-  middle:      { fileName: "data/middle-school.json" },
-  high:        { fileName: "data/high-school.json" },
-  "llm-learn": { fileName: "data/llm-learning.json" },
+  "middle-school": { fileName: "data/middle-school.json" },
+  "high-school":   { fileName: "data/high-school.json" },
+  "llm-math":      { fileName: "data/llm-math.json" },
+  "llm-learning":  { fileName: "data/llm-learning.json" },
 };
 
 /** CategoryRoot를 JSON 문자열로 직렬화 (관리자 편집 → JSON 파일) */

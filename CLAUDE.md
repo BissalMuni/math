@@ -4,7 +4,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Interactive web application for studying Korean middle school and high school mathematics. Each curriculum topic provides interactive content (visualizations, practice problems, step-by-step solutions) organized in a tree-structured table of contents.
+학습한 지식을 **바구니 → 책 → 단원 트리 → 콘텐츠** 4계층으로 정리·축적하는 개인 학습 지식 관리 체계.
+각 소단원(leaf)은 KaTeX 수식과 Mafs 시각화를 활용한 단일 TSX 파일 — AI가 댓글 기반으로 단원 단위 편집 가능.
+
+### 4계층 모델
+
+| 계층 | 책임 | 위치 |
+|---|---|---|
+| **basket** | 책을 묶는 UX 라벨 (책 ID 참조만) | `src/basket/` |
+| **book** | 학습 단위. URL·폴더·관리의 독립 기준 | `src/book/` |
+| **content** | leaf별 단일 TSX 파일 | `src/content/` |
+| **map** | book + leaf → content 컴포넌트 | `src/map/` |
+
+### 현재 책 (4권)
+
+| 책 | URL | 소속 바구니 |
+|---|---|---|
+| **중등수학** | `/middle-school` | 수학 |
+| **고등수학** | `/high-school` | 수학 |
+| **LLM 수학** | `/llm-math` | 수학, AI/LLM |
+| **LLM 학습** | `/llm-learning` | AI/LLM |
+
+새 주제(국어·영어·역사 등)는 별도의 책(`Book`)으로 추가하고, 적절한 바구니에 ID 등록.
 
 ## Spec-Driven Development
 
@@ -15,89 +36,47 @@ Refer to `.spec/` for project specifications.
 - `.spec/spec.md` — 기능 명세 (유저 스토리, 요구사항)
 - `.spec/plan.md` — 기술 계획 (아키텍처, 의존성, 구현 순서)
 
-## Curriculum Data
+## Codebase Layout
 
-2022 개정 교육과정 기준:
+> 트리 구조 모델·깊이 규칙·노드 명명·콘텐츠 헤딩 형식은 모두 `CONVENTION_TREE.md`와 `CONVENTION_CONTENT.md`에 정의됨. 이 섹션은 **이 코드베이스에서의 위치와 라우팅**만 다룬다.
 
-- `middle-school-math.md` — 중학교 1~3학년 (대단원 → 중단원 → 소단원)
-- `high-school-math.md` — 고등학교 (공통수학1/2, 대수, 미적분Ⅰ/Ⅱ, 확률과통계, 기하, 경제수학, 인공지능수학, 직무수학)
+### book/ — 책 데이터·로더
+- `src/book/data/*.json` — 책별 원본 트리 (`middle-school.json`, `high-school.json`, `llm-math.json`, `llm-learning.json`)
+- `src/book/<book-id>.ts` — 각 JSON을 `Book`으로 import하는 얇은 로더 (4개)
+- `src/book/llm-curriculum.ts` — LLM 수학 노드 ↔ 교육과정(고등/대학) 매핑 보조 데이터
+- `src/book/index.ts` — `allBooks` (4권), `getBookByPath` 노출. `allCategories`/`getCategoryByPath`는 deprecated 별칭
+- `src/book/types.ts` — `Book`, `TreeNode` 타입 + `findNodePath`, `findNodeBySlugs`, `isLeafNode` 유틸. `CategoryRoot`는 deprecated 별칭
 
-LLM 수학 레퍼런스:
+### basket/ — 바구니 메타
+- `src/basket/<basket-id>.ts` — 한 바구니 정의 (`{ id, title, bookIds }`)
+- `src/basket/index.ts` — `allBaskets`, `getBasketsForBook` 노출
+- `src/basket/types.ts` — `Basket` 타입
 
-- `llm-math.md` — 수학 분야별 분류 (선형대수, 미적분, 확률통계, 정보이론, 최적화, 수치해석)
-- `llm-pipeline-math.md` — LLM 처리 절차 14단계별 수학 매핑
+### content/ — leaf TSX
+- `src/content/<book-id>/.../<leaf-slug>.tsx` — 1 leaf = 1 파일
+- 작성 규칙: `CONVENTION_CONTENT.md`
 
-## Tree Structure
-
-콘텐츠 트리는 **책 → 카테고리 → 학년/과목 → 대단원 → 중단원 → 소단원** 구조입니다.
-
-### 책 (Book) — 최상위 컨테이너
-`CategoryRoot` 타입으로 정의된 최상위 단위.
-
-- **수학** (`math`) — 중등수학 + 고등수학 + LLM 수학을 한 권으로 묶음
-- **LLM** (`llm-learn`) — 트랜스포머 입력→출력 학습서
-
-새 과목(국어/영어 등)을 추가할 땐 별도의 `Subject` 타입을 도입하지 말고 새 책(CategoryRoot)을 추가합니다.
-
-### 표준 트리 깊이 — **최대 5단계, 자연 깊이 우선**
-
-CategoryRoot(책) 컨테이너 1개 안에 **최대 5단계**의 노드. 마지막이 leaf(실제 콘텐츠 1개 파일).
-
-```
-[수학 책 — 5단계]
-1. 카테고리      예: 중등수학, 고등수학, LLM 수학
-2. 학년/과목     예: 중1, 수학Ⅰ
-3. 대단원        예: Ⅰ. 수와 연산
-4. 중단원        예: 1. 소인수분해             ← 학교 수학은 여기가 leaf
-5. (사용 안 함)
-
-[LLM 수학 — 3단계]
-1. 카테고리      예: LLM 수학
-2. 분류          예: 분야별, 파이프라인
-3. 분야          예: 1. 선형대수               ← LLM 수학은 여기가 leaf
-```
-
-- **5단계는 *상한*** — 자연 깊이가 더 얕으면 그 깊이에서 leaf로 둔다 (인위 레이어 추가 X)
-- **leaf** = `children`이 없거나 빈 배열인 TreeNode → 실제 학습 콘텐츠 1개 파일 보유
-- **내부 노드** = `children`이 있는 TreeNode → 네비게이션·목차 역할
-
-### 콘텐츠 파일 깊이 — **최대 3 depth**
-
-각 leaf 콘텐츠 TSX 파일 내부의 헤딩 계층:
-
-```
-h1 (자동)        node.title (TopicContent가 렌더링)
-  h2             CalcBox title — 소목차
-    h3           SubSection title — 세부 주제
-```
-
-- **3 depth는 *상한*** — h3가 필요 없으면 h2까지만 사용
-- 자세한 작성 규칙은 `src/content/RULES.md`
-
-### 노드 vs 리프
-- **노드**: 트리의 모든 요소 (큰 개념)
-- **리프**: 자식이 없는 말단 노드 = 소단원 (작은 개념, 노드의 부분집합)
+### map/ — 라우팅 컨벤션
+- `src/map/index.ts` — book + leaf → content 컴포넌트 동적 import (`getContentComponent`)
+- 책별 path 도출 함수 4개 (middle-school은 `grade${slug}` prefix 변환 있음)
 
 ### URL 매핑
-- 책 basePath가 URL prefix가 됨: `/math/...`, `/llm-learn/...`
-- TreeNode의 `slug`가 각 세그먼트: `/math/middle/1/number-operation/prime-factorization/prime-composite`
-
-### 데이터 위치
-- `src/structure/data/*.json` — 카테고리별 트리 데이터 (middle, high, llm-math, llm-learning)
-- `src/structure/math.ts` — 중등/고등/LLM수학을 묶는 **수학 책** 런타임 조립
-- `src/structure/index.ts` — `allBooks`(사이드바·홈), `allCategories`(어드민) 두 뷰 노출
+- 책 `basePath`가 URL prefix: `/middle-school/...`, `/high-school/...`, `/llm-math/...`, `/llm-learning/...`
+- TreeNode의 `slug`가 각 세그먼트로 이어짐
 
 ## Tech Stack
 
-- **Framework:** Next.js 16 (App Router, src directory)
+- **Framework:** Next.js 16 (App Router, src directory) + React 19
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS v4
 - **Package manager:** pnpm
 - **Testing:** vitest
 - **Math rendering:** KaTeX
 - **Visualization:** Mafs (React 수학 시각화)
-- **Data:** JSON/TS files (no DB)
-- **Progress storage:** localStorage (no auth)
+- **Backend:** Supabase (`math` 스키마) — 댓글·이미지·콘텐츠 변경 이력
+- **Auth:** 자체 세션 (`jose` / JWT) + 역할 기반 권한 (admin 등)
+- **Tree/Content data:** JSON/TS 파일 (DB 아님)
+- **Progress storage:** localStorage
 - **Code comments:** Korean
 - **Import alias:** `@/*` → `src/*`
 
@@ -130,8 +109,21 @@ When adding a new component, place it in the matching domain folder. If no exist
 
 ## Content Authoring Rules
 
-콘텐츠 파일(TSX) 작성 규칙은 **`src/content/RULES.md`** 참조.
-콘텐츠를 생성·수정할 때 반드시 이 파일을 읽고 따를 것.
+콘텐츠 또는 구조를 생성·수정할 때 반드시 다음을 먼저 참조:
+
+- **TSX 작성 규칙**: `CONVENTION_CONTENT.md`
+- **트리 구조·명명 규칙**: `CONVENTION_TREE.md`
+
+기존 단원 구조·명칭의 단일 진실은 `src/book/data/*.json`.
+
+### 새 책 추가
+1. `src/book/data/<book-id>.json` 작성 — `id`, `basePath` (모두 동일 이름), `title`, `description`, `children`
+2. `src/book/<book-id>.ts` 로더 작성 (5줄)
+3. `src/book/index.ts` `allBooks`에 추가
+4. `src/map/index.ts`에 derive 함수 + switch case 추가
+5. `src/app/<book-id>/page.tsx` + `[...slugs]/page.tsx` 생성
+6. `src/content/<book-id>/` 폴더에 leaf TSX 작성
+7. `src/basket/<basket>.ts` `bookIds`에 등록 (≥1개 바구니 필수)
 
 ## Next.js Note
 

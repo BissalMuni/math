@@ -6,7 +6,7 @@ import { CalcBox } from "@/components/content/shared";
 export default function NumericalMethods() {
   return (
     <div className="space-y-8">
-      <CalcBox title="부동소수점 산술 (Floating Point Arithmetic)">
+      <CalcBox title="1. 부동소수점 산술 (Floating Point Arithmetic)">
         <p>LLM에서는 다양한 정밀도를 사용합니다.</p>
         <div className="mt-3 overflow-x-auto">
           <table className="text-sm border-collapse w-full">
@@ -29,7 +29,7 @@ export default function NumericalMethods() {
         <p className="mt-2 text-sm text-muted">교육과정: 대학교 수치해석</p>
       </CalcBox>
 
-      <CalcBox title="수치 안정성 (Numerical Stability)">
+      <CalcBox title="2. 수치 안정성 (Numerical Stability)">
         <p>Softmax의 오버플로를 방지하기 위해 max를 빼는 트릭을 사용합니다.</p>
         <BlockMath math="\text{softmax}(x_i) = \frac{e^{x_i - \max(\mathbf{x})}}{\sum_j e^{x_j - \max(\mathbf{x})}}" />
         <div className="mt-3 rounded-lg bg-accent-light p-4 text-sm">
@@ -38,7 +38,7 @@ export default function NumericalMethods() {
         <p className="mt-2 text-sm text-muted">교육과정: 대학교 수치해석</p>
       </CalcBox>
 
-      <CalcBox title="행렬 분해 / LoRA (Low-Rank Adaptation)">
+      <CalcBox title="3. 행렬 분해 / LoRA (Low-Rank Adaptation)">
         <p>가중치 업데이트를 저랭크 행렬 2개의 곱으로 근사합니다. 파라미터 수를 극적으로 절감합니다.</p>
         <BlockMath math="W' = W + \Delta W = W + BA" />
         <p className="text-sm text-muted">

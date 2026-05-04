@@ -2,7 +2,7 @@ import { getSessionFromCookies } from "@/lib/auth/session";
 import { hasPermission } from "@/lib/auth/constants";
 import { redirect } from "next/navigation";
 import { StructureTreeEditor } from "@/components/admin/structure-tree-editor";
-import { allCategories } from "@/structure";
+import { allCategories } from "@/book";
 import { getCategoryMeta } from "@/lib/structure-serializer";
 
 export default async function AdminStructurePage() {

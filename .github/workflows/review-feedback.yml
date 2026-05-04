@@ -49,7 +49,7 @@ jobs:
         run: |
           claude --print --dangerously-skip-permissions \
             --allowedTools "Bash,Read,Edit,Write,Glob,Grep" \
-            -p "$(cat src/content/RULES.md)
+            -p "$(cat CONVENTION_CONTENT.md CONVENTION_TREE.md)
 
           이 레포에서 내용 피드백 반영 작업을 수행해줘.
           절대 규칙:

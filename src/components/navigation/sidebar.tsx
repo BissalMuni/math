@@ -3,10 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { allBooks, type TreeNode } from "@/structure";
+import { allBooks, type TreeNode, type Book } from "@/book";
+import { allBaskets, type Basket } from "@/basket";
 import { SidebarAuth } from "@/components/navigation/sidebar-auth";
 
-/** 사이드바 네비게이션 */
+/** 사이드바 네비게이션 — 바구니 → 책 → 트리 3단 */
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -46,12 +47,10 @@ export function Sidebar() {
             <SidebarAuth />
           </div>
           <nav>
-            {allBooks.map((book) => (
-              <CategorySection
-                key={book.id}
-                basePath={book.basePath}
-                title={book.title}
-                nodes={book.children}
+            {allBaskets.map((basket) => (
+              <BasketSection
+                key={basket.id}
+                basket={basket}
                 onNavigate={() => setIsOpen(false)}
               />
             ))}
@@ -62,37 +61,65 @@ export function Sidebar() {
   );
 }
 
-/** 책 섹션 (수학, LLM) */
-function CategorySection({
-  basePath,
-  title,
-  nodes,
+/** 바구니 섹션 — 헤더 + 소속 책 목록 */
+function BasketSection({
+  basket,
   onNavigate,
 }: {
-  basePath: string;
-  title: string;
-  nodes: TreeNode[];
+  basket: Basket;
+  onNavigate: () => void;
+}) {
+  const books = basket.bookIds
+    .map((id) => allBooks.find((b) => b.id === id))
+    .filter((b): b is Book => b !== undefined);
+
+  if (books.length === 0) return null;
+
+  return (
+    <div className="mb-4">
+      <h3 className="flex items-center gap-1.5 px-2 mb-1 text-[11px] font-bold tracking-wide text-muted uppercase">
+        <span aria-hidden>🧺</span>
+        {basket.title}
+      </h3>
+      {books.map((book) => (
+        <BookSection
+          key={`${basket.id}-${book.id}`}
+          book={book}
+          onNavigate={onNavigate}
+        />
+      ))}
+    </div>
+  );
+}
+
+/** 책 섹션 — 토글 + 트리 */
+function BookSection({
+  book,
+  onNavigate,
+}: {
+  book: Book;
   onNavigate: () => void;
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div className="mb-2">
+    <div className="mb-1">
       <button
         type="button"
         onClick={() => setIsExpanded(!isExpanded)}
-        className="flex w-full items-center gap-1 rounded px-2 py-1.5 text-sm font-semibold hover:bg-accent-light"
+        className="flex w-full items-center gap-1.5 rounded px-2 py-1.5 text-sm font-semibold hover:bg-accent-light"
       >
         <span className="text-xs">{isExpanded ? "▼" : "▶"}</span>
-        {title}
+        <span aria-hidden>📖</span>
+        {book.title}
       </button>
       {isExpanded && (
         <div className="ml-2">
-          {nodes.map((node) => (
+          {book.children.map((node) => (
             <TreeNavNode
               key={node.id}
               node={node}
-              path={`/${basePath}`}
+              path={`/${book.basePath}`}
               depth={0}
               onNavigate={onNavigate}
             />

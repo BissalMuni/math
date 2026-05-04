@@ -1,8 +1,32 @@
+"use client";
+
+import { useState } from "react";
 import { InlineMath, BlockMath } from "@/components/math/math-formula";
 import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
 /** 중1 > Ⅵ. 자료의 정리와 해석 > 1. 자료의 정리와 해석 */
+
+const STEM_LEAF_DATA = [
+  { stem: 2, leaves: [3] },
+  { stem: 3, leaves: [5, 8] },
+  { stem: 4, leaves: [1, 2, 5, 7] },
+  { stem: 5, leaves: [2, 5, 8] },
+  { stem: 6, leaves: [1, 3] },
+];
+
+const DOT_R = 16;
+const DOT_GAP = 40;
+const LEFT_PAD = 60;
+const ROW_H = 46;
+const TOP_PAD = 20;
+
 export default function DataAnalysis() {
+  const [hoveredScore, setHoveredScore] = useState<number | null>(null);
+
+  const maxLeaves = Math.max(...STEM_LEAF_DATA.map((r) => r.leaves.length));
+  const svgH = STEM_LEAF_DATA.length * ROW_H + TOP_PAD * 2;
+  const svgW = LEFT_PAD + maxLeaves * DOT_GAP + DOT_R + 16;
+
   return (
     <div className="space-y-8">
       <CalcBox title="1. 줄기와 잎 그림, 도수분포표">
@@ -23,6 +47,136 @@ export default function DataAnalysis() {
               <p>6 | 1 3</p>
             </div>
           </div>
+
+          {/* 인터랙티브 시각화 */}
+          <div className="mt-4">
+            <p className="text-sm font-medium mb-1">시각화: 잎의 분포</p>
+            <p className="text-xs text-muted mb-3">
+              각 원에 마우스를 올리면 해당 점수를 확인할 수 있습니다.
+            </p>
+            <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-4 overflow-x-auto">
+              <svg
+                width="100%"
+                viewBox={`0 0 ${svgW} ${svgH}`}
+                style={{ minWidth: 240 }}
+              >
+                {/* 줄기-잎 구분선 */}
+                <line
+                  x1={LEFT_PAD - 10}
+                  y1={TOP_PAD - 10}
+                  x2={LEFT_PAD - 10}
+                  y2={svgH - TOP_PAD + 10}
+                  stroke="#6366f1"
+                  strokeWidth="2"
+                />
+
+                {/* 헤더 */}
+                <text
+                  x={LEFT_PAD - 30}
+                  y={TOP_PAD - 4}
+                  textAnchor="middle"
+                  fontSize="11"
+                  fill="#a0a0b0"
+                >
+                  줄기
+                </text>
+                <text
+                  x={LEFT_PAD + 8}
+                  y={TOP_PAD - 4}
+                  textAnchor="start"
+                  fontSize="11"
+                  fill="#a0a0b0"
+                >
+                  잎 (일의 자리)
+                </text>
+
+                {STEM_LEAF_DATA.map((row, rowIdx) => {
+                  const cy = TOP_PAD + rowIdx * ROW_H + ROW_H / 2;
+                  return (
+                    <g key={row.stem}>
+                      {/* 줄기 숫자 */}
+                      <text
+                        x={LEFT_PAD - 28}
+                        y={cy}
+                        textAnchor="middle"
+                        dominantBaseline="central"
+                        fontSize="15"
+                        fontWeight="700"
+                        fill="#818cf8"
+                      >
+                        {row.stem}
+                      </text>
+
+                      {/* 잎 원 */}
+                      {row.leaves.map((leaf, leafIdx) => {
+                        const cx = LEFT_PAD + leafIdx * DOT_GAP + DOT_R;
+                        const score = row.stem * 10 + leaf;
+                        const isHov = hoveredScore === score;
+                        return (
+                          <g
+                            key={leafIdx}
+                            onMouseEnter={() => setHoveredScore(score)}
+                            onMouseLeave={() => setHoveredScore(null)}
+                            style={{ cursor: "pointer" }}
+                          >
+                            <circle
+                              cx={cx}
+                              cy={cy}
+                              r={DOT_R}
+                              fill={isHov ? "#6366f1" : "#312e81"}
+                              stroke={isHov ? "#a5b4fc" : "#4f46e5"}
+                              strokeWidth="1.5"
+                            />
+                            <text
+                              x={cx}
+                              y={cy}
+                              textAnchor="middle"
+                              dominantBaseline="central"
+                              fontSize="13"
+                              fontWeight={isHov ? "700" : "400"}
+                              fill={isHov ? "#fff" : "#c7d2fe"}
+                            >
+                              {leaf}
+                            </text>
+                          </g>
+                        );
+                      })}
+                    </g>
+                  );
+                })}
+
+                {/* 호버 시 점수 표시 */}
+                {hoveredScore !== null && (
+                  <g>
+                    <rect
+                      x={svgW - 72}
+                      y={4}
+                      width={66}
+                      height={24}
+                      rx={5}
+                      fill="#6366f1"
+                    />
+                    <text
+                      x={svgW - 39}
+                      y={16}
+                      textAnchor="middle"
+                      dominantBaseline="central"
+                      fontSize="12"
+                      fill="white"
+                      fontWeight="600"
+                    >
+                      {hoveredScore}점
+                    </text>
+                  </g>
+                )}
+              </svg>
+            </div>
+            <p className="text-xs text-muted mt-2">
+              40대 줄기(4행)에 잎이 4개로 가장 많아 점수가 이 구간에 집중됨을
+              한눈에 알 수 있습니다.
+            </p>
+          </div>
+
           <ul className="mt-3 list-disc pl-6 space-y-1 text-sm">
             <li>자료의 분포를 한눈에 파악할 수 있습니다.</li>
             <li>원래의 자료 값을 그대로 알 수 있습니다.</li>

@@ -17,7 +17,7 @@ export default async function AdminDashboard() {
     return (
       <div>
         <h1 className="mb-4 text-2xl font-bold">관리자 대시보드</h1>
-        <p className="text-gray-500">
+        <p className="text-muted">
           현재 역할로는 수정 이력을 조회할 수 없습니다.
         </p>
       </div>
@@ -42,7 +42,7 @@ export default async function AdminDashboard() {
 
       <div>
         <h2 className="mb-3 text-lg font-semibold">최근 변경</h2>
-        <div className="rounded-lg border border-gray-200 bg-white">
+        <div className="rounded-lg border border-sidebar-border bg-sidebar-bg">
           <ChangeTable changes={recent.data} showDetail />
         </div>
       </div>

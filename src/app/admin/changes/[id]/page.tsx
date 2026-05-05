@@ -40,7 +40,7 @@ export default async function ChangeDetailPage({
       <div className="flex items-center gap-4">
         <Link
           href="/admin/changes"
-          className="text-sm text-gray-500 hover:text-gray-700"
+          className="text-sm text-muted hover:text-foreground"
         >
           &larr; 이력 목록
         </Link>
@@ -48,29 +48,29 @@ export default async function ChangeDetailPage({
       </div>
 
       {/* 메타 정보 */}
-      <div className="rounded-lg border border-gray-200 bg-white p-6">
+      <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-6">
         <dl className="grid grid-cols-2 gap-4 text-sm md:grid-cols-4">
           <div>
-            <dt className="text-gray-500">유형</dt>
+            <dt className="text-muted">유형</dt>
             <dd className="mt-1 font-medium">
               {CHANGE_TYPE_LABELS[change.change_type] || change.change_type}
             </dd>
           </div>
           <div>
-            <dt className="text-gray-500">실행자</dt>
+            <dt className="text-muted">실행자</dt>
             <dd className="mt-1 font-medium">{change.actor}</dd>
           </div>
           <div>
-            <dt className="text-gray-500">시간</dt>
+            <dt className="text-muted">시간</dt>
             <dd className="mt-1 font-medium">{formatDate(change.created_at)}</dd>
           </div>
           <div>
-            <dt className="text-gray-500">파일</dt>
+            <dt className="text-muted">파일</dt>
             <dd className="mt-1 font-mono text-xs">{change.file_path}</dd>
           </div>
           {change.commit_sha && (
             <div>
-              <dt className="text-gray-500">커밋</dt>
+              <dt className="text-muted">커밋</dt>
               <dd className="mt-1 font-mono text-xs">{change.commit_sha}</dd>
             </div>
           )}
@@ -79,7 +79,7 @@ export default async function ChangeDetailPage({
 
       {/* Diff */}
       {change.diff && (
-        <div className="rounded-lg border border-gray-200 bg-white p-6">
+        <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-6">
           <h2 className="mb-3 text-lg font-semibold">Diff</h2>
           <pre className="max-h-64 overflow-auto rounded-lg bg-gray-900 p-4 text-xs text-gray-100">
             {change.diff}
@@ -89,7 +89,7 @@ export default async function ChangeDetailPage({
 
       {/* Before / After */}
       {(change.before_content || change.after_content) && (
-        <div className="rounded-lg border border-gray-200 bg-white p-6">
+        <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-6">
           <h2 className="mb-3 text-lg font-semibold">변경 전/후</h2>
           <DiffView
             before={change.before_content}
@@ -100,8 +100,8 @@ export default async function ChangeDetailPage({
 
       {/* 롤백 */}
       {canRollback && (
-        <div className="rounded-lg border border-orange-200 bg-orange-50 p-4">
-          <p className="mb-3 text-sm text-orange-700">
+        <div className="rounded-lg border border-orange-300 bg-orange-50 p-4 dark:border-orange-700 dark:bg-orange-950">
+          <p className="mb-3 text-sm text-orange-700 dark:text-orange-300">
             이 변경을 되돌려 파일을 이전 상태로 복구합니다.
           </p>
           <RollbackButton changeId={change.id} />

@@ -1,8 +1,9 @@
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { hasPermission } from "@/lib/auth/constants";
 import { redirect } from "next/navigation";
-import { StructureTreeEditor } from "@/components/admin/structure-tree-editor";
+import { StructurePageTabs } from "@/components/admin/structure-page-tabs";
 import { allBooks } from "@/book";
+import { allBaskets } from "@/basket";
 import { getBookMeta } from "@/lib/structure-serializer";
 
 export default async function AdminStructurePage() {
@@ -13,7 +14,7 @@ export default async function AdminStructurePage() {
     redirect("/admin");
   }
 
-  // 편집 가능한 책만 (llm-math는 복합 구조라 제외)
+  // 편집 가능한 책만 (getBookMeta가 null이면 제외)
   const editable = allBooks.filter(
     (b) => getBookMeta(b.id) !== null
   );
@@ -21,13 +22,13 @@ export default async function AdminStructurePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">구조 편집</h1>
-        <p className="mt-1 text-sm text-gray-500">
-          목차 트리를 직접 편집합니다. 저장 시 GitHub main 브랜치에 커밋됩니다.
+        <h1 className="text-2xl font-bold">구조 관리</h1>
+        <p className="mt-1 text-sm text-muted">
+          책·바구니·목차 트리를 관리합니다. 저장 시 GitHub main 브랜치에 커밋됩니다.
         </p>
       </div>
 
-      <StructureTreeEditor books={editable} />
+      <StructurePageTabs books={editable} baskets={allBaskets} />
     </div>
   );
 }

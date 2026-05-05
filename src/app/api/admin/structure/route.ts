@@ -99,7 +99,7 @@ export async function PUT(request: NextRequest) {
 
     // 2) 구조 파일 내용 생성 (JSON)
     const structureContent = serializeBookToJSON(book);
-    const structurePath = `src/structure/${meta.fileName}`;
+    const structurePath = `src/book/${meta.fileName}`;
 
     // 3) 새 leaf node에 대한 빈 콘텐츠 파일 생성
     const currentLeafIds = collectLeafIds(

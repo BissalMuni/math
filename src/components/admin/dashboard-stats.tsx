@@ -28,22 +28,22 @@ export function DashboardStats({
         {stats.map((s) => (
           <div
             key={s.label}
-            className="rounded-lg border border-gray-200 bg-white p-4"
+            className="rounded-lg border border-sidebar-border bg-sidebar-bg p-4"
           >
-            <p className="text-sm text-gray-500">{s.label}</p>
+            <p className="text-sm text-muted">{s.label}</p>
             <p className="mt-1 text-2xl font-bold">{s.value}</p>
           </div>
         ))}
       </div>
 
       {Object.keys(byType).length > 0 && (
-        <div className="rounded-lg border border-gray-200 bg-white p-4">
-          <p className="mb-3 text-sm font-medium text-gray-700">유형별 분류</p>
+        <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-4">
+          <p className="mb-3 text-sm font-medium text-foreground">유형별 분류</p>
           <div className="flex flex-wrap gap-3">
             {Object.entries(byType).map(([type, count]) => (
               <span
                 key={type}
-                className="rounded-full bg-gray-100 px-3 py-1 text-sm"
+                className="rounded-full bg-accent-light px-3 py-1 text-sm text-foreground"
               >
                 {CHANGE_TYPE_LABELS[type] || type}: {count}
               </span>

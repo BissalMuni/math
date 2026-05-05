@@ -45,8 +45,8 @@ export default async function ChangesPage({
                 href={`/admin/changes${type ? `?change_type=${type}` : ""}`}
                 className={`rounded-full px-3 py-1 text-sm ${
                   isActive
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-accent text-white"
+                    : "bg-sidebar-bg text-muted hover:bg-accent-light"
                 }`}
               >
                 {label}
@@ -57,7 +57,7 @@ export default async function ChangesPage({
       </div>
 
       {/* 테이블 */}
-      <div className="rounded-lg border border-gray-200 bg-white">
+      <div className="rounded-lg border border-sidebar-border bg-sidebar-bg">
         <ChangeTable changes={data} showDetail />
       </div>
 
@@ -67,18 +67,18 @@ export default async function ChangesPage({
           {page > 1 && (
             <Link
               href={`/admin/changes?page=${page - 1}${params.change_type ? `&change_type=${params.change_type}` : ""}`}
-              className="rounded-md border px-3 py-1 text-sm hover:bg-gray-50"
+              className="rounded-md border px-3 py-1 text-sm hover:bg-sidebar-bg"
             >
               이전
             </Link>
           )}
-          <span className="text-sm text-gray-500">
+          <span className="text-sm text-muted">
             {page} / {totalPages}
           </span>
           {page < totalPages && (
             <Link
               href={`/admin/changes?page=${page + 1}${params.change_type ? `&change_type=${params.change_type}` : ""}`}
-              className="rounded-md border px-3 py-1 text-sm hover:bg-gray-50"
+              className="rounded-md border px-3 py-1 text-sm hover:bg-sidebar-bg"
             >
               다음
             </Link>

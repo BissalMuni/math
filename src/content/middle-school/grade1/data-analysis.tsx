@@ -54,11 +54,11 @@ export default function DataAnalysis() {
             <p className="text-xs text-muted mb-3">
               각 원에 마우스를 올리면 해당 점수를 확인할 수 있습니다.
             </p>
-            <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-4 overflow-x-auto">
+            <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-4 overflow-x-auto" style={{ maxWidth: "50%" }}>
               <svg
                 width="100%"
                 viewBox={`0 0 ${svgW} ${svgH}`}
-                style={{ minWidth: 240 }}
+                style={{ minWidth: 120 }}
               >
                 {/* 줄기-잎 구분선 */}
                 <line

@@ -67,7 +67,12 @@ Refer to `.spec/` for project specifications.
 
 - `src/lib/types.ts` — 공통 타입 (`Comment`, `TopicImage`, `ContentChange` 등)
 - `src/lib/progress.ts` — 학습 진도 (localStorage)
-- `src/lib/structure-serializer.ts` — 트리 구조 직렬화
+- `src/lib/structure-serializer.ts` — 트리 구조 직렬화 + 책 메타 매핑
+
+#### lib/admin/ — 관리자 공통 유틸
+
+- `src/lib/admin/github.ts` — GitHub API 공통 (커밋 헬퍼, blob/tree/ref 조작)
+- `src/lib/admin/templates.ts` — 책/바구니 파일 자동 생성 템플릿 (로더, index.ts, map, 라우트 등)
 
 #### lib/auth/ — 인증
 
@@ -91,12 +96,14 @@ Refer to `.spec/` for project specifications.
 - `api/admin/changes/` — 변경 이력 목록/상세/통계
 - `api/admin/rollback/` — 콘텐츠 롤백
 - `api/admin/structure/` — 트리 구조 수정
+- `api/admin/books/` — 새 책 생성 (POST: 7개 파일 자동 생성 + GitHub 커밋)
+- `api/admin/baskets/` — 바구니 목록 조회(GET) / 전체 업데이트(PUT)
 
 ### app/admin/ — 관리자 페이지
 
 - `admin/` — 대시보드 (변경 통계)
 - `admin/changes/` — 변경 이력 목록 + `[id]` 상세
-- `admin/structure/` — 트리 구조 편집기
+- `admin/structure/` — 구조 관리 (3탭: 구조 편집 / 책 관리 / 바구니 관리)
 
 ### proxy.ts — 미들웨어
 
@@ -144,7 +151,7 @@ src/components/
 ├── math/         # 수식 렌더링 (KaTeX), 시각화 (Mafs)
 ├── feedback/     # 의견 버튼, 댓글 폼/목록, 이미지 그리드
 ├── progress/     # 학습 진도 체크
-└── admin/        # 관리자 대시보드, 변경내역, 롤백
+└── admin/        # 관리자 대시보드, 변경내역, 롤백, 책/바구니 관리
 ```
 
 When adding a new component, place it in the matching domain folder. If no existing folder fits, create a new domain folder with a clear purpose — do not place files directly under `src/components/`.
@@ -159,13 +166,22 @@ When adding a new component, place it in the matching domain folder. If no exist
 기존 단원 구조·명칭의 단일 진실은 `src/book/data/*.json`.
 
 ### 새 책 추가
+
+**관리자 UI**: `/admin/structure` → "책 관리" 탭에서 ID·제목·경로패턴·바구니를 입력하면 아래 파일이 자동 생성되어 GitHub에 커밋됩니다.
+
+수동으로 추가할 경우:
 1. `src/book/data/<book-id>.json` 작성 — `id`, `basePath` (모두 동일 이름), `title`, `description`, `children`
 2. `src/book/<book-id>.ts` 로더 작성 (5줄)
 3. `src/book/index.ts` `allBooks`에 추가
 4. `src/map/index.ts`에 derive 함수 + switch case 추가
-5. `src/app/<book-id>/page.tsx` + `[...slugs]/page.tsx` 생성
-6. `src/content/<book-id>/` 폴더에 leaf TSX 작성
-7. `src/basket/<basket>.ts` `bookIds`에 등록 (≥1개 바구니 필수)
+5. `src/lib/structure-serializer.ts` BOOK_META에 추가
+6. `src/app/<book-id>/page.tsx` + `[...slugs]/page.tsx` 생성
+7. `src/content/<book-id>/` 폴더에 leaf TSX 작성
+8. `src/basket/<basket>.ts` `bookIds`에 등록 (≥1개 바구니 필수)
+
+### 바구니 관리
+
+**관리자 UI**: `/admin/structure` → "바구니 관리" 탭에서 바구니 생성·삭제, 책 할당/해제가 가능합니다. 모든 책은 최소 1개 바구니에 소속되어야 합니다.
 
 ## Next.js Note
 

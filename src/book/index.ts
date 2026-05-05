@@ -5,7 +5,7 @@ export { llmLearning } from "./llm-learning";
 export { aiMemory } from "./ai-memory";
 export { wirelessComm } from "./wireless-comm";
 export type { TreeNode, Book } from "./types";
-export { isLeafNode, findNodePath, findNodeBySlugs } from "./types";
+export { isLeafNode, findNodePath, findNodeBySlugs, getFirstLeafPath } from "./types";
 
 import { middleSchool } from "./middle-school";
 import { highSchool } from "./high-school";

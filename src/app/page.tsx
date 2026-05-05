@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { allBooks } from "@/book";
+import { allBooks, getFirstLeafPath } from "@/book";
 
 export default function Home() {
   return (
@@ -10,21 +10,27 @@ export default function Home() {
       </p>
 
       <div className="grid gap-6 sm:grid-cols-2">
-        {allBooks.map((book) => (
-          <Link
-            key={book.id}
-            href={`/${book.basePath}`}
-            className="group rounded-xl border border-sidebar-border p-6 transition-colors hover:border-accent hover:bg-accent-light"
-          >
-            <h2 className="text-xl font-semibold mb-2 group-hover:text-accent">
-              {book.title}
-            </h2>
-            <p className="text-sm text-muted">{book.description}</p>
-            <p className="mt-3 text-xs text-muted">
-              {book.children.length}개 카테고리
-            </p>
-          </Link>
-        ))}
+        {allBooks.map((book) => {
+          const firstLeaf = getFirstLeafPath(book.children);
+          const href = firstLeaf.length > 0
+            ? `/${book.basePath}/${firstLeaf.join("/")}`
+            : `/${book.basePath}`;
+          return (
+            <Link
+              key={book.id}
+              href={href}
+              className="group rounded-xl border border-sidebar-border p-6 transition-colors hover:border-accent hover:bg-accent-light"
+            >
+              <h2 className="text-xl font-semibold mb-2 group-hover:text-accent">
+                {book.title}
+              </h2>
+              <p className="text-sm text-muted">{book.description}</p>
+              <p className="mt-3 text-xs text-muted">
+                {book.children.length}개 카테고리
+              </p>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

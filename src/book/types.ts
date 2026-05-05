@@ -59,3 +59,17 @@ export function findNodeBySlugs(
 export function isLeafNode(node: TreeNode): boolean {
   return !node.children || node.children.length === 0;
 }
+
+/** 트리에서 첫 번째 leaf 노드까지의 slug 경로를 반환 */
+export function getFirstLeafPath(nodes: TreeNode[]): string[] {
+  for (const node of nodes) {
+    if (!node.children || node.children.length === 0) {
+      return [node.slug];
+    }
+    const childPath = getFirstLeafPath(node.children);
+    if (childPath.length > 0) {
+      return [node.slug, ...childPath];
+    }
+  }
+  return [];
+}

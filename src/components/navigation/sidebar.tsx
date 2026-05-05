@@ -6,10 +6,12 @@ import { usePathname } from "next/navigation";
 import { allBooks, type TreeNode, type Book } from "@/book";
 import { allBaskets, type Basket } from "@/basket";
 import { SidebarAuth } from "@/components/navigation/sidebar-auth";
+import { SearchDialog } from "@/components/search/search-dialog";
 
 /** 사이드바 네비게이션 — 바구니 → 책 → 트리 3단 */
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <>
@@ -46,6 +48,31 @@ export function Sidebar() {
             </Link>
             <SidebarAuth />
           </div>
+
+          {/* 검색 버튼 */}
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            className="mb-4 flex w-full items-center gap-2 rounded-lg border border-sidebar-border px-3 py-2 text-sm text-muted hover:border-accent hover:text-accent transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <span>검색...</span>
+            <kbd className="ml-auto rounded border border-sidebar-border px-1 py-0.5 text-[10px]">
+              /
+            </kbd>
+          </button>
+
           <nav>
             {allBaskets.map((basket) => (
               <BasketSection
@@ -57,6 +84,9 @@ export function Sidebar() {
           </nav>
         </div>
       </aside>
+
+      {/* 검색 다이얼로그 */}
+      <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );
 }

@@ -37,12 +37,28 @@ function deriveLlmLearningPath(leaf: TreeNode): string {
   return `llm-learning/${leaf.slug}`;
 }
 
+function deriveAiMemoryPath(book: Book, leaf: TreeNode): string | null {
+  const path = findNodePath(book.children, leaf.id);
+  if (!path || path.length < 2) return null;
+  const chapter = path[0]; // 장 slug
+  return `ai-memory/${chapter.slug}/${leaf.slug}`;
+}
+
+function deriveWirelessCommPath(book: Book, leaf: TreeNode): string | null {
+  const path = findNodePath(book.children, leaf.id);
+  if (!path || path.length < 2) return null;
+  const chapter = path[0]; // 장 slug
+  return `wireless-comm/${chapter.slug}/${leaf.slug}`;
+}
+
 function derivePath(book: Book, leaf: TreeNode): string | null {
   switch (book.id) {
     case "middle-school": return deriveMiddleSchoolPath(book, leaf);
     case "high-school":   return deriveHighSchoolPath(book, leaf);
     case "llm-math":      return deriveLlmMathPath(book, leaf);
     case "llm-learning":  return deriveLlmLearningPath(leaf);
+    case "ai-memory":     return deriveAiMemoryPath(book, leaf);
+    case "wireless-comm": return deriveWirelessCommPath(book, leaf);
     default: return null;
   }
 }

@@ -175,6 +175,16 @@ When adding a new component, place it in the matching domain folder. If no exist
 
 **관리자 UI**: `/admin/structure` → "바구니 관리" 탭에서 바구니 생성·삭제, 책 할당/해제가 가능합니다. 모든 책은 최소 1개 바구니에 소속되어야 합니다.
 
+## Sister Project — gangubuy-tax-new
+
+`d:\Coding\gangubuy-tax-new`는 이 프로젝트를 복사하여 만든 **자매 프로젝트**로, 동일한 4계층 아키텍처(basket → book → content → map)를 공유한다.
+
+- **구조 동기화 필수**: 한쪽에서 아키텍처·공통 로직(타입, 유틸, 인증, 관리자 등)을 변경하면 다른 쪽도 반영해야 한다.
+- **상호 파일 수정 권한 있음**: 이 프로젝트에서 작업 중이더라도 `gangubuy-tax-new`의 파일을 직접 읽고 수정할 수 있다.
+- **경로 차이 주의**:
+  - math: `src/basket/`, `src/book/`, `src/map/`
+  - gangubuy-tax-new: `src/lib/basket/`, `src/lib/book/`, `src/lib/map/`
+
 ## Next.js Note
 
 This project uses Next.js 16 which may have breaking changes from earlier versions. Read `node_modules/next/dist/docs/` before writing Next.js code.

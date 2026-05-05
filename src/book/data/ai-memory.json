@@ -1,0 +1,187 @@
+{
+  "id": "ai-memory",
+  "basePath": "ai-memory",
+  "title": "AI 메모리",
+  "description": "HBM에서 HBF까지 — AI 시대 고대역폭 메모리 기술과 로드맵",
+  "children": [
+    {
+      "id": "am-ch1",
+      "slug": "hbm-basics",
+      "title": "1장. HBM 기초",
+      "children": [
+        {
+          "id": "am-s1",
+          "slug": "what-is-hbm",
+          "title": "Ⅰ. HBM이란"
+        },
+        {
+          "id": "am-s2",
+          "slug": "dram-fundamentals",
+          "title": "Ⅱ. DRAM 기초"
+        },
+        {
+          "id": "am-s3",
+          "slug": "tsv",
+          "title": "Ⅲ. TSV 기술"
+        },
+        {
+          "id": "am-s4",
+          "slug": "interposer",
+          "title": "Ⅳ. 실리콘 인터포저"
+        },
+        {
+          "id": "am-s5",
+          "slug": "stacking",
+          "title": "Ⅴ. 적층 패키징"
+        }
+      ]
+    },
+    {
+      "id": "am-ch2",
+      "slug": "hbm-generations",
+      "title": "2장. HBM 세대별 진화",
+      "children": [
+        {
+          "id": "am-s6",
+          "slug": "hbm1-hbm2",
+          "title": "Ⅰ. HBM1 · HBM2"
+        },
+        {
+          "id": "am-s7",
+          "slug": "hbm3-hbm3e",
+          "title": "Ⅱ. HBM3 · HBM3E"
+        },
+        {
+          "id": "am-s8",
+          "slug": "hbm4",
+          "title": "Ⅲ. HBM4"
+        }
+      ]
+    },
+    {
+      "id": "am-ch3",
+      "slug": "hbm-roadmap",
+      "title": "3장. HBM 장기 로드맵",
+      "children": [
+        {
+          "id": "am-s9",
+          "slug": "hbm5",
+          "title": "Ⅰ. HBM5 (2029)"
+        },
+        {
+          "id": "am-s10",
+          "slug": "hbm6",
+          "title": "Ⅱ. HBM6 (2032)"
+        },
+        {
+          "id": "am-s11",
+          "slug": "hbm7",
+          "title": "Ⅲ. HBM7 (2035)"
+        },
+        {
+          "id": "am-s12",
+          "slug": "hbm8",
+          "title": "Ⅳ. HBM8 (2038)"
+        }
+      ]
+    },
+    {
+      "id": "am-ch4",
+      "slug": "hbf-basics",
+      "title": "4장. HBF 기초",
+      "children": [
+        {
+          "id": "am-s13",
+          "slug": "what-is-hbf",
+          "title": "Ⅰ. HBF란"
+        },
+        {
+          "id": "am-s14",
+          "slug": "nand-flash",
+          "title": "Ⅱ. 3D NAND 기초"
+        },
+        {
+          "id": "am-s15",
+          "slug": "hbf-packaging",
+          "title": "Ⅲ. HBF 패키징 기술"
+        },
+        {
+          "id": "am-s16",
+          "slug": "hbf-spec",
+          "title": "Ⅳ. HBF 사양과 성능"
+        }
+      ]
+    },
+    {
+      "id": "am-ch5",
+      "slug": "hbf-roadmap",
+      "title": "5장. HBF 로드맵",
+      "children": [
+        {
+          "id": "am-s17",
+          "slug": "hbf-standardization",
+          "title": "Ⅰ. 표준화 동향"
+        },
+        {
+          "id": "am-s18",
+          "slug": "hbf-timeline",
+          "title": "Ⅱ. 상용화 일정"
+        },
+        {
+          "id": "am-s19",
+          "slug": "hbf-market",
+          "title": "Ⅲ. 시장 전망"
+        }
+      ]
+    },
+    {
+      "id": "am-ch6",
+      "slug": "memory-hierarchy",
+      "title": "6장. AI 메모리 계층",
+      "children": [
+        {
+          "id": "am-s20",
+          "slug": "memory-wall",
+          "title": "Ⅰ. 메모리 월"
+        },
+        {
+          "id": "am-s21",
+          "slug": "hierarchy",
+          "title": "Ⅱ. 캐시 · HBM · HBF · SSD"
+        },
+        {
+          "id": "am-s22",
+          "slug": "memory-centric",
+          "title": "Ⅲ. 메모리 중심 컴퓨팅"
+        },
+        {
+          "id": "am-s23",
+          "slug": "gpu-memory",
+          "title": "Ⅳ. GPU와 메모리의 관계"
+        }
+      ]
+    },
+    {
+      "id": "am-ch7",
+      "slug": "industry",
+      "title": "7장. 산업과 전망",
+      "children": [
+        {
+          "id": "am-s24",
+          "slug": "sk-samsung-micron",
+          "title": "Ⅰ. SK하이닉스 · 삼성 · 마이크론"
+        },
+        {
+          "id": "am-s25",
+          "slug": "kim-jungho",
+          "title": "Ⅱ. 김정호 교수와 TERALAB"
+        },
+        {
+          "id": "am-s26",
+          "slug": "korea-strategy",
+          "title": "Ⅲ. 한국 메모리 패권 전략"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "id": "wireless-comm",
+  "basePath": "wireless-comm",
+  "title": "무선통신",
+  "description": "전자기파·변조·안테나·이동통신 세대별 진화를 다루는 무선통신 기초",
+  "children": [
+    {
+      "id": "wc-ch1",
+      "slug": "electromagnetic-wave",
+      "title": "1장. 전자기파 기초",
+      "children": [
+        {
+          "id": "wc-s1",
+          "slug": "wave-basics",
+          "title": "Ⅰ. 파동·파장·진폭"
+        },
+        {
+          "id": "wc-s2",
+          "slug": "frequency-spectrum",
+          "title": "Ⅱ. 주파수와 전자기 스펙트럼"
+        },
+        {
+          "id": "wc-s3",
+          "slug": "carrier-wave",
+          "title": "Ⅲ. 반송파와 변조 원리"
+        }
+      ]
+    },
+    {
+      "id": "wc-ch2",
+      "slug": "modulation",
+      "title": "2장. 변조 기술",
+      "children": [
+        {
+          "id": "wc-s4",
+          "slug": "am-fm",
+          "title": "Ⅰ. AM·FM 변조"
+        },
+        {
+          "id": "wc-s5",
+          "slug": "phase-modulation",
+          "title": "Ⅱ. 위상 변조(PSK)"
+        },
+        {
+          "id": "wc-s6",
+          "slug": "qam",
+          "title": "Ⅲ. QAM과 심볼"
+        },
+        {
+          "id": "wc-s7",
+          "slug": "digital-modulation",
+          "title": "Ⅳ. 디지털 변조와 비트 전송"
+        }
+      ]
+    },
+    {
+      "id": "wc-ch3",
+      "slug": "antenna",
+      "title": "3장. 안테나와 전파",
+      "children": [
+        {
+          "id": "wc-s8",
+          "slug": "antenna-basics",
+          "title": "Ⅰ. 안테나 원리와 공진"
+        },
+        {
+          "id": "wc-s9",
+          "slug": "beamforming",
+          "title": "Ⅱ. 빔포밍과 위상 배열"
+        },
+        {
+          "id": "wc-s10",
+          "slug": "mimo",
+          "title": "Ⅲ. MIMO와 병렬 전송"
+        }
+      ]
+    },
+    {
+      "id": "wc-ch4",
+      "slug": "mobile-generations",
+      "title": "4장. 이동통신 세대",
+      "children": [
+        {
+          "id": "wc-s11",
+          "slug": "1g-2g",
+          "title": "Ⅰ. 1G·2G — 아날로그에서 디지털로"
+        },
+        {
+          "id": "wc-s12",
+          "slug": "3g-4g",
+          "title": "Ⅱ. 3G·4G — 모바일 인터넷"
+        },
+        {
+          "id": "wc-s13",
+          "slug": "5g",
+          "title": "Ⅲ. 5G — 초고속·초저지연·초연결"
+        }
+      ]
+    },
+    {
+      "id": "wc-ch5",
+      "slug": "signal-processing",
+      "title": "5장. 신호 처리",
+      "children": [
+        {
+          "id": "wc-s14",
+          "slug": "fourier",
+          "title": "Ⅰ. 푸리에 변환과 음색"
+        },
+        {
+          "id": "wc-s15",
+          "slug": "ofdm",
+          "title": "Ⅱ. OFDM과 주파수 병렬"
+        },
+        {
+          "id": "wc-s16",
+          "slug": "error-correction",
+          "title": "Ⅲ. 오류 정정과 표준화"
+        }
+      ]
+    }
+  ]
+}

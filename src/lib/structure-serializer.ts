@@ -6,6 +6,8 @@ const BOOK_META: Record<string, { fileName: string }> = {
   "high-school":   { fileName: "data/high-school.json" },
   "llm-math":      { fileName: "data/llm-math.json" },
   "llm-learning":  { fileName: "data/llm-learning.json" },
+  "ai-memory":     { fileName: "data/ai-memory.json" },
+  "wireless-comm": { fileName: "data/wireless-comm.json" },
 };
 
 /** Book을 JSON 문자열로 직렬화 (관리자 편집 → JSON 파일) */

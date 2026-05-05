@@ -3,25 +3,8 @@
 import { useState, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import type { Comment, FeedbackType, FeedbackLevel } from "@/lib/types";
+import type { Comment, FeedbackLevel } from "@/lib/types";
 import { useSession } from "@/lib/auth/use-session";
-
-const TYPE_LABELS: Record<FeedbackType, string> = {
-  content: "내용 편집",
-  structure: "구조 편집",
-};
-
-const TYPE_BADGE: Record<FeedbackType, string> = {
-  content:
-    "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300",
-  structure:
-    "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300",
-};
-
-const TYPE_BUTTON_ICON: Record<FeedbackType, string> = {
-  content: "💬",
-  structure: "🏗️",
-};
 
 const LEVEL_LABELS: Record<FeedbackLevel, string> = {
   major: "대목차",
@@ -38,12 +21,8 @@ const LEVEL_BADGE_COLOR: Record<FeedbackLevel, string> = {
 };
 
 /**
- * 목차/섹션 단위 의견 버튼 + 인라인 폼.
- * 역할(role)에 따라 버튼이 분기된다:
- *   - 비로그인   : 버튼 미표시 (로그인 안내 링크만)
- *   - editor     : 💬 내용 의견 버튼만
- *   - subadmin   : 🏗️ 구조 의견 + 내용 의견 버튼
- *   - admin+     : 두 종류 버튼 모두 표시 + 댓글 삭제 가능
+ * 목차/섹션 단위 내용 의견 버튼 + 인라인 폼.
+ * 구조 편집은 관리자 페이지(/admin/structure)에서 처리.
  */
 export function SectionComment({
   sectionSlug,
@@ -59,12 +38,11 @@ export function SectionComment({
   const contentPath = `${pathname}/${sectionSlug}`;
 
   const canContent = can("edit_content");
-  const canStructure = can("edit_structure");
   const canDelete = can("rollback");
 
   if (loading) return null;
 
-  // 비로그인: 작은 안내만 (목차마다 큰 안내 띄우면 시끄러우므로 점만)
+  // 비로그인: 작은 안내만
   if (!session) {
     return (
       <Link
@@ -77,39 +55,25 @@ export function SectionComment({
     );
   }
 
+  if (!canContent) return null;
+
   return (
-    <span className="inline-flex items-center gap-1">
-      {canContent && (
-        <FeedbackButton
-          feedbackType="content"
-          contentPath={contentPath}
-          sectionTitle={sectionTitle}
-          level={level}
-          canDelete={canDelete}
-        />
-      )}
-      {canStructure && (
-        <FeedbackButton
-          feedbackType="structure"
-          contentPath={contentPath}
-          sectionTitle={sectionTitle}
-          level={level}
-          canDelete={canDelete}
-        />
-      )}
-    </span>
+    <ContentFeedbackButton
+      contentPath={contentPath}
+      sectionTitle={sectionTitle}
+      level={level}
+      canDelete={canDelete}
+    />
   );
 }
 
-/** 단일 종류(내용 또는 구조)의 버튼 + 폼 */
-function FeedbackButton({
-  feedbackType,
+/** 내용 편집 의견 버튼 + 폼 */
+function ContentFeedbackButton({
   contentPath,
   sectionTitle,
   level,
   canDelete,
 }: {
-  feedbackType: FeedbackType;
   contentPath: string;
   sectionTitle: string;
   level: FeedbackLevel;
@@ -128,15 +92,14 @@ function FeedbackButton({
         `/api/comments?content_path=${encodeURIComponent(contentPath)}`
       );
       const data = await res.json();
-      // 클라이언트 측에서 종류별로 필터 (서버는 전체 반환)
       const all: Comment[] = data.data || [];
-      setComments(all.filter((c) => (c.feedback_type ?? "content") === feedbackType));
+      setComments(all.filter((c) => (c.feedback_type ?? "content") === "content"));
     } catch {
       // 무시
     } finally {
       setFetched(true);
     }
-  }, [contentPath, feedbackType]);
+  }, [contentPath]);
 
   const handleToggle = () => {
     setOpen((v) => {
@@ -159,7 +122,7 @@ function FeedbackButton({
           content_path: contentPath,
           body: trimmed,
           section_title: sectionTitle,
-          feedback_type: feedbackType,
+          feedback_type: "content",
           level,
         }),
       });
@@ -187,11 +150,6 @@ function FeedbackButton({
     }
   };
 
-  const placeholder =
-    feedbackType === "structure"
-      ? `"${sectionTitle}" 구조 편집 의견 (목차 추가·재배치 등, Ctrl+Enter)`
-      : `"${sectionTitle}" 내용 편집 의견 (Ctrl+Enter)`;
-
   return (
     <span className="inline-block">
       <button
@@ -199,18 +157,18 @@ function FeedbackButton({
         onClick={handleToggle}
         className="inline-flex items-center gap-1 rounded-full border border-sidebar-border px-2 py-0.5 text-xs text-muted hover:border-accent hover:text-accent transition-colors"
         aria-expanded={open ? "true" : "false"}
-        title={TYPE_LABELS[feedbackType]}
+        title="내용 편집"
       >
-        {TYPE_BUTTON_ICON[feedbackType]} {TYPE_LABELS[feedbackType]}
+        💬 내용 편집
         {comments.length > 0 ? ` (${comments.length})` : ""}
       </button>
 
       {open && (
         <div className="mt-2 rounded-xl border border-sidebar-border bg-sidebar-bg p-4 space-y-3">
-          {/* 헤더: 종류 + 레벨 뱃지 */}
+          {/* 헤더: 레벨 뱃지 */}
           <div className="flex items-center gap-2 text-xs">
-            <span className={`px-2 py-0.5 rounded ${TYPE_BADGE[feedbackType]}`}>
-              {TYPE_LABELS[feedbackType]}
+            <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
+              내용 편집
             </span>
             <span className={`px-2 py-0.5 rounded ${LEVEL_BADGE_COLOR[level]}`}>
               {LEVEL_LABELS[level]}
@@ -263,7 +221,7 @@ function FeedbackButton({
               onKeyDown={(e) => {
                 if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) handleSubmit();
               }}
-              placeholder={placeholder}
+              placeholder={`"${sectionTitle}" 내용 편집 의견 (Ctrl+Enter)`}
               rows={2}
               maxLength={3000}
               className="flex-1 resize-none rounded-lg border border-sidebar-border bg-transparent px-3 py-2 text-sm focus:border-accent focus:outline-none"

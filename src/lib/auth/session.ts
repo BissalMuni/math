@@ -16,9 +16,10 @@ function getSecret() {
 /** 역할별 ENV 비밀번호 매핑 */
 const ROLE_ENV_MAP: Record<Role, string> = {
   reader: "ROLE_READER_PASSWORD",
-  content_editor: "ROLE_CONTENT_EDITOR_PASSWORD",
-  structure_editor: "ROLE_STRUCTURE_EDITOR_PASSWORD",
-  super_admin: "ROLE_SUPER_ADMIN_PASSWORD",
+  editor: "ROLE_EDITOR_PASSWORD",
+  subadmin: "ROLE_SUBADMIN_PASSWORD",
+  admin: "ROLE_ADMIN_PASSWORD",
+  superadmin: "ROLE_SUPERADMIN_PASSWORD",
 };
 
 /** 타이밍 안전한 문자열 비교 */
@@ -35,7 +36,7 @@ function safeCompare(a: string, b: string): boolean {
 
 /** 비밀번호로 역할 확인 — 일치하는 역할 반환, 없으면 null */
 export function authenticate(password: string): Role | null {
-  // 높은 권한부터 확인 (super_admin → reader)
+  // 높은 권한부터 확인 (superadmin → reader)
   for (const role of [...ROLES].reverse()) {
     const envKey = ROLE_ENV_MAP[role];
     const envPassword = process.env[envKey];

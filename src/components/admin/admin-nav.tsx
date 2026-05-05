@@ -2,18 +2,21 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import type { Role } from "@/lib/auth/constants";
-import { ROLE_LABELS } from "@/lib/auth/constants";
+import { type Role, ROLES, ROLE_LABELS } from "@/lib/auth/constants";
 
 export function AdminNav({ role }: { role: Role }) {
   const pathname = usePathname();
   const router = useRouter();
 
+  const isAdmin = ROLES.indexOf(role) >= ROLES.indexOf("admin");
+  const isSuperadmin = role === "superadmin";
+
   const links = [
     { href: "/admin", label: "대시보드" },
-    { href: "/admin/changes", label: "수정 이력" },
-    ...(role === "super_admin"
-      ? [{ href: "/admin/structure", label: "구조 편집" }]
+    ...(isAdmin ? [{ href: "/admin/changes", label: "수정 이력" }] : []),
+    { href: "/admin/structure", label: "책/바구니 관리" },
+    ...(isSuperadmin
+      ? [{ href: "/admin/super/structure", label: "구조 편집" }]
       : []),
   ];
 
@@ -50,6 +53,7 @@ export function AdminNav({ role }: { role: Role }) {
             {ROLE_LABELS[role]}
           </span>
           <button
+            type="button"
             onClick={handleLogout}
             className="text-sm text-muted hover:text-foreground"
           >

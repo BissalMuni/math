@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
     await fs.writeFile(filePath, change.before_content, "utf-8");
 
     // 롤백 이력 기록
-    const role = getRoleFromRequest(request) || "super_admin";
+    const role = getRoleFromRequest(request) || "admin";
     await logContentChange({
       role,
       actor: role,

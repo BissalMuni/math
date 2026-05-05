@@ -43,7 +43,7 @@ export async function createComment(input: CreateCommentInput): Promise<Comment>
   return data as Comment;
 }
 
-/** 의견 삭제 (super_admin 권한으로 무조건 삭제) */
+/** 의견 삭제 (admin 이상 권한으로 무조건 삭제) */
 export async function deleteComment(
   id: string
 ): Promise<{ success: boolean; error?: string }> {

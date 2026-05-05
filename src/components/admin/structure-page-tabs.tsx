@@ -3,11 +3,10 @@
 import { useState } from "react";
 import type { Book } from "@/book/types";
 import type { Basket } from "@/basket/types";
-import { StructureTreeEditor } from "./structure-tree-editor";
 import { BookManager } from "./book-manager";
 import { BasketManager } from "./basket-manager";
 
-type TabKey = "structure" | "books" | "baskets";
+type TabKey = "books" | "baskets";
 
 interface Props {
   books: Book[];
@@ -15,10 +14,9 @@ interface Props {
 }
 
 export function StructurePageTabs({ books, baskets }: Props) {
-  const [tab, setTab] = useState<TabKey>("structure");
+  const [tab, setTab] = useState<TabKey>("books");
 
   const tabs: { key: TabKey; label: string }[] = [
-    { key: "structure", label: "구조 편집" },
     { key: "books", label: "책 관리" },
     { key: "baskets", label: "바구니 관리" },
   ];
@@ -43,7 +41,6 @@ export function StructurePageTabs({ books, baskets }: Props) {
       </div>
 
       {/* 패널 */}
-      {tab === "structure" && <StructureTreeEditor books={books} />}
       {tab === "books" && <BookManager books={books} baskets={baskets} />}
       {tab === "baskets" && <BasketManager books={books} baskets={baskets} />}
     </div>

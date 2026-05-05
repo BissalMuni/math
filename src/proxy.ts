@@ -12,14 +12,25 @@ function getSecret() {
   return new TextEncoder().encode(secret);
 }
 
-/** super_admin 전용 경로 */
-const SUPER_ADMIN_PATHS = ["/admin/changes/", "/admin/structure", "/api/admin/rollback", "/api/admin/structure", "/api/admin/books", "/api/admin/baskets"];
+/** superadmin 전용 경로 */
+const SUPERADMIN_PATHS = ["/admin/super/", "/api/admin/books", "/api/admin/baskets"];
 
-/** 역할이 super_admin 전용 경로에 접근 가능한지 확인 */
-function requiresSuperAdmin(pathname: string): boolean {
-  // /admin/changes/[id] 상세 페이지 (목록은 제외)
-  if (pathname.match(/^\/admin\/changes\/[^/]+$/)) return true;
-  return SUPER_ADMIN_PATHS.some((p) => pathname.startsWith(p));
+/** admin 이상만 접근 가능한 경로 */
+const ADMIN_PATHS = ["/admin/changes/", "/api/admin/rollback", "/api/admin/structure"];
+
+/** 경로별 최소 역할 확인 */
+function getRequiredRole(pathname: string): Role | null {
+  // superadmin 전용
+  if (SUPERADMIN_PATHS.some((p) => pathname.startsWith(p))) return "superadmin";
+  // admin 전용 (변경이력 상세, 롤백, 구조 API)
+  if (pathname.match(/^\/admin\/changes\/[^/]+$/)) return "admin";
+  if (ADMIN_PATHS.some((p) => pathname.startsWith(p))) return "admin";
+  return null;
+}
+
+/** 역할이 최소 역할 이상인지 확인 */
+function isRoleAtLeast(role: Role, minimum: Role): boolean {
+  return ROLES.indexOf(role) >= ROLES.indexOf(minimum);
 }
 
 /** 요청 헤더에 x-user-role 을 주입한 NextResponse 반환 */
@@ -72,7 +83,9 @@ export async function proxy(request: NextRequest) {
       return NextResponse.redirect(new URL("/login", request.url));
     }
 
-    if (requiresSuperAdmin(pathname) && role !== "super_admin") {
+    // 경로별 최소 역할 확인
+    const required = getRequiredRole(pathname);
+    if (required && !isRoleAtLeast(role, required)) {
       if (isAdminApi) {
         return NextResponse.json({ error: "권한 없음" }, { status: 403 });
       }

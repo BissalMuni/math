@@ -1,16 +1,14 @@
 import { getSessionFromCookies } from "@/lib/auth/session";
-import { hasPermission } from "@/lib/auth/constants";
 import { redirect } from "next/navigation";
-import { StructurePageTabs } from "@/components/admin/structure-page-tabs";
+import { StructureTreeEditor } from "@/components/admin/structure-tree-editor";
 import { allBooks } from "@/book";
-import { allBaskets } from "@/basket";
 import { getBookMeta } from "@/lib/structure-serializer";
 
-export default async function AdminStructurePage() {
+export default async function SuperAdminStructurePage() {
   const session = await getSessionFromCookies();
   if (!session) redirect("/login");
 
-  if (!hasPermission(session.role, "edit_structure")) {
+  if (session.role !== "superadmin") {
     redirect("/admin");
   }
 
@@ -22,13 +20,13 @@ export default async function AdminStructurePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">책/바구니 관리</h1>
+        <h1 className="text-2xl font-bold">구조 편집</h1>
         <p className="mt-1 text-sm text-muted">
-          책과 바구니를 관리합니다. 저장 시 GitHub main 브랜치에 커밋됩니다.
+          목차 트리를 직접 편집합니다. 저장 시 GitHub main 브랜치에 커밋됩니다.
         </p>
       </div>
 
-      <StructurePageTabs books={editable} baskets={allBaskets} />
+      <StructureTreeEditor books={editable} />
     </div>
   );
 }

@@ -6,7 +6,7 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  // 댓글 삭제는 super_admin 만 (rollback 권한과 동급)
+  // 댓글 삭제는 admin 이상만 (rollback 권한과 동급)
   const denied = requirePermission(request, "rollback");
   if (denied) return denied;
 

@@ -12,7 +12,7 @@ export default async function AdminDashboard() {
 
   const canViewAudit = hasPermission(session.role, "view_audit");
 
-  // super_admin만 통계 + 최근 이력 표시
+  // admin 이상만 통계 + 최근 이력 표시
   if (!canViewAudit) {
     return (
       <div>

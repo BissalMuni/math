@@ -40,10 +40,10 @@ const LEVEL_BADGE_COLOR: Record<FeedbackLevel, string> = {
 /**
  * 목차/섹션 단위 의견 버튼 + 인라인 폼.
  * 역할(role)에 따라 버튼이 분기된다:
- *   - 비로그인        : 버튼 미표시 (로그인 안내 링크만)
- *   - content_editor  : 💬 내용 의견 버튼만
- *   - structure_editor: 🏗️ 구조 의견 버튼만
- *   - super_admin     : 두 종류 버튼 모두 표시 + 댓글 삭제 가능
+ *   - 비로그인   : 버튼 미표시 (로그인 안내 링크만)
+ *   - editor     : 💬 내용 의견 버튼만
+ *   - subadmin   : 🏗️ 구조 의견 + 내용 의견 버튼
+ *   - admin+     : 두 종류 버튼 모두 표시 + 댓글 삭제 가능
  */
 export function SectionComment({
   sectionSlug,

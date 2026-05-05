@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>컴포넌트 레이아웃 구조도</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Consolas', 'Monaco', monospace; background: #0f0f1a; color: #e0e0e0; padding: 24px; min-height: 100vh; }
+  h1 { color: #64ffda; margin-bottom: 8px; font-size: 1.3rem; }
+  .subtitle { color: #666; font-size: 12px; margin-bottom: 24px; }
+
+  .layout-root {
+    border: 2px solid #444;
+    border-radius: 8px;
+    padding: 12px;
+    background: #12121f;
+    position: relative;
+  }
+  .layout-root > .label { color: #c792ea; }
+
+  .layout-body {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .box {
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 10px;
+    position: relative;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+  .box:hover {
+    border-color: #64ffda;
+    box-shadow: 0 0 12px rgba(100, 255, 218, 0.1);
+  }
+
+  .label {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .label .component { color: #82aaff; }
+  .label .file { color: #ffcb6b; font-weight: 400; }
+  .label .emoji { font-size: 13px; }
+
+  .desc {
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  .data-source {
+    font-size: 10px;
+    color: #f78c6c;
+    margin-top: 2px;
+  }
+
+  /* Sidebar */
+  .sidebar-col {
+    width: 340px;
+    min-width: 340px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sidebar-box {
+    background: #161625;
+  }
+
+  /* Main */
+  .main-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .main-box {
+    background: #161625;
+  }
+
+  /* Tree items */
+  .tree-item {
+    font-size: 12px;
+    padding: 2px 0 2px 12px;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .tree-item.indent1 { padding-left: 24px; }
+  .tree-item.indent2 { padding-left: 36px; }
+  .tree-item .arrow { color: #555; font-size: 10px; }
+  .tree-item .leaf { color: #64ffda; }
+  .tree-item .tag { color: #555; font-size: 9px; margin-left: auto; }
+
+  /* Nested boxes */
+  .nested { margin-top: 6px; display: flex; flex-direction: column; gap: 6px; }
+  .nested .box { margin-left: 8px; }
+
+  /* Book section */
+  .book-section {
+    background: #1a1a2e;
+    margin-top: 4px;
+  }
+
+  /* Comment sub-boxes */
+  .sub-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .sub-box {
+    border: 1px solid #2a2a3a;
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 10px;
+    background: #1e1e30;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sub-box .component { color: #82aaff; }
+  .sub-box .file { color: #ffcb6b; }
+
+  /* Math components inline */
+  .math-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .math-box {
+    flex: 1;
+    border: 1px solid #2a2a3a;
+    border-radius: 4px;
+    padding: 6px 8px;
+    background: #1e1e30;
+  }
+
+  /* Bottom info */
+  .info-section {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #2a2a3a;
+    font-size: 10px;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .info-section span { color: #f78c6c; }
+
+  /* Connector label */
+  .connector {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: #444;
+    margin: 4px 0;
+  }
+  .connector::before, .connector::after {
+    content: '';
+    flex: 1;
+    border-top: 1px dashed #333;
+  }
+
+  /* Clickable expand */
+  .expandable > .label { cursor: pointer; user-select: none; }
+  .expandable > .label::before {
+    content: '▶';
+    font-size: 9px;
+    color: #555;
+    transition: transform 0.2s;
+    display: inline-block;
+    width: 12px;
+  }
+  .expandable.open > .label::before {
+    transform: rotate(90deg);
+  }
+  .expandable > .expand-content {
+    display: none;
+  }
+  .expandable.open > .expand-content {
+    display: block;
+  }
+
+  @media (max-width: 800px) {
+    .layout-body { flex-direction: column; }
+    .sidebar-col { width: 100%; min-width: 0; }
+  }
+</style>
+</head>
+<body>
+
+<h1>src/ 컴포넌트 레이아웃 구조도</h1>
+<p class="subtitle">각 영역을 클릭하면 하위 구조가 펼쳐집니다</p>
+
+<div class="layout-root">
+  <div class="label">
+    <span class="component">RootLayout</span>
+    <span class="file">app/layout.tsx</span>
+  </div>
+  <div class="desc">&lt;html&gt; &lt;body class="flex"&gt; ... &lt;/body&gt; &lt;/html&gt;</div>
+
+  <div class="layout-body">
+
+    <!-- ========== SIDEBAR ========== -->
+    <div class="sidebar-col">
+      <div class="box sidebar-box expandable open" onclick="toggle(this, event)">
+        <div class="label">
+          <span class="component">Sidebar</span>
+          <span class="file">components/navigation/sidebar.tsx</span>
+        </div>
+        <div class="expand-content">
+
+          <!-- SidebarAuth -->
+          <div class="nested">
+            <div class="box expandable" onclick="toggle(this, event)">
+              <div class="label">
+                <span class="emoji">🔑</span>
+                <span class="component">SidebarAuth</span>
+                <span class="file">sidebar-auth.tsx</span>
+              </div>
+              <div class="expand-content">
+                <div class="desc">로그인/로그아웃 영역</div>
+                <div class="data-source">인증: lib/auth/use-session.ts</div>
+              </div>
+            </div>
+
+            <!-- Basket: 수학 -->
+            <div class="box expandable open" onclick="toggle(this, event)">
+              <div class="label">
+                <span class="emoji">🧺</span>
+                <span class="component">BasketSection</span>
+                <span class="file">sidebar.tsx (내부)</span>
+              </div>
+              <div class="expand-content">
+                <div class="data-source">데이터: basket/math.ts → { id: "math", bookIds: ["middle-school", "high-school", "llm-math"] }</div>
+                <div class="desc">🧺 수학</div>
+
+                <!-- Book: 중등수학 -->
+                <div class="nested">
+                  <div class="box book-section expandable open" onclick="toggle(this, event)">
+                    <div class="label">
+                      <span class="emoji">📖</span>
+                      <span class="component">BookSection</span>
+                      <span class="file">sidebar.tsx (내부)</span>
+                    </div>
+                    <div class="expand-content">
+                      <div class="data-source">데이터: book/data/middle-school.json</div>
+                      <div class="data-source">로더: book/middle-school.ts</div>
+                      <div class="desc">📖 중등수학</div>
+                      <div class="tree-item"><span class="arrow">▶</span> 1학년 <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item indent1"><span class="arrow">▶</span> 수와 연산 <span class="tag">TreeNavNode (재귀)</span></div>
+                      <div class="tree-item indent2"><span class="leaf">·</span> 소인수분해 <span class="tag">TreeNavNode (leaf)</span></div>
+                      <div class="tree-item indent2"><span class="leaf">·</span> 정수·유리수 <span class="tag">TreeNavNode (leaf)</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> 2학년 <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> 3학년 <span class="tag">TreeNavNode</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Book: 고등수학 -->
+                  <div class="box book-section expandable" onclick="toggle(this, event)">
+                    <div class="label">
+                      <span class="emoji">📖</span>
+                      <span class="component">BookSection</span>
+                      <span class="file">sidebar.tsx (내부)</span>
+                    </div>
+                    <div class="expand-content">
+                      <div class="data-source">데이터: book/data/high-school.json</div>
+                      <div class="data-source">로더: book/high-school.ts</div>
+                      <div class="desc">📖 고등수학</div>
+                      <div class="tree-item"><span class="arrow">▶</span> 공통수학1 <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> 공통수학2 <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> 대수 <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> 미적분1 <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> 미적분2 <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> 기하 <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> 확률과통계 <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> 인공지능수학 <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> 경제수학 <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> 직업수학 <span class="tag">TreeNavNode</span></div>
+                    </div>
+                  </div>
+
+                  <!-- Book: LLM수학 -->
+                  <div class="box book-section expandable" onclick="toggle(this, event)">
+                    <div class="label">
+                      <span class="emoji">📖</span>
+                      <span class="component">BookSection</span>
+                      <span class="file">sidebar.tsx (내부)</span>
+                    </div>
+                    <div class="expand-content">
+                      <div class="data-source">데이터: book/data/llm-math.json</div>
+                      <div class="data-source">로더: book/llm-math.ts</div>
+                      <div class="desc">📖 LLM수학</div>
+                      <div class="tree-item"><span class="arrow">▶</span> 수학 분야 (fields) <span class="tag">TreeNavNode</span></div>
+                      <div class="tree-item"><span class="arrow">▶</span> LLM 파이프라인 (pipeline) <span class="tag">TreeNavNode</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Basket: AI/LLM -->
+            <div class="box expandable" onclick="toggle(this, event)">
+              <div class="label">
+                <span class="emoji">🧺</span>
+                <span class="component">BasketSection</span>
+                <span class="file">sidebar.tsx (내부)</span>
+              </div>
+              <div class="expand-content">
+                <div class="data-source">데이터: basket/ai.ts → { id: "ai", bookIds: ["llm-learning"] }</div>
+                <div class="desc">🧺 AI/LLM</div>
+
+                <div class="nested">
+                  <div class="box book-section expandable" onclick="toggle(this, event)">
+                    <div class="label">
+                      <span class="emoji">📖</span>
+                      <span class="component">BookSection</span>
+                      <span class="file">sidebar.tsx (내부)</span>
+                    </div>
+                    <div class="expand-content">
+                      <div class="data-source">데이터: book/data/llm-learning.json</div>
+                      <div class="data-source">로더: book/llm-learning.ts</div>
+                      <div class="desc">📖 LLM학습</div>
+                      <div class="tree-item"><span class="leaf">·</span> 왜 LLM인가 <span class="tag">TreeNavNode (leaf)</span></div>
+                      <div class="tree-item"><span class="leaf">·</span> 토크나이제이션 <span class="tag">TreeNavNode (leaf)</span></div>
+                      <div class="tree-item"><span class="leaf">·</span> 임베딩 ... <span class="tag">TreeNavNode (leaf)</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Sidebar bottom info -->
+          <div class="info-section">
+            <div>바구니 목록: <span>basket/index.ts</span> → allBaskets</div>
+            <div>책 목록: <span>book/index.ts</span> → allBooks</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <div class="main-col">
+
+      <!-- Breadcrumb -->
+      <div class="box main-box expandable open" onclick="toggle(this, event)">
+        <div class="label">
+          <span class="component">Breadcrumb</span>
+          <span class="file">components/navigation/breadcrumb.tsx</span>
+        </div>
+        <div class="expand-content">
+          <div class="desc">홈 / 고등수학 / 미적분1 / 극한</div>
+          <div class="data-source">items: BreadcrumbItem[] (부모가 props로 전달)</div>
+        </div>
+      </div>
+
+      <!-- TopicPage -->
+      <div class="box main-box expandable open" onclick="toggle(this, event)">
+        <div class="label">
+          <span class="component">TopicPage</span>
+          <span class="file">components/content/topic-page.tsx</span>
+        </div>
+        <div class="expand-content">
+          <div class="desc">소단원 페이지 전체 (Breadcrumb + Content + Comments)</div>
+
+          <div class="nested">
+
+            <!-- TopicContent -->
+            <div class="box expandable open" onclick="toggle(this, event)">
+              <div class="label">
+                <span class="component">TopicContent</span>
+                <span class="file">components/content/topic-content.tsx</span>
+              </div>
+              <div class="expand-content">
+                <div class="data-source">매핑: map/index.ts → getContentComponent(book, leaf)</div>
+                <div class="data-source">콘텐츠: content/&lt;book-id&gt;/&lt;subject&gt;/&lt;leaf&gt;.tsx</div>
+                <div class="desc">예: content/high-school/calculus1/function-limit.tsx</div>
+
+                <!-- Math components -->
+                <div class="math-row">
+                  <div class="math-box">
+                    <div class="label">
+                      <span class="component">InlineMath / BlockMath</span>
+                    </div>
+                    <div style="font-size:10px;color:#ffcb6b;">components/math/math-formula.tsx</div>
+                    <div style="font-size:10px;color:#555;margin-top:2px;">KaTeX 수식 렌더링</div>
+                  </div>
+                  <div class="math-box">
+                    <div class="label">
+                      <span class="component">MathViz</span>
+                    </div>
+                    <div style="font-size:10px;color:#ffcb6b;">components/math/math-viz.tsx</div>
+                    <div style="font-size:10px;color:#555;margin-top:2px;">Mafs 시각화</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CommentSection -->
+            <div class="box expandable" onclick="toggle(this, event)">
+              <div class="label">
+                <span class="emoji">💬</span>
+                <span class="component">CommentSection</span>
+                <span class="file">components/feedback/CommentSection.tsx</span>
+              </div>
+              <div class="expand-content">
+                <div class="data-source">DB: lib/supabase/comments.ts → getComments()</div>
+                <div class="sub-row">
+                  <div class="sub-box">
+                    <span class="component">CommentForm</span>
+                    <span class="file">CommentForm.tsx</span>
+                    <span style="color:#555;font-size:9px;">— 댓글 입력</span>
+                  </div>
+                  <div class="sub-box">
+                    <span class="component">CommentItem</span>
+                    <span class="file">CommentItem.tsx</span>
+                    <span style="color:#555;font-size:9px;">— 댓글 개별 항목</span>
+                  </div>
+                  <div class="sub-box">
+                    <span class="component">ImageGrid</span>
+                    <span class="file">ImageGrid.tsx</span>
+                    <span style="color:#555;font-size:9px;">— 이미지 그리드</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ProgressCheck -->
+            <div class="box expandable" onclick="toggle(this, event)">
+              <div class="label">
+                <span class="emoji">✅</span>
+                <span class="component">ProgressCheck</span>
+                <span class="file">components/progress/progress-check.tsx</span>
+              </div>
+              <div class="expand-content">
+                <div class="data-source">저장: lib/progress.ts (localStorage)</div>
+                <div class="desc">학습 완료 체크</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom info -->
+      <div class="info-section" style="margin-top: 12px;">
+        <div style="color:#82aaff;font-weight:700;margin-bottom:4px;">공유 인프라</div>
+        <div>경로 공유: <span>components/navigation/content-path-context.tsx</span></div>
+        <div>DB 클라이언트: <span>lib/supabase/client.ts</span> (math 스키마)</div>
+        <div>댓글 DB: <span>lib/supabase/comments.ts</span></div>
+        <div>이미지 DB: <span>lib/supabase/images.ts</span></div>
+        <div>변경이력 DB: <span>lib/supabase/content-changes.ts</span></div>
+        <div>인증 세션: <span>lib/auth/session.ts</span> + <span>lib/auth/use-session.ts</span></div>
+        <div>권한 체크: <span>lib/auth/require-role.ts</span></div>
+        <div>공통 타입: <span>lib/types.ts</span></div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+function toggle(el, e) {
+  // 하위 expandable 클릭 시 상위로 전파 방지
+  if (e.target.closest('.expandable') !== el) return;
+  e.stopPropagation();
+  el.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

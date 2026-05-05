@@ -16,7 +16,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | **content** | leaf별 단일 TSX 파일 | `src/content/` |
 | **map** | book + leaf → content 컴포넌트 | `src/map/` |
 
-### 현재 책 (4권)
+### 현재 책 (5권)
 
 | 책 | URL | 소속 바구니 |
 |---|---|---|
@@ -24,26 +24,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | **고등수학** | `/high-school` | 수학 |
 | **LLM 수학** | `/llm-math` | 수학 |
 | **LLM 학습** | `/llm-learning` | AI/LLM |
+| **AI 메모리** | `/ai-memory` | AI/LLM |
 
 새 주제(국어·영어·역사 등)는 별도의 책(`Book`)으로 추가하고, 적절한 바구니에 ID 등록.
-
-## Spec-Driven Development
-
-Follow spec-kit workflow: constitution → spec → plan → implement.
-Refer to `.spec/` for project specifications.
-
-- `.spec/constitution.md` — 프로젝트 원칙 (기술 스택, 컨벤션, 비기능 요구사항)
-- `.spec/spec.md` — 기능 명세 (유저 스토리, 요구사항)
-- `.spec/plan.md` — 기술 계획 (아키텍처, 의존성, 구현 순서)
 
 ## Codebase Layout
 
 > 트리 구조 모델·깊이 규칙·노드 명명·콘텐츠 헤딩 형식은 모두 `CONVENTION_TREE.md`와 `CONVENTION_CONTENT.md`에 정의됨. 이 섹션은 **이 코드베이스에서의 위치와 라우팅**만 다룬다.
 
 ### book/ — 책 데이터·로더
-- `src/book/data/*.json` — 책별 원본 트리 (`middle-school.json`, `high-school.json`, `llm-math.json`, `llm-learning.json`)
-- `src/book/<book-id>.ts` — 각 JSON을 `Book`으로 import하는 얇은 로더 (4개)
-- `src/book/index.ts` — `allBooks` (4권), `getBookByPath` 노출
+- `src/book/data/*.json` — 책별 원본 트리 (`middle-school.json`, `high-school.json`, `llm-math.json`, `llm-learning.json`, `ai-memory.json`)
+- `src/book/<book-id>.ts` — 각 JSON을 `Book`으로 import하는 얇은 로더 (5개)
+- `src/book/index.ts` — `allBooks` (5권), `getBookByPath` 노출
 - `src/book/types.ts` — `Book`, `TreeNode` 타입 + `findNodePath`, `findNodeBySlugs`, `isLeafNode` 유틸
 
 ### basket/ — 바구니 메타
@@ -57,7 +49,7 @@ Refer to `.spec/` for project specifications.
 
 ### map/ — 라우팅 컨벤션
 - `src/map/index.ts` — book + leaf → content 컴포넌트 동적 import (`getContentComponent`)
-- 책별 path 도출 함수 4개 (middle-school은 `grade${slug}` prefix 변환 있음)
+- 책별 path 도출 함수 5개 (middle-school은 `grade${slug}` prefix 변환 있음)
 
 ### URL 매핑
 - 책 `basePath`가 URL prefix: `/middle-school/...`, `/high-school/...`, `/llm-math/...`, `/llm-learning/...`

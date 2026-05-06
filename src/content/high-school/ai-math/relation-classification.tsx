@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function RelationClassification() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 유사도">
+      <CalcBox title="■ 유사도">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 분류와 군집화">
+      <CalcBox title="■ 분류와 군집화">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

@@ -12,8 +12,8 @@ export default function QamContent() {
         진폭과 위상을 동시에 바꿔 파동 한 번에 여러 비트를 담습니다.
       </p>
 
-      <CalcBox title="1. QAM이란">
-        <SubSection title="(1) 약자 풀이">
+      <CalcBox title="■ QAM이란">
+        <SubSection title="● 약자 풀이">
           <div className="text-sm space-y-1">
             <p>• Q = Quadrature (직교) — sin과 cos 두 채널</p>
             <p>• A = Amplitude (진폭) — 높낮이를 단계적으로</p>
@@ -23,14 +23,14 @@ export default function QamContent() {
             직교하는 두 파동에 각각 진폭 변조해서 동시에 보내는 것입니다.
           </p>
         </SubSection>
-        <SubSection title="(2) AM + PM 동시">
+        <SubSection title="● AM + PM 동시">
           <p className="text-sm">
             진폭도 바꾸고 + 위상도 바꾸고 → 한 번에 더 많은 정보를 담습니다.
           </p>
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 심볼(Symbol)이란">
+      <CalcBox title="■ 심볼(Symbol)이란">
         <p className="text-sm mb-3">
           <strong>심볼 = 파동 한 번의 상태 = 진폭 + 위상 조합 하나 = 비트 묶음 하나</strong>
         </p>
@@ -48,7 +48,7 @@ export default function QamContent() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 16QAM 약속표">
+      <CalcBox title="■ 16QAM 약속표">
         <p className="text-sm mb-3">
           4비트 = <InlineMath math="2^4" /> = 16가지 경우의 수. 각 조합에 파동 하나가 예약됩니다.
         </p>
@@ -73,7 +73,7 @@ export default function QamContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="4. QAM 단계별 비교">
+      <CalcBox title="■ QAM 단계별 비교">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">
@@ -100,7 +100,7 @@ export default function QamContent() {
         </p>
       </CalcBox>
 
-      <CalcBox title="5. 3GPP 표준 문서">
+      <CalcBox title="■ 3GPP 표준 문서">
         <p className="text-sm mb-2">
           파형에 할당된 비트는 3GPP(3세대 파트너십 프로젝트)가 정합니다.
         </p>

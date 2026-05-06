@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function LinearFuncEquation() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 일차함수와 일차방정식의 관계">
-        <SubSection title="(1) 일차방정식의 그래프">
+      <CalcBox title="■ 일차함수와 일차방정식의 관계">
+        <SubSection title="● 일차방정식의 그래프">
           <p>
             미지수가 2개인 일차방정식{" "}
             <InlineMath math="ax + by + c = 0" />의 해{" "}
@@ -20,7 +20,7 @@ export default function LinearFuncEquation() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 예시">
+        <SubSection title="● 예시">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p>
               <InlineMath math="2x + y - 4 = 0" />을 변형하면:
@@ -34,8 +34,8 @@ export default function LinearFuncEquation() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 특수한 일차방정식의 그래프">
-        <SubSection title="(1) x = p 꼴의 그래프">
+      <CalcBox title="■ 특수한 일차방정식의 그래프">
+        <SubSection title="● x = p 꼴의 그래프">
           <p>
             <InlineMath math="x = p" />의 그래프는{" "}
             <InlineMath math="y" />축에 <strong>평행한</strong> (
@@ -48,7 +48,7 @@ export default function LinearFuncEquation() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) y = q 꼴의 그래프">
+        <SubSection title="● y = q 꼴의 그래프">
           <p>
             <InlineMath math="y = q" />의 그래프는{" "}
             <InlineMath math="x" />축에 <strong>평행한</strong> (
@@ -68,8 +68,8 @@ export default function LinearFuncEquation() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 연립방정식과 그래프">
-        <SubSection title="(1) 연립방정식의 해와 두 직선의 교점">
+      <CalcBox title="■ 연립방정식과 그래프">
+        <SubSection title="● 연립방정식의 해와 두 직선의 교점">
           <p>
             연립방정식의 해는 두 일차방정식의 그래프(직선)가 만나는{" "}
             <strong>교점의 좌표</strong>와 같습니다.
@@ -83,7 +83,7 @@ export default function LinearFuncEquation() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 두 직선의 위치 관계">
+        <SubSection title="● 두 직선의 위치 관계">
           <div className="space-y-3">
             <div>
               <p className="font-medium">① 한 점에서 만남 (해가 1개)</p>
@@ -111,8 +111,8 @@ export default function LinearFuncEquation() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="4. 일차함수의 활용">
-        <SubSection title="(1) 일차함수의 식 구하기">
+      <CalcBox title="■ 일차함수의 활용">
+        <SubSection title="● 일차함수의 식 구하기">
           <p>다음 조건으로 일차함수의 식을 구할 수 있습니다.</p>
           <div className="mt-2 space-y-2">
             <div className="rounded-lg border border-sidebar-border p-4 space-y-1">
@@ -149,7 +149,7 @@ export default function LinearFuncEquation() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 실생활 활용">
+        <SubSection title="● 실생활 활용">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               물탱크에 처음 20L의 물이 있고, 매분 3L씩 물을 넣을 때,{" "}

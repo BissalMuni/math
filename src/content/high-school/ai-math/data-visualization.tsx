@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function DataVisualization() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 자료의 종류와 특성">
+      <CalcBox title="■ 자료의 종류와 특성">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 자료의 시각화">
+      <CalcBox title="■ 자료의 시각화">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

@@ -29,11 +29,11 @@ h1 — 페이지 제목 (TopicContent가 자동 렌더링, 콘텐츠 파일에�
 | 단계 | 컴포넌트 | 제목 형식 | 강제 여부 | 예 |
 |---|---|---|---|---|
 | 페이지 제목 (auto) | (TopicContent → h1) | `Ⅰ. 이름` (Roman, 트리 데이터의 리프 title) | 강제 | `Ⅰ. 제곱근과 실수` |
-| 1단계 | `CalcBox` (→ h2) | `N. 이름` (자연수 + 마침표) | **강제** — 모든 CalcBox에 번호 부여, 페이지 안 1부터 reset | `1. 제곱근의 뜻과 성질` |
-| 2단계 | `SubSection` (→ h3) | `(N) 이름` (괄호 숫자) | **강제** — SubSection에 title이 있으면 항상 prefix. 부모 CalcBox 안 1부터 reset | `(1) 약수의 정의` |
-| 3단계 | 마크다운 단락 또는 강조 텍스트 | `①②③ 이름` (원 숫자, 고정) | **형식 고정** — 3단계 사용 시 반드시 `①②③`. 단계 자체는 비강제 | `① 12의 약수: 1, 2, 3, 4, 6, 12` |
+| 1단계 | `CalcBox` (→ h2) | `■ 이름` (검은 사각형 + 공백) | **강제** — 모든 CalcBox에 도형 prefix | `■ 제곱근의 뜻과 성질` |
+| 2단계 | `SubSection` (→ h3) | `● 이름` (검은 원 + 공백) | **강제** — SubSection에 title이 있으면 항상 prefix | `● 약수의 정의` |
+| 3단계 | 마크다운 단락 또는 강조 텍스트 | `①②③ 이름` (원 숫자) | **형식 고정** — 3단계 사용 시 반드시 `①②③`. 단계 자체는 비강제 | `① 12의 약수: 1, 2, 3, 4, 6, 12` |
 
-**번호 reset 원칙**: 같은 부모 안 형제끼리 1부터. 다른 부모로 넘어가면 다시 1부터.
+**도형 prefix 원칙**: 숫자 순번 대신 도형으로 시각적 계층만 표시. 페이지 안에서 형제 노드끼리도 같은 도형 사용.
 
 ## 헤딩 계층과 무관한 인라인 컴포넌트
 
@@ -75,28 +75,28 @@ export default function TopicName() {
       <p className="text-muted">이 단원의 한 줄 요약.</p>
 
       {/* 1단계 — 단순 내용 */}
-      <CalcBox title="1. 첫 번째 주제">
+      <CalcBox title="■ 첫 번째 주제">
         <p>내용...</p>
         <BlockMath math="E = mc^2" />
       </CalcBox>
 
-      {/* 1단계 — SubSection이 목차 역할 (괄호 숫자 강제) */}
-      <CalcBox title="2. 두 번째 주제">
+      {/* 1단계 — SubSection이 목차 역할 */}
+      <CalcBox title="■ 두 번째 주제">
         <p>개요 설명...</p>
 
-        <SubSection title="(1) 세부 주제 A">
+        <SubSection title="● 세부 주제 A">
           <p>세부 내용...</p>
           <p>① 항목 1: 3단계는 원 숫자로 고정</p>
           <p>② 항목 2</p>
         </SubSection>
 
-        <SubSection title="(2) 세부 주제 B">
+        <SubSection title="● 세부 주제 B">
           <p>세부 내용...</p>
         </SubSection>
       </CalcBox>
 
       {/* 1단계 — SubSection이 단순 내용 wrapper (prefix 없음) */}
-      <CalcBox title="3. 세 번째 주제">
+      <CalcBox title="■ 세 번째 주제">
         <Step n={1} label="첫 번째 단계" />
         <p>설명...</p>
 

@@ -6,15 +6,15 @@ import { CalcBox } from "@/components/content/shared";
 export default function Set() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 집합의 뜻과 표현">
+      <CalcBox title="■ 집합의 뜻과 표현">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 집합 사이의 포함 관계">
+      <CalcBox title="■ 집합 사이의 포함 관계">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 집합의 연산">
+      <CalcBox title="■ 집합의 연산">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

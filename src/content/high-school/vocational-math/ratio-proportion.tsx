@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function RatioProportion() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 비례와 비례배분">
+      <CalcBox title="■ 비례와 비례배분">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 축척과 도면 읽기">
+      <CalcBox title="■ 축척과 도면 읽기">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

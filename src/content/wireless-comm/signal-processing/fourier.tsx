@@ -11,7 +11,7 @@ export default function FourierContent() {
         이것이 음색의 비밀이자 현대 통신의 수학적 기초입니다.
       </p>
 
-      <CalcBox title="1. 푸리에 변환이란">
+      <CalcBox title="■ 푸리에 변환이란">
         <p className="text-sm mb-3">
           복잡한 파형을 단순한 sin/cos ���동들의 합으로 분해하는 수학 도구입니다.
         </p>
@@ -26,8 +26,8 @@ export default function FourierContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="2. 음색은 주파수 조합의 지문">
-        <SubSection title="(1) 악기마다 배음 구성이 다름">
+      <CalcBox title="■ 음색은 주파수 조합의 지문">
+        <SubSection title="● 악기마다 배음 구성이 다름">
           <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
             <pre>{`플루트   기본음 ████░░░░░░
          배음   █░░░░░░░░░  → 맑고 단순
@@ -39,7 +39,7 @@ export default function FourierContent() {
          배음   ██████████  → 날카롭고 강렬`}</pre>
           </div>
         </SubSection>
-        <SubSection title="(2) 시간 변화도 음색의 일부 — ADSR">
+        <SubSection title="● 시간 변화도 음색의 일부 — ADSR">
           <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
             <table className="w-full">
               <thead className="bg-sidebar-bg">
@@ -66,7 +66,7 @@ export default function FourierContent() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 통신에서의 푸리에 변환">
+      <CalcBox title="■ 통신에서의 푸리에 변환">
         <p className="text-sm mb-3">
           푸리에 변환은 음색 분석뿐 아니라 현대 통신(OFDM)의 핵심 수학입니다.
         </p>
@@ -77,7 +77,7 @@ export default function FourierContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="4. 철학적 관점">
+      <CalcBox title="■ 철학적 관점">
         <p className="text-sm mb-3">
           ��리에 변환은 자연이 주파수로 이루어진 게 아니라,
           인간이 복잡한 파형을 이해하기 쉽게 분해하는 도구입니다.

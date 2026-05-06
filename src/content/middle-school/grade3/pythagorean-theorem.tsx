@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function PythagoreanTheorem() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 피타고라스 정리">
-        <SubSection title="(1) 피타고라스 정리의 뜻">
+      <CalcBox title="■ 피타고라스 정리">
+        <SubSection title="● 피타고라스 정리의 뜻">
           <p>
             직각삼각형에서 빗변의 길이를 <InlineMath math="c" />, 나머지 두 변의
             길이를 <InlineMath math="a" />, <InlineMath math="b" />라 하면:
@@ -18,7 +18,7 @@ export default function PythagoreanTheorem() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 변의 길이 구하기">
+        <SubSection title="● 변의 길이 구하기">
           <div className="mt-3 space-y-4">
             <div>
               <p className="font-medium">빗변 구하기:</p>
@@ -37,7 +37,7 @@ export default function PythagoreanTheorem() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 대표적인 피타고라스 수">
+        <SubSection title="● 대표적인 피타고라스 수">
           <p>
             피타고라스 정리를 만족하는 자연수의 조합을{" "}
             <strong>피타고라스 수</strong>라고 합니다.
@@ -63,8 +63,8 @@ export default function PythagoreanTheorem() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 피타고라스 정리의 역">
-        <SubSection title="(1) 정리의 역">
+      <CalcBox title="■ 피타고라스 정리의 역">
+        <SubSection title="● 정리의 역">
           <p>
             삼각형의 세 변의 길이가 <InlineMath math="a" />,{" "}
             <InlineMath math="b" />, <InlineMath math="c" /> (
@@ -77,7 +77,7 @@ export default function PythagoreanTheorem() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 삼각형의 종류 판별">
+        <SubSection title="● 삼각형의 종류 판별">
           <p>
             세 변 <InlineMath math="a" />, <InlineMath math="b" />,{" "}
             <InlineMath math="c" /> (<InlineMath math="c" />가 가장 긴 변)에서:
@@ -95,7 +95,7 @@ export default function PythagoreanTheorem() {
           </ul>
         </SubSection>
 
-        <SubSection title="(3) 판별 예시">
+        <SubSection title="● 판별 예시">
           <div className="space-y-3">
             <p>
               세 변이 <InlineMath math="5, 7, 9" />인 삼각형:
@@ -114,8 +114,8 @@ export default function PythagoreanTheorem() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 직각삼각형의 성질">
-        <SubSection title="(1) 직각삼각형의 닮음">
+      <CalcBox title="■ 직각삼각형의 성질">
+        <SubSection title="● 직각삼각형의 닮음">
           <p>
             직각삼각형의 빗변 위에 꼭짓점에서 수선을 내리면, 원래 삼각형과
             닮음인 두 삼각형이 만들어집니다.
@@ -127,7 +127,7 @@ export default function PythagoreanTheorem() {
           <BlockMath math="AB^2 = BH \times BC, \quad AC^2 = HC \times BC" />
         </SubSection>
 
-        <SubSection title="(2) 계산 예시">
+        <SubSection title="● 계산 예시">
           <div className="rounded-lg border border-sidebar-border p-4">
             <p className="font-medium mb-2">
               직각삼각형에서 <InlineMath math="BH = 4" />,{" "}

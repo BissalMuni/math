@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function QuadraticFuncGraph() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 이차함수 y = ax²의 그래프">
-        <SubSection title="(1) 이차함수의 뜻">
+      <CalcBox title="■ 이차함수 y = ax²의 그래프">
+        <SubSection title="● 이차함수의 뜻">
           <p>
             <InlineMath math="y = ax^2 + bx + c" /> (
             <InlineMath math="a \neq 0" />) 꼴로 나타내어지는 함수를{" "}
@@ -15,7 +15,7 @@ export default function QuadraticFuncGraph() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) y = ax²의 그래프 성질">
+        <SubSection title="● y = ax²의 그래프 성질">
           <p>
             <InlineMath math="y = ax^2" />의 그래프는 원점을 꼭짓점으로 하고,{" "}
             <InlineMath math="y" />축을 축으로 하는 포물선입니다.
@@ -33,7 +33,7 @@ export default function QuadraticFuncGraph() {
           </ul>
         </SubSection>
 
-        <SubSection title="(3) y = ax²과 y = -ax²의 관계">
+        <SubSection title="● y = ax²과 y = -ax²의 관계">
           <p>
             <InlineMath math="y = ax^2" />과 <InlineMath math="y = -ax^2" />의
             그래프는 <InlineMath math="x" />축에 대하여 서로 대칭입니다.
@@ -47,8 +47,8 @@ export default function QuadraticFuncGraph() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 이차함수 y = a(x - p)² + q의 그래프">
-        <SubSection title="(1) y = ax² + q의 그래프">
+      <CalcBox title="■ 이차함수 y = a(x - p)² + q의 그래프">
+        <SubSection title="● y = ax² + q의 그래프">
           <p>
             <InlineMath math="y = ax^2" />의 그래프를{" "}
             <InlineMath math="y" />축 방향으로 <InlineMath math="q" />만큼
@@ -68,7 +68,7 @@ export default function QuadraticFuncGraph() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) y = a(x - p)²의 그래프">
+        <SubSection title="● y = a(x - p)²의 그래프">
           <p>
             <InlineMath math="y = ax^2" />의 그래프를{" "}
             <InlineMath math="x" />축 방향으로 <InlineMath math="p" />만큼
@@ -88,7 +88,7 @@ export default function QuadraticFuncGraph() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) y = a(x - p)² + q의 그래프">
+        <SubSection title="● y = a(x - p)² + q의 그래프">
           <p>
             <InlineMath math="y = ax^2" />의 그래프를{" "}
             <InlineMath math="x" />축 방향으로 <InlineMath math="p" />,{" "}
@@ -120,8 +120,8 @@ export default function QuadraticFuncGraph() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 이차함수 y = ax² + bx + c의 그래프">
-        <SubSection title="(1) 표준형으로 변환">
+      <CalcBox title="■ 이차함수 y = ax² + bx + c의 그래프">
+        <SubSection title="● 표준형으로 변환">
           <p>
             <InlineMath math="y = ax^2 + bx + c" />를 완전제곱식으로 변환하여
             꼭짓점과 축을 구합니다.
@@ -137,7 +137,7 @@ export default function QuadraticFuncGraph() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 변환 예시">
+        <SubSection title="● 변환 예시">
           <p>
             <InlineMath math="y = 2x^2 - 8x + 5" />를 표준형으로 바꾸면:
           </p>
@@ -149,7 +149,7 @@ export default function QuadraticFuncGraph() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) 그래프의 성질 정리">
+        <SubSection title="● 그래프의 성질 정리">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2 text-sm">
             <p>
               <InlineMath math="y" />축과의 교점: <InlineMath math="(0, c)" />

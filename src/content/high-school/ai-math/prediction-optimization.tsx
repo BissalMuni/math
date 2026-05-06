@@ -6,15 +6,15 @@ import { CalcBox } from "@/components/content/shared";
 export default function PredictionOptimization() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 회귀와 예측">
+      <CalcBox title="■ 회귀와 예측">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 경사하강법">
+      <CalcBox title="■ 경사하강법">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 최적화와 손실함수">
+      <CalcBox title="■ 최적화와 손실함수">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

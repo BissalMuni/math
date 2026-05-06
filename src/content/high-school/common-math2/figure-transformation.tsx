@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function FigureTransformation() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 평행이동">
+      <CalcBox title="■ 평행이동">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 대칭이동">
+      <CalcBox title="■ 대칭이동">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

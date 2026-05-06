@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function DifferentiationEconomy() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 한계비용, 한계수입">
+      <CalcBox title="■ 한계비용, 한계수입">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 탄력성">
+      <CalcBox title="■ 탄력성">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

@@ -26,7 +26,7 @@ export default function TokenizationContent() {
       </p>
 
       {/* ── 왜 글자를 못 읽나 ── */}
-      <CalcBox title="1. 컴퓨터는 숫자만 안다">
+      <CalcBox title="■ 컴퓨터는 숫자만 안다">
         <p className="text-sm mb-3">
           컴퓨터는 모든 정보를 0과 1(이진수)로 처리합니다.
           문자 "가"도 결국 숫자 44032(유니코드)입니다.
@@ -40,7 +40,7 @@ export default function TokenizationContent() {
       </CalcBox>
 
       {/* ── 세 가지 방식 ── */}
-      <CalcBox title="2. 세 가지 토큰화 방식">
+      <CalcBox title="■ 세 가지 토큰화 방식">
         <div className="grid sm:grid-cols-3 gap-4 text-sm">
           <div className="rounded-lg border border-sidebar-border p-3">
             <div className="font-semibold mb-1">① 글자 단위</div>
@@ -63,7 +63,7 @@ export default function TokenizationContent() {
       </CalcBox>
 
       {/* ── BPE 과정 ── */}
-      <CalcBox title="3. &ldquo;나는 사과를 좋아한다&rdquo; 토큰화">
+      <CalcBox title="■ &ldquo;나는 사과를 좋아한다&rdquo; 토큰화">
         <p className="text-sm mb-4">BPE(Byte Pair Encoding)는 자주 붙어 나오는 글자쌍을 합쳐 토큰을 만듭니다.</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {tokens.map((t, i) => (
@@ -96,7 +96,7 @@ export default function TokenizationContent() {
       </CalcBox>
 
       {/* ── BPE 병합 과정 예제 ── */}
-      <CalcBox title="4. BPE 병합 과정 — 단계별 예제">
+      <CalcBox title="■ BPE 병합 과정 — 단계별 예제">
         <p className="text-sm mb-4">
           BPE가 어떻게 글자 단위에서 시작해 토큰을 만들어가는지 &ldquo;low&rdquo;, &ldquo;lower&rdquo;, &ldquo;newest&rdquo;
           세 단어로 따라가 봅시다.
@@ -140,7 +140,7 @@ export default function TokenizationContent() {
       </CalcBox>
 
       {/* ── 어휘 사전 ── */}
-      <CalcBox title="5. 어휘 사전(Vocabulary) 조회">
+      <CalcBox title="■ 어휘 사전(Vocabulary) 조회">
         <p className="text-sm mb-4">
           GPT-4는 약 <strong>100,000개</strong>의 토큰을 가진 어휘 사전을 씁니다.
           토큰 → ID 변환은 이 사전에서 단순 조회(O(1)).
@@ -157,7 +157,7 @@ export default function TokenizationContent() {
       </CalcBox>
 
       {/* ── 최종 결과 ── */}
-      <CalcBox title="6. 문장 → 숫자 ID 배열">
+      <CalcBox title="■ 문장 → 숫자 ID 배열">
         <div className="flex flex-wrap items-center gap-3">
           <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg px-4 py-3">
             "{sentence}"

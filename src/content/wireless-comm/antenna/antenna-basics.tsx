@@ -11,7 +11,7 @@ export default function AntennaBasicsContent() {
         안테나 길이와 주파수는 반비례합니다. 공진 원리와 반파장/쿼터파장 안테나를 다룹니다.
       </p>
 
-      <CalcBox title="1. 안테나 길이와 주파수">
+      <CalcBox title="■ 안테나 길이와 주파수">
         <BlockMath math="\text{안테나 길이} = \frac{\lambda}{4} = \frac{c}{4f}" />
         <p className="text-sm text-muted mt-3">
           주파수 ↑ → 파장 ↓ → 안테나 ↓
@@ -36,7 +36,7 @@ export default function AntennaBasicsContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="2. 공진이란">
+      <CalcBox title="■ 공진이란">
         <p className="text-sm mb-3">
           안테나가 파장의 1/4일 때 공진이 일어나서 전파를 가장 효율적으로 송수신합니다.
         </p>
@@ -53,8 +53,8 @@ export default function AntennaBasicsContent() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 반파장 안테나 (Half-wave dipole)">
-        <SubSection title="(1) 구조">
+      <CalcBox title="■ 반파장 안테나 (Half-wave dipole)">
+        <SubSection title="● 구조">
           <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
             <pre>{`      급전점
   ↑       ↑
@@ -67,7 +67,7 @@ export default function AntennaBasicsContent() {
             두 개의 λ/4 막대를 반대 방향으로 붙인 형태입니다.
           </p>
         </SubSection>
-        <SubSection title="(2) 비교">
+        <SubSection title="● 비교">
           <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
             <table className="w-full">
               <thead className="bg-sidebar-bg">
@@ -87,7 +87,7 @@ export default function AntennaBasicsContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="4. 땅이 거울 역할">
+      <CalcBox title="■ 땅이 거울 역할">
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-3">
           <pre>{`실제 안테나   75m  (땅 위)
 ──────────────────  땅 (거울)
@@ -100,20 +100,20 @@ export default function AntennaBasicsContent() {
         </p>
       </CalcBox>
 
-      <CalcBox title="5. 과거 방송국 철탑이 높았던 이유">
-        <SubSection title="(1) 파장이 워낙 길어서">
+      <CalcBox title="■ 과거 방송국 철탑이 높았던 이유">
+        <SubSection title="● 파장이 워낙 길어서">
           <p className="text-sm">
             AM 1MHz → 파장 300m → 안테나 이상적 길이 75m.
             공진 효율을 높이려면 안테나 자체가 길어야 했습니다.
           </p>
         </SubSection>
-        <SubSection title="(2) 높이 올릴수록 멀리 퍼짐">
+        <SubSection title="● 높이 올릴수록 멀리 퍼짐">
           <p className="text-sm">
             지구가 둥그니까 높이 올릴수록 지평선 너머까지 전파가 닿습니다.
             에펠탑(324m), 도쿄타워(333m), 남산타워(236m) 모두 방송 송신이 핵심 목적이었습니다.
           </p>
         </SubSection>
-        <SubSection title="(3) 지금은 왜 작아졌나">
+        <SubSection title="● 지금은 왜 작아졌나">
           <p className="text-sm">
             FM·디지털·5G로 올수록 주파수가 높아져서 안테나가 작아지고,
             대신 기지국을 촘촘하게 많이 세우는 방식으로 바뀌었습니다.

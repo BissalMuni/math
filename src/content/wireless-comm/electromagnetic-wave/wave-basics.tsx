@@ -11,7 +11,7 @@ export default function WaveBasicsContent() {
         무선통신의 출발점은 파동입니다. 파장과 진폭이 무엇이고, 왜 독립적인 개념인지 이해합니다.
       </p>
 
-      <CalcBox title="1. 파동이란">
+      <CalcBox title="■ 파동이란">
         <p className="text-sm mb-3">
           파동은 에너지가 공간을 따라 전달되는 현상입니다.
           물결, 소리, 빛, 전파 모두 파동입니다.
@@ -31,8 +31,8 @@ export default function WaveBasicsContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="2. 파장과 진폭">
-        <SubSection title="(1) 파장 (λ, wavelength)">
+      <CalcBox title="■ 파장과 진폭">
+        <SubSection title="● 파장 (λ, wavelength)">
           <p className="text-sm mb-2">
             파동 한 주기의 길이(가로). 짧을수록 고주파입니다.
           </p>
@@ -41,13 +41,13 @@ export default function WaveBasicsContent() {
             <InlineMath math="c" /> = 빛의 속도(3×10⁸ m/s), <InlineMath math="f" /> = 주파수(Hz)
           </p>
         </SubSection>
-        <SubSection title="(2) 진폭 (Amplitude)">
+        <SubSection title="● 진폭 (Amplitude)">
           <p className="text-sm mb-2">
             파동의 높이(세로). 클수록 신호가 강합니다.
             송신 출력(전력)을 높이면 진폭이 커집니다.
           </p>
         </SubSection>
-        <SubSection title="(3) 둘은 독립적">
+        <SubSection title="● 둘은 독립적">
           <div className="text-sm space-y-1">
             <p>• 파장 짧고 진폭 큼 → 고주파 + 강한 신호</p>
             <p>• 파장 짧고 진폭 작음 → 고주파 + 약한 신호</p>
@@ -60,7 +60,7 @@ export default function WaveBasicsContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 주파수와 파장의 관계">
+      <CalcBox title="■ 주파수와 파장의 관계">
         <p className="text-sm mb-3">주파수와 파장은 반비례합니다.</p>
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-3">
           <pre>{`저주파 (AM 라디오)
@@ -91,7 +91,7 @@ export default function WaveBasicsContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="4. 소리와 파동의 본질">
+      <CalcBox title="■ 소리와 파동의 본질">
         <p className="text-sm mb-3">
           소리는 공기 분자들의 앞뒤 압력 변화일 뿐입니다.
           &ldquo;주파수&rdquo;는 인간이 그 현상을 이해하기 위해 붙인 이름입니다.

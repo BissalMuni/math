@@ -44,7 +44,7 @@ export default function OutputContent() {
       </p>
 
       {/* ── 전체 흐름 ── */}
-      <CalcBox title="1. 출력 생성 전체 흐름">
+      <CalcBox title="■ 출력 생성 전체 흐름">
         <div className="text-sm font-mono space-y-2">
           <div className="p-2 rounded bg-sidebar-bg border border-sidebar-border">
             입력 문장 → 트랜스포머 N블록 → <strong>마지막 토큰 벡터</strong> (512-dim)
@@ -61,7 +61,7 @@ export default function OutputContent() {
       </CalcBox>
 
       {/* ── STEP 1: LM Head 규모 ── */}
-      <CalcBox title="2. LM Head 행렬 크기 (GPT-2 기준)">
+      <CalcBox title="■ LM Head 행렬 크기 (GPT-2 기준)">
         <p className="text-sm mb-4">
           GPT-2의 어휘 크기는 50,257개 (BPE 토큰 기준).
           마지막 벡터를 선형 변환으로 logits를 만듭니다.
@@ -76,7 +76,7 @@ export default function OutputContent() {
       </CalcBox>
 
       {/* ── STEP 2: 예제 계산 ── */}
-      <CalcBox title="3. Softmax로 확률 변환 (축소 예제: vocab=5)">
+      <CalcBox title="■ Softmax로 확률 변환 (축소 예제: vocab=5)">
         <p className="text-sm mb-4">
           어휘를 5개로 축소한 예제입니다.
           logits = {JSON.stringify(logits)}
@@ -116,7 +116,7 @@ export default function OutputContent() {
       </CalcBox>
 
       {/* ── STEP 3: 온도 효과 ── */}
-      <CalcBox title="4. 온도(Temperature)로 다양성 조절">
+      <CalcBox title="■ 온도(Temperature)로 다양성 조절">
         <p className="text-sm mb-4">
           logits를 온도 T로 나눈 뒤 Softmax를 적용합니다.
           T가 낮을수록 더 결정적, 높을수록 더 무작위적인 출력이 나옵니다.
@@ -178,7 +178,7 @@ export default function OutputContent() {
       </CalcBox>
 
       {/* ── 반복 생성 ── */}
-      <CalcBox title="5. 다음 토큰 선택 → 반복 생성">
+      <CalcBox title="■ 다음 토큰 선택 → 반복 생성">
         <p className="text-sm mb-3">
           선택된 토큰을 입력에 추가하고 다시 트랜스포머를 실행합니다.
           이 과정을 반복하여 전체 문장을 생성합니다.

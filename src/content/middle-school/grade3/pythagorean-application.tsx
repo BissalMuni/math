@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function PythagoreanApplication() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 평면도형에서의 활용">
-        <SubSection title="(1) 직각삼각형의 높이">
+      <CalcBox title="■ 평면도형에서의 활용">
+        <SubSection title="● 직각삼각형의 높이">
           <p>
             이등변삼각형이나 정삼각형의 높이를 피타고라스 정리로 구할 수 있습니다.
           </p>
@@ -23,7 +23,7 @@ export default function PythagoreanApplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 직사각형의 대각선">
+        <SubSection title="● 직사각형의 대각선">
           <p>
             가로 <InlineMath math="a" />, 세로 <InlineMath math="b" />인
             직사각형의 대각선 <InlineMath math="d" />:
@@ -34,7 +34,7 @@ export default function PythagoreanApplication() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) 원과 현">
+        <SubSection title="● 원과 현">
           <p>
             반지름 <InlineMath math="r" />인 원에서, 원의 중심에서 현까지의
             거리가 <InlineMath math="d" />이면 현의 길이 <InlineMath math="l" />은:
@@ -55,8 +55,8 @@ export default function PythagoreanApplication() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="2. 좌표평면에서 두 점 사이의 거리">
-        <SubSection title="(1) 두 점 사이의 거리 공식">
+      <CalcBox title="■ 좌표평면에서 두 점 사이의 거리">
+        <SubSection title="● 두 점 사이의 거리 공식">
           <p>
             좌표평면 위의 두 점{" "}
             <InlineMath math="A(x_1, y_1)" />, <InlineMath math="B(x_2, y_2)" />{" "}
@@ -68,7 +68,7 @@ export default function PythagoreanApplication() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 거리 공식 예시">
+        <SubSection title="● 거리 공식 예시">
           <div className="space-y-4">
             <div>
               <p>
@@ -87,7 +87,7 @@ export default function PythagoreanApplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 특수한 경우">
+        <SubSection title="● 특수한 경우">
           <p>
             원점 <InlineMath math="O(0, 0)" />과 점{" "}
             <InlineMath math="P(a, b)" /> 사이의 거리:
@@ -100,8 +100,8 @@ export default function PythagoreanApplication() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 입체도형에서의 활용">
-        <SubSection title="(1) 직육면체의 대각선">
+      <CalcBox title="■ 입체도형에서의 활용">
+        <SubSection title="● 직육면체의 대각선">
           <p>
             가로 <InlineMath math="a" />, 세로 <InlineMath math="b" />,
             높이 <InlineMath math="c" />인 직육면체의 대각선 <InlineMath math="d" />:
@@ -114,7 +114,7 @@ export default function PythagoreanApplication() {
           <BlockMath math="d = \sqrt{9 + 16 + 144} = \sqrt{169} = 13" />
         </SubSection>
 
-        <SubSection title="(2) 원뿔의 모선 길이">
+        <SubSection title="● 원뿔의 모선 길이">
           <p>
             밑면의 반지름 <InlineMath math="r" />, 높이 <InlineMath math="h" />인
             원뿔의 모선 <InlineMath math="l" />:
@@ -126,7 +126,7 @@ export default function PythagoreanApplication() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) 최단 거리 문제">
+        <SubSection title="● 최단 거리 문제">
           <p>
             원기둥이나 직육면체의 겉면을 따라 최단 거리를 구할 때는 전개도를
             펼쳐 직선 거리(피타고라스 정리)로 계산합니다.

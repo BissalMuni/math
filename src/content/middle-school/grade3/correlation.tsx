@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function Correlation() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 산점도">
-        <SubSection title="(1) 산점도의 뜻">
+      <CalcBox title="■ 산점도">
+        <SubSection title="● 산점도의 뜻">
           <p>
             두 변량 <InlineMath math="x" />, <InlineMath math="y" />의 순서쌍{" "}
             <InlineMath math="(x, y)" />를 좌표평면 위에 점으로 나타낸 그래프를{" "}
@@ -17,7 +17,7 @@ export default function Correlation() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 산점도 그리기">
+        <SubSection title="● 산점도 그리기">
           <p>산점도를 그리는 순서:</p>
           <ul className="mt-3 list-disc pl-6 space-y-1">
             <li>① 가로축과 세로축에 각각의 변량을 정한다.</li>
@@ -26,7 +26,7 @@ export default function Correlation() {
           </ul>
         </SubSection>
 
-        <SubSection title="(3) 산점도 읽기">
+        <SubSection title="● 산점도 읽기">
           <div className="rounded-lg border border-sidebar-border p-4 text-sm space-y-2">
             <p>
               예: 학생 5명의 키(cm)와 몸무게(kg)
@@ -43,8 +43,8 @@ export default function Correlation() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 상관관계">
-        <SubSection title="(1) 양의 상관관계">
+      <CalcBox title="■ 상관관계">
+        <SubSection title="● 양의 상관관계">
           <p>
             한 변량이 증가할 때 다른 변량도 <strong>증가하는 경향</strong>이
             있으면 두 변량 사이에 <strong>양의 상관관계</strong>가 있다고 합니다.
@@ -57,7 +57,7 @@ export default function Correlation() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 음의 상관관계">
+        <SubSection title="● 음의 상관관계">
           <p>
             한 변량이 증가할 때 다른 변량이 <strong>감소하는 경향</strong>이
             있으면 두 변량 사이에 <strong>음의 상관관계</strong>가 있다고 합니다.
@@ -70,7 +70,7 @@ export default function Correlation() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) 상관관계가 없는 경우">
+        <SubSection title="● 상관관계가 없는 경우">
           <p>
             한 변량이 변해도 다른 변량이 증가하거나 감소하는 경향이{" "}
             <strong>뚜렷하지 않으면</strong> 상관관계가 없다고 합니다.
@@ -90,8 +90,8 @@ export default function Correlation() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 상관관계의 강도">
-        <SubSection title="(1) 상관관계의 강약">
+      <CalcBox title="■ 상관관계의 강도">
+        <SubSection title="● 상관관계의 강약">
           <p>
             산점도에서 점들이 일직선에 가까울수록 상관관계가{" "}
             <strong>강하다</strong>고 하고, 흩어져 있을수록{" "}
@@ -105,7 +105,7 @@ export default function Correlation() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 상관표">
+        <SubSection title="● 상관표">
           <p>
             두 변량의 자료를 도수분포표 형태로 정리한 표를{" "}
             <strong>상관표</strong>라고 합니다. 상관표에서 대각선 방향으로
@@ -117,7 +117,7 @@ export default function Correlation() {
           </ul>
         </SubSection>
 
-        <SubSection title="(3) 상관관계 판단 시 주의점">
+        <SubSection title="● 상관관계 판단 시 주의점">
           <ul className="list-disc pl-6 space-y-2">
             <li>
               <strong>인과관계와 구별</strong>: 상관관계가 있다고 해서 반드시

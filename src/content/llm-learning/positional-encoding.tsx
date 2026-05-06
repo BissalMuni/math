@@ -55,8 +55,8 @@ export default function PositionalEncoding() {
       </p>
 
       {/* ── 3-1. 왜 필요한가 ── */}
-      <CalcBox title="1. 왜 위치 인코딩이 필요한가">
-        <SubSection title="(1) Positional Encoding이 필요한 이유">
+      <CalcBox title="■ 왜 위치 인코딩이 필요한가">
+        <SubSection title="● Positional Encoding이 필요한 이유">
           <div className="text-sm space-y-3">
             <div className="flex gap-3 items-stretch">
               <div className="bg-red-100 dark:bg-red-950 rounded-lg p-3 flex-1">
@@ -76,7 +76,7 @@ export default function PositionalEncoding() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 비트 플래그와 비교">
+        <SubSection title="● 비트 플래그와 비교">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm mb-3">
             <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-3">
               <div className="font-semibold mb-1">비트 플래그</div>
@@ -97,7 +97,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(3) 주행거리계 비유">
+        <SubSection title="● 주행거리계 비유">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm mb-3">
             <div className="rounded-lg border border-red-300 bg-red-50 dark:border-red-700 dark:bg-red-950 p-3">
               <div className="font-semibold text-red-700 dark:text-red-300 mb-1">시계 (부적절)</div>
@@ -115,7 +115,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(4) 크기 순서로 정렬되나? (벡터 거리 개념)">
+        <SubSection title="● 크기 순서로 정렬되나? (벡터 거리 개념)">
           <Bullets items={[
             "각 차원의 값 크기는 들쭉날쭉 — 단순 정렬되지 않음",
             "가까운 위치(pos=2 ↔ pos=3) → 벡터가 비슷함",
@@ -126,8 +126,8 @@ export default function PositionalEncoding() {
       </CalcBox>
 
       {/* ── 3-2. sin/cos 함수로 위치 표현 ── */}
-      <CalcBox title="2. sin/cos 함수로 위치 표현">
-        <SubSection title="(1) 공식 설명 (pos, i, d_model)">
+      <CalcBox title="■ sin/cos 함수로 위치 표현">
+        <SubSection title="● 공식 설명 (pos, i, d_model)">
           <BlockMath math="PE(pos, 2i) = \sin\!\left(\frac{pos}{10000^{2i/d_{model}}}\right)" />
           <BlockMath math="PE(pos, 2i+1) = \cos\!\left(\frac{pos}{10000^{2i/d_{model}}}\right)" />
           <Bullets items={[
@@ -143,7 +143,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(2) 각 차원별 주파수 (빠름 / 느림)">
+        <SubSection title="● 각 차원별 주파수 (빠름 / 느림)">
           <div className="text-sm space-y-2 font-mono bg-sidebar-bg rounded-lg p-4 border border-sidebar-border mb-3">
             <div>dim 0 (i=0, sin): <strong>sin(pos / 1)</strong> &nbsp; — 빠름</div>
             <div>dim 1 (i=0, cos): <strong>cos(pos / 1)</strong> &nbsp; — 빠름</div>
@@ -157,7 +157,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(3) sin만 쓰면 안 되는 이유 (pos=0 문제)">
+        <SubSection title="● sin만 쓰면 안 되는 이유 (pos=0 문제)">
           <div className="text-sm space-y-2 font-mono bg-sidebar-bg rounded-lg p-4 border border-sidebar-border mb-3">
             <div>sin만 쓴다면 pos=0 → [sin(0/1), sin(0/100), …] = <strong>[0, 0, 0, 0]</strong> — 위치 정보 소실!</div>
             <div>sin/cos 섞으면 pos=0 → [sin(0/1), <strong>cos(0/1)</strong>, sin(0/100), <strong>cos(0/100)</strong>] = [0, 1, 0, 1]</div>
@@ -169,7 +169,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(4) pos별 실제 계산 예제 (pos=0, 1, 2, 3)">
+        <SubSection title="● pos별 실제 계산 예제 (pos=0, 1, 2, 3)">
           <div className="text-sm mb-3 font-mono bg-sidebar-bg rounded-lg p-3 border border-sidebar-border">
             분모 먼저: i=0 → 1, &nbsp; i=1 → 10000<sup>0.5</sup> = 100
           </div>
@@ -209,7 +209,7 @@ export default function PositionalEncoding() {
           </div>
         </SubSection>
 
-        <SubSection title="(5) 주기는 다르지만 계산은 매번">
+        <SubSection title="● 주기는 다르지만 계산은 매번">
           <Bullets items={[
             "pos가 들어올 때마다 매번 sin/cos을 새로 계산",
             "각 차원의 주기(분모)는 처음부터 고정 — 학습 중에도 안 바뀜",
@@ -217,7 +217,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(6) 분모가 크면 값이 0에 가까워짐">
+        <SubSection title="● 분모가 크면 값이 0에 가까워짐">
           <div className="text-sm mb-3 font-mono bg-sidebar-bg rounded-lg p-3 border border-sidebar-border">
             예) dim 2 (분모 100): sin(1/100) = sin(0.01) ≈ <strong>0.01</strong> &nbsp; — 0에 매우 가까움
           </div>
@@ -228,7 +228,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(7) 느린 차원은 긴 문장에서 역할">
+        <SubSection title="● 느린 차원은 긴 문장에서 역할">
           <Bullets items={[
             "pos가 커질수록 느린 차원에서도 값 차이가 생김",
             "짧은 문장 (pos가 작음) → 느린 차원은 거의 0, 사실상 빠른 차원만 동작",
@@ -236,7 +236,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(8) 저정밀도(fp16/fp4/int8)에서 긴 주기 손실">
+        <SubSection title="● 저정밀도(fp16/fp4/int8)에서 긴 주기 손실">
           <Bullets items={[
             "느린 차원의 미세한 값 차이가 저정밀도에서는 같은 숫자로 뭉개짐",
             "그러면 멀리 떨어진 두 pos를 더 이상 구분하지 못함",
@@ -245,7 +245,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(9) 양자화(quantization) 개념">
+        <SubSection title="● 양자화(quantization) 개념">
           <div className="text-sm mb-3 font-mono bg-sidebar-bg rounded-lg p-3 border border-sidebar-border">
             fp32 (≈4×10⁹ 단계) &nbsp;→&nbsp; fp16 &nbsp;→&nbsp; int8 (256 단계) &nbsp;→&nbsp; fp4 (16 단계)
           </div>
@@ -259,8 +259,8 @@ export default function PositionalEncoding() {
       </CalcBox>
 
       {/* ── 3-3. 임베딩에 더하기 ── */}
-      <CalcBox title="3. 임베딩에 더하기">
-        <SubSection title="(1) 단어 벡터에 더하기">
+      <CalcBox title="■ 임베딩에 더하기">
+        <SubSection title="● 단어 벡터에 더하기">
           <div className="flex flex-wrap gap-3 items-center mb-4">
             <Matrix data={X_embed} label="X_embed (4×4)" color="orange" />
             <Arrow op="+" />
@@ -275,7 +275,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(2) 트랜스포머 블록마다 더하나? (한 번만)">
+        <SubSection title="● 트랜스포머 블록마다 더하나? (한 번만)">
           <Bullets items={[
             "맨 처음 입력 단계에서 단 한 번만 PE를 더함",
             "그 위치 정보가 attention/FFN 블록을 통과하면서도 유지됨",
@@ -283,7 +283,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(3) 더하고 학습하고 반복">
+        <SubSection title="● 더하고 학습하고 반복">
           <div className="text-sm mb-3 font-mono bg-sidebar-bg rounded-lg p-3 border border-sidebar-border">
             단어벡터 + PE → 모델 통과 → 오차 계산 → 가중치 수정 &nbsp; (한 세트)
           </div>
@@ -294,7 +294,7 @@ export default function PositionalEncoding() {
           ]} />
         </SubSection>
 
-        <SubSection title="(4) 학습 중 바뀌는 것 vs 안 바뀌는 것">
+        <SubSection title="● 학습 중 바뀌는 것 vs 안 바뀌는 것">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm mb-3">
             <div className="rounded-lg border border-orange-300 bg-orange-50 dark:border-orange-700 dark:bg-orange-950 p-3">
               <div className="font-semibold text-orange-700 dark:text-orange-300 mb-1">단어 벡터 (임베딩)</div>

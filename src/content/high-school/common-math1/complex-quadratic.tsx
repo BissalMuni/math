@@ -6,15 +6,15 @@ import { CalcBox } from "@/components/content/shared";
 export default function ComplexQuadratic() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 복소수와 그 연산">
+      <CalcBox title="■ 복소수와 그 연산">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 이차방정식의 판별식">
+      <CalcBox title="■ 이차방정식의 판별식">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 이차방정식의 근과 계수의 관계">
+      <CalcBox title="■ 이차방정식의 근과 계수의 관계">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

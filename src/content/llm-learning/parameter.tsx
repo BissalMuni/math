@@ -19,7 +19,7 @@ export default function ParameterContent() {
       </p>
 
       {/* ── 파라미터 = 가중치 + 편향 ── */}
-      <CalcBox title="1. 파라미터 = 학습으로 결정되는 숫자">
+      <CalcBox title="■ 파라미터 = 학습으로 결정되는 숫자">
         <p className="text-sm mb-4">
           신경망에서 파라미터는 <strong>가중치(weight)</strong>와 <strong>편향(bias)</strong>을 합친 것입니다.
           학습 과정에서 자동으로 조정되는 모든 숫자를 파라미터라고 부릅니다.
@@ -43,7 +43,7 @@ export default function ParameterContent() {
       </CalcBox>
 
       {/* ── 구체적 예시 ── */}
-      <CalcBox title="2. 파라미터가 실제로 하는 일">
+      <CalcBox title="■ 파라미터가 실제로 하는 일">
         <p className="text-sm mb-4">
           임베딩 테이블만 봐도 파라미터 수를 쉽게 계산할 수 있습니다:
         </p>
@@ -70,7 +70,7 @@ export default function ParameterContent() {
       </CalcBox>
 
       {/* ── 모델별 비교 ── */}
-      <CalcBox title="3. 모델별 파라미터 수 비교">
+      <CalcBox title="■ 모델별 파라미터 수 비교">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-accent-light">
@@ -94,7 +94,7 @@ export default function ParameterContent() {
       </CalcBox>
 
       {/* ── 파라미터 많으면 좋은가 ── */}
-      <CalcBox title="4. 파라미터가 많으면 무조건 좋은가?">
+      <CalcBox title="■ 파라미터가 많으면 무조건 좋은가?">
         <div className="space-y-3 text-sm">
           <div className="rounded-lg border border-green-300 bg-green-50 dark:border-green-700 dark:bg-green-950 p-3">
             <div className="font-semibold text-green-700 dark:text-green-300 mb-1">장점</div>

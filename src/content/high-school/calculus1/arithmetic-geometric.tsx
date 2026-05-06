@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function ArithmeticGeometric() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 등차수열">
+      <CalcBox title="■ 등차수열">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 등비수열">
+      <CalcBox title="■ 등비수열">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

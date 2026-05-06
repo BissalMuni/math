@@ -6,15 +6,15 @@ import { CalcBox } from "@/components/content/shared";
 export default function IndefiniteDefiniteIntegral() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 부정적분">
+      <CalcBox title="■ 부정적분">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 정적분">
+      <CalcBox title="■ 정적분">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 정적분의 성질">
+      <CalcBox title="■ 정적분의 성질">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

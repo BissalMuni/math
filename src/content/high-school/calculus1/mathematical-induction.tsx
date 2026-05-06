@@ -6,7 +6,7 @@ import { CalcBox } from "@/components/content/shared";
 export default function MathematicalInduction() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 수학적 귀납법">
+      <CalcBox title="■ 수학적 귀납법">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

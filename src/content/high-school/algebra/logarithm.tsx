@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function Logarithm() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 로그의 뜻과 성질">
+      <CalcBox title="■ 로그의 뜻과 성질">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 상용로그">
+      <CalcBox title="■ 상용로그">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

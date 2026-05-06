@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function Counting() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 경우의 수">
-        <SubSection title="(1) 경우의 수의 뜻">
+      <CalcBox title="■ 경우의 수">
+        <SubSection title="● 경우의 수의 뜻">
           <p>
             어떤 사건이 일어날 수 있는 모든 가짓수를{" "}
             <strong>경우의 수</strong>라고 합니다.
@@ -21,7 +21,7 @@ export default function Counting() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 사건과 경우의 수">
+        <SubSection title="● 사건과 경우의 수">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               주사위를 던져 짝수의 눈이 나오는 경우의 수는?
@@ -41,8 +41,8 @@ export default function Counting() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 합의 법칙">
-        <SubSection title="(1) 합의 법칙의 뜻">
+      <CalcBox title="■ 합의 법칙">
+        <SubSection title="● 합의 법칙의 뜻">
           <p>
             두 사건 A, B가 <strong>동시에 일어나지 않을 때</strong> (배반사건),
             A 또는 B가 일어나는 경우의 수는:
@@ -54,7 +54,7 @@ export default function Counting() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 예시">
+        <SubSection title="● 예시">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               주사위를 던져 3의 배수 또는 5의 배수가 나오는 경우의 수
@@ -74,8 +74,8 @@ export default function Counting() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 곱의 법칙">
-        <SubSection title="(1) 곱의 법칙의 뜻">
+      <CalcBox title="■ 곱의 법칙">
+        <SubSection title="● 곱의 법칙의 뜻">
           <p>
             사건 A가 일어나는 경우가 <InlineMath math="m" />가지이고,
             그 각각에 대해 사건 B가 일어나는 경우가{" "}
@@ -85,7 +85,7 @@ export default function Counting() {
           <BlockMath math="\text{(A 그리고 B의 경우의 수)} = m \times n" />
         </SubSection>
 
-        <SubSection title="(2) 예시">
+        <SubSection title="● 예시">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               동전 1개와 주사위 1개를 동시에 던질 때의 경우의 수
@@ -113,8 +113,8 @@ export default function Counting() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="4. 여러 가지 경우의 수">
-        <SubSection title="(1) 한 줄로 세우기">
+      <CalcBox title="■ 여러 가지 경우의 수">
+        <SubSection title="● 한 줄로 세우기">
           <p>
             <InlineMath math="n" />명을 한 줄로 세우는 경우의 수는{" "}
             <InlineMath math="n" />의 <strong>계승(factorial)</strong>입니다.
@@ -126,7 +126,7 @@ export default function Counting() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 대표 뽑기">
+        <SubSection title="● 대표 뽑기">
           <p>
             <InlineMath math="n" />명 중 <InlineMath math="r" />명의 대표를
             뽑는 경우의 수는 순서에 따라 달라집니다.

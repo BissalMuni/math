@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function LinearFuncGraph() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 함수와 일차함수">
-        <SubSection title="(1) 함수">
+      <CalcBox title="■ 함수와 일차함수">
+        <SubSection title="● 함수">
           <p>
             두 변수 <InlineMath math="x" />, <InlineMath math="y" />에서{" "}
             <InlineMath math="x" />의 값이 정해지면 <InlineMath math="y" />의
@@ -17,7 +17,7 @@ export default function LinearFuncGraph() {
           <BlockMath math="y = f(x)" />
         </SubSection>
 
-        <SubSection title="(2) 일차함수의 뜻">
+        <SubSection title="● 일차함수의 뜻">
           <p>
             <InlineMath math="y = ax + b" /> (<InlineMath math="a \neq 0" />,{" "}
             <InlineMath math="a" />, <InlineMath math="b" />는 상수) 꼴로
@@ -30,7 +30,7 @@ export default function LinearFuncGraph() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) 함숫값">
+        <SubSection title="● 함숫값">
           <p>
             <InlineMath math="x" />에 특정 값을 대입하여 얻는{" "}
             <InlineMath math="y" />의 값을 그 <InlineMath math="x" /> 값에서의{" "}
@@ -43,8 +43,8 @@ export default function LinearFuncGraph() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 일차함수의 그래프">
-        <SubSection title="(1) 그래프 그리기">
+      <CalcBox title="■ 일차함수의 그래프">
+        <SubSection title="● 그래프 그리기">
           <p>
             일차함수 <InlineMath math="y = ax + b" />의 그래프는{" "}
             <strong>직선</strong>입니다. 두 점만 알면 그래프를 그릴 수 있습니다.
@@ -78,7 +78,7 @@ export default function LinearFuncGraph() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 기울기">
+        <SubSection title="● 기울기">
           <p>
             일차함수 <InlineMath math="y = ax + b" />에서{" "}
             <InlineMath math="a" />를 <strong>기울기</strong>라 합니다.
@@ -99,7 +99,7 @@ export default function LinearFuncGraph() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) y절편">
+        <SubSection title="● y절편">
           <p>
             일차함수 <InlineMath math="y = ax + b" />에서{" "}
             <InlineMath math="b" />를 <strong>y절편</strong>이라 합니다.
@@ -109,8 +109,8 @@ export default function LinearFuncGraph() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 일차함수 그래프의 성질">
-        <SubSection title="(1) 기울기와 y절편에 따른 그래프 위치">
+      <CalcBox title="■ 일차함수 그래프의 성질">
+        <SubSection title="● 기울기와 y절편에 따른 그래프 위치">
           <div className="space-y-2">
             <p>
               <InlineMath math="a > 0, \, b > 0" />: 제1, 2, 3사분면을 지남
@@ -127,7 +127,7 @@ export default function LinearFuncGraph() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 평행과 일치">
+        <SubSection title="● 평행과 일치">
           <p>
             두 일차함수 <InlineMath math="y = a_1 x + b_1" />,{" "}
             <InlineMath math="y = a_2 x + b_2" />에서:
@@ -144,7 +144,7 @@ export default function LinearFuncGraph() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) x절편">
+        <SubSection title="● x절편">
           <p>
             그래프가 <InlineMath math="x" />축과 만나는 점, 즉{" "}
             <InlineMath math="y = 0" />일 때의 <InlineMath math="x" /> 값을{" "}

@@ -11,7 +11,7 @@ export default function MimoContent() {
         현대 기술의 핵심 — 병렬 처리를 다룹니다.
       </p>
 
-      <CalcBox title="1. MIMO란">
+      <CalcBox title="■ MIMO란">
         <p className="text-sm mb-2">
           <strong>M</strong>ultiple <strong>I</strong>nput <strong>M</strong>ultiple <strong>O</strong>utput = 다중 입출력
         </p>
@@ -25,14 +25,14 @@ export default function MimoContent() {
         </p>
       </CalcBox>
 
-      <CalcBox title="2. 5G Massive MIMO">
-        <SubSection title="(1) 규모">
+      <CalcBox title="■ 5G Massive MIMO">
+        <SubSection title="● 규모">
           <div className="text-sm space-y-1">
             <p>• 기지국 쪽: 안테나 수백 개</p>
             <p>• 스마트폰: 안테나 수십 개</p>
           </div>
         </SubSection>
-        <SubSection title="(2) 스마트폰 안의 안테나">
+        <SubSection title="● 스마트폰 안의 안테나">
           <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
             <pre>{`스마트폰 안 5G 안테나 배열
 
@@ -46,7 +46,7 @@ export default function MimoContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 5G의 3차원 병렬">
+      <CalcBox title="■ 5G의 3차원 병렬">
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-3">
           <pre>{`시간 축     심볼1  심볼2  심볼3 ... (직렬)
 
@@ -79,7 +79,7 @@ export default function MimoContent() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="4. 병렬은 현대 기술의 핵심">
+      <CalcBox title="■ 병렬은 현대 기술의 핵심">
         <p className="text-sm mb-3">
           단일 성능 향상에는 한계가 있어, 여러 개를 동시에 하는 병렬로 해결합니다.
         </p>

@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function SequenceFinance() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 연금의 현재가치와 미래가치">
+      <CalcBox title="■ 연금의 현재가치와 미래가치">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 대출 상환">
+      <CalcBox title="■ 대출 상환">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

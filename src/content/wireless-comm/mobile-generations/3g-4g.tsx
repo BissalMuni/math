@@ -10,8 +10,8 @@ export default function ThreeGFourGContent() {
         3G로 모바일 인터넷이 시작되고, 4G/LTE로 스트리밍이 자연스러워진 시대입니다.
       </p>
 
-      <CalcBox title="1. 3G — 모바일 인터넷의 시작 (2000년대 초)">
-        <SubSection title="(1) 특징">
+      <CalcBox title="■ 3G — 모바일 인터넷의 시작 (2000년대 초)">
+        <SubSection title="● 특징">
           <div className="text-sm space-y-1">
             <p>• 처음으로 &ldquo;진짜 모바일 인터넷&rdquo; 가능</p>
             <p>• 스마트폰 초기 시대 (아이폰 초기 모델)</p>
@@ -20,7 +20,7 @@ export default function ThreeGFourGContent() {
             <p>• 지연시간 100ms 이상</p>
           </div>
         </SubSection>
-        <SubSection title="(2) 한계">
+        <SubSection title="● 한계">
           <p className="text-sm">
             속도가 느려서 동영상 스트리밍은 버벅였습니다.
             유튜브를 모바일로 보기 어려운 시대였습니다.
@@ -28,14 +28,14 @@ export default function ThreeGFourGContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 4G/LTE — 스트리밍 시대 (2010년대 초)">
-        <SubSection title="(1) LTE란">
+      <CalcBox title="■ 4G/LTE — 스트리밍 시대 (2010년대 초)">
+        <SubSection title="● LTE란">
           <p className="text-sm mb-2">
             <strong>L</strong>ong <strong>T</strong>erm <strong>E</strong>volution = 장기 진화.
             4G의 대표적인 기술 규격 이름입니다.
           </p>
         </SubSection>
-        <SubSection title="(2) 특징">
+        <SubSection title="● 특징">
           <div className="text-sm space-y-1">
             <p>• 유튜브·넷플릭스 모바일 스트리밍이 자연스러워진 세대</p>
             <p>• 속도가 3G 대비 10~50배 빨라짐</p>
@@ -46,7 +46,7 @@ export default function ThreeGFourGContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 3G → 4G 발전 요인">
+      <CalcBox title="■ 3G → 4G 발전 요인">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">
@@ -68,7 +68,7 @@ export default function ThreeGFourGContent() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="4. 적응형 변조 (Adaptive Modulation)">
+      <CalcBox title="■ 적응형 변조 (Adaptive Modulation)">
         <p className="text-sm mb-3">
           폰과 기지국이 실시간으로 신호 품질을 측정하여 변조 방식을 자동 선택합니다.
         </p>

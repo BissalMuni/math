@@ -12,7 +12,7 @@ export default function PhaseModulationContent() {
         sin과 cos의 관계가 직교 변조의 기초입니다.
       </p>
 
-      <CalcBox title="1. 위상(Phase)이란">
+      <CalcBox title="■ 위상(Phase)이란">
         <p className="text-sm mb-3">
           파동이 &ldquo;어디서부터 시작하는가&rdquo;를 나타냅니다.
         </p>
@@ -24,8 +24,8 @@ cos (90°)   봉우리에서 시작          \\/\\/\\/
         </div>
       </CalcBox>
 
-      <CalcBox title="2. 위상 변조(PSK) 원리">
-        <SubSection title="(1) BPSK — 2가지 위상">
+      <CalcBox title="■ 위상 변조(PSK) 원리">
+        <SubSection title="● BPSK — 2가지 위상">
           <p className="text-sm mb-2">파동을 뒤집어서 0과 1을 구분합니다.</p>
           <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
             <pre>{`0 → /\\/\\  (정방향)
@@ -34,7 +34,7 @@ cos (90°)   봉우리에서 시작          \\/\\/\\/
 파동 1번에 1비트`}</pre>
           </div>
         </SubSection>
-        <SubSection title="(2) QPSK — 4가지 위상">
+        <SubSection title="● QPSK — 4가지 위상">
           <p className="text-sm mb-2">위상을 4단계로 나누면 파동 1번에 2비트를 담을 수 있습니다.</p>
           <div className="text-sm space-y-1">
             <p>• 0° → 00</p>
@@ -45,7 +45,7 @@ cos (90°)   봉우리에서 시작          \\/\\/\\/
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. Keying vs Modulation">
+      <CalcBox title="■ Keying vs Modulation">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">
@@ -61,7 +61,7 @@ cos (90°)   봉우리에서 시작          \\/\\/\\/
             </tbody>
           </table>
         </div>
-        <SubSection title="(1) Keying의 어원">
+        <SubSection title="● Keying의 어원">
           <p className="text-sm mb-2">
             전신(모스부호) 시대에 Key(키)를 눌러 ON/OFF하던 행위에서 유래했습니다.
           </p>
@@ -77,7 +77,7 @@ cos (90°)   봉우리에서 시작          \\/\\/\\/
         </Insight>
       </CalcBox>
 
-      <CalcBox title="4. sin과 cos의 직교성">
+      <CalcBox title="■ sin과 cos의 직교성">
         <p className="text-sm mb-3">
           sin과 cos는 90도 어긋나 있어서 서로 간섭을 안 합니다.
           같은 주파수인데 동시에 두 채널로 쓸 수 있습니다.

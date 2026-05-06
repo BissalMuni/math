@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function CircleEquation() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 원의 방정식">
+      <CalcBox title="■ 원의 방정식">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 직선과 원의 위치 관계">
+      <CalcBox title="■ 직선과 원의 위치 관계">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

@@ -6,15 +6,15 @@ import { CalcBox } from "@/components/content/shared";
 export default function PolynomialOperation() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 다항식의 덧셈과 뺄셈">
+      <CalcBox title="■ 다항식의 덧셈과 뺄셈">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 다항식의 곱셈">
+      <CalcBox title="■ 다항식의 곱셈">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 다항식의 나눗셈">
+      <CalcBox title="■ 다항식의 나눗셈">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

@@ -46,7 +46,7 @@ export default function BackpropContent() {
       </p>
 
       {/* ── STEP 1: 손실 함수 ── */}
-      <CalcBox title="1. Cross-Entropy 손실 계산">
+      <CalcBox title="■ Cross-Entropy 손실 계산">
         <p className="text-sm mb-4">
           모델이 예측한 확률 분포와 정답의 차이를 수치로 표현합니다.
           정답 토큰의 확률이 낮을수록 손실이 커집니다.
@@ -82,7 +82,7 @@ export default function BackpropContent() {
       </CalcBox>
 
       {/* ── STEP 2: 연쇄법칙 ── */}
-      <CalcBox title="2. 연쇄법칙 (Chain Rule) — 기울기 역방향 전파">
+      <CalcBox title="■ 연쇄법칙 (Chain Rule) — 기울기 역방향 전파">
         <p className="text-sm mb-4">
           손실 L이 파라미터 x에 어떻게 의존하는지 계산합니다.
           여러 레이어를 거친다면 각 레이어의 기울기를 곱해 나갑니다.
@@ -109,7 +109,7 @@ export default function BackpropContent() {
       </CalcBox>
 
       {/* ── STEP 3: Softmax+CE 기울기 ── */}
-      <CalcBox title="3. Softmax + Cross-Entropy 결합 기울기">
+      <CalcBox title="■ Softmax + Cross-Entropy 결합 기울기">
         <p className="text-sm mb-4">
           Softmax와 Cross-Entropy를 합쳐 미분하면 놀랍도록 단순해집니다:
         </p>
@@ -145,7 +145,7 @@ export default function BackpropContent() {
       </CalcBox>
 
       {/* ── STEP 4: 파라미터 업데이트 ── */}
-      <CalcBox title="4. 파라미터 업데이트: W ← W - lr × ∂L/∂W">
+      <CalcBox title="■ 파라미터 업데이트: W ← W - lr × ∂L/∂W">
         <BlockMath math="W \leftarrow W - \eta \cdot \frac{\partial \mathcal{L}}{\partial W}" />
         <p className="text-sm mb-4">
           학습률 lr = {lr} 예제 (실제 Adam 옵티마이저는 더 복잡하지만 기본 원리는 동일):
@@ -165,7 +165,7 @@ export default function BackpropContent() {
       </CalcBox>
 
       {/* ── 규모 ── */}
-      <CalcBox title="5. GPT-3의 역전파 규모">
+      <CalcBox title="■ GPT-3의 역전파 규모">
         <div className="text-sm font-mono space-y-2 p-3 rounded-lg bg-sidebar-bg border border-sidebar-border">
           <div>파라미터 수: <strong>175,000,000,000</strong> (175B)</div>
           <div>→ 한 번의 역전파에서 <strong>175B개의 기울기</strong> 계산</div>

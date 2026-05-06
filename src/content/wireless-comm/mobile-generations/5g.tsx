@@ -12,7 +12,7 @@ export default function FiveGContent() {
         초고속·초저지연·초연결 세 축으로 구성됩니다.
       </p>
 
-      <CalcBox title="1. 5G의 세 가지 축">
+      <CalcBox title="■ 5G의 세 가지 축">
         <div className="grid sm:grid-cols-3 gap-4 text-sm">
           <div className="rounded-lg border border-sidebar-border p-3">
             <div className="font-semibold mb-1">① 초고속 (eMBB)</div>
@@ -29,7 +29,7 @@ export default function FiveGContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="2. 세대별 비교">
+      <CalcBox title="■ 세대별 비교">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">
@@ -50,7 +50,7 @@ export default function FiveGContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="3. 왜 빠른가 — 핵심 기술 조합">
+      <CalcBox title="■ 왜 빠른가 — 핵심 기술 조합">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">
@@ -74,15 +74,15 @@ export default function FiveGContent() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="4. 5G의 한계와 현실">
-        <SubSection title="(1) 밀리미터파의 단점">
+      <CalcBox title="■ 5G의 한계와 현실">
+        <SubSection title="● 밀리미터파의 단점">
           <div className="text-sm space-y-1">
             <p>• 직진성이 강해 장애물에 약함 (벽, 건물, 비에 감쇠)</p>
             <p>• 기지국을 촘촘하게 세워야 함 → 비용 ↑</p>
             <p>• 전국 커버리지는 아직 4G보다 부족</p>
           </div>
         </SubSection>
-        <SubSection title="(2) 5G 변조 자동 선택">
+        <SubSection title="● 5G 변조 자동 선택">
           <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
             <table className="w-full">
               <thead className="bg-sidebar-bg">
@@ -103,7 +103,7 @@ export default function FiveGContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="5. 이동통신 기술의 발전 흐름">
+      <CalcBox title="■ 이동통신 기술의 발전 흐름">
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
           <pre>{`1940년대  트랜지스터 발명
     ↓

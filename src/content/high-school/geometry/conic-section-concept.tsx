@@ -6,15 +6,15 @@ import { CalcBox } from "@/components/content/shared";
 export default function ConicSectionConcept() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 포물선">
+      <CalcBox title="■ 포물선">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 타원">
+      <CalcBox title="■ 타원">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 쌍곡선">
+      <CalcBox title="■ 쌍곡선">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

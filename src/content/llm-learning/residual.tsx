@@ -33,7 +33,7 @@ export default function ResidualContent() {
       </p>
 
       {/* ── 문제: 기울기 소실 ── */}
-      <CalcBox title="1. 문제: 깊은 네트워크에서 기울기 소실">
+      <CalcBox title="■ 문제: 깊은 네트워크에서 기울기 소실">
         <p className="text-sm mb-4">
           역전파 중 기울기는 레이어를 거슬러 올라갈수록 곱셈으로 전파됩니다.
           각 레이어에서 기울기가 0.5씩 곱해진다면:
@@ -58,7 +58,7 @@ export default function ResidualContent() {
       </CalcBox>
 
       {/* ── STEP 1: 해결책 ── */}
-      <CalcBox title="2. 해결책: x + f(x) — 원본 신호를 그대로 더하기">
+      <CalcBox title="■ 해결책: x + f(x) — 원본 신호를 그대로 더하기">
         <p className="text-sm mb-4">
           서브레이어(어텐션 또는 FFN) 출력 f(x)에 원본 입력 x를 더합니다.
           네트워크는 f(x) = 변화량만 학습하면 됩니다.
@@ -73,7 +73,7 @@ export default function ResidualContent() {
       </CalcBox>
 
       {/* ── STEP 2: 실제 수치 예제 ── */}
-      <CalcBox title="3. 수치 예제: 벡터 덧셈">
+      <CalcBox title="■ 수치 예제: 벡터 덧셈">
         <p className="text-sm mb-4">
           어텐션 서브레이어를 통과한 결과에 잔차 연결을 적용합니다.
         </p>
@@ -98,7 +98,7 @@ export default function ResidualContent() {
       </CalcBox>
 
       {/* ── STEP 3: 역전파 수학 ── */}
-      <CalcBox title="4. 왜 기울기 소실이 해결되는가? — 미분">
+      <CalcBox title="■ 왜 기울기 소실이 해결되는가? — 미분">
         <p className="text-sm mb-4">
           잔차 연결이 있는 함수를 x에 대해 미분합니다:
         </p>
@@ -138,7 +138,7 @@ export default function ResidualContent() {
       </CalcBox>
 
       {/* ── 트랜스포머에서 사용되는 위치 ── */}
-      <CalcBox title="5. 트랜스포머에서 잔차 연결 위치">
+      <CalcBox title="■ 트랜스포머에서 잔차 연결 위치">
         <div className="text-sm space-y-2 font-mono">
           <div className="p-2 rounded bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800">
             x → [Multi-Head Attention] → f₁(x) → <strong>x + f₁(x)</strong> → LayerNorm

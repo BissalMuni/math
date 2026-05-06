@@ -6,15 +6,15 @@ import { CalcBox } from "@/components/content/shared";
 export default function FunctionConcept() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 함수의 뜻과 그래프">
+      <CalcBox title="■ 함수의 뜻과 그래프">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 합성함수">
+      <CalcBox title="■ 합성함수">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 역함수">
+      <CalcBox title="■ 역함수">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

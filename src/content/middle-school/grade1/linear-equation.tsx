@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function LinearEquation() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 방정식과 그 해">
-        <SubSection title="(1) 등식과 방정식">
+      <CalcBox title="■ 방정식과 그 해">
+        <SubSection title="● 등식과 방정식">
           <p>
             등호 <InlineMath math="=" />를 사용하여 나타낸 식을{" "}
             <strong>등식</strong>이라고 합니다.
@@ -18,7 +18,7 @@ export default function LinearEquation() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 해(근)와 풀이">
+        <SubSection title="● 해(근)와 풀이">
           <p>
             방정식을 참이 되게 하는 미지수의 값을 그 방정식의{" "}
             <strong>해</strong> 또는 <strong>근</strong>이라 하고, 해를 구하는
@@ -30,7 +30,7 @@ export default function LinearEquation() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) 항등식과 방정식의 차이">
+        <SubSection title="● 항등식과 방정식의 차이">
           <p>
             미지수에 어떤 값을 대입하여도 항상 참인 등식을{" "}
             <strong>항등식</strong>이라고 합니다.
@@ -40,8 +40,8 @@ export default function LinearEquation() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 일차방정식의 풀이">
-        <SubSection title="(1) 등식의 성질">
+      <CalcBox title="■ 일차방정식의 풀이">
+        <SubSection title="● 등식의 성질">
           <p>
             등식의 양변에 같은 수를 더하거나, 빼거나, 곱하거나, 0이 아닌 같은
             수로 나누어도 등식은 성립합니다.
@@ -54,7 +54,7 @@ export default function LinearEquation() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 이항">
+        <SubSection title="● 이항">
           <p>
             등식에서 한 항을 부호를 바꾸어 다른 변으로 옮기는 것을{" "}
             <strong>이항</strong>이라고 합니다.
@@ -63,7 +63,7 @@ export default function LinearEquation() {
           <BlockMath math="x - 5 = 2 \;\Rightarrow\; x = 2 + 5 \;\Rightarrow\; x = 7" />
         </SubSection>
 
-        <SubSection title="(3) 일차방정식의 풀이 절차">
+        <SubSection title="● 일차방정식의 풀이 절차">
           <p>
             <InlineMath math="ax + b = 0" /> (<InlineMath math="a \neq 0" />)
             꼴의 방정식을 <strong>일차방정식</strong>이라고 합니다.
@@ -84,7 +84,7 @@ export default function LinearEquation() {
           </div>
         </SubSection>
 
-        <SubSection title="(4) 복잡한 일차방정식">
+        <SubSection title="● 복잡한 일차방정식">
           <p>괄호가 있는 경우 — 분배법칙으로 괄호를 풉니다.</p>
           <BlockMath math="2(x - 3) = 4x + 2" />
           <BlockMath math="2x - 6 = 4x + 2" />
@@ -104,8 +104,8 @@ export default function LinearEquation() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 일차방정식의 활용">
-        <SubSection title="(1) 문제 풀이 단계">
+      <CalcBox title="■ 일차방정식의 활용">
+        <SubSection title="● 문제 풀이 단계">
           <ul className="list-decimal pl-6 space-y-1">
             <li>미지수를 정합니다 (구하려는 값을 <InlineMath math="x" />로 놓기).</li>
             <li>조건에 맞게 방정식을 세웁니다.</li>
@@ -114,7 +114,7 @@ export default function LinearEquation() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 활용 예시 — 수에 대한 문제">
+        <SubSection title="● 활용 예시 — 수에 대한 문제">
           <p>어떤 수에 5를 더한 것의 2배는 그 수의 3배보다 4만큼 크다. 어떤 수를 구하시오.</p>
           <div className="mt-2 rounded-lg border border-sidebar-border p-4">
             <p>어떤 수를 <InlineMath math="x" />로 놓으면:</p>
@@ -129,7 +129,7 @@ export default function LinearEquation() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 활용 예시 — 거리·속력·시간">
+        <SubSection title="● 활용 예시 — 거리·속력·시간">
           <p>
             거리, 속력, 시간 관계:{" "}
             <InlineMath math="\text{(거리)} = \text{(속력)} \times \text{(시간)}" />

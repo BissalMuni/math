@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function CoordinatePlaneGraph() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 순서쌍과 좌표평면">
-        <SubSection title="(1) 순서쌍">
+      <CalcBox title="■ 순서쌍과 좌표평면">
+        <SubSection title="● 순서쌍">
           <p>
             두 수의 쌍 <InlineMath math="(a, b)" />에서 순서를 생각하여 나타낸
             것을 <strong>순서쌍</strong>이라고 합니다.
@@ -17,7 +17,7 @@ export default function CoordinatePlaneGraph() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 좌표평면">
+        <SubSection title="● 좌표평면">
           <p>
             수직으로 만나는 두 수직선을 그어 평면 위의 점의 위치를 순서쌍으로
             나타낼 수 있는 평면을 <strong>좌표평면</strong>이라 합니다.
@@ -35,7 +35,7 @@ export default function CoordinatePlaneGraph() {
           </ul>
         </SubSection>
 
-        <SubSection title="(3) 사분면">
+        <SubSection title="● 사분면">
           <p>좌표평면은 x축과 y축에 의해 네 부분으로 나뉩니다.</p>
           <div className="mt-3 rounded-lg border border-sidebar-border p-4">
             <ul className="space-y-1">
@@ -60,8 +60,8 @@ export default function CoordinatePlaneGraph() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 그래프의 해석">
-        <SubSection title="(1) 그래프의 뜻">
+      <CalcBox title="■ 그래프의 해석">
+        <SubSection title="● 그래프의 뜻">
           <p>
             순서쌍 <InlineMath math="(x, y)" />에 대응하는 점을 좌표평면 위에
             나타낸 것을 <strong>그래프</strong>라고 합니다.
@@ -95,7 +95,7 @@ export default function CoordinatePlaneGraph() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 그래프 해석의 핵심">
+        <SubSection title="● 그래프 해석의 핵심">
           <ul className="list-disc pl-6 space-y-1">
             <li>그래프가 오른쪽 위로 향하면 x가 증가할 때 y도 증가합니다.</li>
             <li>그래프가 오른쪽 아래로 향하면 x가 증가할 때 y는 감소합니다.</li>
@@ -104,8 +104,8 @@ export default function CoordinatePlaneGraph() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 정비례와 반비례">
-        <SubSection title="(1) 정비례">
+      <CalcBox title="■ 정비례와 반비례">
+        <SubSection title="● 정비례">
           <p>
             <InlineMath math="y" />가 <InlineMath math="x" />에{" "}
             <strong>정비례</strong>한다는 것은 다음과 같은 관계를 뜻합니다.
@@ -129,7 +129,7 @@ export default function CoordinatePlaneGraph() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 반비례">
+        <SubSection title="● 반비례">
           <p>
             <InlineMath math="y" />가 <InlineMath math="x" />에{" "}
             <strong>반비례</strong>한다는 것은 다음과 같은 관계를 뜻합니다.
@@ -153,7 +153,7 @@ export default function CoordinatePlaneGraph() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 정비례·반비례 관계식 구하기">
+        <SubSection title="● 정비례·반비례 관계식 구하기">
           <p>
             한 점의 좌표를 알면 비례상수 <InlineMath math="a" />를 구할 수
             있습니다.

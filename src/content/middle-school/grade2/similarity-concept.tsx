@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function SimilarityConcept() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 닮음의 뜻">
-        <SubSection title="(1) 닮은 도형">
+      <CalcBox title="■ 닮음의 뜻">
+        <SubSection title="● 닮은 도형">
           <p>
             한 도형을 일정한 비율로 확대 또는 축소한 것과 합동인 도형을{" "}
             <strong>닮은 도형</strong>이라 하고, 기호{" "}
@@ -15,7 +15,7 @@ export default function SimilarityConcept() {
           <BlockMath math="\triangle ABC \sim \triangle DEF" />
         </SubSection>
 
-        <SubSection title="(2) 닮음비">
+        <SubSection title="● 닮음비">
           <p>
             닮은 두 도형의 대응하는 변의 길이의 비를 <strong>닮음비</strong>라고
             합니다.
@@ -27,7 +27,7 @@ export default function SimilarityConcept() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) 닮은 도형의 성질">
+        <SubSection title="● 닮은 도형의 성질">
           <div className="space-y-1">
             <p>① 대응하는 변의 길이의 비가 모두 같다.</p>
             <p>② 대응하는 각의 크기가 각각 같다.</p>
@@ -35,8 +35,8 @@ export default function SimilarityConcept() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 삼각형의 닮음 조건">
-        <SubSection title="(1) AA 닮음">
+      <CalcBox title="■ 삼각형의 닮음 조건">
+        <SubSection title="● AA 닮음">
           <p>
             두 쌍의 대응하는 각의 크기가 각각 같으면 두 삼각형은 닮음입니다.
           </p>
@@ -47,7 +47,7 @@ export default function SimilarityConcept() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) SAS 닮음">
+        <SubSection title="● SAS 닮음">
           <p>
             두 쌍의 대응하는 변의 길이의 비가 같고, 그 끼인각의 크기가 같으면
             두 삼각형은 닮음입니다.
@@ -55,7 +55,7 @@ export default function SimilarityConcept() {
           <BlockMath math="AB : DE = AC : DF, \; \angle A = \angle D \implies \triangle ABC \sim \triangle DEF" />
         </SubSection>
 
-        <SubSection title="(3) SSS 닮음">
+        <SubSection title="● SSS 닮음">
           <p>
             세 쌍의 대응하는 변의 길이의 비가 모두 같으면 두 삼각형은
             닮음입니다.
@@ -69,8 +69,8 @@ export default function SimilarityConcept() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 닮음의 활용">
-        <SubSection title="(1) 닮음비와 넓이비, 부피비">
+      <CalcBox title="■ 닮음의 활용">
+        <SubSection title="● 닮음비와 넓이비, 부피비">
           <p>
             닮음비가 <InlineMath math="m : n" />이면:
           </p>
@@ -89,7 +89,7 @@ export default function SimilarityConcept() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 직각삼각형에서의 닮음">
+        <SubSection title="● 직각삼각형에서의 닮음">
           <p>
             직각삼각형의 직각 꼭짓점에서 빗변에 내린 수선은 두 개의 작은
             직각삼각형을 만들고, 이 세 삼각형은 모두 닮음입니다.
@@ -108,7 +108,7 @@ export default function SimilarityConcept() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 실생활 활용">
+        <SubSection title="● 실생활 활용">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               건물의 높이 구하기: 같은 시각에 길이 1m인 막대의 그림자가 0.8m이고,

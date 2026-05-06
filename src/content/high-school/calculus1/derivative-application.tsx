@@ -6,23 +6,23 @@ import { CalcBox } from "@/components/content/shared";
 export default function DerivativeApplication() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 접선의 방정식">
+      <CalcBox title="■ 접선의 방정식">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 함수의 증가와 감소">
+      <CalcBox title="■ 함수의 증가와 감소">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 함수의 극대·극소와 최대·최소">
+      <CalcBox title="■ 함수의 극대·극소와 최대·최소">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="4. 방정식과 부등식에의 활용">
+      <CalcBox title="■ 방정식과 부등식에의 활용">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="5. 속도와 가속도">
+      <CalcBox title="■ 속도와 가속도">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

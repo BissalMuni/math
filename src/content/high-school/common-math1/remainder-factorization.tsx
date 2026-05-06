@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function RemainderFactorization() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 나머지정리와 인수정리">
+      <CalcBox title="■ 나머지정리와 인수정리">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 인수분해">
+      <CalcBox title="■ 인수분해">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

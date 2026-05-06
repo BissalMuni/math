@@ -6,15 +6,15 @@ import { CalcBox } from "@/components/content/shared";
 export default function IntegralApplication2() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 넓이">
+      <CalcBox title="■ 넓이">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 부피">
+      <CalcBox title="■ 부피">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 속도와 거리">
+      <CalcBox title="■ 속도와 거리">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

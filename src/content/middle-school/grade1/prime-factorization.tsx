@@ -8,8 +8,8 @@ import { CalcBox, SubSection } from "@/components/content/shared";
 export default function PrimeFactorization() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 소인수분해">
-        <SubSection title="(1) 소수와 합성수">
+      <CalcBox title="■ 소인수분해">
+        <SubSection title="● 소수와 합성수">
           <p>
             <strong>소수</strong>는 1보다 큰 자연수 중에서 1과 자기 자신만을 약수로 가지는 수입니다.
           </p>
@@ -23,7 +23,7 @@ export default function PrimeFactorization() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 소인수분해의 정의">
+        <SubSection title="● 소인수분해의 정의">
           <p>
             자연수를 <strong>소인수</strong>(소수인 인수)들의 곱으로 나타내는 것을 <strong>소인수분해</strong>라고 합니다.
           </p>
@@ -35,7 +35,7 @@ export default function PrimeFactorization() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 소인수분해 방법">
+        <SubSection title="● 소인수분해 방법">
           <p>
             자연수 <InlineMath math="n" />을 가장 작은 소수부터 차례로 나누어 갑니다.
           </p>
@@ -52,7 +52,7 @@ export default function PrimeFactorization() {
           </div>
         </SubSection>
 
-        <SubSection title="(4) 약수의 개수 공식">
+        <SubSection title="● 약수의 개수 공식">
           <p>
             자연수 <InlineMath math="n = p_1^{a_1} \times p_2^{a_2} \times \cdots \times p_k^{a_k}" />일 때,
           </p>
@@ -64,8 +64,8 @@ export default function PrimeFactorization() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 최대공약수와 최소공배수">
-        <SubSection title="(1) 최대공약수 (GCD)">
+      <CalcBox title="■ 최대공약수와 최소공배수">
+        <SubSection title="● 최대공약수 (GCD)">
           <p>
             두 개 이상의 자연수의 공통인 약수 중에서 가장 큰 수를 <strong>최대공약수</strong>라고 합니다.
           </p>
@@ -80,7 +80,7 @@ export default function PrimeFactorization() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 최소공배수 (LCM)">
+        <SubSection title="● 최소공배수 (LCM)">
           <p>
             두 개 이상의 자연수의 공통인 배수 중에서 가장 작은 수를 <strong>최소공배수</strong>라고 합니다.
           </p>
@@ -95,7 +95,7 @@ export default function PrimeFactorization() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 최대공약수와 최소공배수의 관계">
+        <SubSection title="● 최대공약수와 최소공배수의 관계">
           <p>
             두 자연수 <InlineMath math="a" />, <InlineMath math="b" />에 대해:
           </p>
@@ -106,7 +106,7 @@ export default function PrimeFactorization() {
           </p>
         </SubSection>
 
-        <SubSection title="(4) 직접 계산해 보기">
+        <SubSection title="● 직접 계산해 보기">
           <GcdLcmCalculator />
         </SubSection>
       </CalcBox>

@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function RationalIrrationalApplication() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 유리식과 유리함수의 활용">
+      <CalcBox title="■ 유리식과 유리함수의 활용">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 무리식과 무리함수의 활용">
+      <CalcBox title="■ 무리식과 무리함수의 활용">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

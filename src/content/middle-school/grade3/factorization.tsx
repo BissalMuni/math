@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function Factorization() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 인수분해의 뜻">
-        <SubSection title="(1) 인수와 인수분해">
+      <CalcBox title="■ 인수분해의 뜻">
+        <SubSection title="● 인수와 인수분해">
           <p>
             하나의 다항식을 두 개 이상의 다항식의 곱으로 나타내는 것을{" "}
             <strong>인수분해</strong>라고 하고, 이때 각각의 식을{" "}
@@ -19,7 +19,7 @@ export default function Factorization() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 공통인수 묶기">
+        <SubSection title="● 공통인수 묶기">
           <p>
             각 항에 공통으로 포함된 인수를 괄호 밖으로 꺼냅니다.
           </p>
@@ -40,8 +40,8 @@ export default function Factorization() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="2. 인수분해 공식">
-        <SubSection title="(1) 완전제곱식">
+      <CalcBox title="■ 인수분해 공식">
+        <SubSection title="● 완전제곱식">
           <BlockMath math="a^2 + 2ab + b^2 = (a + b)^2" />
           <BlockMath math="a^2 - 2ab + b^2 = (a - b)^2" />
           <div className="mt-3 space-y-2">
@@ -54,7 +54,7 @@ export default function Factorization() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 제곱의 차">
+        <SubSection title="● 제곱의 차">
           <BlockMath math="a^2 - b^2 = (a + b)(a - b)" />
           <div className="mt-3 space-y-2">
             <p>
@@ -66,7 +66,7 @@ export default function Factorization() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) x² + (a+b)x + ab 꼴">
+        <SubSection title="● x² + (a+b)x + ab 꼴">
           <BlockMath math="x^2 + (a + b)x + ab = (x + a)(x + b)" />
           <p className="mt-2">
             곱이 상수항, 합이 일차항의 계수가 되는 두 수를 찾습니다.
@@ -84,8 +84,8 @@ export default function Factorization() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 인수분해 공식의 활용">
-        <SubSection title="(1) 복잡한 식의 인수분해">
+      <CalcBox title="■ 인수분해 공식의 활용">
+        <SubSection title="● 복잡한 식의 인수분해">
           <p>
             공통인수를 먼저 묶은 뒤, 인수분해 공식을 적용합니다.
           </p>
@@ -99,7 +99,7 @@ export default function Factorization() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 수의 계산에의 활용">
+        <SubSection title="● 수의 계산에의 활용">
           <p>
             인수분해를 이용하면 복잡한 수의 계산을 간단히 할 수 있습니다.
           </p>
@@ -111,7 +111,7 @@ export default function Factorization() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 식의 값 구하기">
+        <SubSection title="● 식의 값 구하기">
           <p>
             주어진 조건을 인수분해된 식에 대입하면 계산이 간편해집니다.
           </p>

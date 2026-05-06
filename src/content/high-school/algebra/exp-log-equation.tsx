@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function ExpLogEquation() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 지수방정식">
+      <CalcBox title="■ 지수방정식">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 로그방정식">
+      <CalcBox title="■ 로그방정식">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

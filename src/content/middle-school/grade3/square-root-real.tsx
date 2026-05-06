@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function SquareRootReal() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 제곱근의 뜻과 성질">
-        <SubSection title="(1) 제곱근의 뜻">
+      <CalcBox title="■ 제곱근의 뜻과 성질">
+        <SubSection title="● 제곱근의 뜻">
           <p>
             어떤 수 <InlineMath math="x" />를 제곱하여 <InlineMath math="a" />가
             될 때, 즉 <InlineMath math="x^2 = a" />일 때,{" "}
@@ -31,7 +31,7 @@ export default function SquareRootReal() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 제곱근의 성질">
+        <SubSection title="● 제곱근의 성질">
           <p>
             <InlineMath math="a > 0" />일 때 다음이 성립합니다.
           </p>
@@ -48,7 +48,7 @@ export default function SquareRootReal() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 제곱근의 대소 관계">
+        <SubSection title="● 제곱근의 대소 관계">
           <p>
             <InlineMath math="a > 0" />, <InlineMath math="b > 0" />일 때:
           </p>
@@ -60,8 +60,8 @@ export default function SquareRootReal() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 무리수와 실수">
-        <SubSection title="(1) 유리수와 무리수">
+      <CalcBox title="■ 무리수와 실수">
+        <SubSection title="● 유리수와 무리수">
           <p>
             <strong>유리수</strong>: 분수{" "}
             <InlineMath math="\dfrac{a}{b}" /> (
@@ -81,7 +81,7 @@ export default function SquareRootReal() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 실수">
+        <SubSection title="● 실수">
           <p>
             유리수와 무리수를 합하여 <strong>실수</strong>라고 합니다.
             실수는 수직선 위의 모든 점에 대응하며, 수직선을 빈틈없이 채웁니다.
@@ -89,7 +89,7 @@ export default function SquareRootReal() {
           <BlockMath math="\text{실수} = \text{유리수} \cup \text{무리수}" />
         </SubSection>
 
-        <SubSection title="(3) 실수의 분류">
+        <SubSection title="● 실수의 분류">
           <div className="rounded-lg border border-sidebar-border p-4 text-sm space-y-2">
             <p>
               실수 → 유리수 → 정수 → 양의 정수(자연수), 0, 음의 정수
@@ -100,8 +100,8 @@ export default function SquareRootReal() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 실수의 대소 관계">
-        <SubSection title="(1) 수직선을 이용한 대소 비교">
+      <CalcBox title="■ 실수의 대소 관계">
+        <SubSection title="● 수직선을 이용한 대소 비교">
           <p>
             수직선에서 <strong>오른쪽</strong>에 있는 수가 더 큽니다.
             무리수도 수직선 위에 나타내어 대소를 비교할 수 있습니다.
@@ -112,7 +112,7 @@ export default function SquareRootReal() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 제곱을 이용한 대소 비교">
+        <SubSection title="● 제곱을 이용한 대소 비교">
           <p>
             양수끼리 비교할 때, 제곱하여 크기를 비교할 수 있습니다.
           </p>

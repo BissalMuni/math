@@ -70,7 +70,7 @@ export default function FeedForwardContent() {
       </p>
 
       {/* ── FFN의 역할 ── */}
-      <CalcBox title="1. FFN vs 어텐션 — 역할 차이">
+      <CalcBox title="■ FFN vs 어텐션 — 역할 차이">
         <div className="grid grid-cols-2 gap-3 text-sm">
           <div className="p-3 rounded-lg border border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950">
             <div className="font-bold text-blue-700 dark:text-blue-300 mb-1">Multi-Head Attention</div>
@@ -92,7 +92,7 @@ export default function FeedForwardContent() {
       </CalcBox>
 
       {/* ── 실제 규모 ── */}
-      <CalcBox title="2. 실제 모델 규모">
+      <CalcBox title="■ 실제 모델 규모">
         <div className="text-sm font-mono space-y-2">
           <div className="p-3 rounded-lg bg-sidebar-bg border border-sidebar-border">
             <div className="font-bold mb-2">GPT-3 FFN 파라미터</div>
@@ -106,7 +106,7 @@ export default function FeedForwardContent() {
       </CalcBox>
 
       {/* ── STEP 1: W1 계산 ── */}
-      <CalcBox title="3. W1·x + b1 — 차원 확장 (4 → 16)">
+      <CalcBox title="■ W1·x + b1 — 차원 확장 (4 → 16)">
         <p className="text-sm mb-4">
           입력 x를 더 넓은 공간으로 투영합니다.
           더 많은 뉴런 = 더 다양한 패턴 포착 가능.
@@ -123,7 +123,7 @@ export default function FeedForwardContent() {
       </CalcBox>
 
       {/* ── STEP 2: ReLU ── */}
-      <CalcBox title="4. ReLU — 음수 제거">
+      <CalcBox title="■ ReLU — 음수 제거">
         <BlockMath math="\text{ReLU}(h_i) = \max(0, h_i)" />
         <p className="text-sm mb-4">
           "뉴런이 발화(활성화)하거나 침묵하는 것" —
@@ -147,7 +147,7 @@ export default function FeedForwardContent() {
       </CalcBox>
 
       {/* ── STEP 3: W2 계산 ── */}
-      <CalcBox title="5. W2·ReLU(h) + b2 — 차원 복원 (16 → 4)">
+      <CalcBox title="■ W2·ReLU(h) + b2 — 차원 복원 (16 → 4)">
         <BlockMath math="\text{FFN}(x) = W_2 \cdot \text{ReLU}(W_1 x + b_1) + b_2" />
         <div className="flex flex-wrap gap-3 items-center mb-4">
           <Matrix data={[h_relu.slice(0, 8)]} label="ReLU(h) 앞 8차원" color="green" />
@@ -160,7 +160,7 @@ export default function FeedForwardContent() {
       </CalcBox>
 
       {/* ── 전체 흐름 ── */}
-      <CalcBox title="6. 입력부터 출력까지">
+      <CalcBox title="■ 입력부터 출력까지">
         <div className="flex flex-wrap gap-3 items-center">
           <Matrix data={[x_input]} label="x 입력" color="default" />
           <Arrow op="W1+b1" />
@@ -176,7 +176,7 @@ export default function FeedForwardContent() {
       </CalcBox>
 
       {/* ── MoE ── */}
-      <CalcBox title="7. 발전: MoE (Mixture of Experts)">
+      <CalcBox title="■ 발전: MoE (Mixture of Experts)">
         <p className="text-sm mb-3">
           FFN을 여러 개의 "전문가"로 대체하고, 토큰마다 K개만 활성화합니다.
           총 파라미터는 많지만 실제 연산은 K/N만 수행합니다.

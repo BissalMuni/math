@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function SolidMeasurement() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 겉넓이와 부피">
+      <CalcBox title="■ 겉넓이와 부피">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 실생활 측정 문제">
+      <CalcBox title="■ 실생활 측정 문제">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

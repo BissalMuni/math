@@ -10,8 +10,8 @@ export default function MultiplyDivide() {
         <strong>절댓값을 곱하거나 나누면</strong> 됩니다.
       </p>
 
-      <CalcBox title="1. 곱셈의 부호 결정">
-        <SubSection title="(1) 부호의 규칙">
+      <CalcBox title="■ 곱셈의 부호 결정">
+        <SubSection title="● 부호의 규칙">
           <ul className="list-disc pl-6 space-y-1">
             <li>① (양) × (양) = (양): <InlineMath math="(+) \times (+) = (+)" /></li>
             <li>② (음) × (음) = (양): <InlineMath math="(-) \times (-) = (+)" /></li>
@@ -23,21 +23,21 @@ export default function MultiplyDivide() {
           </Insight>
         </SubSection>
 
-        <SubSection title="(2) 계산 예시">
+        <SubSection title="● 계산 예시">
           <BlockMath math="(+3) \times (+4) = +12" />
           <BlockMath math="(-3) \times (-4) = +12" />
           <BlockMath math="(+3) \times (-4) = -12" />
           <BlockMath math="(-3) \times (+4) = -12" />
         </SubSection>
 
-        <SubSection title="(3) 0과의 곱셈">
+        <SubSection title="● 0과의 곱셈">
           <p>어떤 수와 0의 곱은 항상 0입니다.</p>
           <BlockMath math="a \times 0 = 0 \times a = 0" />
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 여러 수의 곱셈">
-        <SubSection title="(1) 부호 결정 — 음수의 개수">
+      <CalcBox title="■ 여러 수의 곱셈">
+        <SubSection title="● 부호 결정 — 음수의 개수">
           <p>여러 수를 곱할 때, 부호는 <strong>음수의 개수</strong>에 따라 결정됩니다.</p>
           <ul className="mt-2 list-disc pl-6 space-y-1">
             <li>① 음수가 짝수 개 → 부호는 <strong>+</strong></li>
@@ -45,12 +45,12 @@ export default function MultiplyDivide() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 계산 예시">
+        <SubSection title="● 계산 예시">
           <BlockMath math="(-2) \times (+3) \times (-4) = +24 \quad (\text{음수 2개})" />
           <BlockMath math="(-1) \times (-2) \times (-3) = -6 \quad (\text{음수 3개})" />
         </SubSection>
 
-        <SubSection title="(3) 곱셈의 계산 법칙">
+        <SubSection title="● 곱셈의 계산 법칙">
           <p>
             <strong>① 교환법칙</strong>: <InlineMath math="a \times b = b \times a" />
           </p>
@@ -63,8 +63,8 @@ export default function MultiplyDivide() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 거듭제곱">
-        <SubSection title="(1) 거듭제곱의 정의">
+      <CalcBox title="■ 거듭제곱">
+        <SubSection title="● 거듭제곱의 정의">
           <p>같은 수를 여러 번 곱한 것을 <strong>거듭제곱</strong>이라 합니다.</p>
           <BlockMath math="a^n = \underbrace{a \times a \times \cdots \times a}_{n\text{개}}" />
           <p className="mt-2">
@@ -73,7 +73,7 @@ export default function MultiplyDivide() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 음수의 거듭제곱">
+        <SubSection title="● 음수의 거듭제곱">
           <p>
             지수가 짝수면 +, 홀수면 −가 됩니다.
           </p>
@@ -82,7 +82,7 @@ export default function MultiplyDivide() {
           <BlockMath math="(-2)^4 = +16, \quad (-2)^5 = -32" />
         </SubSection>
 
-        <SubSection title="(3) 괄호의 위치 주의">
+        <SubSection title="● 괄호의 위치 주의">
           <p>괄호의 유무에 따라 결과가 달라집니다.</p>
           <BlockMath math="(-2)^2 = (-2) \times (-2) = +4" />
           <BlockMath math="-2^2 = -(2 \times 2) = -4" />
@@ -92,8 +92,8 @@ export default function MultiplyDivide() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="4. 나눗셈">
-        <SubSection title="(1) 부호의 규칙">
+      <CalcBox title="■ 나눗셈">
+        <SubSection title="● 부호의 규칙">
           <p>곱셈과 같은 규칙입니다.</p>
           <ul className="mt-2 list-disc pl-6 space-y-1">
             <li>같은 부호끼리 나누면 +</li>
@@ -103,7 +103,7 @@ export default function MultiplyDivide() {
           <BlockMath math="(+6) \div (-2) = -3, \quad (-6) \div (+2) = -3" />
         </SubSection>
 
-        <SubSection title="(2) 역수">
+        <SubSection title="● 역수">
           <p>
             두 수의 곱이 1일 때, 한 수를 다른 수의 <strong>역수</strong>라 합니다.
           </p>
@@ -113,7 +113,7 @@ export default function MultiplyDivide() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) 나눗셈을 곱셈으로">
+        <SubSection title="● 나눗셈을 곱셈으로">
           <p>
             <strong>나누는 수의 역수를 곱한다.</strong>
           </p>
@@ -122,8 +122,8 @@ export default function MultiplyDivide() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="5. 사칙연산의 혼합 계산">
-        <SubSection title="(1) 계산 순서">
+      <CalcBox title="■ 사칙연산의 혼합 계산">
+        <SubSection title="● 계산 순서">
           <ul className="list-disc pl-6 space-y-1">
             <li>① 거듭제곱을 먼저 계산</li>
             <li>② 괄호 안을 계산 (소괄호 → 중괄호 → 대괄호)</li>
@@ -132,7 +132,7 @@ export default function MultiplyDivide() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 계산 예시">
+        <SubSection title="● 계산 예시">
           <p>
             <InlineMath math="-2^2 + (-3) \times \{4 - (-1)\} \div 5" />를
             계산해 봅시다.

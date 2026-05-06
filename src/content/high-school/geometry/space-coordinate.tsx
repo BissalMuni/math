@@ -6,15 +6,15 @@ import { CalcBox } from "@/components/content/shared";
 export default function SpaceCoordinate() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 공간좌표">
+      <CalcBox title="■ 공간좌표">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 두 점 사이의 거리">
+      <CalcBox title="■ 두 점 사이의 거리">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 구의 방정식">
+      <CalcBox title="■ 구의 방정식">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

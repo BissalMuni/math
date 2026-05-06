@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function RationalRepeating() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 유리수와 소수">
-        <SubSection title="(1) 유리수의 소수 표현">
+      <CalcBox title="■ 유리수와 소수">
+        <SubSection title="● 유리수의 소수 표현">
           <p>
             <strong>유리수</strong>는 <InlineMath math="\dfrac{a}{b}" /> (
             <InlineMath math="a" />, <InlineMath math="b" />는 정수,{" "}
@@ -18,7 +18,7 @@ export default function RationalRepeating() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 유한소수">
+        <SubSection title="● 유한소수">
           <p>
             소수점 아래의 숫자가 유한개인 소수를 <strong>유한소수</strong>라고
             합니다.
@@ -32,7 +32,7 @@ export default function RationalRepeating() {
           <BlockMath math="\frac{7}{20} = \frac{7}{2^2 \times 5} = 0.35 \quad \text{(유한소수)}" />
         </SubSection>
 
-        <SubSection title="(3) 순환소수">
+        <SubSection title="● 순환소수">
           <p>
             소수점 아래에서 같은 숫자 또는 숫자의 배열이 한없이 되풀이되는
             소수를 <strong>순환소수</strong>라고 합니다.
@@ -46,8 +46,8 @@ export default function RationalRepeating() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 순환소수를 분수로 바꾸기">
-        <SubSection title="(1) 기본 방법">
+      <CalcBox title="■ 순환소수를 분수로 바꾸기">
+        <SubSection title="● 기본 방법">
           <p>
             순환소수를 <InlineMath math="x" />로 놓고, 순환마디가 소수점
             아래에서 바로 시작되도록 적절한 10의 거듭제곱을 곱한 뒤 빼서
@@ -63,7 +63,7 @@ export default function RationalRepeating() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 순환마디가 두 자리 이상인 경우">
+        <SubSection title="● 순환마디가 두 자리 이상인 경우">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               예: <InlineMath math="x = 0.\dot{1}\dot{2}" /> (순환마디 12)
@@ -74,7 +74,7 @@ export default function RationalRepeating() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 순환마디 앞에 순환하지 않는 부분이 있는 경우">
+        <SubSection title="● 순환마디 앞에 순환하지 않는 부분이 있는 경우">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               예: <InlineMath math="x = 0.1\dot{6}" /> (순환마디 6)
@@ -94,8 +94,8 @@ export default function RationalRepeating() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 유한소수가 되는 조건">
-        <SubSection title="(1) 판별법">
+      <CalcBox title="■ 유한소수가 되는 조건">
+        <SubSection title="● 판별법">
           <p>
             기약분수 <InlineMath math="\dfrac{a}{b}" />가 유한소수가 되려면,
             분모 <InlineMath math="b" />를 소인수분해했을 때{" "}
@@ -105,7 +105,7 @@ export default function RationalRepeating() {
           <BlockMath math="\frac{a}{b} \text{가 유한소수} \iff b = 2^m \times 5^n \quad (m, n \geq 0)" />
         </SubSection>
 
-        <SubSection title="(2) 판별 예시">
+        <SubSection title="● 판별 예시">
           <div className="space-y-2">
             <p>
               <InlineMath math="\dfrac{7}{40} = \dfrac{7}{2^3 \times 5}" /> →

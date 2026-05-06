@@ -95,7 +95,7 @@ export default function QkvContent() {
       </p>
 
       {/* ── STEP 0: 준비 ── */}
-      <CalcBox title="1. 준비 — 입력 임베딩 X (3토큰 × 4차원)">
+      <CalcBox title="■ 준비 — 입력 임베딩 X (3토큰 × 4차원)">
         <p className="text-sm mb-4">
           토큰화 후 임베딩 테이블에서 각 토큰의 벡터를 가져옵니다.
           각 행 = 토큰 1개의 의미 벡터.
@@ -115,7 +115,7 @@ export default function QkvContent() {
       </CalcBox>
 
       {/* ── STEP 1: Q, K, V 생성 ── */}
-      <CalcBox title="2. Wq · Wk · Wv 행렬로 Q, K, V 생성">
+      <CalcBox title="■ Wq · Wk · Wv 행렬로 Q, K, V 생성">
         <p className="text-sm mb-4">
           Q = X · Wq &nbsp;|&nbsp; K = X · Wk &nbsp;|&nbsp; V = X · Wv
           <br />
@@ -139,7 +139,7 @@ export default function QkvContent() {
       </CalcBox>
 
       {/* ── STEP 2: Q · Kᵀ ── */}
-      <CalcBox title="3. Q · Kᵀ — 어텐션 점수 계산">
+      <CalcBox title="■ Q · Kᵀ — 어텐션 점수 계산">
         <p className="text-sm mb-4">
           각 토큰의 Q와 모든 토큰의 K를 내적(dot product)합니다.
           결과는 <strong>3×3 점수 행렬</strong> — (i,j) = 토큰 i가 토큰 j에 얼마나 주목하는가.
@@ -157,7 +157,7 @@ export default function QkvContent() {
       </CalcBox>
 
       {/* ── STEP 3: √dk 스케일링 ── */}
-      <CalcBox title="4. √dk 스케일링">
+      <CalcBox title="■ √dk 스케일링">
         <p className="text-sm mb-4">
           dk=4이므로 √dk=2. 모든 점수를 2로 나눕니다.
           <br />
@@ -171,7 +171,7 @@ export default function QkvContent() {
       </CalcBox>
 
       {/* ── STEP 4: Softmax ── */}
-      <CalcBox title="5. Softmax → 어텐션 가중치">
+      <CalcBox title="■ Softmax → 어텐션 가중치">
         <p className="text-sm mb-4">
           각 행(토큰)에 Softmax를 적용해 확률 분포로 변환.
           행의 합 = 1.0 (각 토큰이 다른 토큰에 쏟는 주의의 총합 = 100%).
@@ -190,7 +190,7 @@ export default function QkvContent() {
       </CalcBox>
 
       {/* ── STEP 5: × V ── */}
-      <CalcBox title="6. A × V — 최종 출력 (가중합)">
+      <CalcBox title="■ A × V — 최종 출력 (가중합)">
         <p className="text-sm mb-4">
           어텐션 가중치로 V 벡터들을 가중 합산.
           각 토큰의 출력 벡터 = 전체 문장 정보를 담은 새 벡터.
@@ -210,7 +210,7 @@ export default function QkvContent() {
       </CalcBox>
 
       {/* ── 전체 공식 요약 ── */}
-      <CalcBox title="7. 전체 공식">
+      <CalcBox title="■ 전체 공식">
         <BlockMath math="\text{Attention}(Q,K,V) = \text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}}\right)V" />
         <div className="mt-4 text-sm space-y-1 text-muted">
           <div>① X → Q, K, V (각각 Wq, Wk, Wv 곱셈)</div>

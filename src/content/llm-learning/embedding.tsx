@@ -30,7 +30,7 @@ export default function EmbeddingContent() {
       </p>
 
       {/* ── ID만으로는 부족하다 ── */}
-      <CalcBox title="1. 왜 ID만으로는 부족한가">
+      <CalcBox title="■ 왜 ID만으로는 부족한가">
         <div className="grid sm:grid-cols-2 gap-4 text-sm">
           <div>
             <div className="font-semibold mb-2 text-red-500">❌ ID 그대로 사용</div>
@@ -66,7 +66,7 @@ export default function EmbeddingContent() {
       </CalcBox>
 
       {/* ── 임베딩 테이블 구조 ── */}
-      <CalcBox title="2. 임베딩 테이블 (어휘 크기 × 임베딩 차원)">
+      <CalcBox title="■ 임베딩 테이블 (어휘 크기 × 임베딩 차원)">
         <p className="text-sm mb-4">
           실제: <strong>100,000 × 512</strong> 행렬 (GPT-2 기준).
           여기선 5 × 4로 축소.
@@ -83,7 +83,7 @@ export default function EmbeddingContent() {
       </CalcBox>
 
       {/* ── 조회 과정 ── */}
-      <CalcBox title="3. 토큰 ID → 임베딩 벡터 조회 (단순 인덱스 접근)">
+      <CalcBox title="■ 토큰 ID → 임베딩 벡터 조회 (단순 인덱스 접근)">
         <p className="text-sm mb-4">
           임베딩 조회는 복잡한 계산 없이 <strong>테이블에서 해당 행을 꺼내는 것</strong>입니다.
         </p>
@@ -104,7 +104,7 @@ export default function EmbeddingContent() {
       </CalcBox>
 
       {/* ── 최종 행렬 ── */}
-      <CalcBox title="4. 문장 전체 임베딩 행렬 X (3×4)">
+      <CalcBox title="■ 문장 전체 임베딩 행렬 X (3×4)">
         <p className="text-sm mb-4">
           3개 토큰의 임베딩 벡터를 쌓으면 입력 행렬 X가 됩니다.
           이 X가 어텐션 연산의 실제 입력입니다.
@@ -126,7 +126,7 @@ export default function EmbeddingContent() {
       </CalcBox>
 
       {/* ── 수식 요소 설명 ── */}
-      <CalcBox title="5. 수식 요소 하나씩 뜯어보기">
+      <CalcBox title="■ 수식 요소 하나씩 뜯어보기">
         <div className="mb-4">
           <BlockMath math="X = E[\text{token\_ids}] \quad \in \mathbb{R}^{T \times d}" />
         </div>
@@ -151,7 +151,7 @@ export default function EmbeddingContent() {
       </CalcBox>
 
       {/* ── 코사인 유사도 ── */}
-      <CalcBox title="6. 코사인 유사도로 의미 거리 측정">
+      <CalcBox title="■ 코사인 유사도로 의미 거리 측정">
         <p className="text-sm mb-3">
           두 벡터가 얼마나 비슷한 방향인지를 <strong>코사인 유사도</strong>로 측정합니다.
           값이 1에 가까우면 비슷, 0이면 무관, -1이면 반대입니다.
@@ -175,7 +175,7 @@ export default function EmbeddingContent() {
       </CalcBox>
 
       {/* ── 위치 인코딩 연결 ── */}
-      <CalcBox title="7. 다음 단계: 위치 인코딩 더하기">
+      <CalcBox title="■ 다음 단계: 위치 인코딩 더하기">
         <p className="text-sm mb-3">
           임베딩 행렬 X에는 <strong>단어의 순서 정보가 없습니다</strong>.
           &ldquo;나는 사과를 좋아한다&rdquo;와 &ldquo;사과를 나는 좋아한다&rdquo;의 X가 같은 행으로 구성됩니다
@@ -196,7 +196,7 @@ export default function EmbeddingContent() {
       </CalcBox>
 
       {/* ── 의미 공간 직관 ── */}
-      <CalcBox title="8. 임베딩 공간 직관">
+      <CalcBox title="■ 임베딩 공간 직관">
         <p className="text-sm mb-3">
           학습이 끝난 임베딩에서는 의미 관계가 벡터 연산으로 나타납니다:
         </p>

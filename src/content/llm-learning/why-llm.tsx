@@ -10,7 +10,7 @@ export default function WhyLlmContent() {
       </p>
 
       {/* ── LLM이란 ── */}
-      <CalcBox title="1. LLM이란 무엇인가">
+      <CalcBox title="■ LLM이란 무엇인가">
         <p className="text-sm mb-3">
           LLM은 수십억 개의 파라미터를 가진 신경망으로,
           방대한 텍스트를 학습해 <strong>다음에 올 단어를 예측</strong>하는 모델입니다.
@@ -26,7 +26,7 @@ export default function WhyLlmContent() {
       </CalcBox>
 
       {/* ── 왜 지금인가 ── */}
-      <CalcBox title="2. 왜 지금 LLM이 폭발적으로 성장했나">
+      <CalcBox title="■ 왜 지금 LLM이 폭발적으로 성장했나">
         <div className="space-y-3 text-sm">
           <div className="grid sm:grid-cols-3 gap-4">
             <div className="rounded-lg border border-sidebar-border p-3">
@@ -49,7 +49,7 @@ export default function WhyLlmContent() {
       </CalcBox>
 
       {/* ── 이 가이드에서 배울 것 ── */}
-      <CalcBox title="3. 이 가이드에서 배울 것">
+      <CalcBox title="■ 이 가이드에서 배울 것">
         <p className="text-sm mb-4">
           트랜스포머 기반 LLM이 텍스트를 처리하는 전체 과정을 단계별로 따라갑니다.
         </p>
@@ -79,7 +79,7 @@ export default function WhyLlmContent() {
       </CalcBox>
 
       {/* ── LLM이 바꾸는 것들 ── */}
-      <CalcBox title="4. LLM이 바꾸는 것들">
+      <CalcBox title="■ LLM이 바꾸는 것들">
         <div className="grid sm:grid-cols-2 gap-3 text-sm">
           {[
             ["코딩", "자연어로 설명하면 코드를 생성"],

@@ -8,15 +8,15 @@ export default function Tokenization() {
     <div className="space-y-8">
       <p className="text-muted">텍스트를 토큰(정수 ID) 시퀀스로 변환합니다. BPE(Byte Pair Encoding) 등의 알고리즘을 사용합니다.</p>
 
-      <CalcBox title="1. 집합론 — 어휘집">
+      <CalcBox title="■ 집합론 — 어휘집">
         <p>어휘집 <InlineMath math="V = \{t_1, t_2, \ldots, t_n\}" />은 유한 집합입니다. 부분 문자열 집합을 관리합니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 빈도/확률 — BPE 병합">
+      <CalcBox title="■ 빈도/확률 — BPE 병합">
         <p>BPE: 가장 빈도 높은 바이트 쌍을 반복 병합합니다.</p>
         <BlockMath math="\text{freq}(a,b) = \frac{\text{count}(ab)}{\text{total}}" />
 
-        <SubSection title="(1) BPE 계산 예제">
+        <SubSection title="● BPE 계산 예제">
           <div className="rounded-lg border border-sidebar-border bg-sidebar-bg p-5">
           <p className="text-sm text-muted mb-2 font-medium">전제</p>
           <ul className="text-sm text-muted mb-4 list-disc pl-5 space-y-1">
@@ -78,17 +78,17 @@ export default function Tokenization() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 조합론 — 시퀀스 경우의 수">
+      <CalcBox title="■ 조합론 — 시퀀스 경우의 수">
         <p>어휘 크기 <InlineMath math="V" />, 시퀀스 길이 <InlineMath math="T" /> → 가능한 시퀀스 수:</p>
         <BlockMath math="V^T" />
       </CalcBox>
 
-      <CalcBox title="4. 정보이론 — 최적 부호화">
+      <CalcBox title="■ 정보이론 — 최적 부호화">
         <p>최적 토큰 길이는 Shannon 부호화 이론을 따릅니다:</p>
         <BlockMath math="\text{최적 길이} \approx -\log_2 P(\text{token})" />
       </CalcBox>
 
-      <CalcBox title="5. 연결고리 — BPE에서 스마트시티까지">
+      <CalcBox title="■ 연결고리 — BPE에서 스마트시티까지">
         <p className="text-muted text-sm mb-6">
           토크나이저 하나가 어떻게 정보이론 → 인공지능 → 도시 설계까지 이어지는지 추적합니다.
         </p>
@@ -96,7 +96,7 @@ export default function Tokenization() {
         <div className="space-y-6 text-sm">
 
           {/* ── 1. BPE 역사 ── */}
-          <SubSection title="(1) BPE의 역사">
+          <SubSection title="● BPE의 역사">
             <div className="rounded-lg border border-sidebar-border overflow-hidden">
               <table className="w-full text-sm">
                 <thead className="bg-accent-light">
@@ -141,7 +141,7 @@ export default function Tokenization() {
           </SubSection>
 
           {/* ── 2. 정보이론의 경과 ── */}
-          <SubSection title="(2) 정보이론의 경과">
+          <SubSection title="● 정보이론의 경과">
             <div className="space-y-3 text-muted">
               <div className="flex gap-3">
                 <span className="font-mono text-accent shrink-0 w-10 pt-0.5">1928</span>
@@ -220,7 +220,7 @@ export default function Tokenization() {
           </SubSection>
 
           {/* ── 3. 압축 = 예측 = 지능 ── */}
-          <SubSection title="(3) 압축 = 예측 = 지능">
+          <SubSection title="● 압축 = 예측 = 지능">
             <div className="rounded-lg bg-accent-light p-4 space-y-3 text-muted">
               <p>
                 BPE는 자주 함께 나오는 글자 쌍을 하나의 토큰으로 묶습니다. 이것이 <strong>압축</strong>입니다.
@@ -264,7 +264,7 @@ export default function Tokenization() {
           </SubSection>
 
           {/* ── 4. 압축의 층위 ── */}
-          <SubSection title="(4) 압축의 층위">
+          <SubSection title="● 압축의 층위">
             <div className="rounded-lg border border-sidebar-border overflow-hidden">
               <table className="w-full text-sm">
                 <thead className="bg-accent-light">
@@ -315,7 +315,7 @@ export default function Tokenization() {
           </SubSection>
 
           {/* ── 5. 공항 → 스마트시티 ── */}
-          <SubSection title="(5) 공항 동선에서 스마트시티까지">
+          <SubSection title="● 공항 동선에서 스마트시티까지">
             <div className="rounded-lg bg-accent-light p-4 space-y-3 text-muted">
               <div className="space-y-1">
                 <p className="font-medium text-foreground">공항 동선 = LLM 학습과 같은 구조</p>
@@ -347,7 +347,7 @@ export default function Tokenization() {
           </SubSection>
 
           {/* ── 흐름 요약 ── */}
-          <SubSection title="(6) 오늘의 흐름 요약">
+          <SubSection title="● 오늘의 흐름 요약">
             <div className="rounded-lg border border-sidebar-border p-4">
               <div className="font-mono text-xs text-muted text-center space-y-0.5">
                 <p>BPE 토크나이저 (1994 파일압축 → 2016 NLP)</p>

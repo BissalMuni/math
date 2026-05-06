@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function DataAnalysis() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 대푯값과 산포도">
+      <CalcBox title="■ 대푯값과 산포도">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 자료의 해석과 활용">
+      <CalcBox title="■ 자료의 해석과 활용">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

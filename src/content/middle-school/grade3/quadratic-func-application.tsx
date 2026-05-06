@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function QuadraticFuncApplication() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 이차함수의 최댓값과 최솟값">
-        <SubSection title="(1) 최솟값 (a > 0)">
+      <CalcBox title="■ 이차함수의 최댓값과 최솟값">
+        <SubSection title="● 최솟값 (a > 0)">
           <p>
             <InlineMath math="a > 0" />일 때,{" "}
             <InlineMath math="y = a(x - p)^2 + q" />는{" "}
@@ -16,7 +16,7 @@ export default function QuadraticFuncApplication() {
           <BlockMath math="y = 2(x - 3)^2 + 1 \;\Rightarrow\; \text{최솟값} = 1 \;\;(x = 3)" />
         </SubSection>
 
-        <SubSection title="(2) 최댓값 (a < 0)">
+        <SubSection title="● 최댓값 (a < 0)">
           <p>
             <InlineMath math="a < 0" />일 때,{" "}
             <InlineMath math="y = a(x - p)^2 + q" />는{" "}
@@ -26,7 +26,7 @@ export default function QuadraticFuncApplication() {
           <BlockMath math="y = -(x + 1)^2 + 5 \;\Rightarrow\; \text{최댓값} = 5 \;\;(x = -1)" />
         </SubSection>
 
-        <SubSection title="(3) 일반형에서 최댓값·최솟값 구하기">
+        <SubSection title="● 일반형에서 최댓값·최솟값 구하기">
           <p>
             <InlineMath math="y = ax^2 + bx + c" />를 표준형으로 변환하여 구합니다.
           </p>
@@ -47,8 +47,8 @@ export default function QuadraticFuncApplication() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="2. 이차함수의 식 구하기">
-        <SubSection title="(1) 꼭짓점과 한 점이 주어진 경우">
+      <CalcBox title="■ 이차함수의 식 구하기">
+        <SubSection title="● 꼭짓점과 한 점이 주어진 경우">
           <p>
             <InlineMath math="y = a(x - p)^2 + q" />에 꼭짓점{" "}
             <InlineMath math="(p, q)" />를 대입하고, 지나는 점으로{" "}
@@ -68,14 +68,14 @@ export default function QuadraticFuncApplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 축과 한 점이 주어진 경우">
+        <SubSection title="● 축과 한 점이 주어진 경우">
           <p>
             축 <InlineMath math="x = p" />를 알면{" "}
             <InlineMath math="y = a(x - p)^2 + q" />로 놓고 조건을 대입합니다.
           </p>
         </SubSection>
 
-        <SubSection title="(3) 세 점이 주어진 경우">
+        <SubSection title="● 세 점이 주어진 경우">
           <p>
             <InlineMath math="y = ax^2 + bx + c" />에 세 점을 대입하여
             연립방정식을 풀면 <InlineMath math="a" />, <InlineMath math="b" />,{" "}
@@ -84,8 +84,8 @@ export default function QuadraticFuncApplication() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 이차함수의 활용">
-        <SubSection title="(1) 포물선 운동">
+      <CalcBox title="■ 이차함수의 활용">
+        <SubSection title="● 포물선 운동">
           <div className="rounded-lg border border-sidebar-border p-4">
             <p className="font-medium mb-2">
               예제: 공을 던졌을 때 수평 거리 <InlineMath math="x" /> m에서의 높이가{" "}
@@ -98,7 +98,7 @@ export default function QuadraticFuncApplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 넓이의 최댓값">
+        <SubSection title="● 넓이의 최댓값">
           <div className="rounded-lg border border-sidebar-border p-4">
             <p className="font-medium mb-2">
               예제: 둘레의 길이가 20cm인 직사각형의 넓이의 최댓값을 구하여라.
@@ -115,7 +115,7 @@ export default function QuadraticFuncApplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 매출·이익 문제">
+        <SubSection title="● 매출·이익 문제">
           <div className="rounded-lg border border-sidebar-border p-4">
             <p className="font-medium mb-2">
               예제: 개당 1000원인 물건을 100원씩 올릴 때마다 판매량이 5개씩

@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function InformationEntropy() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 정보량">
+      <CalcBox title="■ 정보량">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 엔트로피">
+      <CalcBox title="■ 엔트로피">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

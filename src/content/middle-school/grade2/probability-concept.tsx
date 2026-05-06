@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function ProbabilityConcept() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 확률의 뜻">
-        <SubSection title="(1) 확률의 정의">
+      <CalcBox title="■ 확률의 뜻">
+        <SubSection title="● 확률의 정의">
           <p>
             어떤 실험이나 관찰에서 각 경우가 일어날 가능성이 같을 때,
             사건 A가 일어날 <strong>확률</strong>은:
@@ -14,7 +14,7 @@ export default function ProbabilityConcept() {
           <BlockMath math="P(A) = \frac{\text{(사건 A가 일어나는 경우의 수)}}{\text{(모든 경우의 수)}}" />
         </SubSection>
 
-        <SubSection title="(2) 확률의 범위">
+        <SubSection title="● 확률의 범위">
           <p>
             모든 확률 <InlineMath math="P(A)" />는 다음 범위에 있습니다.
           </p>
@@ -29,7 +29,7 @@ export default function ProbabilityConcept() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 확률 계산 예시">
+        <SubSection title="● 확률 계산 예시">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               주사위 1개를 던질 때, 짝수의 눈이 나올 확률
@@ -41,8 +41,8 @@ export default function ProbabilityConcept() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 확률의 성질">
-        <SubSection title="(1) 여사건의 확률">
+      <CalcBox title="■ 확률의 성질">
+        <SubSection title="● 여사건의 확률">
           <p>
             사건 A가 일어나지 않는 사건을 A의 <strong>여사건</strong>이라 하고{" "}
             <InlineMath math="A^c" />로 나타냅니다.
@@ -56,7 +56,7 @@ export default function ProbabilityConcept() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) &ldquo;적어도&rdquo;의 확률">
+        <SubSection title="● &ldquo;적어도&rdquo;의 확률">
           <p>
             &ldquo;적어도 하나&rdquo;가 일어날 확률은 여사건을 이용하면
             간단합니다.
@@ -79,8 +79,8 @@ export default function ProbabilityConcept() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 확률의 계산">
-        <SubSection title="(1) 사건이 동시에 일어나지 않을 때 (합의 법칙)">
+      <CalcBox title="■ 확률의 계산">
+        <SubSection title="● 사건이 동시에 일어나지 않을 때 (합의 법칙)">
           <p>
             두 사건 A, B가 동시에 일어나지 않을 때(배반사건):
           </p>
@@ -93,7 +93,7 @@ export default function ProbabilityConcept() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 연속으로 일어나는 사건의 확률">
+        <SubSection title="● 연속으로 일어나는 사건의 확률">
           <p>
             두 사건 A, B가 서로 영향을 주지 않을 때(독립사건),
             A와 B가 동시에(잇달아) 일어날 확률:
@@ -114,8 +114,8 @@ export default function ProbabilityConcept() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="4. 확률의 활용">
-        <SubSection title="(1) 표·나무그림을 이용한 확률">
+      <CalcBox title="■ 확률의 활용">
+        <SubSection title="● 표·나무그림을 이용한 확률">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               빨간 공 3개, 파란 공 2개가 든 주머니에서 공 1개를 꺼낼 때
@@ -124,7 +124,7 @@ export default function ProbabilityConcept() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 기하학적 확률">
+        <SubSection title="● 기하학적 확률">
           <p>
             면적이나 길이의 비를 이용하여 확률을 구할 수도 있습니다.
           </p>

@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function RepresentativeDispersion() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 대푯값">
-        <SubSection title="(1) 평균">
+      <CalcBox title="■ 대푯값">
+        <SubSection title="● 평균">
           <p>
             자료의 <strong>평균</strong>은 모든 변량의 합을 변량의 개수로
             나눈 값입니다.
@@ -20,7 +20,7 @@ export default function RepresentativeDispersion() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 중앙값 (중위수)">
+        <SubSection title="● 중앙값 (중위수)">
           <p>
             자료를 크기순으로 나열했을 때 <strong>한가운데</strong>에 오는
             값입니다.
@@ -44,7 +44,7 @@ export default function RepresentativeDispersion() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 최빈값">
+        <SubSection title="● 최빈값">
           <p>
             자료에서 <strong>가장 많이 나타나는</strong> 값을{" "}
             <strong>최빈값</strong>이라고 합니다.
@@ -66,8 +66,8 @@ export default function RepresentativeDispersion() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="2. 산포도">
-        <SubSection title="(1) 산포도의 뜻">
+      <CalcBox title="■ 산포도">
+        <SubSection title="● 산포도의 뜻">
           <p>
             자료가 대푯값(평균) 주위에 얼마나 퍼져 있는지를 나타내는 값을{" "}
             <strong>산포도</strong>라고 합니다. 산포도가 작을수록 자료가 평균
@@ -75,7 +75,7 @@ export default function RepresentativeDispersion() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 편차">
+        <SubSection title="● 편차">
           <p>
             각 변량에서 평균을 뺀 값을 <strong>편차</strong>라고 합니다.
           </p>
@@ -86,7 +86,7 @@ export default function RepresentativeDispersion() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 분산">
+        <SubSection title="● 분산">
           <p>
             편차의 제곱의 평균을 <strong>분산</strong>이라고 합니다.
           </p>
@@ -95,7 +95,7 @@ export default function RepresentativeDispersion() {
           <BlockMath math="V = \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2" />
         </SubSection>
 
-        <SubSection title="(4) 표준편차">
+        <SubSection title="● 표준편차">
           <p>
             분산의 양의 제곱근을 <strong>표준편차</strong>라고 합니다.
           </p>
@@ -106,8 +106,8 @@ export default function RepresentativeDispersion() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 분산과 표준편차의 계산">
-        <SubSection title="(1) 계산 예시">
+      <CalcBox title="■ 분산과 표준편차의 계산">
+        <SubSection title="● 계산 예시">
           <div className="rounded-lg border border-sidebar-border p-4">
             <p className="font-medium mb-2">
               자료: 2, 4, 6, 8, 10의 분산과 표준편차
@@ -124,7 +124,7 @@ export default function RepresentativeDispersion() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 분산의 간편 공식">
+        <SubSection title="● 분산의 간편 공식">
           <p>
             분산은 다음과 같이 간편하게 계산할 수도 있습니다.
           </p>
@@ -134,7 +134,7 @@ export default function RepresentativeDispersion() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) 산포도의 비교">
+        <SubSection title="● 산포도의 비교">
           <p>
             두 자료의 흩어진 정도를 비교할 때는 표준편차를 비교합니다.
             표준편차가 작은 자료가 더 균일합니다.

@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function TriangleProperty() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 이등변삼각형">
-        <SubSection title="(1) 이등변삼각형의 성질">
+      <CalcBox title="■ 이등변삼각형">
+        <SubSection title="● 이등변삼각형의 성질">
           <p>
             두 변의 길이가 같은 삼각형을 <strong>이등변삼각형</strong>이라고
             합니다.
@@ -25,7 +25,7 @@ export default function TriangleProperty() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 이등변삼각형이 되는 조건">
+        <SubSection title="● 이등변삼각형이 되는 조건">
           <p>다음 중 하나를 만족하면 이등변삼각형입니다.</p>
           <div className="mt-2 space-y-1">
             <p>① 두 변의 길이가 같다.</p>
@@ -33,7 +33,7 @@ export default function TriangleProperty() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 정삼각형">
+        <SubSection title="● 정삼각형">
           <p>
             세 변의 길이가 모두 같은 삼각형을 <strong>정삼각형</strong>이라 하며,
             세 내각의 크기가 모두 <InlineMath math="60°" />입니다.
@@ -42,8 +42,8 @@ export default function TriangleProperty() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 삼각형의 외심과 내심">
-        <SubSection title="(1) 삼각형의 외심">
+      <CalcBox title="■ 삼각형의 외심과 내심">
+        <SubSection title="● 삼각형의 외심">
           <p>
             삼각형의 세 변의 <strong>수직이등분선</strong>은 한 점에서 만납니다.
             이 점을 삼각형의 <strong>외심</strong>이라 하고,
@@ -63,7 +63,7 @@ export default function TriangleProperty() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 삼각형의 내심">
+        <SubSection title="● 삼각형의 내심">
           <p>
             삼각형의 세 내각의 <strong>이등분선</strong>은 한 점에서 만납니다.
             이 점을 삼각형의 <strong>내심</strong>이라 하고,
@@ -75,7 +75,7 @@ export default function TriangleProperty() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) 내심의 성질 활용">
+        <SubSection title="● 내심의 성질 활용">
           <p>
             삼각형 ABC의 내심을 I라 할 때:
           </p>
@@ -95,8 +95,8 @@ export default function TriangleProperty() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 삼각형의 합동">
-        <SubSection title="(1) 합동의 뜻">
+      <CalcBox title="■ 삼각형의 합동">
+        <SubSection title="● 합동의 뜻">
           <p>
             모양과 크기가 같아서 포개었을 때 완전히 겹치는 두 도형을{" "}
             <strong>합동</strong>이라 합니다. 기호 <InlineMath math="\equiv" />를
@@ -104,7 +104,7 @@ export default function TriangleProperty() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 삼각형의 합동 조건">
+        <SubSection title="● 삼각형의 합동 조건">
           <p>다음 세 가지 중 하나를 만족하면 두 삼각형은 합동입니다.</p>
           <div className="mt-2 space-y-2">
             <p>
@@ -119,7 +119,7 @@ export default function TriangleProperty() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 합동 조건의 활용">
+        <SubSection title="● 합동 조건의 활용">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               <InlineMath math="\triangle ABC" />에서{" "}

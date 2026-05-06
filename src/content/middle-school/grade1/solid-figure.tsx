@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function SolidFigure() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 다면체와 회전체">
-        <SubSection title="(1) 다면체">
+      <CalcBox title="■ 다면체와 회전체">
+        <SubSection title="● 다면체">
           <p>
             다각형인 면으로만 둘러싸인 입체도형을{" "}
             <strong>다면체</strong>라고 합니다.
@@ -27,7 +27,7 @@ export default function SolidFigure() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 다면체의 꼭짓점·모서리·면의 수">
+        <SubSection title="● 다면체의 꼭짓점·모서리·면의 수">
           <div className="rounded-lg border border-sidebar-border p-4">
             <table className="w-full text-center text-sm">
               <thead>
@@ -56,7 +56,7 @@ export default function SolidFigure() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 정다면체">
+        <SubSection title="● 정다면체">
           <p>
             모든 면이 합동인 정다각형이고, 각 꼭짓점에 모이는 면의 수가 같은
             다면체를 <strong>정다면체</strong>라고 합니다. 정다면체는{" "}
@@ -73,7 +73,7 @@ export default function SolidFigure() {
           </div>
         </SubSection>
 
-        <SubSection title="(4) 회전체">
+        <SubSection title="● 회전체">
           <p>
             평면도형을 한 직선(회전축)을 중심으로 1회전 시켜 생기는 입체도형을{" "}
             <strong>회전체</strong>라고 합니다.
@@ -92,8 +92,8 @@ export default function SolidFigure() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 입체도형의 겉넓이와 부피">
-        <SubSection title="(1) 기둥의 겉넓이와 부피">
+      <CalcBox title="■ 입체도형의 겉넓이와 부피">
+        <SubSection title="● 기둥의 겉넓이와 부피">
           <p>
             밑면의 넓이를 <InlineMath math="S" />, 높이를{" "}
             <InlineMath math="h" />, 밑면의 둘레를{" "}
@@ -108,7 +108,7 @@ export default function SolidFigure() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 뿔의 겉넓이와 부피">
+        <SubSection title="● 뿔의 겉넓이와 부피">
           <p>
             뿔의 부피는 같은 밑면과 높이를 가진 기둥의{" "}
             <InlineMath math="\frac{1}{3}" />입니다.
@@ -121,7 +121,7 @@ export default function SolidFigure() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 구의 겉넓이와 부피">
+        <SubSection title="● 구의 겉넓이와 부피">
           <p>
             반지름이 <InlineMath math="r" />인 구:
           </p>

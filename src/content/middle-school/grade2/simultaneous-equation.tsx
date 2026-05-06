@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function SimultaneousEquation() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 미지수가 2개인 일차방정식">
-        <SubSection title="(1) 미지수가 2개인 일차방정식">
+      <CalcBox title="■ 미지수가 2개인 일차방정식">
+        <SubSection title="● 미지수가 2개인 일차방정식">
           <p>
             미지수가 2개이고 그 각각의 차수가 1인 방정식을{" "}
             <strong>미지수가 2개인 일차방정식</strong>이라고 합니다.
@@ -18,7 +18,7 @@ export default function SimultaneousEquation() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 해(순서쌍)">
+        <SubSection title="● 해(순서쌍)">
           <p>
             미지수가 2개인 일차방정식을 참이 되게 하는{" "}
             <InlineMath math="x" />, <InlineMath math="y" />의 값의 쌍{" "}
@@ -33,8 +33,8 @@ export default function SimultaneousEquation() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 연립방정식과 그 풀이">
-        <SubSection title="(1) 연립방정식의 뜻">
+      <CalcBox title="■ 연립방정식과 그 풀이">
+        <SubSection title="● 연립방정식의 뜻">
           <p>
             미지수가 2개인 일차방정식 2개를 한 쌍으로 묶은 것을{" "}
             <strong>연립방정식</strong>이라 하고, 두 방정식을 동시에 만족하는
@@ -47,7 +47,7 @@ export default function SimultaneousEquation() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 대입법">
+        <SubSection title="● 대입법">
           <p>
             한 방정식에서 한 미지수를 다른 미지수로 나타낸 뒤, 다른 방정식에{" "}
             <strong>대입</strong>하여 푸는 방법입니다.
@@ -67,7 +67,7 @@ export default function SimultaneousEquation() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 가감법">
+        <SubSection title="● 가감법">
           <p>
             두 방정식을 <strong>더하거나 빼서</strong> 한 미지수를 없애는
             방법입니다.
@@ -93,8 +93,8 @@ export default function SimultaneousEquation() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 여러 가지 연립방정식">
-        <SubSection title="(1) 괄호가 있는 연립방정식">
+      <CalcBox title="■ 여러 가지 연립방정식">
+        <SubSection title="● 괄호가 있는 연립방정식">
           <p>괄호를 먼저 풀고 정리한 뒤 대입법 또는 가감법으로 풉니다.</p>
           <div className="mt-3 rounded-lg border border-sidebar-border p-4 space-y-2">
             <BlockMath math="\begin{cases} 2(x + y) - 3 = 7 \\ 3x - (y + 1) = 8 \end{cases}" />
@@ -103,7 +103,7 @@ export default function SimultaneousEquation() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 계수가 분수 또는 소수인 연립방정식">
+        <SubSection title="● 계수가 분수 또는 소수인 연립방정식">
           <p>
             양변에 적절한 수를 곱하여 <strong>계수를 정수</strong>로 바꾼 뒤 풉니다.
           </p>
@@ -113,7 +113,7 @@ export default function SimultaneousEquation() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 해가 특수한 경우">
+        <SubSection title="● 해가 특수한 경우">
           <p>
             두 방정식이 <strong>같은 직선</strong>을 나타내면 해가 무수히 많고,{" "}
             <strong>평행한 직선</strong>을 나타내면 해가 없습니다.
@@ -133,8 +133,8 @@ export default function SimultaneousEquation() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="4. 연립방정식의 활용">
-        <SubSection title="(1) 풀이 과정">
+      <CalcBox title="■ 연립방정식의 활용">
+        <SubSection title="● 풀이 과정">
           <div className="space-y-1">
             <p>① 구하려는 것을 미지수 <InlineMath math="x" />, <InlineMath math="y" />로 놓는다.</p>
             <p>② 조건에 맞게 연립방정식을 세운다.</p>
@@ -143,7 +143,7 @@ export default function SimultaneousEquation() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 활용 예시">
+        <SubSection title="● 활용 예시">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               사과 3개와 배 2개의 값은 5,800원이고, 사과 2개와 배 3개의 값은

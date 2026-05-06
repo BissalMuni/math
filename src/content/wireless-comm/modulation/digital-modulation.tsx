@@ -11,12 +11,12 @@ export default function DigitalModulationContent() {
         아날로그(1G)에서 디지털(2G~)로의 전환, 그리고 비트 전송이 문자·영상·음악을 가능케 한 원리입니다.
       </p>
 
-      <CalcBox title="1. 아날로그 vs 디지털">
+      <CalcBox title="■ 아날로그 vs 디지털">
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-3">
           <pre>{`아날로그   ~~~~/~~~~  연속, 무한히 쪼갤 수 있음
 디지털     1 0 1 1 0  끊어진 덩어리, 양자화`}</pre>
         </div>
-        <SubSection title="(1) 문자는 태생이 디지털(양자)">
+        <SubSection title="● 문자는 태생이 디지털(양자)">
           <p className="text-sm mb-2">
             &ldquo;A&rdquo;는 A일 뿐, A와 B 사이에 중간값이 없습니다.
             연속적인 파동으로 직접 표현할 방법이 없어 반드시 비트로 변환해야 합니다.
@@ -28,7 +28,7 @@ export default function DigitalModulationContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. FSK — FM의 디지털 버전">
+      <CalcBox title="■ FSK — FM의 디지털 버전">
         <p className="text-sm mb-2">
           FSK(Frequency Shift Keying): 주파수 빠르기로 0과 1을 구분합니다.
         </p>
@@ -44,8 +44,8 @@ export default function DigitalModulationContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="3. 비트가 문자가 되는 과정">
-        <SubSection title="(1) 아스키코드 / 유니코드">
+      <CalcBox title="■ 비트가 문자가 되는 과정">
+        <SubSection title="● 아스키코드 / 유니코드">
           <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
             <pre>{`A = 01000001
 B = 01000010
@@ -56,7 +56,7 @@ C = 01000011
           </div>
           <p className="text-sm text-muted mt-2">문자도 결국 비트의 약속표입니다.</p>
         </SubSection>
-        <SubSection title="(2) 문자 전송 전체 흐름">
+        <SubSection title="● 문자 전송 전체 흐름">
           <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
             <pre>{`"안녕" 입력
     ↓
@@ -75,7 +75,7 @@ QAM 변조로 파동에 얹음
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="4. 모든 것이 비트">
+      <CalcBox title="■ 모든 것이 비트">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">
@@ -98,7 +98,7 @@ QAM 변조로 파동에 얹음
         </p>
       </CalcBox>
 
-      <CalcBox title="5. 변조 속도">
+      <CalcBox title="■ 변조 속도">
         <p className="text-sm mb-3">
           5G 주파수 28GHz일 때, 1초에 280억 번 진동합니다.
           각 심볼마다 10비트씩 담으면 엄청난 전송량입니다.
@@ -116,7 +116,7 @@ QAM 변조로 파동에 얹음
         </Insight>
       </CalcBox>
 
-      <CalcBox title="6. 디지털 통신 발전 흐름">
+      <CalcBox title="■ 디지털 통신 발전 흐름">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">

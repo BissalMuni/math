@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function VariableExpression() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 문자의 사용">
-        <SubSection title="(1) 문자를 사용한 식">
+      <CalcBox title="■ 문자의 사용">
+        <SubSection title="● 문자를 사용한 식">
           <p>
             수량 사이의 관계를 나타낼 때, 알 수 없거나 변하는 값을{" "}
             <strong>문자</strong>로 나타냅니다.
@@ -24,7 +24,7 @@ export default function VariableExpression() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 곱셈 기호의 생략">
+        <SubSection title="● 곱셈 기호의 생략">
           <p>
             문자를 사용한 식에서는 곱셈 기호 <InlineMath math="\times" />를
             생략하여 간단히 나타냅니다.
@@ -49,7 +49,7 @@ export default function VariableExpression() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 나눗셈 기호의 생략">
+        <SubSection title="● 나눗셈 기호의 생략">
           <p>
             나눗셈은 <strong>분수 형태</strong>로 나타냅니다.
           </p>
@@ -60,8 +60,8 @@ export default function VariableExpression() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 식의 값">
-        <SubSection title="(1) 대입과 식의 값">
+      <CalcBox title="■ 식의 값">
+        <SubSection title="● 대입과 식의 값">
           <p>
             문자에 수를 넣는 것을 <strong>대입한다</strong>고 하고, 대입하여 계산한
             결과를 그 식의 <strong>값</strong>이라고 합니다.
@@ -75,7 +75,7 @@ export default function VariableExpression() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 대입 시 주의사항">
+        <SubSection title="● 대입 시 주의사항">
           <p>
             ① 음수를 대입할 때는 반드시 <strong>괄호</strong>를 사용합니다.
           </p>
@@ -92,8 +92,8 @@ export default function VariableExpression() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 일차식의 계산">
-        <SubSection title="(1) 항, 계수, 상수항">
+      <CalcBox title="■ 일차식의 계산">
+        <SubSection title="● 항, 계수, 상수항">
           <p>
             식 <InlineMath math="3x + 5" />에서{" "}
             <InlineMath math="3x" />와 <InlineMath math="5" />를 각각{" "}
@@ -112,7 +112,7 @@ export default function VariableExpression() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 동류항과 일차식">
+        <SubSection title="● 동류항과 일차식">
           <p>
             문자와 차수가 같은 항을 <strong>동류항</strong>이라고 합니다.
           </p>
@@ -126,7 +126,7 @@ export default function VariableExpression() {
           <BlockMath math="2x + 1, \quad -3a + 7, \quad \frac{x}{2} - 4" />
         </SubSection>
 
-        <SubSection title="(3) 일차식의 덧셈과 뺄셈">
+        <SubSection title="● 일차식의 덧셈과 뺄셈">
           <p>
             <strong>동류항끼리 모아서</strong> 계수를 더하거나 뺍니다.
           </p>
@@ -134,7 +134,7 @@ export default function VariableExpression() {
           <BlockMath math="(7x - 1) - (2x + 3) = 7x - 1 - 2x - 3 = 5x - 4" />
         </SubSection>
 
-        <SubSection title="(4) 일차식과 수의 곱셈·나눗셈">
+        <SubSection title="● 일차식과 수의 곱셈·나눗셈">
           <p>
             분배법칙을 이용하여 각 항에 수를 곱하거나 나눕니다.
           </p>

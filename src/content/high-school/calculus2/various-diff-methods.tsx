@@ -6,23 +6,23 @@ import { CalcBox } from "@/components/content/shared";
 export default function VariousDiffMethods() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 함수의 몫의 미분법">
+      <CalcBox title="■ 함수의 몫의 미분법">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 합성함수의 미분법">
+      <CalcBox title="■ 합성함수의 미분법">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 매개변수로 나타낸 함수의 미분법">
+      <CalcBox title="■ 매개변수로 나타낸 함수의 미분법">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="4. 음함수의 미분법">
+      <CalcBox title="■ 음함수의 미분법">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="5. 역함수의 미분법">
+      <CalcBox title="■ 역함수의 미분법">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

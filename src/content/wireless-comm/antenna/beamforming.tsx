@@ -11,7 +11,7 @@ export default function BeamformingContent() {
         그 핵심인 위상 배열 안테나를 다룹니다.
       </p>
 
-      <CalcBox title="1. 빔포밍이란">
+      <CalcBox title="■ 빔포밍이란">
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-3">
           <pre>{`기존 방식 (전방향)
 기지국 ))))))))))))
@@ -21,7 +21,7 @@ export default function BeamformingContent() {
 기지국 ────────→ 📱
        특정 방향 집중 → 에너지 강함`}</pre>
         </div>
-        <SubSection title="(1) 비유">
+        <SubSection title="● 비유">
           <div className="text-sm space-y-1">
             <p>• 전방향 = 전구 (방 전체를 희미하게 밝힘)</p>
             <p>• 빔포밍 = 레이저 포인터 (한 점만 강하게 비춤)</p>
@@ -33,8 +33,8 @@ export default function BeamformingContent() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="2. 폰 위치를 어떻게 아나">
-        <SubSection title="(1) 폰이 먼저 신호를 보냄">
+      <CalcBox title="■ 폰 위치를 어떻게 아나">
+        <SubSection title="● 폰이 먼저 신호를 보냄">
           <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
             <pre>{`1. 폰이 기지국으로 약한 신호 송신
 2. 기지국이 신호 도착 방향 감지
@@ -42,7 +42,7 @@ export default function BeamformingContent() {
 4. 폰 위치 바뀌면 1번부터 반복`}</pre>
           </div>
         </SubSection>
-        <SubSection title="(2) 방향 감지 원리">
+        <SubSection title="● 방향 감지 원리">
           <p className="text-sm mb-2">
             안테나 배열의 각 안테나에 신호가 도달하는 시간차로 계산합니다.
           </p>
@@ -64,7 +64,7 @@ export default function BeamformingContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 보강간섭 — 빔포밍의 핵심">
+      <CalcBox title="■ 보강간섭 — 빔포밍의 핵심">
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-3">
           <pre>{`안테나 여러 개가 위상 맞춰서 동시에 쏘면
 
@@ -80,8 +80,8 @@ export default function BeamformingContent() {
         </p>
       </CalcBox>
 
-      <CalcBox title="4. 기지국 안테나 구조">
-        <SubSection title="(1) 3면 120° 배치">
+      <CalcBox title="■ 기지국 안테나 구조">
+        <SubSection title="● 3면 120° 배치">
           <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-2">
             <pre>{`         앞 (120°)
         /────────\\
@@ -96,7 +96,7 @@ export default function BeamformingContent() {
             도시 고층빌딩 옥상에 삼각형으로 3면 안테나판 붙어있는 것이 바로 이것입니다.
           </p>
         </SubSection>
-        <SubSection title="(2) 각 면 안에 수백 개 소자">
+        <SubSection title="● 각 면 안에 수백 개 소자">
           <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
             <pre>{`한 면 (120° 담당)
 ┌─────────────┐
@@ -111,7 +111,7 @@ export default function BeamformingContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="5. 옛날 vs 지금 기지국">
+      <CalcBox title="■ 옛날 vs 지금 기지국">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">

@@ -36,7 +36,7 @@ export default function EncoderDecoderContent() {
       </p>
 
       {/* ── 세 가지 아키텍처 비교 ── */}
-      <CalcBox title="1. 아키텍처 3종 비교">
+      <CalcBox title="■ 아키텍처 3종 비교">
         <div className="space-y-4 text-sm">
           {/* Encoder-only */}
           <div className="p-4 rounded-lg border border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950">
@@ -108,7 +108,7 @@ export default function EncoderDecoderContent() {
       </CalcBox>
 
       {/* ── STEP 1: BERT MLM ── */}
-      <CalcBox title="2. Encoder-only: BERT의 Masked Language Modeling">
+      <CalcBox title="■ Encoder-only: BERT의 Masked Language Modeling">
         <p className="text-sm mb-4">
           입력의 15%를 [MASK]로 가리고, 양방향 컨텍스트를 활용해 원래 단어를 예측합니다.
           "나는 _____ 좋아한다" → 앞뒤 문맥 모두 활용 가능.
@@ -150,7 +150,7 @@ export default function EncoderDecoderContent() {
       </CalcBox>
 
       {/* ── STEP 2: 인과 마스크 ── */}
-      <CalcBox title="3. Decoder-only: 인과 마스크 (Causal Mask)">
+      <CalcBox title="■ Decoder-only: 인과 마스크 (Causal Mask)">
         <p className="text-sm mb-4">
           GPT는 디코더 전용이라 <strong>자기가 생성한 내용만 볼 수 있습니다</strong>.
           어텐션 점수 행렬에 삼각형 마스크를 씌워 미래 토큰을 차단합니다.
@@ -189,7 +189,7 @@ export default function EncoderDecoderContent() {
       </CalcBox>
 
       {/* ── STEP 3: Cross-Attention ── */}
-      <CalcBox title="4. Encoder+Decoder: Cross-Attention">
+      <CalcBox title="■ Encoder+Decoder: Cross-Attention">
         <p className="text-sm mb-4">
           Encoder+Decoder 구조에서 디코더는 두 종류의 어텐션을 수행합니다:
         </p>
@@ -217,7 +217,7 @@ export default function EncoderDecoderContent() {
       </CalcBox>
 
       {/* ── 모델별 비교표 ── */}
-      <CalcBox title="5. 주요 모델 비교">
+      <CalcBox title="■ 주요 모델 비교">
         <div className="overflow-x-auto">
           <table className="text-sm w-full">
             <thead>

@@ -11,12 +11,12 @@ export default function OfdmContent() {
         4G/5G의 물리 계층 핵심입니다.
       </p>
 
-      <CalcBox title="1. OFDM이란">
+      <CalcBox title="■ OFDM이란">
         <p className="text-sm mb-2">
           <strong>O</strong>rthogonal <strong>F</strong>requency <strong>D</strong>ivision <strong>M</strong>ultiplexing
           = 직교 주파수 분할 다중화
         </p>
-        <SubSection title="(1) 핵심 아이디어">
+        <SubSection title="● 핵심 아이디어">
           <p className="text-sm mb-2">
             넓은 주파수를 쪼개서 여러 개의 좁은 채널(부반송파)을 만들고,
             각각에 ���이터를 실어 동시에 보냅니���.
@@ -30,7 +30,7 @@ OFDM: 수천 개 좁은 채널로 동시에 보냄
       각각이 독립적인 부반송파`}</pre>
           </div>
         </SubSection>
-        <SubSection title="(2) 왜 직교(Orthogonal)인가">
+        <SubSection title="● 왜 직교(Orthogonal)인가">
           <p className="text-sm">
             각 부반송파가 서로 간섭 없이 독립적입니다.
             sin과 cos가 직교하는 것처럼, 주파수가 정수배 간격이면 서로 간섭하지 않습니다.
@@ -38,7 +38,7 @@ OFDM: 수천 개 좁은 채널로 동시에 보냄
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. OFDM의 장점">
+      <CalcBox title="■ OFDM의 장점">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">
@@ -56,7 +56,7 @@ OFDM: 수천 개 좁은 채널로 동시에 보냄
         </div>
       </CalcBox>
 
-      <CalcBox title="3. 5G의 시간×주파수 격자">
+      <CalcBox title="■ 5G의 시간×주파수 격자">
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-3">
           <pre>{`주파수 ↑
        │ □ □ □ □ □ □ □  ← 부반송파 N
@@ -78,7 +78,7 @@ OFDM: 수천 개 좁은 채널로 동시에 보냄
         </Insight>
       </CalcBox>
 
-      <CalcBox title="4. 일상에서의 OFDM">
+      <CalcBox title="■ 일상에서의 OFDM">
         <div className="text-sm space-y-1">
           <p>• 4G LTE — OFDMA (하향링크)</p>
           <p>• 5G NR — OFDM (상·하향 모두)</p>

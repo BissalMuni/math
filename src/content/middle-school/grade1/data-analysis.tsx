@@ -29,8 +29,8 @@ export default function DataAnalysis() {
 
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 줄기와 잎 그림, 도수분포표">
-        <SubSection title="(1) 줄기와 잎 그림">
+      <CalcBox title="■ 줄기와 잎 그림, 도수분포표">
+        <SubSection title="● 줄기와 잎 그림">
           <p>
             자료를 <strong>줄기</strong>(십의 자리)와 <strong>잎</strong>(일의
             자리)으로 나누어 나타낸 그림입니다.
@@ -183,7 +183,7 @@ export default function DataAnalysis() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 도수분포표">
+        <SubSection title="● 도수분포표">
           <p>
             자료를 몇 개의 <strong>계급</strong>(구간)으로 나누고, 각 계급에
             속하는 자료의 수(<strong>도수</strong>)를 세어 표로 정리한 것입니다.
@@ -250,8 +250,8 @@ export default function DataAnalysis() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="2. 히스토그램과 도수분포다각형">
-        <SubSection title="(1) 히스토그램">
+      <CalcBox title="■ 히스토그램과 도수분포다각형">
+        <SubSection title="● 히스토그램">
           <p>
             도수분포표를 <strong>직사각형 막대 그래프</strong>로 나타낸 것입니다.
           </p>
@@ -266,7 +266,7 @@ export default function DataAnalysis() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 히스토그램의 성질">
+        <SubSection title="● 히스토그램의 성질">
           <ul className="list-disc pl-6 space-y-1">
             <li>
               (각 직사각형의 넓이) = (계급의 크기) <InlineMath math="\times" />{" "}
@@ -279,7 +279,7 @@ export default function DataAnalysis() {
           </ul>
         </SubSection>
 
-        <SubSection title="(3) 도수분포다각형">
+        <SubSection title="● 도수분포다각형">
           <p>
             히스토그램에서 각 직사각형의 윗변의 <strong>가운데 점</strong>
             (계급값의 위치)을 선분으로 연결한 그래프입니다.
@@ -296,8 +296,8 @@ export default function DataAnalysis() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 상대도수">
-        <SubSection title="(1) 상대도수의 뜻">
+      <CalcBox title="■ 상대도수">
+        <SubSection title="● 상대도수의 뜻">
           <p>
             각 계급의 도수를 도수의 총합으로 나눈 값을{" "}
             <strong>상대도수</strong>라고 합니다.
@@ -305,7 +305,7 @@ export default function DataAnalysis() {
           <BlockMath math="\text{(상대도수)} = \frac{\text{(그 계급의 도수)}}{\text{(도수의 총합)}}" />
         </SubSection>
 
-        <SubSection title="(2) 상대도수의 성질">
+        <SubSection title="● 상대도수의 성질">
           <ul className="list-disc pl-6 space-y-1">
             <li>
               각 계급의 상대도수는 0 이상 1 이하입니다.
@@ -316,7 +316,7 @@ export default function DataAnalysis() {
           </ul>
         </SubSection>
 
-        <SubSection title="(3) 상대도수의 계산 예시">
+        <SubSection title="● 상대도수의 계산 예시">
           <div className="rounded-lg border border-sidebar-border p-4">
             <table className="w-full text-center text-sm">
               <thead>
@@ -358,7 +358,7 @@ export default function DataAnalysis() {
           </div>
         </SubSection>
 
-        <SubSection title="(4) 상대도수의 활용">
+        <SubSection title="● 상대도수의 활용">
           <p>
             도수의 총합이 다른 두 집단의 분포를 비교할 때{" "}
             <strong>상대도수</strong>를 사용합니다.

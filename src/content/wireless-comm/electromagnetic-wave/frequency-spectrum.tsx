@@ -11,7 +11,7 @@ export default function FrequencySpectrumContent() {
         주파수 단위와 전자기 스펙트럼의 대역별 용도를 정리합니다.
       </p>
 
-      <CalcBox title="1. 주파수 단위">
+      <CalcBox title="■ 주파수 단위">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">
@@ -34,7 +34,7 @@ export default function FrequencySpectrumContent() {
         </p>
       </CalcBox>
 
-      <CalcBox title="2. 전자기 스펙트럼">
+      <CalcBox title="■ 전자기 스펙트럼">
         <p className="text-sm mb-3">
           전파·빛·X선 모두 전자기파이며, 주파수에 따라 성질이 달라집니다.
         </p>
@@ -47,8 +47,8 @@ export default function FrequencySpectrumContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="3. 왜 고주파가 통신에 유리한가">
-        <SubSection title="(1) 대역폭이 넓다">
+      <CalcBox title="■ 왜 고주파가 통신에 유리한가">
+        <SubSection title="● 대역폭이 넓다">
           <p className="text-sm mb-2">
             파장이 짧을수록 한 번에 실어 나를 수 있는 정보량(대역폭)이 많아집니다.
           </p>
@@ -57,13 +57,13 @@ export default function FrequencySpectrumContent() {
             <p>• 고주파: 1초에 10,000번 진동 → 10,000번 변조 기회</p>
           </div>
         </SubSection>
-        <SubSection title="(2) 도로 비유">
+        <SubSection title="● 도로 비유">
           <div className="text-sm space-y-1">
             <p>• 저주파 = 왕복 2차선 도로 → 차(데이터)가 조금 지나감</p>
             <p>• 고주파 = 왕복 10차선 고속도로 → 차가 훨씬 많이 지나감</p>
           </div>
         </SubSection>
-        <SubSection title="(3) 단점: 직진성">
+        <SubSection title="● 단점: 직진성">
           <p className="text-sm">
             고주파는 직진성이 강하고 장애물에 약합니다.
             벽, 건물, 비에도 감쇠되어 기지국을 촘촘히 세워야 합니다.
@@ -74,7 +74,7 @@ export default function FrequencySpectrumContent() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="4. AM과 FM 라디오 대역">
+      <CalcBox title="■ AM과 FM 라디오 대역">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">

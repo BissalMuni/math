@@ -6,15 +6,15 @@ import { CalcBox } from "@/components/content/shared";
 export default function StatisticalEstimation() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 모집단과 표본">
+      <CalcBox title="■ 모집단과 표본">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 표본평균의 분포">
+      <CalcBox title="■ 표본평균의 분포">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 모평균의 추정">
+      <CalcBox title="■ 모평균의 추정">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

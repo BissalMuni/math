@@ -18,7 +18,7 @@ export default function NeuralNetContent() {
       </p>
 
       {/* ── 뉴런 = 곱하고 더하기 ── */}
-      <CalcBox title="1. 뉴런 하나 = 곱하고 더하기">
+      <CalcBox title="■ 뉴런 하나 = 곱하고 더하기">
         <p className="text-sm mb-4">
           인공 뉴런은 입력값에 가중치(weight)를 곱하고, 편향(bias)을 더한 뒤,
           활성화 함수를 통과시킵니다.
@@ -40,7 +40,7 @@ export default function NeuralNetContent() {
       </CalcBox>
 
       {/* ── 층을 쌓는다 ── */}
-      <CalcBox title="2. 층(Layer)을 쌓으면 신경망">
+      <CalcBox title="■ 층(Layer)을 쌓으면 신경망">
         <p className="text-sm mb-4">
           뉴런을 여러 개 나란히 놓으면 <strong>층(layer)</strong>,
           층을 여러 개 쌓으면 <strong>신경망(neural network)</strong>입니다.
@@ -66,7 +66,7 @@ export default function NeuralNetContent() {
       </CalcBox>
 
       {/* ── 학습 = 가중치 조정 ── */}
-      <CalcBox title="3. 학습 = 가중치 조정">
+      <CalcBox title="■ 학습 = 가중치 조정">
         <p className="text-sm mb-3">
           처음에 가중치는 무작위입니다. 학습이란 <strong>정답과의 차이(손실)를 줄이는 방향으로
           가중치를 조금씩 조정</strong>하는 과정입니다.
@@ -85,7 +85,7 @@ export default function NeuralNetContent() {
       </CalcBox>
 
       {/* ── LLM에서의 신경망 ── */}
-      <CalcBox title="4. LLM 속 신경망 = 트랜스포머">
+      <CalcBox title="■ LLM 속 신경망 = 트랜스포머">
         <p className="text-sm mb-3">
           LLM이 사용하는 신경망 구조를 <strong>트랜스포머(Transformer)</strong>라고 합니다.
           일반 신경망과 다른 핵심은 <strong>어텐션(Attention)</strong> 메커니즘입니다.

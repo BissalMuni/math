@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function IntegerRational() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 정수와 유리수의 개념">
-        <SubSection title="(1) 양수와 음수">
+      <CalcBox title="■ 정수와 유리수의 개념">
+        <SubSection title="● 양수와 음수">
           <p>
             0보다 큰 수를 <strong>양수</strong>, 0보다 작은 수를{" "}
             <strong>음수</strong>라고 합니다.
@@ -24,14 +24,14 @@ export default function IntegerRational() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 정수">
+        <SubSection title="● 정수">
           <p>
             양의 정수(자연수), 0, 음의 정수를 통틀어 <strong>정수</strong>라고 합니다.
           </p>
           <BlockMath math="\text{정수} = \{ \ldots, -3, -2, -1, 0, 1, 2, 3, \ldots \}" />
         </SubSection>
 
-        <SubSection title="(3) 유리수">
+        <SubSection title="● 유리수">
           <p>
             <InlineMath math="\frac{a}{b}" /> (<InlineMath math="a" />,{" "}
             <InlineMath math="b" />는 정수, <InlineMath math="b \neq 0" />)
@@ -48,7 +48,7 @@ export default function IntegerRational() {
           </div>
         </SubSection>
 
-        <SubSection title="(4) 수의 대소 관계">
+        <SubSection title="● 수의 대소 관계">
           <p>수직선에서 오른쪽에 있는 수가 더 큽니다.</p>
           <ul className="mt-2 list-disc pl-6 space-y-1">
             <li>양수는 0보다 크고, 음수는 0보다 작습니다.</li>
@@ -61,8 +61,8 @@ export default function IntegerRational() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 절댓값">
-        <SubSection title="(1) 절댓값의 뜻">
+      <CalcBox title="■ 절댓값">
+        <SubSection title="● 절댓값의 뜻">
           <p>
             수직선에서 어떤 수가 <strong>원점에서 떨어진 거리</strong>를 그 수의{" "}
             <strong>절댓값</strong>이라 하고, 기호 <InlineMath math="| \; |" />로
@@ -71,7 +71,7 @@ export default function IntegerRational() {
           <BlockMath math="|+3| = 3, \quad |-3| = 3, \quad |0| = 0" />
         </SubSection>
 
-        <SubSection title="(2) 절댓값의 성질">
+        <SubSection title="● 절댓값의 성질">
           <ul className="list-disc pl-6 space-y-1">
             <li>절댓값은 항상 0 이상입니다.</li>
             <li>
@@ -91,8 +91,8 @@ export default function IntegerRational() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 정수와 유리수의 사칙연산">
-        <SubSection title="(1) 곱셈의 부호 규칙">
+      <CalcBox title="■ 정수와 유리수의 사칙연산">
+        <SubSection title="● 곱셈의 부호 규칙">
           <p>두 수의 곱에서 부호는 다음과 같이 결정됩니다.</p>
           <ul className="mt-2 list-disc pl-6 space-y-1">
             <li>
@@ -107,7 +107,7 @@ export default function IntegerRational() {
           <BlockMath math="(-3) \times (-4) = +12, \quad (+3) \times (-4) = -12" />
         </SubSection>
 
-        <SubSection title="(2) 거듭제곱과 부호">
+        <SubSection title="● 거듭제곱과 부호">
           <p>
             음수의 거듭제곱에서, 지수가 <strong>짝수</strong>이면 결과는 양수,{" "}
             <strong>홀수</strong>이면 결과는 음수입니다.
@@ -119,7 +119,7 @@ export default function IntegerRational() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 나눗셈">
+        <SubSection title="● 나눗셈">
           <p>
             나눗셈의 부호 규칙은 곱셈과 같습니다. 나눗셈은{" "}
             <strong>역수를 곱하는 것</strong>으로 바꿀 수 있습니다.
@@ -132,7 +132,7 @@ export default function IntegerRational() {
           </p>
         </SubSection>
 
-        <SubSection title="(4) 혼합 계산의 순서">
+        <SubSection title="● 혼합 계산의 순서">
           <p>사칙연산이 섞인 식의 계산 순서:</p>
           <ul className="mt-2 list-decimal pl-6 space-y-1">
             <li>괄호 안을 먼저 계산합니다.</li>

@@ -10,8 +10,8 @@ export default function OneGTwoGContent() {
         1G(아날로그 음성) → 2G(디지털 음성+문자)로의 전환은 이동통신 역사에서 가장 큰 도약이었습니다.
       </p>
 
-      <CalcBox title="1. 1G — 아날로그 이동통신 (1980년대)">
-        <SubSection title="(1) 특징">
+      <CalcBox title="■ 1G — 아날로그 이동통신 (1980년대)">
+        <SubSection title="● 특징">
           <div className="text-sm space-y-1">
             <p>• 완전 아날로그 — AM/FM 변조 그대로 사용, 0과 1 없음</p>
             <p>• 음성통화만 가능, 문자·인터넷 불가</p>
@@ -19,7 +19,7 @@ export default function OneGTwoGContent() {
             <p>• 잡음 심함 — AM 방식이라 번개·간섭에 약함</p>
           </div>
         </SubSection>
-        <SubSection title="(2) 한국 1G">
+        <SubSection title="● 한국 1G">
           <div className="text-sm space-y-1">
             <p>• 1984년 한국 1G 서비스 시작 (AMPS 방식, 미국 규격)</p>
             <p>• 단말기 가격 수백만 원, 통화료 분당 수백 원</p>
@@ -28,8 +28,8 @@ export default function OneGTwoGContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 2G — 디지털 이동통신 (1990년대)">
-        <SubSection title="(1) 아날로그 → 디지털의 핵심 변화">
+      <CalcBox title="■ 2G — 디지털 이동통신 (1990년대)">
+        <SubSection title="● 아날로그 → 디지털의 핵심 변화">
           <div className="text-sm space-y-1">
             <p>• 소리를 0과 1로 변환 후 전송</p>
             <p>• 암호화 가능 → 도청 방지</p>
@@ -38,14 +38,14 @@ export default function OneGTwoGContent() {
             <p>• 전 세계 표준 통일 (GSM)</p>
           </div>
         </SubSection>
-        <SubSection title="(2) 단말기">
+        <SubSection title="● 단말기">
           <p className="text-sm">
             삼성 애니콜 벽돌폰(SCH-100 등) → 폴더폰 전성기로 이어짐
           </p>
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 왜 문자가 소리보다 늦게 가능했나">
+      <CalcBox title="■ 왜 문자가 소리보다 늦게 가능했나">
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-3">
           <pre>{`소리 전송 (1G)
 → 아날로그 그대로 얹으면 됨
@@ -62,7 +62,7 @@ export default function OneGTwoGContent() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="4. 세대별 단말기">
+      <CalcBox title="■ 세대별 단말기">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">

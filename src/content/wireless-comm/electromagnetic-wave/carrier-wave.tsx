@@ -10,8 +10,8 @@ export default function CarrierWaveContent() {
         무선통신의 핵심 구조: 반송파에 정보를 얹어(변조) 공중으로 보내고, 받는 쪽에서 떼어내는(복조) 원리입니다.
       </p>
 
-      <CalcBox title="1. 반송파(Carrier wave)란">
-        <SubSection title="(1) 한자 풀이">
+      <CalcBox title="■ 반송파(Carrier wave)란">
+        <SubSection title="● 한자 풀이">
           <div className="text-sm space-y-1">
             <p>• 搬(반) = 옮기다, 나르다</p>
             <p>• 送(송) = 보내다</p>
@@ -21,7 +21,7 @@ export default function CarrierWaveContent() {
             영어로는 Carrier wave. 택배 트럭과 같습니다.
           </p>
         </SubSection>
-        <SubSection title="(2) 왜 반송파가 필요한가">
+        <SubSection title="● 왜 반송파가 필요한가">
           <p className="text-sm mb-2">
             소리 파동(20Hz~20kHz)을 그대로 공중에 쏘려면 안테나 길이가 수 km 필요합니다.
             수백 kHz~MHz 대역 반송파에 얹으면 안테나가 수십 cm로 줄어듭니다.
@@ -36,7 +36,7 @@ export default function CarrierWaveContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 무선통신의 전체 흐름">
+      <CalcBox title="■ 무선통신의 전체 흐름">
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
           <pre>{`보내는 쪽
 ────────────────────────────
@@ -61,14 +61,14 @@ export default function CarrierWaveContent() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 변조기와 복조기">
-        <SubSection title="(1) 이름">
+      <CalcBox title="■ 변조기와 복조기">
+        <SubSection title="● 이름">
           <div className="text-sm space-y-1">
             <p>• Modulator (모듈레이터) = 변조기 → 정보를 파동에 얹음 (송신측)</p>
             <p>• Demodulator (디모듈레이터) = 복조기 → 파동에서 정보를 꺼냄 (수신측)</p>
           </div>
         </SubSection>
-        <SubSection title="(2) 모뎀(Modem)">
+        <SubSection title="● 모뎀(Modem)">
           <p className="text-sm mb-2">
             <strong>Mo</strong>dulator + <strong>Dem</strong>odulator = Modem
           </p>
@@ -77,7 +77,7 @@ export default function CarrierWaveContent() {
             현대 스마트폰의 베이스밴드 칩(퀄컴 스냅드래곤 X75 등)이 바로 이것입니다.
           </p>
         </SubSection>
-        <SubSection title="(3) 방향별 구성">
+        <SubSection title="● 방향별 구성">
           <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
             <table className="w-full">
               <thead className="bg-sidebar-bg">
@@ -97,7 +97,7 @@ export default function CarrierWaveContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="4. 유선전화와의 차이">
+      <CalcBox title="■ 유선전화와의 차이">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">

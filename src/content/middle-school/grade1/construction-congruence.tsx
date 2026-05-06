@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function ConstructionCongruence() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 삼각형의 작도">
-        <SubSection title="(1) 작도란">
+      <CalcBox title="■ 삼각형의 작도">
+        <SubSection title="● 작도란">
           <p>
             눈금 없는 자와 컴퍼스만을 사용하여 도형을 그리는 것을{" "}
             <strong>작도</strong>라고 합니다.
@@ -17,7 +17,7 @@ export default function ConstructionCongruence() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 기본 작도">
+        <SubSection title="● 기본 작도">
           <p>다음은 기본적인 작도 방법입니다.</p>
           <div className="mt-3 space-y-4">
             <div className="rounded-lg border border-sidebar-border p-4">
@@ -36,7 +36,7 @@ export default function ConstructionCongruence() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 삼각형의 작도 조건">
+        <SubSection title="● 삼각형의 작도 조건">
           <p>
             삼각형은 다음 세 가지 조건 중 하나가 주어지면 작도할 수 있습니다.
           </p>
@@ -54,7 +54,7 @@ export default function ConstructionCongruence() {
           </ul>
         </SubSection>
 
-        <SubSection title="(4) 삼각형이 만들어지는 조건">
+        <SubSection title="● 삼각형이 만들어지는 조건">
           <p>
             세 변의 길이가 <InlineMath math="a, b, c" />일 때, 삼각형이
             만들어지려면:
@@ -71,8 +71,8 @@ export default function ConstructionCongruence() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 삼각형의 합동 조건">
-        <SubSection title="(1) 합동의 뜻">
+      <CalcBox title="■ 삼각형의 합동 조건">
+        <SubSection title="● 합동의 뜻">
           <p>
             모양과 크기가 같아서 완전히 포개어지는 두 도형을{" "}
             <strong>합동</strong>이라고 합니다. 기호 <InlineMath math="\equiv" />
@@ -86,14 +86,14 @@ export default function ConstructionCongruence() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 합동인 도형의 성질">
+        <SubSection title="● 합동인 도형의 성질">
           <ul className="list-disc pl-6 space-y-1">
             <li>대응변의 길이가 서로 같습니다.</li>
             <li>대응각의 크기가 서로 같습니다.</li>
           </ul>
         </SubSection>
 
-        <SubSection title="(3) 삼각형의 합동 조건">
+        <SubSection title="● 삼각형의 합동 조건">
           <p>
             두 삼각형이 합동이 되기 위한 조건은 다음 세 가지입니다.
           </p>

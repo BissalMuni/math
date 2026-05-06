@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function QuadraticEqApplication() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 이차방정식의 활용 풀이 전략">
-        <SubSection title="(1) 활용 문제 풀이 순서">
+      <CalcBox title="■ 이차방정식의 활용 풀이 전략">
+        <SubSection title="● 활용 문제 풀이 순서">
           <p>이차방정식 활용 문제는 다음 순서로 풀어갑니다.</p>
           <ul className="mt-3 list-disc pl-6 space-y-1">
             <li>① 구하려는 것을 <InlineMath math="x" />로 놓는다.</li>
@@ -16,7 +16,7 @@ export default function QuadraticEqApplication() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 해의 검증">
+        <SubSection title="● 해의 검증">
           <p>
             이차방정식의 두 근 중 문제의 조건(자연수, 양수, 길이 등)에
             맞지 않는 근은 <strong>버립니다</strong>. 반드시 해의 적합성을
@@ -25,8 +25,8 @@ export default function QuadraticEqApplication() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 수에 관한 문제">
-        <SubSection title="(1) 연속하는 자연수">
+      <CalcBox title="■ 수에 관한 문제">
+        <SubSection title="● 연속하는 자연수">
           <p>
             연속하는 두 자연수를 <InlineMath math="x" />,{" "}
             <InlineMath math="x + 1" />로 놓습니다.
@@ -48,7 +48,7 @@ export default function QuadraticEqApplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 제곱수 관련 문제">
+        <SubSection title="● 제곱수 관련 문제">
           <div className="rounded-lg border border-sidebar-border p-4">
             <p className="font-medium mb-2">
               예제: 어떤 자연수의 제곱에서 그 수의 3배를 빼면 28이다. 이 수를 구하여라.
@@ -62,8 +62,8 @@ export default function QuadraticEqApplication() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 도형에 관한 문제">
-        <SubSection title="(1) 넓이에 관한 문제">
+      <CalcBox title="■ 도형에 관한 문제">
+        <SubSection title="● 넓이에 관한 문제">
           <div className="rounded-lg border border-sidebar-border p-4">
             <p className="font-medium mb-2">
               예제: 가로가 세로보다 3cm 긴 직사각형의 넓이가{" "}
@@ -82,7 +82,7 @@ export default function QuadraticEqApplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 길 만들기 문제">
+        <SubSection title="● 길 만들기 문제">
           <div className="rounded-lg border border-sidebar-border p-4">
             <p className="font-medium mb-2">
               예제: 가로 20m, 세로 16m인 직사각형 모양의 땅에 폭이 같은 길을
@@ -108,8 +108,8 @@ export default function QuadraticEqApplication() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="4. 동적인 상황의 문제">
-        <SubSection title="(1) 물체의 운동">
+      <CalcBox title="■ 동적인 상황의 문제">
+        <SubSection title="● 물체의 운동">
           <div className="rounded-lg border border-sidebar-border p-4">
             <p className="font-medium mb-2">
               예제: 지면에서 초속 <InlineMath math="20\text{m}" />로 위로 던진
@@ -126,7 +126,7 @@ export default function QuadraticEqApplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 증가·감소 문제">
+        <SubSection title="● 증가·감소 문제">
           <div className="rounded-lg border border-sidebar-border p-4">
             <p className="font-medium mb-2">
               예제: 어느 물건의 가격이 매달 <InlineMath math="x" />%씩 인상되어

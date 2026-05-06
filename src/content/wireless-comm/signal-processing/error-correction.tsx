@@ -10,7 +10,7 @@ export default function ErrorCorrectionContent() {
         무선 환경에서는 비트가 깨질 수 있습니다. 오류 정정 기술과 이를 규정하는 표���화 기관을 다룹니다.
       </p>
 
-      <CalcBox title="1. 왜 오류 정정�� 필요한가">
+      <CalcBox title="■ 왜 오류 정정�� 필요한가">
         <p className="text-sm mb-3">
           무선 환경에서 전파는 장애물 반사, 간섭, 감쇠 등을 겪습니다.
           수신기가 진폭·위상을 잘못 판독하면 비트가 틀어집니다.
@@ -25,8 +25,8 @@ export default function ErrorCorrectionContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="2. 오류 정정의 원리">
-        <SubSection title="(1) 기본 아이디어 — 여분 비트 추가">
+      <CalcBox title="■ 오류 정정의 원리">
+        <SubSection title="● 기본 아이디어 — 여분 비트 추가">
           <p className="text-sm mb-2">
             실제 데이터에 추가 비트(패리티)를 붙여서,
             수신 측이 오류를 감지하고 복원할 수 있게 합니다.
@@ -39,7 +39,7 @@ export default function ErrorCorrectionContent() {
 수신기가 계산: "첫째 비트가 틀렸구나" → 1010 복원`}</pre>
           </div>
         </SubSection>
-        <SubSection title="(2) 5G에서 사용하는 코드">
+        <SubSection title="● 5G에서 사용하는 코드">
           <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
             <table className="w-full">
               <thead className="bg-sidebar-bg">
@@ -58,7 +58,7 @@ export default function ErrorCorrectionContent() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 표���화 기관">
+      <CalcBox title="■ 표���화 기관">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <table className="w-full">
             <thead className="bg-sidebar-bg">
@@ -77,7 +77,7 @@ export default function ErrorCorrectionContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="4. 표준이 정해지는 과정">
+      <CalcBox title="■ 표준이 정해지는 과정">
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-3">
           <pre>{`기업들이 기술 제안서 제출
 (삼성, 퀄컴, 에릭슨, 화웨이 등)
@@ -97,7 +97,7 @@ export default function ErrorCorrectionContent() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="5. 연속에서 분절로">
+      <CalcBox title="■ 연속에서 분절로">
         <p className="text-sm mb-3">
           무선통신 기술의 역사는 연속(아날로그)에서 분절(디지털)로의 발전 과정입니다.
         </p>

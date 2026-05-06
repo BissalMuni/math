@@ -114,7 +114,7 @@ export default function MultiHeadContent() {
       </p>
 
       {/* ── 왜 여러 헤드가 필요한가 ── */}
-      <CalcBox title="1. 왜 여러 헤드가 필요한가?">
+      <CalcBox title="■ 왜 여러 헤드가 필요한가?">
         <p className="text-sm mb-3">
           "나는 사과를 좋아한다"에서 하나의 어텐션 헤드로는 모든 관계를 동시에 포착하기 어렵습니다.
         </p>
@@ -139,7 +139,7 @@ export default function MultiHeadContent() {
       </CalcBox>
 
       {/* ── 차원 분할 ── */}
-      <CalcBox title="2. 차원 분할: d_model → 헤드 수 × d_k">
+      <CalcBox title="■ 차원 분할: d_model → 헤드 수 × d_k">
         <p className="text-sm mb-4">
           d_model=512를 8개 헤드로 나누면 각 헤드가 64차원을 담당합니다.
           파라미터 수는 단일 헤드와 동일합니다.
@@ -158,7 +158,7 @@ export default function MultiHeadContent() {
       </CalcBox>
 
       {/* ── STEP 2: 예제 (d_model=8, 2헤드) ── */}
-      <CalcBox title="3. 단계별 계산 (d_model=8, 2헤드, 각 4차원)">
+      <CalcBox title="■ 단계별 계산 (d_model=8, 2헤드, 각 4차원)">
         <p className="text-sm mb-4">
           입력 X: 3토큰 × 8차원. 각 헤드는 8×4 가중치 행렬로 4차원 공간에 투영합니다.
         </p>
@@ -202,7 +202,7 @@ export default function MultiHeadContent() {
       </CalcBox>
 
       {/* ── STEP 3: Concat + Wo ── */}
-      <CalcBox title="4. Concat → Wo 투영 → 최종 출력">
+      <CalcBox title="■ Concat → Wo 투영 → 최종 출력">
         <p className="text-sm mb-4">
           두 헤드 출력을 가로로 이어 붙인 후, Wo(8×8) 행렬로 최종 출력을 만듭니다.
         </p>
@@ -224,7 +224,7 @@ export default function MultiHeadContent() {
       </CalcBox>
 
       {/* ── 전체 공식 ── */}
-      <CalcBox title="5. Multi-Head Attention 공식">
+      <CalcBox title="■ Multi-Head Attention 공식">
         <BlockMath math="\text{MultiHead}(Q,K,V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h) W^O" />
         <BlockMath math="\text{head}_i = \text{Attention}(Q W_i^Q,\ K W_i^K,\ V W_i^V)" />
         <div className="text-sm text-muted mt-3 space-y-1">

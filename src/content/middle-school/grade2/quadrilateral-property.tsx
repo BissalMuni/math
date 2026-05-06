@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function QuadrilateralProperty() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 평행사변형">
-        <SubSection title="(1) 평행사변형의 정의">
+      <CalcBox title="■ 평행사변형">
+        <SubSection title="● 평행사변형의 정의">
           <p>
             두 쌍의 대변이 각각 <strong>평행</strong>한 사각형을{" "}
             <strong>평행사변형</strong>이라고 합니다.
@@ -14,7 +14,7 @@ export default function QuadrilateralProperty() {
           <BlockMath math="AB \parallel DC, \quad AD \parallel BC" />
         </SubSection>
 
-        <SubSection title="(2) 평행사변형의 성질">
+        <SubSection title="● 평행사변형의 성질">
           <div className="space-y-1">
             <p>① 두 쌍의 대변의 길이가 각각 같다: <InlineMath math="AB = DC" />, <InlineMath math="AD = BC" /></p>
             <p>② 두 쌍의 대각의 크기가 각각 같다: <InlineMath math="\angle A = \angle C" />, <InlineMath math="\angle B = \angle D" /></p>
@@ -23,7 +23,7 @@ export default function QuadrilateralProperty() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 평행사변형이 되는 조건">
+        <SubSection title="● 평행사변형이 되는 조건">
           <p>다음 중 하나를 만족하면 평행사변형입니다.</p>
           <div className="mt-2 space-y-1">
             <p>① 두 쌍의 대변이 각각 평행하다.</p>
@@ -35,8 +35,8 @@ export default function QuadrilateralProperty() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 여러 가지 사각형">
-        <SubSection title="(1) 직사각형">
+      <CalcBox title="■ 여러 가지 사각형">
+        <SubSection title="● 직사각형">
           <p>
             네 각이 모두 <strong>직각</strong>인 사각형입니다.
             (평행사변형 + 한 내각이 직각)
@@ -47,7 +47,7 @@ export default function QuadrilateralProperty() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 마름모">
+        <SubSection title="● 마름모">
           <p>
             네 변의 길이가 모두 <strong>같은</strong> 사각형입니다.
             (평행사변형 + 이웃하는 두 변의 길이가 같음)
@@ -57,7 +57,7 @@ export default function QuadrilateralProperty() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 정사각형">
+        <SubSection title="● 정사각형">
           <p>
             네 변의 길이가 모두 같고 네 각이 모두 직각인 사각형입니다.
             (직사각형이면서 마름모)
@@ -69,8 +69,8 @@ export default function QuadrilateralProperty() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 사각형 사이의 관계">
-        <SubSection title="(1) 포함 관계">
+      <CalcBox title="■ 사각형 사이의 관계">
+        <SubSection title="● 포함 관계">
           <p>
             사각형들 사이에는 다음과 같은 포함 관계가 성립합니다.
           </p>
@@ -91,7 +91,7 @@ export default function QuadrilateralProperty() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 대각선 성질로 구분">
+        <SubSection title="● 대각선 성질로 구분">
           <div className="overflow-x-auto">
             <table className="text-sm text-center mt-2">
               <thead>

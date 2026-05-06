@@ -6,23 +6,23 @@ import { CalcBox } from "@/components/content/shared";
 export default function VariousFuncDiff() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 지수함수와 로그함수의 극한">
+      <CalcBox title="■ 지수함수와 로그함수의 극한">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 지수함수와 로그함수의 미분">
+      <CalcBox title="■ 지수함수와 로그함수의 미분">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="3. 삼각함수의 덧셈정리">
+      <CalcBox title="■ 삼각함수의 덧셈정리">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="4. 삼각함수의 극한">
+      <CalcBox title="■ 삼각함수의 극한">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="5. 삼각함수의 미분">
+      <CalcBox title="■ 삼각함수의 미분">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

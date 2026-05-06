@@ -40,7 +40,7 @@ export default function LayerNormContent() {
       </p>
 
       {/* ── 왜 필요한가 ── */}
-      <CalcBox title="1. 왜 정규화가 필요한가?">
+      <CalcBox title="■ 왜 정규화가 필요한가?">
         <p className="text-sm mb-3">
           레이어를 거칠수록 값의 범위가 폭발적으로 커지거나 0에 수렴할 수 있습니다.
         </p>
@@ -64,7 +64,7 @@ export default function LayerNormContent() {
       </CalcBox>
 
       {/* ── STEP 1: 평균 ── */}
-      <CalcBox title="2. 평균(μ) 계산">
+      <CalcBox title="■ 평균(μ) 계산">
         <p className="text-sm mb-3">
           입력 벡터 v = [{v.join(", ")}]의 평균을 구합니다.
         </p>
@@ -72,7 +72,7 @@ export default function LayerNormContent() {
       </CalcBox>
 
       {/* ── STEP 2: 분산 ── */}
-      <CalcBox title="3. 분산(σ²) 계산">
+      <CalcBox title="■ 분산(σ²) 계산">
         <BlockMath math="\sigma^2 = \frac{1}{d}\sum_{i=1}^{d}(v_i - \mu)^2" />
         <div className="text-sm font-mono space-y-1 p-3 rounded-lg bg-sidebar-bg border border-sidebar-border mb-3">
           <div>(2.0 - 2.5)² = (-0.5)² = <strong>0.25</strong></div>
@@ -86,7 +86,7 @@ export default function LayerNormContent() {
       </CalcBox>
 
       {/* ── STEP 3: 표준편차 ── */}
-      <CalcBox title="4. 표준편차(σ) 계산">
+      <CalcBox title="■ 표준편차(σ) 계산">
         <BlockMath math="\sigma = \sqrt{\sigma^2} = \sqrt{1.25} \approx 1.118" />
         <p className="text-sm text-muted">
           실제 구현에서는 수치 안정성을 위해 <InlineMath math="\sqrt{\sigma^2 + \epsilon}" /> 사용
@@ -95,7 +95,7 @@ export default function LayerNormContent() {
       </CalcBox>
 
       {/* ── STEP 4: 정규화 ── */}
-      <CalcBox title="5. 정규화: (v - μ) / σ">
+      <CalcBox title="■ 정규화: (v - μ) / σ">
         <BlockMath math="\hat{v}_i = \frac{v_i - \mu}{\sigma}" />
         <div className="text-sm font-mono space-y-1 p-3 rounded-lg bg-sidebar-bg border border-sidebar-border mb-3">
           {v.map((val, i) => (
@@ -116,7 +116,7 @@ export default function LayerNormContent() {
       </CalcBox>
 
       {/* ── STEP 5: γ, β 학습 파라미터 ── */}
-      <CalcBox title="6. 학습 파라미터 γ(scale), β(shift) 적용">
+      <CalcBox title="■ 학습 파라미터 γ(scale), β(shift) 적용">
         <p className="text-sm mb-4">
           정규화 후 고정 범위(평균=0, 분산=1)로만 있으면 표현력이 제한됩니다.
           학습 가능한 γ와 β로 최적 범위를 모델이 스스로 학습합니다.
@@ -134,7 +134,7 @@ export default function LayerNormContent() {
       </CalcBox>
 
       {/* ── Layer Norm vs Batch Norm ── */}
-      <CalcBox title="7. Layer Norm vs Batch Norm">
+      <CalcBox title="■ Layer Norm vs Batch Norm">
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
             <div className="font-bold mb-2 text-orange-700 dark:text-orange-300">Batch Norm</div>

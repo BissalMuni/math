@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function PlaneMeasurement() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 길이, 넓이, 각도의 측정">
+      <CalcBox title="■ 길이, 넓이, 각도의 측정">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 삼각비의 활용">
+      <CalcBox title="■ 삼각비의 활용">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

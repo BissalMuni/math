@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function LinearInequality() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 부등식의 뜻과 성질">
-        <SubSection title="(1) 부등식">
+      <CalcBox title="■ 부등식의 뜻과 성질">
+        <SubSection title="● 부등식">
           <p>
             부등호(<InlineMath math="<" />, <InlineMath math=">" />,{" "}
             <InlineMath math="\leq" />, <InlineMath math="\geq" />)를
@@ -25,7 +25,7 @@ export default function LinearInequality() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 부등식의 성질">
+        <SubSection title="● 부등식의 성질">
           <p>부등식의 양변에 같은 수를 더하거나 빼도 부등호의 방향은 변하지 않습니다.</p>
           <BlockMath math="a < b \implies a + c < b + c" />
           <p className="mt-2">
@@ -45,8 +45,8 @@ export default function LinearInequality() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="2. 일차부등식의 풀이">
-        <SubSection title="(1) 일차부등식">
+      <CalcBox title="■ 일차부등식의 풀이">
+        <SubSection title="● 일차부등식">
           <p>
             부등식에서 부등호를 등호로 바꾸었을 때 일차방정식이 되는 부등식을{" "}
             <strong>일차부등식</strong>이라고 합니다.
@@ -54,7 +54,7 @@ export default function LinearInequality() {
           <BlockMath math="ax + b > 0, \quad ax + b \leq 0 \quad (a \neq 0)" />
         </SubSection>
 
-        <SubSection title="(2) 풀이 순서">
+        <SubSection title="● 풀이 순서">
           <p>일차방정식을 풀 때와 같은 방법으로 풀되, 음수로 나눌 때 부등호 방향에 주의합니다.</p>
           <div className="mt-3 rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
@@ -72,7 +72,7 @@ export default function LinearInequality() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 해의 표현">
+        <SubSection title="● 해의 표현">
           <p>
             일차부등식의 해는 수직선 위에 나타낼 수 있습니다.
           </p>
@@ -93,8 +93,8 @@ export default function LinearInequality() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 여러 가지 일차부등식">
-        <SubSection title="(1) 괄호가 있는 부등식">
+      <CalcBox title="■ 여러 가지 일차부등식">
+        <SubSection title="● 괄호가 있는 부등식">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               예: <InlineMath math="2(x - 3) > 3(x + 1)" />
@@ -105,7 +105,7 @@ export default function LinearInequality() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 계수가 분수·소수인 부등식">
+        <SubSection title="● 계수가 분수·소수인 부등식">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               예: <InlineMath math="\dfrac{x - 1}{2} \geq \dfrac{x + 3}{3}" />
@@ -116,7 +116,7 @@ export default function LinearInequality() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 연립부등식">
+        <SubSection title="● 연립부등식">
           <p>두 개 이상의 부등식을 동시에 만족하는 해를 구합니다.</p>
           <div className="mt-3 rounded-lg border border-sidebar-border p-4 space-y-2">
             <BlockMath math="\begin{cases} 2x + 1 > 5 \\ x - 3 \leq 4 \end{cases}" />
@@ -128,8 +128,8 @@ export default function LinearInequality() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="4. 일차부등식의 활용">
-        <SubSection title="(1) 풀이 과정">
+      <CalcBox title="■ 일차부등식의 활용">
+        <SubSection title="● 풀이 과정">
           <div className="space-y-1">
             <p>① 구하려는 것을 미지수 <InlineMath math="x" />로 놓는다.</p>
             <p>② 조건에 맞게 일차부등식을 세운다.</p>
@@ -138,7 +138,7 @@ export default function LinearInequality() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 활용 예시">
+        <SubSection title="● 활용 예시">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               한 개에 500원인 사탕을 <InlineMath math="x" />개 사고 3,000원을

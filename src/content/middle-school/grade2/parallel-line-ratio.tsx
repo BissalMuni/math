@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function ParallelLineRatio() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 삼각형에서 평행선과 선분의 비">
-        <SubSection title="(1) 삼각형의 한 변에 평행한 직선">
+      <CalcBox title="■ 삼각형에서 평행선과 선분의 비">
+        <SubSection title="● 삼각형의 한 변에 평행한 직선">
           <p>
             <InlineMath math="\triangle ABC" />에서{" "}
             <InlineMath math="BC \parallel DE" /> (
@@ -17,7 +17,7 @@ export default function ParallelLineRatio() {
           <BlockMath math="AD : AB = AE : AC = DE : BC" />
         </SubSection>
 
-        <SubSection title="(2) 계산 예시">
+        <SubSection title="● 계산 예시">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               <InlineMath math="\triangle ABC" />에서{" "}
@@ -33,7 +33,7 @@ export default function ParallelLineRatio() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 역: 선분의 비가 같으면 평행">
+        <SubSection title="● 역: 선분의 비가 같으면 평행">
           <p>
             <InlineMath math="\triangle ABC" />에서{" "}
             <InlineMath math="AD : DB = AE : EC" />이면{" "}
@@ -42,8 +42,8 @@ export default function ParallelLineRatio() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 평행선 사이의 선분의 길이의 비">
-        <SubSection title="(1) 세 평행선과 두 직선">
+      <CalcBox title="■ 평행선 사이의 선분의 길이의 비">
+        <SubSection title="● 세 평행선과 두 직선">
           <p>
             세 직선 <InlineMath math="l \parallel m \parallel n" />이 두
             직선과 만날 때, 한 직선 위의 선분의 비와 다른 직선 위의 선분의
@@ -52,7 +52,7 @@ export default function ParallelLineRatio() {
           <BlockMath math="AB : BC = DE : EF" />
         </SubSection>
 
-        <SubSection title="(2) 계산 예시">
+        <SubSection title="● 계산 예시">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               <InlineMath math="l \parallel m \parallel n" />이고{" "}
@@ -67,8 +67,8 @@ export default function ParallelLineRatio() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 삼각형의 각의 이등분선">
-        <SubSection title="(1) 내각의 이등분선">
+      <CalcBox title="■ 삼각형의 각의 이등분선">
+        <SubSection title="● 내각의 이등분선">
           <p>
             <InlineMath math="\triangle ABC" />에서{" "}
             <InlineMath math="\angle A" />의 이등분선이{" "}
@@ -87,7 +87,7 @@ export default function ParallelLineRatio() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 외각의 이등분선">
+        <SubSection title="● 외각의 이등분선">
           <p>
             <InlineMath math="\triangle ABC" />에서{" "}
             <InlineMath math="\angle A" />의 외각의 이등분선이{" "}
@@ -107,8 +107,8 @@ export default function ParallelLineRatio() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="4. 삼각형의 중점연결정리">
-        <SubSection title="(1) 중점연결정리">
+      <CalcBox title="■ 삼각형의 중점연결정리">
+        <SubSection title="● 중점연결정리">
           <p>
             <InlineMath math="\triangle ABC" />에서 두 변{" "}
             <InlineMath math="AB" />, <InlineMath math="AC" />의 중점을 각각{" "}
@@ -120,7 +120,7 @@ export default function ParallelLineRatio() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 계산 예시">
+        <SubSection title="● 계산 예시">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2">
             <p className="font-medium">
               <InlineMath math="\triangle ABC" />에서{" "}
@@ -131,7 +131,7 @@ export default function ParallelLineRatio() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 사다리꼴에서의 응용">
+        <SubSection title="● 사다리꼴에서의 응용">
           <p>
             사다리꼴 <InlineMath math="ABCD" /> (
             <InlineMath math="AD \parallel BC" />)에서 양쪽 빗변의 중점을

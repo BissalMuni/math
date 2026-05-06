@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function PolynomialMultiplication() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 다항식의 곱셈">
-        <SubSection title="(1) 단항식과 다항식의 곱셈">
+      <CalcBox title="■ 다항식의 곱셈">
+        <SubSection title="● 단항식과 다항식의 곱셈">
           <p>
             분배법칙을 이용하여 단항식을 다항식의 각 항에 곱합니다.
           </p>
@@ -21,7 +21,7 @@ export default function PolynomialMultiplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 다항식과 다항식의 곱셈">
+        <SubSection title="● 다항식과 다항식의 곱셈">
           <p>
             각 항끼리 모두 곱한 뒤 동류항을 정리합니다.
           </p>
@@ -37,8 +37,8 @@ export default function PolynomialMultiplication() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 곱셈 공식">
-        <SubSection title="(1) 합·차의 제곱">
+      <CalcBox title="■ 곱셈 공식">
+        <SubSection title="● 합·차의 제곱">
           <BlockMath math="(a + b)^2 = a^2 + 2ab + b^2" />
           <BlockMath math="(a - b)^2 = a^2 - 2ab + b^2" />
           <div className="mt-3 space-y-2">
@@ -51,7 +51,7 @@ export default function PolynomialMultiplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 합과 차의 곱">
+        <SubSection title="● 합과 차의 곱">
           <BlockMath math="(a + b)(a - b) = a^2 - b^2" />
           <div className="mt-3 space-y-2">
             <p>
@@ -63,7 +63,7 @@ export default function PolynomialMultiplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) x의 일차식의 곱">
+        <SubSection title="● x의 일차식의 곱">
           <BlockMath math="(x + a)(x + b) = x^2 + (a + b)x + ab" />
           <div className="mt-3 space-y-2">
             <p>
@@ -81,8 +81,8 @@ export default function PolynomialMultiplication() {
         </Insight>
       </CalcBox>
 
-      <CalcBox title="3. 곱셈 공식의 변환">
-        <SubSection title="(1) 곱셈 공식을 이용한 수의 계산">
+      <CalcBox title="■ 곱셈 공식의 변환">
+        <SubSection title="● 곱셈 공식을 이용한 수의 계산">
           <p>
             복잡한 수의 계산도 곱셈 공식을 활용하면 간단해집니다.
           </p>
@@ -99,7 +99,7 @@ export default function PolynomialMultiplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 식의 값 구하기">
+        <SubSection title="● 식의 값 구하기">
           <p>
             곱셈 공식의 변형을 이용하면 식의 값을 효율적으로 구할 수 있습니다.
           </p>
@@ -113,7 +113,7 @@ export default function PolynomialMultiplication() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 곱셈 공식의 변형 정리">
+        <SubSection title="● 곱셈 공식의 변형 정리">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-2 text-sm">
             <BlockMath math="(a + b)^2 = (a - b)^2 + 4ab" />
             <BlockMath math="(a - b)^2 = (a + b)^2 - 4ab" />

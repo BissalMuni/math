@@ -6,11 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function DataOrganize() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 자료의 수집과 정리">
+      <CalcBox title="■ 자료의 수집과 정리">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
 
-      <CalcBox title="2. 도수분포와 그래프">
+      <CalcBox title="■ 도수분포와 그래프">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

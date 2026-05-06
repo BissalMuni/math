@@ -6,7 +6,7 @@ import { CalcBox } from "@/components/content/shared";
 export default function DecisionMaking() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 의사결정과 최적화">
+      <CalcBox title="■ 의사결정과 최적화">
         <p className="text-muted italic">콘텐츠 준비 중입니다.</p>
       </CalcBox>
     </div>

@@ -5,8 +5,8 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function PlaneFigure() {
   return (
     <div className="space-y-8">
-      <CalcBox title="1. 다각형의 성질">
-        <SubSection title="(1) 다각형의 대각선">
+      <CalcBox title="■ 다각형의 성질">
+        <SubSection title="● 다각형의 대각선">
           <p>
             다각형에서 이웃하지 않는 두 꼭짓점을 잇는 선분을{" "}
             <strong>대각선</strong>이라고 합니다.
@@ -28,7 +28,7 @@ export default function PlaneFigure() {
           </div>
         </SubSection>
 
-        <SubSection title="(2) 다각형의 내각의 합">
+        <SubSection title="● 다각형의 내각의 합">
           <p>
             <InlineMath math="n" />각형의 내각의 합:
           </p>
@@ -49,7 +49,7 @@ export default function PlaneFigure() {
           </div>
         </SubSection>
 
-        <SubSection title="(3) 다각형의 외각의 합">
+        <SubSection title="● 다각형의 외각의 합">
           <p>
             <strong>모든 다각형</strong>의 외각의 합은 항상:
           </p>
@@ -59,7 +59,7 @@ export default function PlaneFigure() {
           </p>
         </SubSection>
 
-        <SubSection title="(4) 정다각형의 한 내각과 한 외각">
+        <SubSection title="● 정다각형의 한 내각과 한 외각">
           <p>
             정<InlineMath math="n" />각형의 한 내각의 크기:
           </p>
@@ -77,8 +77,8 @@ export default function PlaneFigure() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 원과 부채꼴의 성질">
-        <SubSection title="(1) 원의 기본 용어">
+      <CalcBox title="■ 원과 부채꼴의 성질">
+        <SubSection title="● 원의 기본 용어">
           <ul className="list-disc pl-6 space-y-1">
             <li>
               <strong>원</strong>: 한 점(중심)에서 같은 거리에 있는 점들의 모임
@@ -98,7 +98,7 @@ export default function PlaneFigure() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 부채꼴">
+        <SubSection title="● 부채꼴">
           <p>
             원에서 두 반지름과 호로 이루어진 도형을{" "}
             <strong>부채꼴</strong>이라 하고, 두 반지름이 이루는 각을{" "}
@@ -109,7 +109,7 @@ export default function PlaneFigure() {
           </p>
         </SubSection>
 
-        <SubSection title="(3) 부채꼴의 호의 길이와 넓이">
+        <SubSection title="● 부채꼴의 호의 길이와 넓이">
           <p>
             반지름이 <InlineMath math="r" />, 중심각이{" "}
             <InlineMath math="x°" />인 부채꼴에서:
@@ -120,7 +120,7 @@ export default function PlaneFigure() {
           <BlockMath math="S = \pi r^2 \times \frac{x}{360} = \frac{1}{2} l r" />
         </SubSection>
 
-        <SubSection title="(4) 계산 예시">
+        <SubSection title="● 계산 예시">
           <div className="rounded-lg border border-sidebar-border p-4 space-y-3">
             <p>
               반지름 <InlineMath math="6" />cm, 중심각 <InlineMath math="120°" />인

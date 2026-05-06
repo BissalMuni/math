@@ -9,8 +9,8 @@ export default function IntegerRationalConcept() {
         자연수만으로는 표현할 수 없는 수(0, 음수, 분수)를 다루기 위해 수의 범위를 확장합니다.
       </p>
 
-      <CalcBox title="1. 양수와 음수">
-        <SubSection title="(1) 부호를 가진 수">
+      <CalcBox title="■ 양수와 음수">
+        <SubSection title="● 부호를 가진 수">
           <p>
             0보다 큰 수에는 <strong>양의 부호 +</strong>를, 0보다 작은 수에는{" "}
             <strong>음의 부호 −</strong>를 붙여 나타냅니다.
@@ -21,7 +21,7 @@ export default function IntegerRationalConcept() {
           </p>
         </SubSection>
 
-        <SubSection title="(2) 서로 반대되는 양">
+        <SubSection title="● 서로 반대되는 양">
           <p>
             기준점(0)을 기준으로 서로 반대되는 양은 양수와 음수로 표현합니다.
           </p>
@@ -33,8 +33,8 @@ export default function IntegerRationalConcept() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="2. 정수">
-        <SubSection title="(1) 정수의 정의">
+      <CalcBox title="■ 정수">
+        <SubSection title="● 정수의 정의">
           <p>
             <strong>양의 정수</strong>(자연수), <strong>0</strong>,{" "}
             <strong>음의 정수</strong>를 통틀어 <strong>정수</strong>라고 합니다.
@@ -42,7 +42,7 @@ export default function IntegerRationalConcept() {
           <BlockMath math="\text{정수} = \{\ldots, -3, -2, -1, 0, 1, 2, 3, \ldots\}" />
         </SubSection>
 
-        <SubSection title="(2) 정수의 분류">
+        <SubSection title="● 정수의 분류">
           <ul className="list-disc pl-6 space-y-1">
             <li>양의 정수: <InlineMath math="+1, +2, +3, \ldots" /> (자연수와 같음)</li>
             <li>0: 양수도 음수도 아닌 수</li>
@@ -51,8 +51,8 @@ export default function IntegerRationalConcept() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="3. 유리수">
-        <SubSection title="(1) 유리수의 정의">
+      <CalcBox title="■ 유리수">
+        <SubSection title="● 유리수의 정의">
           <p>
             <strong>유리수</strong>는 분자와 분모가 정수이고 분모가 0이 아닌
             분수로 나타낼 수 있는 수입니다.
@@ -60,7 +60,7 @@ export default function IntegerRationalConcept() {
           <BlockMath math="\text{유리수} = \left\{ \frac{a}{b} \mid a, b \text{는 정수}, b \neq 0 \right\}" />
         </SubSection>
 
-        <SubSection title="(2) 유리수의 분류">
+        <SubSection title="● 유리수의 분류">
           <ul className="list-disc pl-6 space-y-1">
             <li>양의 유리수: <InlineMath math="+\frac{1}{2}, +0.7, +3" /></li>
             <li>0</li>
@@ -73,8 +73,8 @@ export default function IntegerRationalConcept() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="4. 수직선">
-        <SubSection title="(1) 수직선의 표현">
+      <CalcBox title="■ 수직선">
+        <SubSection title="● 수직선의 표현">
           <p>
             직선 위에 기준점(0)을 정하고 일정한 간격으로 양수는 오른쪽,
             음수는 왼쪽에 대응시킨 직선을 <strong>수직선</strong>이라 합니다.
@@ -85,7 +85,7 @@ export default function IntegerRationalConcept() {
           </pre>
         </SubSection>
 
-        <SubSection title="(2) 수직선과 유리수">
+        <SubSection title="● 수직선과 유리수">
           <p>
             모든 유리수는 수직선 위의 점에 대응됩니다. 예를 들어{" "}
             <InlineMath math="\frac{3}{2}" />는 1과 2 사이의 점에,{" "}
@@ -94,8 +94,8 @@ export default function IntegerRationalConcept() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="5. 절댓값">
-        <SubSection title="(1) 절댓값의 정의">
+      <CalcBox title="■ 절댓값">
+        <SubSection title="● 절댓값의 정의">
           <p>
             수직선 위에서 어떤 수에 대응하는 점과 원점(0) 사이의 거리를{" "}
             <strong>절댓값</strong>이라 하고, 기호{" "}
@@ -104,7 +104,7 @@ export default function IntegerRationalConcept() {
           <BlockMath math="|+5| = 5, \quad |-5| = 5, \quad |0| = 0" />
         </SubSection>
 
-        <SubSection title="(2) 절댓값의 성질">
+        <SubSection title="● 절댓값의 성질">
           <ul className="list-disc pl-6 space-y-1">
             <li>절댓값은 항상 0 이상 (음수가 될 수 없음): <InlineMath math="|a| \geq 0" /></li>
             <li>절댓값이 같은 두 수는 부호만 다름: <InlineMath math="|a| = |-a|" /></li>
@@ -113,8 +113,8 @@ export default function IntegerRationalConcept() {
         </SubSection>
       </CalcBox>
 
-      <CalcBox title="6. 수의 대소 관계">
-        <SubSection title="(1) 기본 원리">
+      <CalcBox title="■ 수의 대소 관계">
+        <SubSection title="● 기본 원리">
           <p>수직선 위에서 <strong>오른쪽에 있는 수가 더 크다.</strong></p>
           <ul className="mt-2 list-disc pl-6 space-y-1">
             <li>양수는 0보다 크다</li>
@@ -123,7 +123,7 @@ export default function IntegerRationalConcept() {
           </ul>
         </SubSection>
 
-        <SubSection title="(2) 절댓값과 대소 관계">
+        <SubSection title="● 절댓값과 대소 관계">
           <p>
             <strong>① 양수끼리</strong>는 절댓값이 클수록 크다.
           </p>
@@ -134,7 +134,7 @@ export default function IntegerRationalConcept() {
           <BlockMath math="-5 < -3 \quad (|-5| = 5 > 3 = |-3|)" />
         </SubSection>
 
-        <SubSection title="(3) 부등호의 사용">
+        <SubSection title="● 부등호의 사용">
           <ul className="list-disc pl-6 space-y-1">
             <li><InlineMath math="a < b" />: a는 b보다 작다</li>
             <li><InlineMath math="a \leq b" />: a는 b보다 작거나 같다</li>

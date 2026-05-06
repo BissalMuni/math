@@ -47,7 +47,7 @@ export default function SoftmaxContent() {
       </p>
 
       {/* ── 왜 e^x 인가 ── */}
-      <CalcBox title="1. 왜 e^x 를 사용하는가?">
+      <CalcBox title="■ 왜 e^x 를 사용하는가?">
         <BlockMath math="\text{softmax}(x_i) = \frac{e^{x_i}}{\sum_j e^{x_j}}" />
         <div className="text-sm space-y-2 mt-4">
           <div className="flex gap-2 items-start">
@@ -66,7 +66,7 @@ export default function SoftmaxContent() {
       </CalcBox>
 
       {/* ── STEP 1: 양수 점수 예제 ── */}
-      <CalcBox title="2. 기본 예제: 점수 [2.0, 1.0, 0.1] → Softmax">
+      <CalcBox title="■ 기본 예제: 점수 [2.0, 1.0, 0.1] → Softmax">
         <p className="text-sm mb-4">
           Q·Kᵀ/√dk 결과로 세 토큰의 어텐션 점수 [2.0, 1.0, 0.1]이 나왔다고 가정합니다.
         </p>
@@ -100,7 +100,7 @@ export default function SoftmaxContent() {
       </CalcBox>
 
       {/* ── STEP 2: 음수 점수 ── */}
-      <CalcBox title="3. 음수 점수 처리: [-1.0, 2.0, -0.5]">
+      <CalcBox title="■ 음수 점수 처리: [-1.0, 2.0, -0.5]">
         <p className="text-sm mb-4">
           음수 점수도 e^x를 거치면 양수가 됩니다 (단지 작아질 뿐).
           음수 점수 = "별로 관련 없는 토큰"이지만 완전히 무시하진 않습니다.
@@ -127,7 +127,7 @@ export default function SoftmaxContent() {
       </CalcBox>
 
       {/* ── STEP 3: 온도 효과 ── */}
-      <CalcBox title="4. 온도(Temperature)로 분포 조절">
+      <CalcBox title="■ 온도(Temperature)로 분포 조절">
         <p className="text-sm mb-4">
           점수를 온도 T로 나눈 후 Softmax를 적용합니다:{" "}
           <InlineMath math="\text{softmax}(x/T)" />
@@ -152,7 +152,7 @@ export default function SoftmaxContent() {
       </CalcBox>
 
       {/* ── 전체 공식 ── */}
-      <CalcBox title="5. 어텐션에서의 Softmax 위치">
+      <CalcBox title="■ 어텐션에서의 Softmax 위치">
         <BlockMath math="\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^T}{\sqrt{d_k}}\right) V" />
         <div className="text-sm text-muted mt-3 space-y-1">
           <div>① Q·Kᵀ → 원시 점수 (어떤 값이든 가능)</div>

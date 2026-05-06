@@ -28,7 +28,7 @@ export default function MatrixBasicContent() {
       </p>
 
       {/* ── 행렬이란 ── */}
-      <CalcBox title="1. 행렬 = 숫자를 격자로 배열한 것">
+      <CalcBox title="■ 행렬 = 숫자를 격자로 배열한 것">
         <p className="text-sm mb-4">
           행렬은 숫자를 행(가로)과 열(세로)로 정리한 표입니다.
           <InlineMath math="m \times n" /> 행렬은 m개의 행과 n개의 열을 가집니다.
@@ -43,7 +43,7 @@ export default function MatrixBasicContent() {
       </CalcBox>
 
       {/* ── 곱셈 규칙 ── */}
-      <CalcBox title="2. 행렬 곱셈의 핵심 규칙">
+      <CalcBox title="■ 행렬 곱셈의 핵심 규칙">
         <div className="space-y-3 text-sm">
           <div className="rounded-lg border border-accent bg-accent-light p-3">
             <strong>규칙:</strong> A의 <strong>열 수</strong>와 B의 <strong>행 수</strong>가 같아야 곱할 수 있다.
@@ -56,7 +56,7 @@ export default function MatrixBasicContent() {
       </CalcBox>
 
       {/* ── 실제 계산 ── */}
-      <CalcBox title="3. 행렬 곱셈 계산 — 행 × 열을 내적">
+      <CalcBox title="■ 행렬 곱셈 계산 — 행 × 열을 내적">
         <p className="text-sm mb-4">
           C의 각 원소는 A의 <strong>한 행</strong>과 B의 <strong>한 열</strong>을 원소별로 곱해서 합산한 것입니다.
         </p>
@@ -80,7 +80,7 @@ export default function MatrixBasicContent() {
         </div>
       </CalcBox>
 
-      <CalcBox title="4. 결과">
+      <CalcBox title="■ 결과">
         <div className="flex flex-wrap items-center gap-4">
           <Matrix data={A} label="A (2×3)" color="blue" />
           <Arrow op="×" />
@@ -91,7 +91,7 @@ export default function MatrixBasicContent() {
       </CalcBox>
 
       {/* ── LLM에서의 의미 ── */}
-      <CalcBox title="5. 트랜스포머에서 행렬 곱셈이 쓰이는 곳">
+      <CalcBox title="■ 트랜스포머에서 행렬 곱셈이 쓰이는 곳">
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
           <div className="divide-y divide-sidebar-border">
             {[

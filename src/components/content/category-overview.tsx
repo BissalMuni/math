@@ -11,7 +11,7 @@ export function CategoryOverview({ book }: { book: Book }) {
       <h1 className="text-3xl font-bold mb-2">{book.title}</h1>
       <p className="text-muted mb-8">{book.description}</p>
 
-      <div className="space-y-6">
+      <div className="space-y-12">
         {book.children.map((node) => (
           <SubjectCard
             key={node.id}
@@ -38,20 +38,23 @@ function SubjectCard({
     <div className="rounded-xl border border-sidebar-border p-6">
       <h2 className="text-xl font-semibold mb-3">{node.title}</h2>
       {node.children && (
-        <div className="space-y-2">
+        <div className="space-y-4">
           {node.children.map((chapter) => (
-            <div key={chapter.id}>
+            <div
+              key={chapter.id}
+              className="rounded-lg border border-sidebar-border/70 p-4"
+            >
               {/* chapter가 leaf인 경우(e.g. prologue 단발 항목) → 바로 링크 */}
               {!chapter.children ? (
                 <Link
                   href={`/${basePath}/${node.slug}/${chapter.slug}`}
-                  className="block text-sm text-muted hover:text-accent py-0.5"
+                  className="block text-sm text-muted hover:text-accent"
                 >
                   {chapter.title}
                 </Link>
               ) : (
                 <>
-                  <h3 className="text-sm font-medium text-muted mb-1 flex items-center gap-2">
+                  <h3 className="text-sm font-medium text-muted mb-2 flex items-center gap-2">
                     <span>{chapter.title}</span>
                     {/* 대목차 — 대단원 */}
                     <SectionComment
@@ -60,7 +63,7 @@ function SubjectCard({
                       level="major"
                     />
                   </h3>
-                  <div className="ml-4 space-y-0.5">
+                  <div className="ml-2 space-y-1">
                     {chapter.children.map((section) => (
                       <SectionLink
                         key={section.id}
@@ -94,7 +97,7 @@ function SectionLink({
   if (node.children && node.children.length > 0) {
     // node = 중단원 (children = 소단원 leaf)
     return (
-      <div className="mb-1">
+      <div className="rounded-md border border-sidebar-border/50 p-3">
         <span className="text-sm text-foreground inline-flex items-center gap-2">
           {node.title}
           {/* 중목차 — 중단원 */}
@@ -104,7 +107,7 @@ function SectionLink({
             level="medium"
           />
         </span>
-        <div className="ml-3 mt-0.5 space-y-0.5">
+        <div className="ml-2 mt-1 space-y-1">
           {node.children.map((topic) => (
             <Link
               key={topic.id}

@@ -7,6 +7,7 @@ import { allBooks, type TreeNode, type Book } from "@/book";
 import { allBaskets, type Basket } from "@/basket";
 import { SidebarAuth } from "@/components/navigation/sidebar-auth";
 import { SearchDialog } from "@/components/search/search-dialog";
+import { DarkModeToggle } from "@/components/ui/DarkModeToggle";
 
 /** 사이드바 네비게이션 — 바구니 → 책 → 트리 3단 */
 export function Sidebar() {
@@ -46,6 +47,9 @@ export function Sidebar() {
             <Link href="/" className="text-lg font-bold" onClick={() => setIsOpen(false)}>
               📐 Learning
             </Link>
+            <div className="flex justify-start">
+              <DarkModeToggle />
+            </div>
             <SidebarAuth />
           </div>
 

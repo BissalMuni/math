@@ -72,7 +72,7 @@ export function Arrow({ op }: { op?: string }) {
  *  CalcBox는 의도적으로 section + h2로 마크업한다.
  *  h2 기본 폰트 크기를 무력화하기 위해 text-base를 명시.
  *  id prop은 SectionNav 등 페이지 내 앵커 스크롤용. */
-export function CalcBox({ children, title, id }: { children: React.ReactNode; title?: string; id?: string }) {
+export function CalcBox({ children, title, id }: { children?: React.ReactNode; title?: string; id?: string }) {
   return (
     <section id={id} className="rounded-xl border border-sidebar-border bg-sidebar-bg p-5 mb-6">
       {title && <h2 className="text-base font-semibold mb-3 text-accent">{title}</h2>}
@@ -84,9 +84,9 @@ export function CalcBox({ children, title, id }: { children: React.ReactNode; ti
 /** CalcBox 내부 소소목차
  *  AutoSectionComment가 <h3> 도 감지해 의견 버튼을 주입한다.
  *  CalcBox(h2) 안에서 세부 주제를 나눌 때 사용. */
-export function SubSection({ children, title }: { children: React.ReactNode; title: string }) {
+export function SubSection({ children, title }: { children?: React.ReactNode; title: string }) {
   return (
-    <div className="mt-6 first:mt-0">
+    <div className="mt-10 first:mt-0">
       <h3 className="text-sm font-semibold mb-3">{title}</h3>
       {children}
     </div>

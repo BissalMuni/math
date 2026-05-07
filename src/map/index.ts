@@ -1,5 +1,12 @@
-import { type ComponentType, lazy } from "react";
+import { type ComponentType, createElement, lazy } from "react";
 import { findNodePath, type Book, type TreeNode } from "@/book";
+
+const NotReadyContent: ComponentType = () =>
+  createElement(
+    "p",
+    { className: "text-muted italic" },
+    "이 단원의 콘텐츠가 준비 중입니다."
+  );
 
 /**
  * 책별 path 컨벤션 (책 = 폴더 1:1):
@@ -66,7 +73,7 @@ function derivePath(book: Book, leaf: TreeNode): string | null {
 /**
  * book + leaf로 콘텐츠 컴포넌트 가져오기.
  * 컨벤션 기반 경로 도출 → React.lazy로 동적 import.
- * 매핑 없거나 파일 없으면 null → "준비 중" 표시.
+ * 매핑 없으면 null. 파일이 없으면 "준비 중" 컴포넌트로 fallback.
  */
 export function getContentComponent(
   book: Book,
@@ -74,5 +81,7 @@ export function getContentComponent(
 ): ComponentType | null {
   const path = derivePath(book, leaf);
   if (!path) return null;
-  return lazy(() => import(`@/content/${path}.tsx`));
+  return lazy(() =>
+    import(`@/content/${path}.tsx`).catch(() => ({ default: NotReadyContent }))
+  );
 }

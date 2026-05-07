@@ -15,6 +15,7 @@ export function AdminNav({ role }: { role: Role }) {
     { href: "/admin", label: "대시보드" },
     ...(isAdmin ? [{ href: "/admin/changes", label: "수정 이력" }] : []),
     { href: "/admin/structure", label: "책/바구니 관리" },
+    ...(isAdmin ? [{ href: "/admin/attachments", label: "첨부파일 관리" }] : []),
     ...(isSuperadmin
       ? [{ href: "/admin/super/structure", label: "구조 편집" }]
       : []),

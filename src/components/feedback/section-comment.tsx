@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import type { Comment, FeedbackLevel } from "@/lib/types";
+import type { Comment, FeedbackLevel, TopicImage } from "@/lib/types";
 import { useSession } from "@/lib/auth/use-session";
+import { ImageGrid } from "@/components/feedback/ImageGrid";
 
 const LEVEL_LABELS: Record<FeedbackLevel, string> = {
   major: "대목차",
@@ -63,6 +64,7 @@ export function SectionComment({
       sectionTitle={sectionTitle}
       level={level}
       canDelete={canDelete}
+      uploaderLabel={session.label}
     />
   );
 }
@@ -73,14 +75,18 @@ function ContentFeedbackButton({
   sectionTitle,
   level,
   canDelete,
+  uploaderLabel,
 }: {
   contentPath: string;
   sectionTitle: string;
   level: FeedbackLevel;
   canDelete: boolean;
+  uploaderLabel: string;
 }) {
   const [open, setOpen] = useState(false);
   const [comments, setComments] = useState<Comment[]>([]);
+  const [images, setImages] = useState<TopicImage[]>([]);
+  const [uploading, setUploading] = useState(false);
   const [body, setBody] = useState("");
   const [loading, setLoading] = useState(false);
   const [fetched, setFetched] = useState(false);
@@ -100,6 +106,57 @@ function ContentFeedbackButton({
       setFetched(true);
     }
   }, [contentPath]);
+
+  const fetchImages = useCallback(async () => {
+    try {
+      const res = await fetch(
+        `/api/images?content_path=${encodeURIComponent(contentPath)}`
+      );
+      const data = await res.json();
+      setImages(data.data || []);
+    } catch {
+      // 무시
+    }
+  }, [contentPath]);
+
+  // 폼이 처음 열릴 때 이미지도 같이 로드
+  useEffect(() => {
+    if (open) fetchImages();
+  }, [open, fetchImages]);
+
+  const handleUploadImage = async (file: File) => {
+    setUploading(true);
+    setError("");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("content_path", contentPath);
+      formData.append("uploaded_by", uploaderLabel);
+      const res = await fetch("/api/images", { method: "POST", body: formData });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        setError(err.error || "이미지 업로드 실패");
+        return;
+      }
+      await fetchImages();
+    } catch {
+      setError("이미지 업로드 실패");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDeleteImage = async (id: string) => {
+    try {
+      await fetch(
+        `/api/images/${id}?uploaded_by=${encodeURIComponent(uploaderLabel)}`,
+        { method: "DELETE" }
+      );
+      await fetchImages();
+    } catch {
+      // 무시
+    }
+  };
 
   const handleToggle = () => {
     setOpen((v) => {
@@ -235,6 +292,15 @@ function ContentFeedbackButton({
               {loading ? "..." : "등록"}
             </button>
           </div>
+
+          {/* 참고 이미지 */}
+          <ImageGrid
+            images={images}
+            currentAuthor={uploaderLabel}
+            onDelete={handleDeleteImage}
+            onUpload={handleUploadImage}
+            uploading={uploading}
+          />
         </div>
       )}
     </span>

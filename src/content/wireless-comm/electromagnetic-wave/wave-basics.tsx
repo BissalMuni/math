@@ -1,10 +1,29 @@
 "use client";
 
+import { useState } from "react";
 import { InlineMath, BlockMath } from "@/components/math/math-formula";
 import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 
+const SVG_W = 500;
+const SVG_H = 160;
+const SVG_CY = SVG_H / 2;
+
+function makeSinePath(amp: number, cycles: number): string {
+  const steps = 400;
+  return Array.from({ length: steps + 1 }, (_, i) => {
+    const t = i / steps;
+    const x = t * SVG_W;
+    const y = SVG_CY - amp * Math.sin(t * cycles * 2 * Math.PI);
+    return `${i === 0 ? "M" : "L"}${x.toFixed(2)},${y.toFixed(2)}`;
+  }).join(" ");
+}
+
 /** Ⅰ. 파동·파장·진폭 */
 export default function WaveBasicsContent() {
+  const [amp, setAmp] = useState(50);
+  const [cycles, setCycles] = useState(2);
+  const waveLen = SVG_W / cycles;
+
   return (
     <div className="space-y-8">
       <p className="text-muted mb-8">
@@ -12,23 +31,105 @@ export default function WaveBasicsContent() {
       </p>
 
       <CalcBox title="■ 파동이란">
-        <p className="text-sm mb-3">
+        <p className="text-sm mb-4">
           파동은 에너지가 공간을 따라 전달되는 현상입니다.
           물결, 소리, 빛, 전파 모두 파동입니다.
         </p>
-        <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 mb-3">
-          <pre>{`진폭
-(세로)
-  ↑
-  |      ╭─╮           ╭─╮
-  |    ╭╯    ╰╮      ╭╯    ╰╮
-──┼──╯──────────╰──╯──────────╰──→ 시간(가로)
-  |
-  |         ╰─╯           ╰─╯
-  ↓
 
-  |←───── 파장 ─────→|`}</pre>
+        <div className="flex flex-col sm:flex-row gap-4 mb-4 text-sm">
+          <label className="flex flex-col gap-1.5 flex-1">
+            <span>진폭: <strong>{amp}</strong></span>
+            <input
+              type="range" min={15} max={65} value={amp}
+              onChange={e => setAmp(Number(e.target.value))}
+              style={{ accentColor: "#ef4444" }}
+            />
+          </label>
+          <label className="flex flex-col gap-1.5 flex-1">
+            <span>파장 수 (주기): <strong>{cycles}</strong></span>
+            <input
+              type="range" min={1} max={5} step={0.5} value={cycles}
+              onChange={e => setCycles(Number(e.target.value))}
+              style={{ accentColor: "#8b5cf6" }}
+            />
+          </label>
         </div>
+
+        <div className="rounded-lg overflow-hidden border border-sidebar-border bg-sidebar-bg">
+          <svg
+            width="100%"
+            viewBox={`0 0 ${SVG_W} ${SVG_H + 52}`}
+            style={{ display: "block" }}
+          >
+            {/* 중심 기준선 */}
+            <line
+              x1="0" y1={SVG_CY} x2={SVG_W} y2={SVG_CY}
+              stroke="currentColor" strokeOpacity="0.2" strokeWidth="1"
+            />
+
+            {/* 사인파 */}
+            <path
+              d={makeSinePath(amp, cycles)}
+              fill="none"
+              stroke="#3b82f6"
+              strokeWidth="2.5"
+              strokeLinejoin="round"
+            />
+
+            {/* 진폭 주석: 중심 ↕ 정점 (빨강) */}
+            <line
+              x1="22" y1={SVG_CY - amp}
+              x2="22" y2={SVG_CY + amp}
+              stroke="#ef4444" strokeWidth="1.5"
+            />
+            {/* 위쪽 화살촉 */}
+            <polygon
+              points={`16,${SVG_CY - amp + 9} 22,${SVG_CY - amp} 28,${SVG_CY - amp + 9}`}
+              fill="#ef4444"
+            />
+            {/* 아래쪽 화살촉 */}
+            <polygon
+              points={`16,${SVG_CY + amp - 9} 22,${SVG_CY + amp} 28,${SVG_CY + amp - 9}`}
+              fill="#ef4444"
+            />
+            <text
+              x="32" y={SVG_CY}
+              fill="#ef4444" fontSize="12" dominantBaseline="middle"
+            >
+              진폭 A
+            </text>
+
+            {/* 파장 주석: 한 주기 폭 (보라) */}
+            <line
+              x1="6" y1={SVG_H + 18}
+              x2={waveLen - 6} y2={SVG_H + 18}
+              stroke="#8b5cf6" strokeWidth="1.5"
+            />
+            {/* 왼쪽 화살촉 */}
+            <polygon
+              points={`${6 + 9},${SVG_H + 12} 6,${SVG_H + 18} ${6 + 9},${SVG_H + 24}`}
+              fill="#8b5cf6"
+            />
+            {/* 오른쪽 화살촉 */}
+            <polygon
+              points={`${waveLen - 6 - 9},${SVG_H + 12} ${waveLen - 6},${SVG_H + 18} ${waveLen - 6 - 9},${SVG_H + 24}`}
+              fill="#8b5cf6"
+            />
+            {/* 눈금선 */}
+            <line x1="6" y1={SVG_H + 8} x2="6" y2={SVG_H + 28} stroke="#8b5cf6" strokeWidth="1" />
+            <line x1={waveLen - 6} y1={SVG_H + 8} x2={waveLen - 6} y2={SVG_H + 28} stroke="#8b5cf6" strokeWidth="1" />
+            <text
+              x={waveLen / 2} y={SVG_H + 44}
+              fill="#8b5cf6" fontSize="12" textAnchor="middle"
+            >
+              파장 λ
+            </text>
+          </svg>
+        </div>
+
+        <p className="text-xs text-muted mt-2">
+          슬라이더를 움직여 진폭(붉은 화살표)과 파장(보라 화살표)이 각각 독립적으로 변하는 것을 확인하세요.
+        </p>
       </CalcBox>
 
       <CalcBox title="■ 파장과 진폭">

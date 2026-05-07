@@ -75,7 +75,7 @@ export function Arrow({ op }: { op?: string }) {
 export function CalcBox({ children, title, id }: { children?: React.ReactNode; title?: string; id?: string }) {
   return (
     <section id={id} className="rounded-xl border border-sidebar-border bg-sidebar-bg p-5 mb-6">
-      {title && <h2 className="text-base font-semibold mb-3 text-accent">{title}</h2>}
+      {title && <h2 className="text-2xl font-semibold mb-3 text-accent">{title}</h2>}
       {children}
     </section>
   );
@@ -87,7 +87,7 @@ export function CalcBox({ children, title, id }: { children?: React.ReactNode; t
 export function SubSection({ children, title }: { children?: React.ReactNode; title: string }) {
   return (
     <div className="mt-10 first:mt-0">
-      <h3 className="text-sm font-semibold mb-3">{title}</h3>
+      <h3 className="text-[1.3125rem] font-semibold mb-3 text-emerald-600 dark:text-emerald-400">{title}</h3>
       {children}
     </div>
   );

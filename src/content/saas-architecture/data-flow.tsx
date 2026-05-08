@@ -2,13 +2,58 @@
 
 import { CalcBox, Insight } from "@/components/content/shared";
 
-/** Ⅵ. 데이터 흐름 — §20 관리자 접속 (Bastion Host = 점프 서버) */
+/** Ⅵ. 데이터 흐름 — §18 일반 사용자 요청, §19 외부 API 호출, §20 관리자 접속 */
 export default function DataFlowContent() {
   return (
     <div className="space-y-8">
       <p className="text-muted mb-8">
-        점검·운영을 위한 관리자 접속 흐름. Bastion Host(점프 서버)를 단일 진입점으로 두어 운영 시스템에 직접 노출되지 않게 보호한다.
+        시스템 안에서 데이터가 흐르는 3가지 시나리오. 일반 사용자 요청, 외부 API 호출, 관리자 점검 접속의 단계별 흐름.
       </p>
+
+      {/* ===== §18 일반 사용자 요청 ===== */}
+      <CalcBox title="■ §18. 일반 사용자 요청">
+        <p className="text-sm mb-3">법규 검색 등 일반 사용자 요청의 흐름:</p>
+        <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
+          <pre>{`[강남구청 직원 PC]
+   ↓ HTTPS (TLS 1.2+)
+[App Security (WAF)]   ← OWASP 룰로 공격 차단
+   ↓
+[Load Balancer]        ← 트래픽을 Pod 1·2에 분산, TLS 종료
+   ↓
+[Spring Boot Pod]
+  ├─ [Tomcat]          ← HTTP 수신 → Java 객체 변환
+  ├─ [Controller]      ← @RequestMapping, JWT 검증
+  ├─ [Service]         ← 비즈니스 로직
+  ├─ [Repository]      ← JPA QueryDSL
+   ↓ JDBC (TLS)
+[RDS for PostgreSQL]   ← DB 엔진
+   ↓
+[저장 엔진]            ← PostgreSQL 내부
+   ↓
+[블록 스토리지 (암호화)] ← NHN 관리
+   ↓
+[물리 SSD]             ← NHN 데이터센터`}</pre>
+        </div>
+      </CalcBox>
+
+      {/* ===== §19 외부 API 호출 ===== */}
+      <CalcBox title="■ §19. 외부 API 호출">
+        <p className="text-sm mb-3">법령 동기화 등 외부 API 호출:</p>
+        <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
+          <pre>{`[Spring Boot Pod]
+   ↓ HTTPS 외부망 호출
+[NAT Gateway / Egress]  ← VPC에서 외부 인터넷으로 나가는 게이트웨이
+   ↓
+[법제처 Open API]       ← https://www.law.go.kr
+   ↓ XML 응답
+[Spring Boot Pod]
+   ↓ JDBC
+[RDS for PostgreSQL]    ← 결과 저장`}</pre>
+        </div>
+        <Insight>
+          NAT Gateway는 Pod이 외부 인터넷으로 나갈 때의 단일 출구. 모든 외부 호출 트래픽이 한 IP로 통합되어 법제처 입장에서 IP 화이트리스트 등록이 단순화. 자세한 내용은 부록 D.5 참조.
+        </Insight>
+      </CalcBox>
 
       <CalcBox title="■ §20. 관리자 접속 — 전체 흐름">
         <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">

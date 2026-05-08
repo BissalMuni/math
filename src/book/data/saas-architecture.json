@@ -1,0 +1,48 @@
+{
+  "id": "saas-architecture",
+  "basePath": "saas-architecture",
+  "title": "SaaS 시스템 구성",
+  "description": "응용 SW부터 물리 데이터센터까지 10개 계층의 책임 분담과 클라우드 시스템 구성 (NHN Cloud 공공기관용 IaaS · CSAP 책임공유모델 기반)",
+  "children": [
+    {
+      "id": "saas-intro",
+      "slug": "intro",
+      "title": "Ⅰ. 개요"
+    },
+    {
+      "id": "saas-application",
+      "slug": "application",
+      "title": "Ⅱ. 응용 SW"
+    },
+    {
+      "id": "saas-infrastructure",
+      "slug": "infrastructure",
+      "title": "Ⅲ. 인프라"
+    },
+    {
+      "id": "saas-availability",
+      "slug": "availability",
+      "title": "Ⅳ. 가용성·부하분산"
+    },
+    {
+      "id": "saas-ops",
+      "slug": "ops",
+      "title": "Ⅴ. 운영 도구"
+    },
+    {
+      "id": "saas-data-flow",
+      "slug": "data-flow",
+      "title": "Ⅵ. 데이터 흐름"
+    },
+    {
+      "id": "saas-security-review",
+      "slug": "security-review",
+      "title": "Ⅶ. 보안성 검토"
+    },
+    {
+      "id": "saas-appendix",
+      "slug": "appendix",
+      "title": "Ⅷ. 부록 — 기술 용어"
+    }
+  ]
+}

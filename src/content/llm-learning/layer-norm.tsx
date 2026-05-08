@@ -69,11 +69,24 @@ export default function LayerNormContent() {
           입력 벡터 v = [{v.join(", ")}]의 평균을 구합니다.
         </p>
         <BlockMath math="\mu = \frac{1}{d}\sum_{i=1}^{d} v_i = \frac{2.0 + 4.0 + 1.0 + 3.0}{4} = \frac{10.0}{4} = 2.5" />
+        <div className="text-sm space-y-2 mt-3 p-3 rounded-lg bg-sidebar-bg border border-sidebar-border">
+          <p><InlineMath math="\mu" /> (뮤): <strong>평균값</strong>. 이 단계에서 구하는 결과.</p>
+          <p><InlineMath math="d" />: 벡터의 <strong>차원 수</strong> (원소 개수). 여기서는 d = 4.</p>
+          <p><InlineMath math="v_i" />: 벡터의 <strong>i번째 원소</strong>. <InlineMath math="v_1=2.0,\; v_2=4.0,\; v_3=1.0,\; v_4=3.0" />.</p>
+          <p><InlineMath math="\sum_{i=1}^{d}" />: i를 1부터 d까지 <strong>모두 더하는</strong> 합산 기호 (시그마).</p>
+          <p><InlineMath math="\frac{1}{d}\sum v_i" />: 모든 원소의 합 ÷ 원소 개수 = <strong>산술평균 공식</strong>.</p>
+        </div>
       </CalcBox>
 
       {/* ── STEP 2: 분산 ── */}
       <CalcBox title="■ 분산(σ²) 계산">
         <BlockMath math="\sigma^2 = \frac{1}{d}\sum_{i=1}^{d}(v_i - \mu)^2" />
+        <div className="text-sm space-y-2 mb-3 p-3 rounded-lg bg-sidebar-bg border border-sidebar-border">
+          <p><InlineMath math="\sigma^2" /> (시그마 제곱): <strong>분산</strong>. 값들이 평균에서 얼마나 퍼져 있는지 나타냄.</p>
+          <p><InlineMath math="v_i - \mu" />: 각 원소에서 <strong>평균을 뺀 값</strong> (편차). 평균보다 크면 양수, 작으면 음수.</p>
+          <p><InlineMath math="(v_i - \mu)^2" />: 편차를 <strong>제곱</strong>해 음수를 양수로 변환. 크기만 남겨 합산 가능하게 함.</p>
+          <p><InlineMath math="\frac{1}{d}\sum(\cdots)^2" />: 제곱 편차들의 <strong>평균</strong> = 분산 공식.</p>
+        </div>
         <div className="text-sm font-mono space-y-1 p-3 rounded-lg bg-sidebar-bg border border-sidebar-border mb-3">
           <div>(2.0 - 2.5)² = (-0.5)² = <strong>0.25</strong></div>
           <div>(4.0 - 2.5)² = ( 1.5)² = <strong>2.25</strong></div>

@@ -25,6 +25,19 @@ export default function RationalRepeating() {
           </p>
           <BlockMath math="\frac{1}{4} = 0.25, \quad \frac{3}{8} = 0.375" />
           <p className="mt-2">
+            <strong>기약분수</strong>란 분자와 분모의 공약수가 1뿐인 분수,
+            즉 더 이상 약분할 수 없는 분수입니다.
+          </p>
+          <div className="mt-2 mb-3 text-sm p-3 rounded-lg bg-sidebar-bg border border-sidebar-border space-y-1">
+            <p>
+              <InlineMath math="\dfrac{6}{10}" /> →{" "}
+              <InlineMath math="\dfrac{3}{5}" /> (분자·분모를 공약수 2로 나눠 기약분수로 변환)
+            </p>
+            <p>
+              <InlineMath math="\dfrac{3}{5}" /> → 공약수가 1뿐이므로 <strong>기약분수</strong>
+            </p>
+          </div>
+          <p className="mt-2">
             기약분수의 분모를 소인수분해했을 때,{" "}
             <InlineMath math="2" />와 <InlineMath math="5" />만으로 이루어지면
             유한소수로 나타낼 수 있습니다.

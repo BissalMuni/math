@@ -64,6 +64,14 @@ export default function ResidualContent() {
           네트워크는 f(x) = 변화량만 학습하면 됩니다.
         </p>
         <BlockMath math="\text{Output} = x + f(x)" />
+        <p className="text-sm mt-2 text-muted">
+          <strong>왜 더하기인가?</strong> 역전파 시 기울기는 레이어마다{" "}
+          <em>곱셈</em>으로 전파됩니다. 각 레이어 기울기가 0.5라면 10레이어 후{" "}
+          <InlineMath math="0.5^{10} \approx 0.001" />로 소멸합니다.
+          반면 덧셈은{" "}
+          <InlineMath math="1 + \tfrac{\partial f}{\partial x}" />를 보장해
+          기울기가 최소 1 이상으로 유지됩니다.
+        </p>
         <div className="text-sm mt-4 p-4 rounded-lg bg-sidebar-bg border border-sidebar-border font-mono space-y-2">
           <div className="text-muted">비유: 원본 편지에 수정사항만 메모 추가</div>
           <div>원본 편지 (x)     = 훼손하지 않고 그대로 전달</div>
@@ -84,7 +92,7 @@ export default function ResidualContent() {
           <Arrow op="=" />
           <Matrix data={[xPlusFx]} label="x + f(x) (1×4)" color="orange" />
         </div>
-        <div className="text-sm space-y-1 font-mono p-3 rounded-lg bg-sidebar-bg border border-sidebar-border">
+        <div className="text-sm space-y-1 font-mono p-3 rounded-lg bg-sidebar-bg border border-sidebar-border text-foreground">
           {x.map((v, i) => (
             <div key={i}>
               dim {i}: {v.toFixed(1)} + {fx[i].toFixed(1)} = <strong>{xPlusFx[i].toFixed(1)}</strong>
@@ -140,10 +148,10 @@ export default function ResidualContent() {
       {/* ── 트랜스포머에서 사용되는 위치 ── */}
       <CalcBox title="■ 트랜스포머에서 잔차 연결 위치">
         <div className="text-sm space-y-2 font-mono">
-          <div className="p-2 rounded bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800">
+          <div className="p-2 rounded bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 text-blue-900 dark:text-blue-100">
             x → [Multi-Head Attention] → f₁(x) → <strong>x + f₁(x)</strong> → LayerNorm
           </div>
-          <div className="p-2 rounded bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800">
+          <div className="p-2 rounded bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800 text-green-900 dark:text-green-100">
             x → [Feed-Forward Network] → f₂(x) → <strong>x + f₂(x)</strong> → LayerNorm
           </div>
         </div>

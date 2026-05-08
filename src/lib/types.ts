@@ -17,6 +17,9 @@ export interface Comment {
   /** 목차 레벨: major(대목차) | medium(중목차) | minor(소목차) | section(h2 섹션) */
   level: FeedbackLevel;
   created_at: string;
+  // ① 입력단 sanitizer 결과 — flagged=true 인 댓글은 자동화에서 제외된다
+  flagged?: boolean;
+  flag_reason?: string | null;
 }
 
 /** 역할 */

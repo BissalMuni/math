@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getComments, createComment } from "@/lib/supabase/comments";
 import { requirePermission, getRoleFromRequest } from "@/lib/auth/require-role";
 import { ROLE_LABELS } from "@/lib/auth/constants";
+import { sanitizeCommentBody } from "@/lib/security/comment-sanitizer";
 import type { FeedbackType, FeedbackLevel } from "@/lib/types";
 
 const VALID_TYPES: FeedbackType[] = ["content", "structure"];
@@ -65,20 +66,33 @@ export async function POST(request: NextRequest) {
   // 작성자는 역할 라벨로 자동 기록 (클라이언트 입력 무시)
   const role = getRoleFromRequest(request);
   const trimmedAuthor = role ? ROLE_LABELS[role] : (author?.trim().slice(0, 50) || "익명");
-  const trimmedBody = commentBody.trim().slice(0, 3000);
 
-  if (!trimmedBody) {
+  // ① 입력단 방어 — sanitize + 의심 패턴 플래그
+  const { body: sanitizedBody, flagged, flagReason } = sanitizeCommentBody(commentBody);
+
+  if (!sanitizedBody) {
     return NextResponse.json({ error: "내용이 비어있습니다" }, { status: 400 });
+  }
+
+  if (flagged) {
+    // 운영자 사후 검토용 — 어떤 댓글이 어떤 사유로 걸렸는지 추적
+    console.warn("[comments] flagged on insert:", {
+      contentPath: content_path,
+      author: trimmedAuthor,
+      reason: flagReason,
+    });
   }
 
   try {
     const data = await createComment({
       contentPath: content_path.trim(),
       author: trimmedAuthor,
-      body: trimmedBody,
+      body: sanitizedBody,
       sectionTitle: section_title?.trim(),
       feedbackType: fbType,
       level: fbLevel,
+      flagged,
+      flagReason,
     });
     return NextResponse.json({ data }, { status: 201 });
   } catch {

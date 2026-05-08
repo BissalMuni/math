@@ -21,6 +21,10 @@ export interface CreateCommentInput {
   sectionTitle?: string;
   feedbackType?: FeedbackType;
   level?: FeedbackLevel;
+  /** sanitizer 가 의심 패턴 감지 시 true (자동화 제외) */
+  flagged?: boolean;
+  /** 플래그 사유 (예: "이전 지시 무시 명령(en) (ignore-previous-en)") */
+  flagReason?: string;
 }
 
 /** 의견 등록 */
@@ -35,6 +39,8 @@ export async function createComment(input: CreateCommentInput): Promise<Comment>
       section_title: input.sectionTitle ?? null,
       feedback_type: input.feedbackType ?? "content",
       level: input.level ?? "section",
+      flagged: input.flagged ?? false,
+      flag_reason: input.flagReason ?? null,
     })
     .select()
     .single();

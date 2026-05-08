@@ -82,9 +82,10 @@ case "${POSITIONAL[0]:-}" in
     ;;
 
   --mark-all-unprocessed)
-    # 미처리 전체를 한번에 처리 표시 (필터가 있으면 해당 분류만)
+    # 미처리·미플래그 댓글 전체를 한번에 처리 표시 (필터가 있으면 해당 분류만)
+    # flagged=true 인 댓글은 자동화 대상이 아니므로 마킹에서도 제외
     SHA="${POSITIONAL[1]:-$COMMIT_SHA}"
-    curl -s -X PATCH "${API}/comments?or=(processed.eq.false,processed.is.null)${CLASS_QUERY}" \
+    curl -s -X PATCH "${API}/comments?or=(processed.eq.false,processed.is.null)&flagged=is.false${CLASS_QUERY}" \
       "${HEADERS[@]}" \
       -H "Content-Type: application/json" \
       -H "Prefer: return=representation" \
@@ -94,7 +95,7 @@ case "${POSITIONAL[0]:-}" in
     ;;
 
   *)
-    # 미처리 의견만 조회 (processed=false 또는 processed=null) + 분류 필터
-    curl -s "${API}/comments?select=*&or=(processed.eq.false,processed.is.null)${CLASS_QUERY}&order=created_at.asc" "${HEADERS[@]}" -H "Accept: application/json"
+    # 미처리·미플래그 댓글만 조회 — 자동화 큐 (① sanitizer 가 flagged 표시한 것은 제외)
+    curl -s "${API}/comments?select=*&or=(processed.eq.false,processed.is.null)&flagged=is.false${CLASS_QUERY}&order=created_at.asc" "${HEADERS[@]}" -H "Accept: application/json"
     ;;
 esac

@@ -6,8 +6,11 @@ import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 export default function IntroContent() {
   return (
     <div className="space-y-8">
+      <p className="text-muted mb-2">
+        본 시스템은 응용 SW부터 물리 데이터센터까지 10개 계층으로 구성된다.
+      </p>
       <p className="text-muted mb-8">
-        본 시스템은 응용 SW부터 물리 데이터센터까지 10개 계층으로 구성된다. 각 계층의 책임은 CSAP 책임공유모델에 따라 운영기관(강남구청)과 CSP(NHN Cloud)가 분담한다.
+        각 계층의 책임은 CSAP 책임공유모델에 따라 운영기관(강남구청)과 CSP(NHN Cloud)가 분담한다.
       </p>
 
       <CalcBox title="■ §1. 시스템 전체 구조">

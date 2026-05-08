@@ -94,6 +94,13 @@ jobs:
             --allowedTools "Bash,Read,Edit,Write,Glob,Grep" \
             -p "${CONVENTIONS}${PROMPT}"
 
+      # 5.5) ④ 출력 검증단 — Claude 변경을 commit 직전 검사
+      #      허용 경로·diff 크기·위험 패턴 위반 시 workflow 실패
+      #      → commit·push 안 함, 댓글은 미처리 상태로 보존되어 다음 cron 에 재시도
+      - name: Validate Claude output
+        if: steps.check.outputs.skip == 'false'
+        run: bash scripts/validate-output.sh
+
       # 6) 변경사항 커밋 & main에 푸시
       - name: Commit and push
         id: commit

@@ -43,38 +43,46 @@ while IFS= read -r FILE; do
   # diff 가져오기
   DIFF=$(git diff HEAD~1 HEAD -- "$FILE" 2>/dev/null || echo "")
 
-  # 이전 내용 (파일이 새로 생성된 경우 빈 문자열)
-  BEFORE=$(git show "HEAD~1:$FILE" 2>/dev/null || echo "")
+  # JSON payload를 임시 파일로 생성 (argument limit 회피)
+  TMPFILE=$(mktemp)
+  trap "rm -f '$TMPFILE'" EXIT
 
-  # 현재 내용 (파일이 삭제된 경우 빈 문자열)
-  if [[ -f "$FILE" ]]; then
-    AFTER=$(cat "$FILE")
-  else
-    AFTER=""
-  fi
+  node -e "
+    const fs = require('fs');
+    const filePath = process.argv[1];
+    const commitSha = process.argv[2];
+    const tmpFile = process.argv[3];
+    const diff = fs.readFileSync('/dev/stdin', 'utf8');
 
-  # JSON 이스케이프 (node 사용)
-  PAYLOAD=$(node -e "
+    // before/after는 환경변수 대신 파일에서 직접 읽기
+    let before = '';
+    try { before = require('child_process').execSync('git show HEAD~1:' + filePath, { encoding: 'utf8' }); } catch {}
+
+    let after = '';
+    try { after = fs.readFileSync(filePath, 'utf8'); } catch {}
+
     const payload = {
       role: 'github_actions',
       actor: 'github_actions',
       change_type: 'automated_feedback',
-      file_path: process.argv[1],
-      diff: process.argv[2] || null,
-      before_content: process.argv[3] || null,
-      after_content: process.argv[4] || null,
-      commit_sha: process.argv[5] || null,
+      file_path: filePath,
+      diff: diff || null,
+      before_content: before || null,
+      after_content: after || null,
+      commit_sha: commitSha || null,
       metadata: { source: 'review-feedback-workflow' }
     };
-    process.stdout.write(JSON.stringify(payload));
-  " "$FILE" "$DIFF" "$BEFORE" "$AFTER" "$COMMIT_SHA")
+    fs.writeFileSync(tmpFile, JSON.stringify(payload));
+  " "$FILE" "$COMMIT_SHA" "$TMPFILE" <<< "$DIFF"
 
-  # Supabase에 기록
+  # Supabase에 기록 (파일에서 읽어 argument limit 회피)
   HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -X POST "${API}/content_changes" \
     "${HEADERS[@]}" \
     -H "Content-Type: application/json" \
     -H "Prefer: return=minimal" \
-    -d "$PAYLOAD")
+    -d @"$TMPFILE")
+
+  rm -f "$TMPFILE"
 
   if [[ "$HTTP_STATUS" -ge 200 && "$HTTP_STATUS" -lt 300 ]]; then
     echo "Logged: $FILE (commit: $COMMIT_SHA)"

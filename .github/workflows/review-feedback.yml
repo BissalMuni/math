@@ -32,7 +32,8 @@ jobs:
           if [ "$COMMENTS" = "[]" ]; then
             echo "skip=true" >> $GITHUB_OUTPUT
           else
-            COUNT=$(echo "$COMMENTS" | node -e "let d='';process.stdin.on('data',c=>d+=c);process.stdin.on('end',()=>console.log(JSON.parse(d).length))")
+            echo "$COMMENTS" > /tmp/comments.json
+            COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('/tmp/comments.json','utf8')).length)")
             echo "skip=false" >> $GITHUB_OUTPUT
             echo "count=$COUNT" >> $GITHUB_OUTPUT
           fi
@@ -47,13 +48,15 @@ jobs:
         if: steps.check.outputs.skip == 'false'
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
           CONVENTIONS=$(cat CONVENTION_CONTENT.md CONVENTION_TREE.md)
-          PROMPT=$(cat <<'PROMPT_EOF'
+          COMMENTS=$(cat /tmp/comments.json)
+          PROMPT=$(cat <<PROMPT_EOF
 
           이 레포에서 내용 피드백 반영 작업을 수행해줘.
+
+          == 미처리 의견 (JSON) ==
+          ${COMMENTS}
 
           == 헤딩 계층 (절대 변경 금지) ==
           h1 = 페이지 제목 (TopicContent 자동 렌더, TSX에 직접 작성 금지)
@@ -81,17 +84,17 @@ jobs:
           - 다음도 변경 금지:
             · import 문, export default 함수 시그니처
             · 최상위 <div className="space-y-8"> 래퍼
+          - Bash 도구가 없으므로 셸 명령 실행 불가 — 파일 읽기/수정만 수행할 것
 
           == 절차 ==
-          - bash scripts/fetch-feedback.sh --type=content 로 미처리 내용 의견 조회
+          - 위 JSON의 content_path로 해당 TSX 파일을 찾아 읽기
           - 의견이 위 "허용되는 변경" 범위 안이면 반영
-          - 비합리적·단순 감상·금지 범위 요청이면 processed만 표시
-          - 변경 후 processed 마킹은 하지 말 것 (커밋 성공 후 별도 step에서 처리)
+          - 비합리적·단순 감상·금지 범위 요청이면 무시
           - git commit/push는 하지 말 것 (아래 step에서 처리)
           PROMPT_EOF
           )
           claude --print --dangerously-skip-permissions \
-            --allowedTools "Bash,Read,Edit,Write,Glob,Grep" \
+            --allowedTools "Read,Edit,Write,Glob,Grep" \
             -p "${CONVENTIONS}${PROMPT}"
 
       # 5.5) ④ 출력 검증단 — Claude 변경을 commit 직전 검사

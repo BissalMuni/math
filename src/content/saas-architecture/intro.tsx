@@ -15,7 +15,7 @@ export default function IntroContent() {
 
       <CalcBox title="■ §1. 시스템 전체 구조">
         <SubSection title="● §1.1 전체 계층도">
-          <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4">
+          <div className="font-mono text-sm bg-sidebar-bg border border-sidebar-border rounded-lg p-4 overflow-x-auto">
             <pre>{`┌──────────────────────────────────────────────┐
 │  ① 사용자 (강남구청 직원, 외부 API)            │  ← 사람·외부 시스템
 ├──────────────────────────────────────────────┤
@@ -49,13 +49,14 @@ export default function IntroContent() {
         </p>
 
         <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
-          <table className="w-full">
+          <div className="overflow-x-auto">
+          <table className="w-full min-w-[640px]">
             <thead className="bg-sidebar-bg">
               <tr>
-                <th className="px-3 py-2 text-left">계층</th>
+                <th className="px-3 py-2 text-left whitespace-nowrap">계층</th>
                 <th className="px-3 py-2 text-left">강남구청 담당</th>
                 <th className="px-3 py-2 text-left">NHN 담당</th>
-                <th className="px-3 py-2 text-left">운영 빈도</th>
+                <th className="px-3 py-2 text-left whitespace-nowrap">운영 빈도</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-sidebar-border">
@@ -127,6 +128,7 @@ export default function IntroContent() {
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
 
         <Insight>

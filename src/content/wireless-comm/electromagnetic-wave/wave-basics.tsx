@@ -135,11 +135,12 @@ export default function WaveBasicsContent() {
       <CalcBox title="■ 파장과 진폭">
         <SubSection title="● 파장 (λ, wavelength)">
           <p className="text-sm mb-2">
-            파동 한 주기의 길이(가로). 짧을수록 고주파입니다.
+            <strong>λ</strong>(람다, lambda)는 파장을 나타내는 그리스 문자 기호입니다.
+            파동 한 주기의 길이(가로)를 뜻하며, 짧을수록 고주파입니다.
           </p>
           <BlockMath math="\lambda = \frac{c}{f}" />
           <p className="text-sm text-muted mt-2">
-            <InlineMath math="c" /> = 빛의 속도(3×10⁸ m/s), <InlineMath math="f" /> = 주파수(Hz)
+            <InlineMath math="\lambda" /> = 파장(m), <InlineMath math="c" /> = 빛의 속도(3×10⁸ m/s), <InlineMath math="f" /> = 주파수(Hz)
           </p>
         </SubSection>
         <SubSection title="● 진폭 (Amplitude)">

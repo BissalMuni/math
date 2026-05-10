@@ -75,7 +75,7 @@ export default function ApplicationContent() {
 
         <SubSection title="● Spring Boot의 4대 특징">
           <ol className="text-sm list-decimal list-inside space-y-1">
-            <li><span className="font-medium">Auto Configuration</span> — pom.xml 의존성만 넣으면 자동 설정</li>
+            <li><span className="font-medium">Auto Configuration</span> — pom.xml 의존성만 추가하면 관련 설정을 자동 활성화. 예: <code className="text-xs">spring-boot-starter-web</code> 추가 시 내장 Tomcat·JSON 변환기(Jackson)·MVC 설정이 한꺼번에 적용됨. 개발자가 XML 설정 파일을 별도 작성할 필요 없음.</li>
             <li><span className="font-medium">Embedded Server</span> — Tomcat이 JAR에 포함되어 별도 설치 불필요</li>
             <li><span className="font-medium">Starter</span> — starter-web, starter-data-jpa 등 기능별 묶음</li>
             <li><span className="font-medium">Production-Ready</span> — 헬스체크·메트릭·로그 자동 제공</li>
@@ -83,6 +83,11 @@ export default function ApplicationContent() {
         </SubSection>
 
         <SubSection title="● 핵심 어노테이션">
+          <p className="text-sm mb-3">
+            <strong>어노테이션</strong>이란 <code className="text-xs">@</code>으로 시작하는 Java 메타데이터 태그입니다.
+            클래스·메서드·필드 앞에 붙여 &quot;이 코드가 어떤 역할을 한다&quot;고 Spring Boot에게 알립니다.
+            어노테이션 하나로 수십 줄의 XML 설정을 대체합니다.
+          </p>
           <div className="rounded-lg border border-sidebar-border overflow-hidden text-sm">
             <table className="w-full">
               <thead className="bg-sidebar-bg">
@@ -146,6 +151,9 @@ export default function ApplicationContent() {
               </tbody>
             </table>
           </div>
+          <p className="text-sm text-muted mt-3">
+            <strong>JPA @Param 바인딩과 SQL Injection 방어</strong> — 맞습니다. JPA는 <code className="text-xs">WHERE id = :userId</code>처럼 파라미터 자리를 먼저 정의하고 값을 나중에 대입합니다. 사용자 입력이 SQL 코드가 아닌 <em>데이터</em>로만 처리되어, <code className="text-xs">1 OR 1=1</code>을 입력해도 SQL로 해석되지 않습니다.
+          </p>
         </SubSection>
 
         <SubSection title="● §4.2 Tomcat 내장 서버">
@@ -168,6 +176,20 @@ export default function ApplicationContent() {
   └─ HTTP 응답 변환
    ↓
 [브라우저] (JSON 응답)`}</pre>
+          </div>
+          <div className="text-sm mt-4 space-y-2">
+            <div className="p-3 rounded-lg bg-sidebar-bg border border-sidebar-border">
+              <p className="font-medium mb-1">Servlet이란?</p>
+              <p className="text-muted">HTTP 요청을 처리하는 Java 서버 프로그램의 표준 규격입니다. Tomcat이 HTTP 연결을 받으면 해당 요청을 Servlet에게 전달하고, Spring Boot의 <code className="text-xs">@RestController</code>가 내부적으로 Servlet 규격을 구현합니다.</p>
+            </div>
+            <div className="p-3 rounded-lg bg-sidebar-bg border border-sidebar-border">
+              <p className="font-medium mb-1">Tomcat vs Spring Boot 차이</p>
+              <p className="text-muted"><strong>Tomcat</strong>은 HTTP 연결·요청 파싱을 담당하는 서버 엔진이고, <strong>Spring Boot</strong>는 그 위에서 실행되는 애플리케이션 프레임워크입니다. 비유: Tomcat = 카페 건물(손님 맞이), Spring Boot = 바리스타(음료 제조). 둘이 Java와 HTML을 서로 변환하는 것이 아니라, HTTP 텍스트를 Java 객체로 변환하는 것입니다.</p>
+            </div>
+            <div className="p-3 rounded-lg bg-sidebar-bg border border-sidebar-border">
+              <p className="font-medium mb-1">HttpServletRequest — JSON과의 관계</p>
+              <p className="text-muted">비슷한 개념입니다. 브라우저가 보내는 HTTP 요청(URL, 헤더, 바디 등의 텍스트)을 Tomcat이 <code className="text-xs">HttpServletRequest</code> Java 객체로 변환합니다. 현대 Spring Boot에서는 <code className="text-xs">@RequestBody</code>가 JSON 바디를 추가로 Java 객체로 변환해주므로, 개발자는 <code className="text-xs">HttpServletRequest</code>를 직접 다루지 않아도 됩니다.</p>
+            </div>
           </div>
         </SubSection>
 

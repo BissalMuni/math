@@ -86,7 +86,7 @@ jobs:
           - bash scripts/fetch-feedback.sh --type=content 로 미처리 내용 의견 조회
           - 의견이 위 "허용되는 변경" 범위 안이면 반영
           - 비합리적·단순 감상·금지 범위 요청이면 processed만 표시
-          - 변경 후 bash scripts/fetch-feedback.sh --type=content --mark-all-unprocessed 실행
+          - 변경 후 processed 마킹은 하지 말 것 (커밋 성공 후 별도 step에서 처리)
           - git commit/push는 하지 말 것 (아래 step에서 처리)
           PROMPT_EOF
           )
@@ -123,7 +123,15 @@ jobs:
             echo "has_changes=true" >> $GITHUB_OUTPUT
           fi
 
-      # 7) 수정 이력을 Supabase에 기록
+      # 7) 커밋 성공 후 댓글을 처리됨으로 마킹
+      - name: Mark comments as processed
+        if: steps.check.outputs.skip == 'false' && steps.commit.outputs.has_changes == 'true'
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: bash scripts/fetch-feedback.sh --type=content --mark-all-unprocessed
+
+      # 8) 수정 이력을 Supabase에 기록
       - name: Log content changes
         if: steps.check.outputs.skip == 'false' && steps.commit.outputs.has_changes == 'true'
         env:

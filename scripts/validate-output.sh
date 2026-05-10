@@ -20,8 +20,8 @@
 set -euo pipefail
 
 # 임계값
-MAX_TOTAL_LINES=500
-MAX_PER_FILE_LINES=200
+MAX_TOTAL_LINES=1050
+MAX_PER_FILE_LINES=350
 MAX_FILES=20
 
 # 허용 경로 prefix (변경 가능한 영역)

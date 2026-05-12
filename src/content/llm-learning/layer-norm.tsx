@@ -36,7 +36,9 @@ export default function LayerNormContent() {
     <div className="space-y-8">
       <p className="text-muted mb-8">
         각 레이어 출력값의 범위를 안정화해 학습을 빠르고 안정적으로 만듭니다.
-        트랜스포머에서 잔차 연결 직후에 적용됩니다: <strong>LayerNorm(x + f(x))</strong>
+        트랜스포머에서 잔차 연결 직후에 적용됩니다: <strong>LayerNorm(x + f(x))</strong>.
+        아래의 5단계 계산은 시퀀스 속 <strong>각 토큰마다 독립적으로, 한 번에</strong> 수행됩니다.
+        아래 예시 벡터 [2.0, 4.0, 1.0, 3.0]은 토큰 1개의 d = 4 차원 임베딩입니다.
       </p>
 
       {/* ── 왜 필요한가 ── */}
@@ -100,10 +102,31 @@ export default function LayerNormContent() {
 
       {/* ── STEP 3: 표준편차 ── */}
       <CalcBox title="■ 표준편차(σ) 계산">
-        <BlockMath math="\sigma = \sqrt{\sigma^2} = \sqrt{1.25} \approx 1.118" />
+        <BlockMath math="\sigma = \sqrt{\sigma^2 + \epsilon} \approx \sqrt{1.25 + 10^{-5}} \approx 1.118" />
+        <div className="text-sm space-y-2 p-3 rounded-lg bg-sidebar-bg border border-sidebar-border mb-3">
+          <p>
+            <InlineMath math="\sigma" /> (시그마): <strong>표준편차</strong>.
+            값들이 평균에서 얼마나 퍼져 있는지를 입력과 같은 단위로 표현.
+            분산 <InlineMath math="\sigma^2" />의 제곱근.
+          </p>
+          <p>
+            <InlineMath math="\sqrt{\sigma^2}" />: 분산에 제곱근을 취해 <strong>원래 단위로 복원</strong>.
+            편차를 제곱했으므로 단위도 제곱됐고, √로 되돌림.
+            예: 분산 1.25 → σ = √1.25 ≈ 1.118.
+          </p>
+          <p>
+            <InlineMath math="\epsilon" /> (엡실론, ε ≈ 1e-5 = 0.00001): <strong>수치 안정성 상수</strong>.
+            모든 원소가 동일한 값일 때 σ² = 0이 되어 다음 단계에서 0으로 나누는 오류가 발생할 수 있음.
+            ε을 더해 이를 방지.
+          </p>
+          <p>
+            <InlineMath math="\sqrt{\sigma^2 + \epsilon}" />: 실제 구현에서 쓰는 공식.
+            ε이 매우 작아 정상 범위(σ² &gt; 0)에서는 결과에 영향이 거의 없지만,
+            σ² = 0인 <strong>극단적 경우에도 ÷0 오류를 방지</strong>함.
+          </p>
+        </div>
         <p className="text-sm text-muted">
-          실제 구현에서는 수치 안정성을 위해 <InlineMath math="\sqrt{\sigma^2 + \epsilon}" /> 사용
-          (ε ≈ 1e-5)
+          이 σ 값이 다음 단계(정규화)의 분모로 사용됩니다: <InlineMath math="\hat{v}_i = (v_i - \mu) / \sigma" />.
         </p>
       </CalcBox>
 

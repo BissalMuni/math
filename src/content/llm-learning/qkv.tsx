@@ -83,6 +83,10 @@ const QKt_scaled = scale(QKt, dk);
 const Attn = softmax(QKt_scaled);
 const Output = matMul(Attn, V);
 
+// 소프트맥스 단계별 표시용 (행 0)
+const _exp0 = QKt_scaled[0].map(Math.exp);
+const _expSum0 = _exp0.reduce((a, b) => a + b, 0);
+
 /** 숫자 배열 → Matrix 형식 */
 function toMatData(m: number[][]): number[][] { return m; }
 
@@ -126,7 +130,7 @@ export default function QkvContent() {
           <Matrix data={toMatData(Wk)} label="Wk (4×4)" color="green" />
           <Matrix data={toMatData(Wv)} label="Wv (4×4)" color="orange" />
         </div>
-        <p className="text-sm mb-3">X · Wq = Q, X · Wk = K, X · Wv = V 계산 결과:</p>
+        <p className="text-sm mt-6 mb-3">X · Wq = Q, X · Wk = K, X · Wv = V 계산 결과:</p>
         <div className="flex flex-wrap gap-4 items-start">
           <Matrix data={toMatData(Q)} label="Q (3×4)" color="blue" />
           <Matrix data={toMatData(K)} label="K (3×4)" color="green" />
@@ -154,6 +158,10 @@ export default function QkvContent() {
         <p className="text-sm text-muted">
           예: Q·Kᵀ[0][1] = "나는"이 "사과를"에 주는 점수 = <strong>{QKt[0][1].toFixed(2)}</strong>
         </p>
+        <p className="text-sm mt-3">
+          이 결과 행렬을 <strong>어텐션 점수 행렬(Attention Score Matrix)</strong>이라 부릅니다.
+          스케일링·Softmax를 거치기 전의 날 것 유사도 값입니다.
+        </p>
       </CalcBox>
 
       {/* ── STEP 3: √dk 스케일링 ── */}
@@ -168,6 +176,10 @@ export default function QkvContent() {
           <Arrow op="÷ √4" />
           <Matrix data={toMatData(QKt_scaled)} label="스케일된 점수" color="purple" />
         </div>
+        <Insight>
+          스케일링이 끝나면 바로 <strong>Softmax</strong>를 적용합니다.
+          ÷√d_k → Softmax 두 단계는 항상 세트로 동작하며, 결과가 어텐션 가중치(확률 분포)가 됩니다.
+        </Insight>
       </CalcBox>
 
       {/* ── STEP 4: Softmax ── */}
@@ -186,6 +198,24 @@ export default function QkvContent() {
           <p className="mt-2">
             A[0] = [{Attn[0].map(v => v.toFixed(3)).join(", ")}] → 합 ≈ 1.0 ✓
           </p>
+        </div>
+        <p className="text-sm mt-3">
+          <strong>A</strong>는 <strong>Attention</strong>의 첫 글자입니다.
+          A<sub>ij</sub>는 토큰 i가 토큰 j에 쏟는 어텐션 가중치를 나타냅니다.
+        </p>
+        <div className="mt-6 border-t border-border pt-4 text-sm space-y-3">
+          <p className="font-medium">"나는" 토큰(행 0) — 소프트맥스 3단계 계산</p>
+          <p>입력: 스케일된 점수 = [{QKt_scaled[0].map(v => v.toFixed(3)).join(", ")}]</p>
+          <Step n={1} label="각 값에 자연지수 e^x 적용" />
+          <BlockMath math={`[e^{${QKt_scaled[0][0].toFixed(3)}},\\ e^{${QKt_scaled[0][1].toFixed(3)}},\\ e^{${QKt_scaled[0][2].toFixed(3)}}] = [${_exp0.map(v => v.toFixed(4)).join(",\\ ")}]`} />
+          <Step n={2} label="합산 (분모 계산)" />
+          <BlockMath math={`\\text{합} = ${_exp0.map(v => v.toFixed(4)).join(" + ")} = ${_expSum0.toFixed(4)}`} />
+          <Step n={3} label="각 값 ÷ 합 (정규화)" />
+          <BlockMath math={`\\left[${_exp0.map(v => `\\tfrac{${v.toFixed(4)}}{${_expSum0.toFixed(4)}}`).join(",\\ ")}\\right] = [${Attn[0].map(v => v.toFixed(4)).join(",\\ ")}]`} />
+          <Insight>
+            지수 함수는 큰 값을 더 크게 증폭시키고 작은 값을 0에 가깝게 만듭니다.
+            스케일링(÷√d_k) 없이 점수가 너무 크면 한 방향으로 확률이 쏠려 학습이 불안정해집니다.
+          </Insight>
         </div>
       </CalcBox>
 
@@ -219,6 +249,28 @@ export default function QkvContent() {
           <div>④ softmax → 확률 분포 (행합=1)</div>
           <div>⑤ × V → 최종 출력 (문장 정보가 압축된 벡터)</div>
         </div>
+        <p className="mt-4 text-sm leading-relaxed">
+          Q·Kᵀ로 모든 토큰 쌍의 유사도를 계산하고, √d_k로 나눠 값의 크기를 안정시킨 뒤,
+          Softmax를 적용해 <strong>어텐션 가중치</strong>(각 행의 합 = 1인 확률 분포)를 얻습니다.
+          이 가중치로 V 벡터들을 가중합산하면 "어떤 토큰에 얼마나 주목했는지"가 반영된
+          출력 벡터가 완성되어 <strong>다음 레이어</strong>(피드포워드 또는 Multi-Head Attention)로 전달됩니다.
+        </p>
+      </CalcBox>
+
+      {/* ── 다음 단계 ── */}
+      <CalcBox title="■ 다음으로 — 멀티헤드 어텐션">
+        <p className="text-sm mb-3">
+          Single-Head Attention은 하나의 관점(Wq/Wk/Wv 한 세트)으로만 문장을 바라봅니다.
+        </p>
+        <p className="text-sm mb-3">
+          <strong>Multi-Head Attention</strong>은 이 Q·K·V 어텐션을 <em>h</em>개 헤드로 병렬 실행해
+          여러 관점(구문·의미·위치 등)의 정보를 동시에 포착합니다.
+          각 헤드의 출력을 이어붙여(concatenate) 선형 변환하면 최종 Multi-Head 출력이 됩니다.
+        </p>
+        <Insight>
+          Q·K·V 어텐션 한 번 = Single Head. h번 병렬 = Multi-Head.
+          다음 단원에서 Multi-Head Attention을 다룹니다.
+        </Insight>
       </CalcBox>
     </div>
   );

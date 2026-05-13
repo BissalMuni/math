@@ -146,6 +146,61 @@ export default function FeedForwardContent() {
         </div>
       </CalcBox>
 
+      {/* ── ReLU 직관: 비트처럼 on/off ── */}
+      <CalcBox title="■ ReLU의 직관 — 뉴런 on/off는 비트와 같다">
+        <p className="text-sm mb-4">
+          ReLU의 출력은 <strong>0 또는 양수</strong>. 0이면 그 뉴런은 꺼진(off) 상태,
+          양수면 켜진(on) 상태입니다. 비트의 0/1과 본질이 같습니다.
+        </p>
+        <div className="grid grid-cols-2 gap-3 text-sm">
+          <div className="p-3 rounded-lg border border-blue-200 bg-blue-50 dark:border-blue-800 dark:bg-blue-950">
+            <div className="font-bold text-blue-700 dark:text-blue-300 mb-1">비트 조합 → 모든 숫자 표현</div>
+            <div className="text-muted text-xs">
+              8비트 = 2⁸ = 256가지 패턴
+            </div>
+          </div>
+          <div className="p-3 rounded-lg border border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950">
+            <div className="font-bold text-green-700 dark:text-green-300 mb-1">뉴런 on/off 조합 → 모든 패턴 표현</div>
+            <div className="text-muted text-xs">
+              뉴런 n개 = 2ⁿ가지 활성화 조합
+            </div>
+          </div>
+        </div>
+        <div className="mt-4 text-sm p-3 rounded-lg bg-sidebar-bg border border-sidebar-border">
+          <div className="font-bold mb-2">왜 음수를 끄는가?</div>
+          <ul className="text-muted space-y-1 list-disc pl-5">
+            <li>관련없는 신호는 무시 (off) → 노이즈 차단</li>
+            <li>관련있는 신호만 통과 (on) → 깔끔한 패턴 구분</li>
+            <li>입력마다 켜지는 뉴런 조합이 달라짐 → <strong>조건부 경로</strong></li>
+          </ul>
+          <p className="mt-2">
+            예: "고양이" 토큰이 들어오면 털·발톱·울음소리 관련 뉴런만 켜지고,
+            자동차·날씨 관련 뉴런은 꺼집니다.
+          </p>
+        </div>
+      </CalcBox>
+
+      {/* ── ReLU 없으면 ── */}
+      <CalcBox title="■ ReLU 없으면 어떻게 되나? — 비선형성의 필요성">
+        <p className="text-sm mb-3">
+          W1과 W2 사이에 ReLU가 없다면, 두 선형변환은 하나로 합쳐집니다:
+        </p>
+        <BlockMath math="x W_1 W_2 = x (W_1 W_2) = x W_3" />
+        <div className="text-sm p-3 rounded-lg bg-sidebar-bg border border-sidebar-border my-3">
+          <div>두 행렬을 쌓아도 결국 하나의 행렬과 같음</div>
+          <div className="text-muted">→ 레이어를 깊게 쌓는 의미가 사라짐</div>
+          <div className="text-muted">→ 직선만 표현 가능, 꺾인 선 불가능</div>
+        </div>
+        <p className="text-sm">
+          <strong>ReLU의 역할은 비선형성 추가</strong> — 입력이 2배라고 출력도 정확히 2배가 아니게 만들어
+          (음수 구간은 0이라 대칭이 깨짐) 조건 분기가 가능한 함수가 됩니다.
+        </p>
+        <div className="mt-3 text-sm font-mono p-3 rounded-lg bg-sidebar-bg border border-sidebar-border">
+          <div>선형:  y = 2x  →  /  (직선)</div>
+          <div>ReLU:  y = max(0,x)  →  _/  (꺾인 선)</div>
+        </div>
+      </CalcBox>
+
       {/* ── STEP 3: W2 계산 ── */}
       <CalcBox title="■ W2·ReLU(h) + b2 — 차원 복원 (16 → 4)">
         <BlockMath math="\text{FFN}(x) = W_2 \cdot \text{ReLU}(W_1 x + b_1) + b_2" />

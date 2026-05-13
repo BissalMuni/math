@@ -153,8 +153,40 @@ export default function MultiHeadContent() {
           <div className="text-green-700 dark:text-green-300 font-bold mt-1">→ 총 파라미터 수 동일! 단지 관점이 8개로 분리됨</div>
         </div>
         <p className="text-sm text-muted mt-3">
-          이 아이디어는 대화 중 학습자가 독립적으로 도출했습니다: "Wq 크기가 512×64이어야 한다" ✓
+          행은 무조건 d_model (입력 차원과 같아야 행렬곱 성립).
+          열은 자유롭게 설계 — 이것이 d_k.
         </p>
+      </CalcBox>
+
+      {/* ── 계산량 같은데 결과가 왜 다른가 ── */}
+      <CalcBox title="■ 계산량은 같은데 왜 결과가 다른가?">
+        <p className="text-sm mb-4">
+          "512차원 한방 vs 64차원 × 8개" — 둘 다 비슷한 계산량인데 결과가 다른 이유는
+          <strong>각 헤드의 W가 완전히 독립된 행렬</strong>이기 때문입니다.
+        </p>
+        <div className="grid grid-cols-2 gap-3 text-sm">
+          <div className="p-3 rounded-lg border border-red-200 bg-red-50 dark:border-red-800 dark:bg-red-950">
+            <div className="font-bold text-red-700 dark:text-red-300 mb-1">단일 헤드 (512차원 한방)</div>
+            <ul className="text-muted text-xs mt-1 space-y-1 list-disc pl-4">
+              <li>Wq, Wk, Wv 한 세트만 존재</li>
+              <li>어텐션 패턴이 단 1개</li>
+              <li>한 가지 관점으로만 문장 해석</li>
+            </ul>
+          </div>
+          <div className="p-3 rounded-lg border border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950">
+            <div className="font-bold text-green-700 dark:text-green-300 mb-1">멀티헤드 (64 × 8)</div>
+            <ul className="text-muted text-xs mt-1 space-y-1 list-disc pl-4">
+              <li>Wq1, Wq2, ..., Wq8 — <strong>각각 다른 랜덤 초기값</strong></li>
+              <li>어텐션 패턴이 8개</li>
+              <li>학습하며 헤드마다 역할 분화</li>
+            </ul>
+          </div>
+        </div>
+        <Insight>
+          <strong>핵심:</strong> 같은 문장을 1가지 시각으로 보는 것 vs 8가지 시각으로 동시에 보는 것의 차이.
+          탐정 1명이 모든 단서를 혼자 분석하는 것보다, 문법·감정·주제·지시어 전문 탐정 8명이
+          각자 분석한 뒤 회의실에서 종합하는 것이 더 정확합니다.
+        </Insight>
       </CalcBox>
 
       {/* ── STEP 2: 예제 (d_model=8, 2헤드) ── */}

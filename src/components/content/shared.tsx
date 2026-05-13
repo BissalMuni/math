@@ -32,11 +32,11 @@ export function Matrix({
   color?: "default" | "blue" | "green" | "orange" | "purple";
 }) {
   const colors = {
-    default: "border-sidebar-border bg-sidebar-bg",
-    blue:    "border-blue-300 bg-blue-50 dark:border-blue-700 dark:bg-blue-950",
-    green:   "border-green-300 bg-green-50 dark:border-green-700 dark:bg-green-950",
-    orange:  "border-orange-300 bg-orange-50 dark:border-orange-700 dark:bg-orange-950",
-    purple:  "border-purple-300 bg-purple-50 dark:border-purple-700 dark:bg-purple-950",
+    default: "border-sidebar-border bg-sidebar-bg text-foreground",
+    blue:    "border-blue-300 bg-blue-50 text-blue-900 dark:border-blue-700 dark:bg-blue-950 dark:text-blue-100",
+    green:   "border-green-300 bg-green-50 text-green-900 dark:border-green-700 dark:bg-green-950 dark:text-green-100",
+    orange:  "border-orange-300 bg-orange-50 text-orange-900 dark:border-orange-700 dark:bg-orange-950 dark:text-orange-100",
+    purple:  "border-purple-300 bg-purple-50 text-purple-900 dark:border-purple-700 dark:bg-purple-950 dark:text-purple-100",
   };
 
   return (

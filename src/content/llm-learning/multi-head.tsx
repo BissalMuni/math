@@ -161,7 +161,7 @@ export default function MultiHeadContent() {
       {/* ── 계산량 같은데 결과가 왜 다른가 ── */}
       <CalcBox title="■ 계산량은 같은데 왜 결과가 다른가?">
         <p className="text-sm mb-4">
-          "512차원 한방 vs 64차원 × 8개" — 둘 다 비슷한 계산량인데 결과가 다른 이유는
+          "512차원 한방 vs 64차원 × 8개" — 둘 다 비슷한 계산량인데 결과가 다른 이유는{" "}
           <strong>각 헤드의 W가 완전히 독립된 행렬</strong>이기 때문입니다.
         </p>
         <div className="grid grid-cols-2 gap-3 text-sm">

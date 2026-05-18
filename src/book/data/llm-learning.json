@@ -72,6 +72,11 @@
           "id": "ll-ch6",
           "slug": "multi-head",
           "title": "Ⅲ. Multi-Head Attention"
+        },
+        {
+          "id": "ll-ch6b",
+          "slug": "multi-head-viz",
+          "title": "Ⅳ. 멀티헤드 한눈에 보기"
         }
       ]
     },

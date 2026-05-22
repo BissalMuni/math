@@ -57,7 +57,7 @@ related_sessions:
 ## 🎯 목표
 
 1. SectionComment 의 "내용 편집" / "구조 편집" 두 종류 의견을 **로그인 권한별로 완전히 분리**
-2. 같은 Supabase 프로젝트를 다른 앱(`gangubuy-tax-new`)과 공유하면서 발생할 수 있는 **테이블 충돌 차단**
+2. 같은 Supabase 프로젝트를 다른 앱(`g-taxwiki`)과 공유하면서 발생할 수 있는 **테이블 충돌 차단**
 3. 비로그인 상태에서 누구나 의견을 등록/삭제할 수 있던 보안 구멍 닫기
 
 ## 📖 배경
@@ -88,7 +88,7 @@ JWT 쿠키 세션, login/logout/me API, `requirePermission` 가드까지 이미 
 
 ### 2. Supabase 공유 문제 발견
 
-사용자가 "이 프로젝트가 연결된 supabase db 가 다른 프로젝트와 테이블을 공유한다 그러면 안 됨"이라고 알림. 이어서 **gangubuy-tax-new** 라는 같은 개념의 프로젝트가 동일 Supabase 인스턴스를 사용 중이라고 추가 정보 제공.
+사용자가 "이 프로젝트가 연결된 supabase db 가 다른 프로젝트와 테이블을 공유한다 그러면 안 됨"이라고 알림. 이어서 **g-taxwiki** 라는 같은 개념의 프로젝트가 동일 Supabase 인스턴스를 사용 중이라고 추가 정보 제공.
 
 `grep -r ".from(" src/lib/supabase/` 로 전체 식별자 점검:
 
@@ -115,7 +115,7 @@ JWT 쿠키 세션, login/logout/me API, `requirePermission` 가드까지 이미 
 
 ### 4. 첫 마이그레이션 시도 → 위험성 인지하고 재작성
 
-처음 작성한 [005 파일](../../supabase/migrations/005_namespace_to_math_schema.sql) 은 `ALTER TABLE public.comments SET SCHEMA math` 였음. 그러나 사용자가 "**gangubuy-tax-new 프로젝트가 사용하고 있음**" 이라고 알리는 시점에 멈춤 — `SET SCHEMA` 는 **이동**이지 복제가 아니므로 그대로 적용하면 그쪽 앱이 즉시 깨짐.
+처음 작성한 [005 파일](../../supabase/migrations/005_namespace_to_math_schema.sql) 은 `ALTER TABLE public.comments SET SCHEMA math` 였음. 그러나 사용자가 "**g-taxwiki 프로젝트가 사용하고 있음**" 이라고 알리는 시점에 멈춤 — `SET SCHEMA` 는 **이동**이지 복제가 아니므로 그대로 적용하면 그쪽 앱이 즉시 깨짐.
 
 사용자에게 데이터 이관 여부 확인 → "**math 프로젝트 row 는 굳이 가지고 올 필요 없다, 새로 시작한지 얼마 안 됐다**" 답변.
 
@@ -134,7 +134,7 @@ VALUES ('math-topic-images', 'math-topic-images', true)
 ON CONFLICT (id) DO NOTHING;
 ```
 
-기존 4개 마이그레이션(001~004)은 손대지 않음 — 이미 적용된 public 테이블은 gangubuy-tax-new 가 이어서 사용.
+기존 4개 마이그레이션(001~004)은 손대지 않음 — 이미 적용된 public 테이블은 g-taxwiki 가 이어서 사용.
 
 ### 5. 코드 측 스키마 연결
 
@@ -284,7 +284,7 @@ return (
 ### 문제 2: 첫 마이그레이션이 다른 프로젝트를 깨뜨릴 뻔함
 
 - **증상**: 처음 작성한 005 가 `ALTER TABLE public.comments SET SCHEMA math` — 이동 명령
-- **원인**: 같은 Supabase 인스턴스를 gangubuy-tax-new 가 사용 중이라는 사실을 늦게 알게 됨. 이동시키면 그쪽 `/rest/v1/comments` 가 즉시 404.
+- **원인**: 같은 Supabase 인스턴스를 g-taxwiki 가 사용 중이라는 사실을 늦게 알게 됨. 이동시키면 그쪽 `/rest/v1/comments` 가 즉시 404.
 - **해결**: 사용자 알림 시점에 멈추고 의도 확인. 데이터 이관 불필요 응답을 받고 "빈 테이블 신설" 방식으로 재작성.
 - **교훈**: 멀티-테넌트 환경에서는 `SET SCHEMA`/`RENAME`/`DROP` 같은 파괴 작업 전에 **누가 그 객체를 쓰는지** 먼저 확인. 새로 시작하는 프로젝트는 처음부터 전용 스키마로.
 
@@ -354,7 +354,7 @@ return (
 - [ ] **단계 C — AI 처리 분리**: [.github/workflows/review-feedback.yml](../../.github/workflows/review-feedback.yml) 의 step 을 `--type=content` / `--type=structure` 두 step 으로 나누고 각각 다른 시스템 프롬프트
   - 내용 편집 step: "src/content/ 의 텍스트·수식만 수정. 파일 추가·이동·삭제 금지"
   - 구조 편집 step: "src/content/ 파일 추가·이동 허용. 목차 재배치 가능"
-- [ ] (선택) gangubuy-tax-new 도 `tax` 같은 전용 스키마로 격리 — 현재는 public 에 그대로 남아있음
+- [ ] (선택) g-taxwiki 도 `tax` 같은 전용 스키마로 격리 — 현재는 public 에 그대로 남아있음
 - [ ] (선택) RLS 정책 도입 — 지금은 service_role 만 사용해서 RLS 무관하지만, 추후 anon/authenticated 키 쓰게 되면 필요
 - [ ] (선택) topic_images 버킷의 public 여부 재검토 — 현재 public, 의견 첨부에 민감 데이터 들어갈 수 있음
 

@@ -1,5 +1,5 @@
 -- ============================================================
--- 같은 Supabase 프로젝트를 다른 앱(gangubuy-tax-new)과 공유하므로
+-- 같은 Supabase 프로젝트를 다른 앱(g-taxwiki)과 공유하므로
 -- 본 프로젝트(math) 전용 스키마를 새로 만들고 빈 테이블로 시작한다.
 --
 -- 주의:
@@ -99,7 +99,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA math GRANT ALL ON FUNCTIONS TO service_role;
 
 -- ============================================================
 -- math 전용 Storage 버킷
--- (기존 'topic-images' 는 gangubuy-tax-new 가 사용 중이므로 건드리지 않음)
+-- (기존 'topic-images' 는 g-taxwiki 가 사용 중이므로 건드리지 않음)
 -- ============================================================
 INSERT INTO storage.buckets (id, name, public)
 VALUES ('math-topic-images', 'math-topic-images', true)

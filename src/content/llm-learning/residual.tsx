@@ -1,7 +1,7 @@
 "use client";
 
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
-import { Matrix, Arrow, CalcBox, Insight } from "@/components/content/shared";
+import { Matrix, Arrow, CalcBox, SubSection, Insight } from "@/components/content/shared";
 
 /**
  * 잔차 연결 (Residual Connection) 예제:
@@ -159,6 +159,35 @@ export default function ResidualContent() {
           각 트랜스포머 블록에서 2번의 잔차 연결이 사용됩니다.
           GPT-3(96레이어)처럼 매우 깊은 네트워크를 학습 가능하게 만드는 핵심입니다.
         </p>
+
+        <SubSection title="● Post-LN vs Pre-LN">
+          <p className="text-sm mb-3">
+            원래 논문("Attention Is All You Need")은 잔차 연결 <em>뒤</em>에 LayerNorm을 적용하는{" "}
+            <strong>Post-LN</strong> 방식입니다. GPT-2부터는 LayerNorm을 서브레이어 <em>앞</em>에
+            적용하는 <strong>Pre-LN</strong>으로 전환했으며, 학습 안정성이 크게 향상되었습니다.
+          </p>
+          <div className="text-sm space-y-3">
+            <div className="p-3 rounded-lg border border-orange-200 bg-orange-50 dark:border-orange-800 dark:bg-orange-950">
+              <div className="font-bold text-orange-700 dark:text-orange-300 mb-1">
+                Post-LN (원래 논문)
+              </div>
+              <BlockMath math="\text{LayerNorm}(x + f(x))" />
+              <div className="text-xs text-muted">x → f(x) → 잔차 합산 → LayerNorm</div>
+            </div>
+            <div className="p-3 rounded-lg border border-teal-200 bg-teal-50 dark:border-teal-800 dark:bg-teal-950">
+              <div className="font-bold text-teal-700 dark:text-teal-300 mb-1">
+                Pre-LN (GPT-2 이후 주류)
+              </div>
+              <BlockMath math="x + f(\text{LayerNorm}(x))" />
+              <div className="text-xs text-muted">x → LayerNorm → f(…) → 잔차 합산</div>
+            </div>
+          </div>
+          <p className="text-sm text-muted mt-3">
+            Pre-LN은 잔차 경로(x 자체)가 LayerNorm을 거치지 않으므로, 역전파 시 그래디언트가
+            더 안정적으로 전파됩니다. 현재 GPT 계열·LLaMA·Mistral 등 대부분의 현대 LLM이
+            Pre-LN을 채택합니다.
+          </p>
+        </SubSection>
       </CalcBox>
 
       <Insight>

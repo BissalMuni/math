@@ -45,8 +45,7 @@ export default function TokenizationContent() {
           <div className="rounded-lg border border-sidebar-border p-3">
             <div className="font-semibold mb-1">① 글자 단위</div>
             <div className="font-mono text-muted">"사과" → ["사","과"]</div>
-            <div className="mt-2 text-muted">단순하지만 어휘 사전이 작아짐.
-            의미 파악 어려움.</div>
+            <div className="mt-2 text-muted">어휘 사전은 글자 종류만큼 작음(한국어 약 1만 자). 단, 같은 문장도 더 많은 토큰이 필요해 시퀀스가 길어지고 개별 글자는 의미를 담기 어려움.</div>
           </div>
           <div className="rounded-lg border border-sidebar-border p-3">
             <div className="font-semibold mb-1">② 단어 단위</div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { CalcBox, SubSection, Matrix, Insight } from "@/components/content/shared";
 import { BlockMath, InlineMath } from "@/components/math/math-formula";
 import { InteractiveMatmul, transposeMat } from "@/components/math/interactive-matmul";
@@ -87,7 +88,20 @@ const Wo: number[][] = [
   [ 0.20, -0.20,  0.40,  0.10,  0.30, -0.40,  0.20,  0.10],
 ];
 
+// ── Score1 (Q1·K1ᵀ ÷ √dk=2) ──────────────────────────────────
+const Score1: number[][] = [
+  [ 1.66,  1.37, -0.02],
+  [ 0.62,  1.33,  2.08],
+  [-0.45,  1.20,  1.54],
+];
+const Score1Exps: number[][] = Score1.map(row => row.map(v => Math.exp(v)));
+const Score1Sums: number[] = Score1Exps.map(row => row.reduce((a, b) => a + b, 0));
+
 export default function MultiHeadViz() {
+  const [softmaxStep, setSoftmaxStep] = useState<0 | 1 | 2>(0);
+  const [activeRow, setActiveRow] = useState<number | null>(null);
+  const stepMatrix = softmaxStep === 0 ? Score1 : softmaxStep === 1 ? Score1Exps : Attn1;
+
   return (
     <div className="space-y-8">
       <p className="text-muted">
@@ -163,13 +177,136 @@ export default function MultiHeadViz() {
         </Insight>
       </CalcBox>
 
-      {/* ───────────── ⑤ Softmax (간략) ───────────── */}
+      {/* ───────────── ⑤ Softmax (인터랙티브) ───────────── */}
       <CalcBox title="■ ⑤ Softmax — 어텐션 가중치 Attn1">
         <p className="mb-3">
           Score의 각 행을 확률 분포로 변환. 행 합 = 1.
         </p>
         <BlockMath math="\text{Attn}_1[i,j] = \frac{e^{\text{Score}_1[i,j]}}{\sum_k e^{\text{Score}_1[i,k]}}" />
-        <Matrix data={Attn1} label="Attn1 (3×3) — 행합 1.0" color="green" />
+
+        {/* 단계 탭 */}
+        <div className="flex gap-1 bg-sidebar-bg rounded-lg p-1 mt-4 mb-4">
+          {["① 원시 점수", "② e^x 적용", "③ 정규화 (÷합)"].map((label, i) => (
+            <button
+              key={i}
+              onClick={() => { setSoftmaxStep(i as 0 | 1 | 2); setActiveRow(null); }}
+              className={`flex-1 py-1.5 rounded-md text-xs transition-colors ${
+                softmaxStep === i
+                  ? "bg-white dark:bg-gray-800 font-semibold shadow-sm"
+                  : "text-muted hover:text-foreground"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+
+        {/* 변환 단계별 행렬 (행 클릭 → 상세) */}
+        <div className="font-mono text-sm space-y-1 mb-2">
+          <div className="flex items-center gap-2 px-3 text-xs text-muted mb-1">
+            <span className="w-12" />
+            {["키0", "키1", "키2"].map((h, j) => (
+              <span key={j} className="min-w-[4.5rem] text-center">{h}</span>
+            ))}
+          </div>
+          {[0, 1, 2].map(ri => {
+            const row = stepMatrix[ri];
+            const isActive = activeRow === ri;
+            return (
+              <div
+                key={ri}
+                onClick={() => setActiveRow(isActive ? null : ri)}
+                style={{ cursor: "pointer" }}
+                className={`flex items-center gap-2 rounded-lg px-3 py-2 transition-colors ${
+                  isActive
+                    ? "ring-1 ring-accent bg-accent-light"
+                    : "hover:bg-sidebar-bg"
+                }`}
+              >
+                <span className="text-xs text-muted w-12">쿼리{ri}</span>
+                {row.map((v, ci) => {
+                  let cls = "inline-block min-w-[4.5rem] text-center rounded px-1 py-0.5";
+                  if (softmaxStep === 0) {
+                    cls += v >= 0
+                      ? " bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300"
+                      : " bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300";
+                  } else if (softmaxStep === 1) {
+                    cls += v > 4
+                      ? " bg-blue-200 dark:bg-blue-800/60 text-blue-800 dark:text-blue-200"
+                      : v > 1.5
+                      ? " bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300"
+                      : " text-muted";
+                  } else {
+                    cls += v > 0.4
+                      ? " bg-purple-200 dark:bg-purple-800/60 text-purple-800 dark:text-purple-100 font-bold"
+                      : v > 0.2
+                      ? " bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300"
+                      : " text-muted";
+                  }
+                  return (
+                    <span key={ci} className={cls}>
+                      {softmaxStep === 1 ? v.toFixed(2) : v.toFixed(3)}
+                    </span>
+                  );
+                })}
+                {softmaxStep === 1 && (
+                  <span className="ml-auto text-xs text-muted">합={Score1Sums[ri].toFixed(2)}</span>
+                )}
+                {softmaxStep === 2 && (
+                  <span className="ml-auto text-xs text-muted">합={row.reduce((a, b) => a + b, 0).toFixed(3)}</span>
+                )}
+                <span className="text-xs text-muted ml-1">{isActive ? "▴" : "▾"}</span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* 선택된 행 상세 계산 */}
+        {activeRow !== null && (
+          <div className="p-4 rounded-lg border border-accent bg-accent-light text-sm">
+            <div className="font-semibold text-accent text-xs mb-3">쿼리{activeRow} — 3단계 변환 상세</div>
+            <div className="grid grid-cols-3 gap-3 font-mono text-center">
+              <div className="space-y-1">
+                <div className="text-xs text-muted font-sans mb-2">① 원시 점수</div>
+                {Score1[activeRow].map((v, j) => (
+                  <div key={j} className={`rounded px-2 py-0.5 ${
+                    v >= 0
+                      ? "bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300"
+                      : "bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300"
+                  }`}>
+                    {v >= 0 ? "+" : ""}{v.toFixed(2)}
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-1">
+                <div className="text-xs text-muted font-sans mb-2">② e^x</div>
+                {Score1Exps[activeRow].map((v, j) => (
+                  <div key={j} className="bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-200 rounded px-2 py-0.5">
+                    {v.toFixed(3)}
+                  </div>
+                ))}
+                <div className="text-xs text-muted border-t border-sidebar-border pt-1 mt-1">
+                  합={Score1Sums[activeRow].toFixed(3)}
+                </div>
+              </div>
+              <div className="space-y-1">
+                <div className="text-xs text-muted font-sans mb-2">③ ÷{Score1Sums[activeRow].toFixed(2)}</div>
+                {Attn1[activeRow].map((v, j) => (
+                  <div key={j} className="bg-purple-100 dark:bg-purple-900/50 text-purple-800 dark:text-purple-200 rounded px-2 py-0.5 font-bold">
+                    {v.toFixed(3)}
+                  </div>
+                ))}
+                <div className="text-xs text-muted border-t border-sidebar-border pt-1 mt-1">
+                  합={Attn1[activeRow].reduce((a, b) => a + b, 0).toFixed(3)} ✓
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <Insight>
+          행을 클릭하면 원시 점수 → e^x → 정규화 전 과정을 확인할 수 있습니다.
+        </Insight>
       </CalcBox>
 
       {/* ───────────── ⑥ Attn × V = head (인터랙티브) ───────────── */}

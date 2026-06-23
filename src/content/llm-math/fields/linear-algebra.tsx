@@ -6,6 +6,11 @@ import { CalcBox } from "@/components/content/shared";
 export default function LinearAlgebra() {
   return (
     <div className="space-y-8">
+      <CalcBox title="■ 선형대수란?">
+        <p>선형대수학(Linear Algebra)은 벡터 공간, 벡터, 선형 변환, 행렬 등을 연구하는 수학의 한 분야입니다.</p>
+        <p className="mt-2">쉽게 말해, 숫자들의 배열(벡터·행렬)을 더하거나 늘리거나 변환하는 규칙을 다루는 수학입니다. AI·LLM에서는 데이터와 가중치를 모두 행렬과 벡터로 표현하므로, 선형대수가 모든 연산의 토대가 됩니다.</p>
+      </CalcBox>
+
       <CalcBox title="■ 벡터 (Vector)">
         <p>단어를 고차원 벡터로 표현합니다 (Word Embedding). GPT-3는 12,288차원 벡터를 사용합니다.</p>
         <p className="mt-2 text-sm text-muted">교육과정: 고등학교 기하</p>

@@ -1,4 +1,7 @@
-import { CalcBox, SubSection, Step, Insight } from "@/components/content/shared";
+"use client";
+
+import { useState } from "react";
+import { CalcBox, SubSection, Insight } from "@/components/content/shared";
 import { InlineMath } from "@/components/math/math-formula";
 
 const TSV_PARAMS = [
@@ -8,6 +11,243 @@ const TSV_PARAMS = [
   { label: "피치(간격)", value: "약 40~50 µm", note: "촘촘히 배열" },
   { label: "한 스택의 TSV 수", value: "수천~수만 개", note: "넓은 버스폭의 원천" },
 ];
+
+const MFG_STEPS = [
+  {
+    label: "초기 상태 — 실리콘 웨이퍼",
+    color: "#94a3b8",
+    desc: "두께 약 700 µm의 실리콘 웨이퍼. 회로가 형성된 앞면(front-side)을 위로, 뒷면(back-side)을 아래로 놓습니다. TSV 가공 전 상태입니다.",
+  },
+  {
+    label: "① 식각 (DRIE)",
+    color: "#6366f1",
+    desc: "DRIE(Deep Reactive Ion Etching)로 직경 5~10 µm, 깊이 50 µm의 좁고 깊은 구멍을 뚫습니다. 종횡비(깊이/직경) ≈ 10 : 1 — 매우 깊고 가는 구멍입니다.",
+  },
+  {
+    label: "② 절연·배리어 막",
+    color: "#8b5cf6",
+    desc: "구멍 벽·바닥에 ① SiO₂(산화막, 절연) → ② Ta/TaN(배리어, 구리 확산 차단) → ③ Cu 시드층(도금 시작점)을 순서대로 증착합니다.",
+  },
+  {
+    label: "③ 구리 전해도금",
+    color: "#f97316",
+    desc: "전해도금(Electroplating)으로 구멍을 구리로 완전히 채웁니다. Void(빈 공간)가 없어야 신호 연속성이 확보됩니다 — 이것이 수율의 핵심입니다.",
+  },
+  {
+    label: "④ CMP 평탄화",
+    color: "#22c55e",
+    desc: "화학적·기계적 연마(CMP)로 앞면의 잉여 구리를 제거해 평탄한 표면을 만듭니다. 이후 다층 배선 공정과의 연결이 가능해집니다.",
+  },
+  {
+    label: "⑤ 웨이퍼 박막화·후면 노출",
+    color: "#3b82f6",
+    desc: "뒷면을 ~50 µm까지 백그라인딩(Back-grinding)해 TSV 구리 끝을 드러냅니다(Reveal). 위·아래 다이가 TSV로 전기적으로 연결될 준비가 됩니다.",
+  },
+];
+
+/** TSV 제조 단계별 단면도 SVG */
+function TsvCrossSvg({ stepIdx }: { stepIdx: number }) {
+  const W = 380, H = 210;
+  const dieX = 100, dieW = 180;
+  const holeW = 22;
+  const holeCX = dieX + dieW / 2;
+  const holeX = holeCX - holeW / 2;
+
+  const topY = 18;
+  const holeDepth = 90;
+  const bottomY_full = 178;
+  const bottomY_thin = topY + holeDepth; // = 108
+  const bottomY = stepIdx >= 5 ? bottomY_thin : bottomY_full;
+
+  const holeTopY = topY;
+  const holeBottomY = holeTopY + holeDepth;
+  const barrierT = 3;
+
+  const showHole = stepIdx >= 1;
+  const showBarrier = stepIdx >= 2;
+  const showCopper = stepIdx >= 3;
+  const copperOverfill = stepIdx === 3 ? 6 : 0;
+  const showReveal = stepIdx >= 5;
+
+  const innerX = holeX + (showBarrier ? barrierT : 0);
+  const innerW = holeW - (showBarrier ? 2 * barrierT : 0);
+  const innerH = holeDepth - (showBarrier ? barrierT : 0);
+
+  const step = MFG_STEPS[stepIdx];
+
+  return (
+    <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ fontFamily: "sans-serif" }}>
+      {/* Die label */}
+      <text x={W / 2} y={12} textAnchor="middle" fontSize={10} fill="#94a3b8" fontWeight={600}>
+        TSV 단면도
+      </text>
+
+      {/* Silicon — left block */}
+      <rect
+        x={dieX} y={topY}
+        width={showHole ? holeX - dieX : dieW}
+        height={bottomY - topY}
+        fill="#334155" stroke="#475569" strokeWidth={1} rx={2}
+      />
+
+      {/* Silicon — right block */}
+      {showHole && (
+        <rect
+          x={holeX + holeW} y={topY}
+          width={dieX + dieW - holeX - holeW}
+          height={bottomY - topY}
+          fill="#334155" stroke="#475569" strokeWidth={1} rx={2}
+        />
+      )}
+
+      {/* Silicon — below hole (steps 1-4) */}
+      {showHole && stepIdx < 5 && (
+        <rect
+          x={holeX} y={holeBottomY}
+          width={holeW} height={bottomY_full - holeBottomY}
+          fill="#334155" stroke="#475569" strokeWidth={1}
+        />
+      )}
+
+      {/* Hole (empty space) */}
+      {showHole && (
+        <rect x={holeX} y={holeTopY} width={holeW} height={holeDepth}
+          fill="#0f172a" />
+      )}
+
+      {/* Barrier layer */}
+      {showBarrier && (
+        <>
+          <rect x={holeX} y={holeTopY} width={barrierT} height={holeDepth} fill="#8b5cf6" opacity={0.9} />
+          <rect x={holeX + holeW - barrierT} y={holeTopY} width={barrierT} height={holeDepth} fill="#8b5cf6" opacity={0.9} />
+          <rect x={holeX} y={holeBottomY - barrierT} width={holeW} height={barrierT} fill="#8b5cf6" opacity={0.9} />
+        </>
+      )}
+
+      {/* Copper fill */}
+      {showCopper && (
+        <>
+          {copperOverfill > 0 && (
+            <rect x={holeX - 4} y={holeTopY - copperOverfill} width={holeW + 8} height={copperOverfill}
+              fill="#f97316" opacity={0.55} />
+          )}
+          <rect x={innerX} y={holeTopY} width={innerW} height={innerH}
+            fill="#f97316" opacity={0.85} />
+          {showCopper && (
+            <text x={holeCX} y={holeTopY + innerH / 2 + 4} textAnchor="middle"
+              fontSize={9} fill="#fff7ed" fontWeight={700}>Cu</text>
+          )}
+        </>
+      )}
+
+      {/* Revealed copper tip (step 5) */}
+      {showReveal && showCopper && (
+        <>
+          <rect x={innerX} y={bottomY - 1} width={innerW} height={7}
+            fill="#fbbf24" opacity={0.95} />
+          <text x={holeCX} y={bottomY + 16} textAnchor="middle" fontSize={8} fill="#fbbf24">
+            TSV 끝 노출
+          </text>
+        </>
+      )}
+
+      {/* Front / back side labels */}
+      <text x={dieX - 6} y={topY + 4} textAnchor="end" fontSize={9} fill="#94a3b8">앞면</text>
+      <text x={dieX - 6} y={bottomY + 4} textAnchor="end" fontSize={9} fill="#94a3b8">뒷면</text>
+
+      {/* Si label */}
+      <text x={dieX + dieW + 8} y={topY + (bottomY - topY) * 0.7 + 4}
+        fontSize={9} fill="#64748b">Si</text>
+
+      {/* Dimension — width */}
+      {showHole && (
+        <>
+          <line x1={holeX} y1={H - 18} x2={holeX + holeW} y2={H - 18} stroke="#475569" strokeWidth={1} />
+          <line x1={holeX} y1={H - 22} x2={holeX} y2={H - 14} stroke="#475569" strokeWidth={1} />
+          <line x1={holeX + holeW} y1={H - 22} x2={holeX + holeW} y2={H - 14} stroke="#475569" strokeWidth={1} />
+          <text x={holeCX} y={H - 5} textAnchor="middle" fontSize={8} fill="#64748b">~10 µm</text>
+        </>
+      )}
+
+      {/* Dimension — depth */}
+      {showHole && (
+        <>
+          <line x1={dieX + dieW + 22} y1={holeTopY} x2={dieX + dieW + 22} y2={holeBottomY}
+            stroke="#475569" strokeWidth={1} />
+          <text x={dieX + dieW + 30} y={holeTopY + holeDepth / 2 + 4}
+            fontSize={8} fill="#64748b">~50 µm</text>
+        </>
+      )}
+
+      {/* Barrier label */}
+      {showBarrier && (
+        <text x={holeX - 6} y={holeTopY + holeDepth * 0.4}
+          textAnchor="end" fontSize={8} fill="#8b5cf6">barrier</text>
+      )}
+
+      {/* Overfill label */}
+      {copperOverfill > 0 && (
+        <text x={holeCX} y={holeTopY - copperOverfill - 4}
+          textAnchor="middle" fontSize={8} fill="#f97316">잉여 Cu</text>
+      )}
+
+      {/* Color dot matching step */}
+      <circle cx={16} cy={16} r={5} fill={step.color} opacity={0.9} />
+    </svg>
+  );
+}
+
+/** 단계별 애니메이션 컨트롤러 */
+function TsvProcessAnimation() {
+  const [stepIdx, setStepIdx] = useState(0);
+  const step = MFG_STEPS[stepIdx];
+
+  return (
+    <div>
+      <TsvCrossSvg stepIdx={stepIdx} />
+
+      {/* Dot indicators */}
+      <div className="flex justify-center gap-2 mt-1 mb-3">
+        {MFG_STEPS.map((s, i) => (
+          <button
+            key={i}
+            onClick={() => setStepIdx(i)}
+            style={{ background: i === stepIdx ? s.color : "#334155" }}
+            className="w-2.5 h-2.5 rounded-full transition-colors cursor-pointer"
+            aria-label={s.label}
+          />
+        ))}
+      </div>
+
+      {/* Description card */}
+      <div className="rounded-lg border border-sidebar-border p-3 bg-sidebar-bg mb-3">
+        <div className="font-semibold text-sm mb-1" style={{ color: step.color }}>
+          {step.label}
+        </div>
+        <p className="text-sm text-muted">{step.desc}</p>
+      </div>
+
+      {/* Navigation */}
+      <div className="flex justify-between items-center">
+        <button
+          onClick={() => setStepIdx((i) => Math.max(0, i - 1))}
+          disabled={stepIdx === 0}
+          className="px-4 py-1.5 rounded-md text-sm bg-sidebar-bg border border-sidebar-border disabled:opacity-30 hover:enabled:bg-sidebar-border transition-colors"
+        >
+          ← 이전
+        </button>
+        <span className="text-xs text-muted">{stepIdx + 1} / {MFG_STEPS.length}</span>
+        <button
+          onClick={() => setStepIdx((i) => Math.min(MFG_STEPS.length - 1, i + 1))}
+          disabled={stepIdx === MFG_STEPS.length - 1}
+          className="px-4 py-1.5 rounded-md text-sm bg-sidebar-bg border border-sidebar-border disabled:opacity-30 hover:enabled:bg-sidebar-border transition-colors"
+        >
+          다음 →
+        </button>
+      </div>
+    </div>
+  );
+}
 
 /** 와이어 본딩(가장자리) vs TSV(수직 관통) 비교 다이어그램 */
 function WireVsTsvDiagram() {
@@ -20,7 +260,6 @@ function WireVsTsvDiagram() {
             <rect key={y} x={50} y={y} width={120} height={22} fill="#c7d2fe" stroke="#6366f1" strokeWidth={1.2} rx={2} />
           ))}
           <rect x={50} y={140} width={120} height={20} fill="#fde68a" stroke="#d97706" strokeWidth={1.2} rx={2} />
-          {/* 가장자리 와이어 */}
           {[50, 80, 110].map((y) => (
             <path key={y} d={`M50 ${y + 4} Q20 ${y - 10} 30 150`} fill="none" stroke="#ef4444" strokeWidth={1.5} />
           ))}
@@ -40,7 +279,6 @@ function WireVsTsvDiagram() {
             <rect key={y} x={50} y={y} width={120} height={22} fill="#bfdbfe" stroke="#3b82f6" strokeWidth={1.2} rx={2} />
           ))}
           <rect x={50} y={140} width={120} height={20} fill="#fde68a" stroke="#d97706" strokeWidth={1.2} rx={2} />
-          {/* 수직 TSV 기둥 */}
           {[75, 95, 115, 135, 145].map((x) => (
             <line key={x} x1={x} y1={50} x2={x} y2={160} stroke="#22c55e" strokeWidth={2.5} />
           ))}
@@ -99,35 +337,14 @@ export default function Tsv() {
         </p>
       </CalcBox>
 
-      {/* ── 공정 ── */}
-      <CalcBox title="■ TSV는 어떻게 만드는가 — 공정 흐름">
+      {/* ── 공정 애니메이션 ── */}
+      <CalcBox title="■ TSV는 어떻게 만드는가 — 공정 흐름 (단계별)">
         <p className="text-sm mb-4">
           TSV 제조는 깊은 구멍을 뚫고, 절연·금속 막을 입힌 뒤 구리로 채우고, 웨이퍼를 갈아 뒷면으로 드러내는
-          순서로 진행됩니다.
+          순서로 진행됩니다. 아래 단면도에서 각 단계를 눌러 확인하세요.
         </p>
-        <div className="space-y-3">
-          <div>
-            <Step n={1} label="식각 (DRIE)" />
-            <p className="text-sm text-muted mt-1">깊은 반응성 이온 식각으로 직경 5~10 µm, 깊이 50 µm의 구멍을 뚫는다(종횡비 약 10:1).</p>
-          </div>
-          <div>
-            <Step n={2} label="절연·배리어 막" />
-            <p className="text-sm text-muted mt-1">구멍 벽에 산화막(절연)과 배리어(Ta/TaN)·시드층을 입혀 구리 확산을 막는다.</p>
-          </div>
-          <div>
-            <Step n={3} label="구리 전해도금" />
-            <p className="text-sm text-muted mt-1">구멍을 구리로 빈틈없이 채운다(void 없는 충전이 수율의 관건).</p>
-          </div>
-          <div>
-            <Step n={4} label="CMP 평탄화" />
-            <p className="text-sm text-muted mt-1">화학적·기계적 연마로 표면의 잉여 구리를 제거해 평탄하게 만든다.</p>
-          </div>
-          <div>
-            <Step n={5} label="웨이퍼 박막화·후면 노출" />
-            <p className="text-sm text-muted mt-1">웨이퍼 뒷면을 ~50 µm까지 갈아내 TSV 끝을 드러내고(reveal), 다음 다이와 접합할 준비를 한다.</p>
-          </div>
-        </div>
-        <div className="overflow-x-auto mt-4">
+        <TsvProcessAnimation />
+        <div className="overflow-x-auto mt-5">
           <table className="w-full text-sm border-collapse">
             <thead>
               <tr className="border-b border-sidebar-border">

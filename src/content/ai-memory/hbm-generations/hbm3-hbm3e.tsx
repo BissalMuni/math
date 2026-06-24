@@ -8,7 +8,7 @@ const GEN_DATA = [
     pinRate: "6.4 Gbps",
     io: "1,024",
     bw: "~819 GB/s",
-    maxStack: "16-Hi",
+    maxStack: "8-Hi",
     maxCap: "24 GB",
     ref: "NVIDIA H100",
     color: "#a855f7",
@@ -20,7 +20,7 @@ const GEN_DATA = [
     pinRate: "~9.6 Gbps",
     io: "1,024",
     bw: "~1.2 TB/s",
-    maxStack: "16-Hi",
+    maxStack: "12-Hi",
     maxCap: "36 GB",
     ref: "H200 · MI325X",
     color: "#ec4899",
@@ -172,7 +172,7 @@ export default function Hbm3Hbm3e() {
             HBM3E는 핀당 속도를 <strong>~9.6 Gbps</strong>까지 올려 스택당
             <strong> ~1.2 TB/s</strong>를 달성했습니다. 버스폭은 동일한 1,024-bit를 유지해
             속도(클럭) 향상이 대역폭 증가의 주 원동력입니다.
-            용량은 16-Hi 구성으로 스택당 <strong>36 GB</strong>.
+            용량은 <strong>12-Hi</strong> 적층(3 GB 다이 12장)으로 스택당 <strong>36 GB</strong>(8-Hi는 24 GB).
           </p>
           <div className="grid sm:grid-cols-3 gap-3 text-sm">
             <div className="rounded-lg border border-sidebar-border p-3 bg-sidebar-bg">
@@ -181,11 +181,11 @@ export default function Hbm3Hbm3e() {
             </div>
             <div className="rounded-lg border border-sidebar-border p-3 bg-sidebar-bg">
               <div className="font-semibold text-pink-400 mb-1">AMD MI325X</div>
-              <p className="text-muted">HBM3E × 8개 &rarr; 총 <strong>~6.0 TB/s</strong>, 288 GB.</p>
+              <p className="text-muted">HBM3E × 8개 &rarr; 총 <strong>~6.0 TB/s</strong>, 256 GB.</p>
             </div>
             <div className="rounded-lg border border-sidebar-border p-3 bg-sidebar-bg">
-              <div className="font-semibold text-pink-400 mb-1">구글 TPU v5p</div>
-              <p className="text-muted">HBM3E 적용 &rarr; LLM 학습 처리량 2배+.</p>
+              <div className="font-semibold text-pink-400 mb-1">NVIDIA B200</div>
+              <p className="text-muted">HBM3E × 8개 &rarr; 총 <strong>~8 TB/s</strong>, 192 GB.</p>
             </div>
           </div>
         </SubSection>
@@ -209,7 +209,7 @@ export default function Hbm3Hbm3e() {
           <BandwidthChart />
         </div>
         <p className="text-xs text-muted mt-2">
-          ※ 대역폭 수치는 JEDEC 표준 최대값 기준 계산치. 실제 구현체는 일부 차이가 있을 수 있음.
+          ※ 대역폭은 핀당 속도 × 1,024-bit ÷ 8 계산치. 적층수는 양산 제품 기준(HBM3 8-Hi/24 GB, HBM3E 12-Hi/36 GB)이며, JEDEC 표준은 최대 16-Hi까지 허용. 실제 구현체는 일부 차이가 있을 수 있음.
         </p>
       </CalcBox>
 
@@ -219,13 +219,13 @@ export default function Hbm3Hbm3e() {
           <div className="rounded-lg border border-sidebar-border p-3 bg-sidebar-bg">
             <div className="font-semibold text-blue-400 mb-1">HBM2E &rarr; HBM3</div>
             <p className="text-muted">
-              핀당 속도 3.6 &rarr; 6.4 Gbps(+78%), 최대 Hi 8 &rarr; 16, 용량 16 &rarr; 24 GB.
+              핀당 속도 3.6 &rarr; 6.4 Gbps(+78%), 용량 16 &rarr; 24 GB(8-Hi).
             </p>
           </div>
           <div className="rounded-lg border border-sidebar-border p-3 bg-sidebar-bg">
             <div className="font-semibold text-pink-400 mb-1">HBM3 &rarr; HBM3E</div>
             <p className="text-muted">
-              핀당 속도 6.4 &rarr; 9.6 Gbps(+50%), 용량 24 &rarr; 36 GB(16-Hi 유지).
+              핀당 속도 6.4 &rarr; 9.6 Gbps(+50%), 용량 24 GB(8-Hi) &rarr; 36 GB(12-Hi).
             </p>
           </div>
           <div className="rounded-lg border border-sidebar-border p-3 bg-sidebar-bg">

@@ -17,7 +17,7 @@ const CELL_DATA: {
   { type: "SLC", bits: 1, states: 2, speed: "매우 빠름", endurance: "10만+ 회", density: "낮음", color: "#22c55e" },
   { type: "MLC", bits: 2, states: 4, speed: "빠름", endurance: "3~1만 회", density: "보통", color: "#0ea5e9" },
   { type: "TLC", bits: 3, states: 8, speed: "보통", endurance: "1천~3천 회", density: "높음", color: "#f59e0b" },
-  { type: "QLC", bits: 4, states: 16, speed: "느림", endurance: "100~300 회", density: "매우 높음", color: "#ef4444" },
+  { type: "QLC", bits: 4, states: 16, speed: "느림", endurance: "수백~1천 회", density: "매우 높음", color: "#ef4444" },
 ];
 
 /** 셀 전하량 상태 시각화 */
@@ -141,7 +141,7 @@ export default function NandFlash() {
                 <tr>
                   <td className="py-2 pr-4 font-medium">소거 단위</td>
                   <td className="py-2 pr-4 text-muted">비트/바이트 단위</td>
-                  <td className="py-2 text-muted">블록(수백 KB) 단위</td>
+                  <td className="py-2 text-muted">블록(수 MB) 단위</td>
                 </tr>
                 <tr>
                   <td className="py-2 pr-4 font-medium">속도</td>

@@ -1,0 +1,182 @@
+{
+  "id": "ai-datacenter",
+  "basePath": "ai-datacenter",
+  "title": "AI 데이터센터",
+  "description": "토큰 공장 — AI 데이터센터를 짓고·돌리고·식히고·연결하는 모든 인프라와 부품·공급망",
+  "children": [
+    {
+      "id": "adc-ch1",
+      "slug": "overview",
+      "title": "1장. AI 데이터센터란 — 토큰 공장의 개념",
+      "children": [
+        {
+          "id": "adc-c1-s1",
+          "slug": "ai-factory",
+          "title": "Ⅰ. AI 팩토리·토큰 공장이란"
+        },
+        {
+          "id": "adc-c1-s2",
+          "slug": "datacenter-overview",
+          "title": "Ⅱ. 데이터센터 한눈에 보기"
+        },
+        {
+          "id": "adc-c1-s3",
+          "slug": "token-flow",
+          "title": "Ⅲ. 토큰 생산→유통 전체 흐름"
+        }
+      ]
+    },
+    {
+      "id": "adc-ch2",
+      "slug": "compute",
+      "title": "2장. 컴퓨트 — 토큰을 생산하는 심장",
+      "children": [
+        {
+          "id": "adc-c2-s1",
+          "slug": "gpu-accelerator",
+          "title": "Ⅰ. GPU·AI 가속기"
+        },
+        {
+          "id": "adc-c2-s2",
+          "slug": "server-rack",
+          "title": "Ⅱ. 서버·랙 빌딩블록"
+        },
+        {
+          "id": "adc-c2-s3",
+          "slug": "interconnect",
+          "title": "Ⅲ. 인터커넥트·네트워킹"
+        },
+        {
+          "id": "adc-c2-s4",
+          "slug": "storage",
+          "title": "Ⅳ. 스토리지"
+        }
+      ]
+    },
+    {
+      "id": "adc-ch3",
+      "slug": "power",
+      "title": "3장. 전력 인프라 — 돌리는 전기",
+      "children": [
+        {
+          "id": "adc-c3-s1",
+          "slug": "power-demand",
+          "title": "Ⅰ. 전력 수요와 전력 밀도"
+        },
+        {
+          "id": "adc-c3-s2",
+          "slug": "transmission-grid",
+          "title": "Ⅱ. 송·배전과 계통 연결"
+        },
+        {
+          "id": "adc-c3-s3",
+          "slug": "substation-ups",
+          "title": "Ⅲ. 변전·UPS·배전·백업"
+        },
+        {
+          "id": "adc-c3-s4",
+          "slug": "power-strategy",
+          "title": "Ⅳ. 전력 확보 전략"
+        }
+      ]
+    },
+    {
+      "id": "adc-ch4",
+      "slug": "generation",
+      "title": "4장. 발전 — 전기는 어디서 오나",
+      "children": [
+        {
+          "id": "adc-c4-s1",
+          "slug": "renewables",
+          "title": "Ⅰ. 재생에너지 (태양광·풍력·ESS)"
+        },
+        {
+          "id": "adc-c4-s2",
+          "slug": "smr",
+          "title": "Ⅱ. SMR 소형모듈원자로"
+        },
+        {
+          "id": "adc-c4-s3",
+          "slug": "fusion",
+          "title": "Ⅲ. 핵융합 — 플라즈마·인공태양"
+        },
+        {
+          "id": "adc-c4-s4",
+          "slug": "energy-mix",
+          "title": "Ⅳ. 가스·전력믹스"
+        }
+      ]
+    },
+    {
+      "id": "adc-ch5",
+      "slug": "cooling",
+      "title": "5장. 냉각 — 물과 열 관리",
+      "children": [
+        {
+          "id": "adc-c5-s1",
+          "slug": "thermal-challenge",
+          "title": "Ⅰ. 열 문제와 냉각의 필요성"
+        },
+        {
+          "id": "adc-c5-s2",
+          "slug": "air-vs-liquid",
+          "title": "Ⅱ. 공랭 vs 액랭"
+        },
+        {
+          "id": "adc-c5-s3",
+          "slug": "water-usage",
+          "title": "Ⅲ. 물 사용과 수자원"
+        },
+        {
+          "id": "adc-c5-s4",
+          "slug": "waste-heat",
+          "title": "Ⅳ. 폐열 재활용"
+        }
+      ]
+    },
+    {
+      "id": "adc-ch6",
+      "slug": "network",
+      "title": "6장. 네트워크·전송 — 토큰의 유통",
+      "children": [
+        {
+          "id": "adc-c6-s1",
+          "slug": "dci-backbone",
+          "title": "Ⅰ. 데이터센터 간 연결(DCI)·백본"
+        },
+        {
+          "id": "adc-c6-s2",
+          "slug": "submarine-cable",
+          "title": "Ⅱ. 해저 케이블"
+        },
+        {
+          "id": "adc-c6-s3",
+          "slug": "edge-cdn",
+          "title": "Ⅲ. 엣지·CDN·전송"
+        }
+      ]
+    },
+    {
+      "id": "adc-ch7",
+      "slug": "supply-chain",
+      "title": "7장. 부품·설비와 공급망 — 누가 무엇을 만드나",
+      "children": [
+        {
+          "id": "adc-c7-s1",
+          "slug": "equipment-map",
+          "title": "Ⅰ. 핵심 설비·부품 지도"
+        },
+        {
+          "id": "adc-c7-s2",
+          "slug": "value-chain",
+          "title": "Ⅱ. 밸류체인·참여 기업"
+        },
+        {
+          "id": "adc-c7-s3",
+          "slug": "korea-strategy",
+          "title": "Ⅲ. 한국의 AI 데이터센터 전략"
+        }
+      ]
+    }
+  ]
+}

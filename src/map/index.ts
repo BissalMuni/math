@@ -44,11 +44,23 @@ function deriveLlmLearningPath(leaf: TreeNode): string {
   return `llm-learning/${leaf.slug}`;
 }
 
+function deriveAiResearchPath(leaf: TreeNode): string {
+  // 깊이 2 (책 → 리프). 평평한 구조이므로 leaf.slug만 사용.
+  return `ai-research/${leaf.slug}`;
+}
+
 function deriveAiMemoryPath(book: Book, leaf: TreeNode): string | null {
   const path = findNodePath(book.children, leaf.id);
   if (!path || path.length < 2) return null;
   const chapter = path[0]; // 장 slug
   return `ai-memory/${chapter.slug}/${leaf.slug}`;
+}
+
+function deriveAiDatacenterPath(book: Book, leaf: TreeNode): string | null {
+  const path = findNodePath(book.children, leaf.id);
+  if (!path || path.length < 2) return null;
+  const chapter = path[0]; // 장 slug
+  return `ai-datacenter/${chapter.slug}/${leaf.slug}`;
 }
 
 function deriveWirelessCommPath(book: Book, leaf: TreeNode): string | null {
@@ -69,7 +81,9 @@ function derivePath(book: Book, leaf: TreeNode): string | null {
     case "high-school":       return deriveHighSchoolPath(book, leaf);
     case "llm-math":          return deriveLlmMathPath(book, leaf);
     case "llm-learning":      return deriveLlmLearningPath(leaf);
+    case "ai-research":       return deriveAiResearchPath(leaf);
     case "ai-memory":         return deriveAiMemoryPath(book, leaf);
+    case "ai-datacenter":     return deriveAiDatacenterPath(book, leaf);
     case "wireless-comm":     return deriveWirelessCommPath(book, leaf);
     case "saas-architecture": return deriveSaasArchitecturePath(leaf);
     default: return null;

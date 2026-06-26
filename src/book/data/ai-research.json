@@ -1,0 +1,13 @@
+{
+  "id": "ai-research",
+  "basePath": "ai-research",
+  "title": "AI",
+  "description": "AI 최신 연구 결과·논문·기사를 정리·축적하는 연구 노트. 새 항목은 leaf로 계속 추가한다.",
+  "children": [
+    {
+      "id": "air-overview",
+      "slug": "overview",
+      "title": "Ⅰ. 개요 — 이 책의 사용법"
+    }
+  ]
+}

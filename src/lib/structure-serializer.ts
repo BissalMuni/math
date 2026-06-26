@@ -6,7 +6,9 @@ const BOOK_META: Record<string, { fileName: string }> = {
   "high-school":   { fileName: "data/high-school.json" },
   "llm-math":      { fileName: "data/llm-math.json" },
   "llm-learning":  { fileName: "data/llm-learning.json" },
+  "ai-research":   { fileName: "data/ai-research.json" },
   "ai-memory":     { fileName: "data/ai-memory.json" },
+  "ai-datacenter": { fileName: "data/ai-datacenter.json" },
   "wireless-comm": { fileName: "data/wireless-comm.json" },
 };
 

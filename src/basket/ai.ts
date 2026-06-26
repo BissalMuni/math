@@ -4,5 +4,5 @@ import type { Basket } from "./types";
 export const aiBasket: Basket = {
   id: "ai",
   title: "AI/LLM",
-  bookIds: ["llm-learning", "ai-memory"],
+  bookIds: ["llm-learning", "ai-research", "ai-memory", "ai-datacenter"],
 };

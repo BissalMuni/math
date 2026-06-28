@@ -2,12 +2,112 @@
   "id": "ai-research",
   "basePath": "ai-research",
   "title": "AI",
-  "description": "AI 최신 연구 결과·논문·기사를 정리·축적하는 연구 노트. 새 항목은 leaf로 계속 추가한다.",
+  "description": "AI 연구 노트. 첫 시리즈 'AI 발전 지도'(머신러닝→GPT 대표 논문 계보) + 최신 연구 누적.",
   "children": [
     {
       "id": "air-overview",
       "slug": "overview",
       "title": "Ⅰ. 개요 — 이 책의 사용법"
+    },
+    {
+      "id": "air-history-map",
+      "slug": "history-map",
+      "title": "Ⅱ. AI 발전 지도 — 전체 개관"
+    },
+    {
+      "id": "air-perceptron",
+      "slug": "perceptron",
+      "title": "Ⅲ. 퍼셉트론 — 신경망의 출발"
+    },
+    {
+      "id": "air-backpropagation",
+      "slug": "backpropagation",
+      "title": "Ⅳ. 역전파 — 다층 신경망 학습"
+    },
+    {
+      "id": "air-svm",
+      "slug": "svm",
+      "title": "Ⅴ. SVM — 고전 머신러닝의 정점"
+    },
+    {
+      "id": "air-lenet",
+      "slug": "lenet",
+      "title": "Ⅵ. LeNet — CNN의 탄생"
+    },
+    {
+      "id": "air-alexnet",
+      "slug": "alexnet",
+      "title": "Ⅶ. AlexNet — 딥러닝 빅뱅"
+    },
+    {
+      "id": "air-resnet",
+      "slug": "resnet",
+      "title": "Ⅷ. ResNet — 깊이의 돌파"
+    },
+    {
+      "id": "air-lstm",
+      "slug": "lstm",
+      "title": "Ⅸ. LSTM — 장기 의존성"
+    },
+    {
+      "id": "air-word2vec",
+      "slug": "word2vec",
+      "title": "Ⅹ. Word2Vec — 단어 임베딩"
+    },
+    {
+      "id": "air-seq2seq",
+      "slug": "seq2seq",
+      "title": "Ⅺ. Seq2Seq — 인코더·디코더"
+    },
+    {
+      "id": "air-attention",
+      "slug": "attention",
+      "title": "Ⅻ. 어텐션 메커니즘"
+    },
+    {
+      "id": "air-transformer",
+      "slug": "transformer",
+      "title": "ⅩⅢ. 트랜스포머 — Attention Is All You Need"
+    },
+    {
+      "id": "air-elmo",
+      "slug": "elmo",
+      "title": "ⅩⅣ. ELMo — 문맥적 임베딩"
+    },
+    {
+      "id": "air-bert",
+      "slug": "bert",
+      "title": "ⅩⅤ. BERT — 양방향 사전학습"
+    },
+    {
+      "id": "air-gpt-1",
+      "slug": "gpt-1",
+      "title": "ⅩⅥ. GPT-1 — 생성적 사전학습"
+    },
+    {
+      "id": "air-gpt-2",
+      "slug": "gpt-2",
+      "title": "ⅩⅦ. GPT-2 — 비지도 멀티태스크"
+    },
+    {
+      "id": "air-gpt-3",
+      "slug": "gpt-3",
+      "title": "ⅩⅧ. GPT-3 — few-shot 학습"
+    },
+    {
+      "id": "air-scaling-laws",
+      "slug": "scaling-laws",
+      "title": "ⅩⅨ. 스케일링 법칙"
+    },
+    {
+      "id": "air-instructgpt",
+      "slug": "instructgpt",
+      "title": "ⅩⅩ. InstructGPT — RLHF 정렬"
+    },
+    {
+      "id": "air-gpt-4",
+      "slug": "gpt-4",
+      "title": "ⅩⅩⅠ. GPT-4"
     }
   ]
 }

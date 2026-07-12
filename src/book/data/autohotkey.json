@@ -1,0 +1,98 @@
+{
+  "id": "autohotkey",
+  "basePath": "autohotkey",
+  "title": "AutoHotkey 자동화",
+  "description": "윈도우 단축키·매크로 자동화 스크립트 언어 AutoHotkey — 핫키·핫스트링·입력 전송·GUI까지",
+  "children": [
+    {
+      "id": "ahk-ch1",
+      "slug": "overview",
+      "title": "1장. 개요와 실행",
+      "children": [
+        {
+          "id": "ahk-s1",
+          "slug": "intro",
+          "title": "Ⅰ. AutoHotkey란"
+        },
+        {
+          "id": "ahk-s2",
+          "slug": "execution",
+          "title": "Ⅱ. 스크립트 실행"
+        }
+      ]
+    },
+    {
+      "id": "ahk-ch2",
+      "slug": "basics",
+      "title": "2장. 기초 문법",
+      "children": [
+        {
+          "id": "ahk-s3",
+          "slug": "variables",
+          "title": "Ⅰ. 변수와 표현식"
+        },
+        {
+          "id": "ahk-s4",
+          "slug": "functions",
+          "title": "Ⅱ. 함수"
+        }
+      ]
+    },
+    {
+      "id": "ahk-ch3",
+      "slug": "hotkeys",
+      "title": "3장. 핫키와 핫스트링",
+      "children": [
+        {
+          "id": "ahk-s5",
+          "slug": "hotkeys",
+          "title": "Ⅰ. 핫키 정의"
+        },
+        {
+          "id": "ahk-s6",
+          "slug": "hotstrings",
+          "title": "Ⅱ. 핫스트링"
+        }
+      ]
+    },
+    {
+      "id": "ahk-ch4",
+      "slug": "control-flow",
+      "title": "4장. 제어 흐름",
+      "children": [
+        {
+          "id": "ahk-s7",
+          "slug": "conditionals",
+          "title": "Ⅰ. 조건문"
+        },
+        {
+          "id": "ahk-s8",
+          "slug": "loops",
+          "title": "Ⅱ. 반복문"
+        }
+      ]
+    },
+    {
+      "id": "ahk-ch5",
+      "slug": "automation",
+      "title": "5장. 자동화",
+      "children": [
+        {
+          "id": "ahk-s9",
+          "slug": "send-input",
+          "title": "Ⅰ. 키·마우스 입력 전송"
+        },
+        {
+          "id": "ahk-s10",
+          "slug": "window",
+          "title": "Ⅱ. 창 제어"
+        },
+        {
+          "id": "ahk-s11",
+          "slug": "gui",
+          "title": "Ⅲ. GUI 만들기"
+        }
+      ]
+    }
+  ]
+}

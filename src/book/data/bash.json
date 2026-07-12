@@ -1,0 +1,103 @@
+{
+  "id": "bash",
+  "basePath": "bash",
+  "title": "Bash 스크립팅",
+  "description": "리눅스·macOS 기본 셸인 Bash의 문법과 스크립트 작성 — 변수·제어 흐름·함수·텍스트 처리까지",
+  "children": [
+    {
+      "id": "bash-ch1",
+      "slug": "overview",
+      "title": "1장. 개요와 실행",
+      "children": [
+        {
+          "id": "bash-s1",
+          "slug": "intro",
+          "title": "Ⅰ. Bash란 무엇인가"
+        },
+        {
+          "id": "bash-s2",
+          "slug": "execution",
+          "title": "Ⅱ. 셸·터미널·스크립트 실행"
+        }
+      ]
+    },
+    {
+      "id": "bash-ch2",
+      "slug": "variables",
+      "title": "2장. 변수와 확장",
+      "children": [
+        {
+          "id": "bash-s3",
+          "slug": "variables",
+          "title": "Ⅰ. 변수와 따옴표"
+        },
+        {
+          "id": "bash-s4",
+          "slug": "parameter-expansion",
+          "title": "Ⅱ. 파라미터 확장"
+        },
+        {
+          "id": "bash-s5",
+          "slug": "command-substitution",
+          "title": "Ⅲ. 명령 치환과 산술"
+        }
+      ]
+    },
+    {
+      "id": "bash-ch3",
+      "slug": "control-flow",
+      "title": "3장. 제어 흐름",
+      "children": [
+        {
+          "id": "bash-s6",
+          "slug": "conditionals",
+          "title": "Ⅰ. 조건문과 test"
+        },
+        {
+          "id": "bash-s7",
+          "slug": "loops",
+          "title": "Ⅱ. 반복문"
+        },
+        {
+          "id": "bash-s8",
+          "slug": "case",
+          "title": "Ⅲ. case와 분기"
+        }
+      ]
+    },
+    {
+      "id": "bash-ch4",
+      "slug": "functions",
+      "title": "4장. 함수와 스크립트",
+      "children": [
+        {
+          "id": "bash-s9",
+          "slug": "functions",
+          "title": "Ⅰ. 함수 정의"
+        },
+        {
+          "id": "bash-s10",
+          "slug": "arguments",
+          "title": "Ⅱ. 인자와 종료 상태"
+        }
+      ]
+    },
+    {
+      "id": "bash-ch5",
+      "slug": "text-processing",
+      "title": "5장. 텍스트 처리",
+      "children": [
+        {
+          "id": "bash-s11",
+          "slug": "pipes-redirection",
+          "title": "Ⅰ. 파이프와 리다이렉션"
+        },
+        {
+          "id": "bash-s12",
+          "slug": "grep-sed-awk",
+          "title": "Ⅱ. grep·sed·awk"
+        }
+      ]
+    }
+  ]
+}

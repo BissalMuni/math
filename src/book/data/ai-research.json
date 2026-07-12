@@ -108,6 +108,11 @@
       "id": "air-gpt-4",
       "slug": "gpt-4",
       "title": "ⅩⅩⅠ. GPT-4"
+    },
+    {
+      "id": "air-moe-sparse",
+      "slug": "moe-sparse-routing",
+      "title": "ⅩⅩⅡ. Mixture-of-Experts — 희소 라우팅과 DeepSeek-V3"
     }
   ]
 }

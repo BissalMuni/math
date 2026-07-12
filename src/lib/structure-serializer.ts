@@ -10,6 +10,11 @@ const BOOK_META: Record<string, { fileName: string }> = {
   "ai-memory":     { fileName: "data/ai-memory.json" },
   "ai-datacenter": { fileName: "data/ai-datacenter.json" },
   "wireless-comm": { fileName: "data/wireless-comm.json" },
+  "saas-architecture": { fileName: "data/saas-architecture.json" },
+  "bash":          { fileName: "data/bash.json" },
+  "powershell":    { fileName: "data/powershell.json" },
+  "python":        { fileName: "data/python.json" },
+  "autohotkey":    { fileName: "data/autohotkey.json" },
 };
 
 /** Book을 JSON 문자열로 직렬화 (관리자 편집 → JSON 파일) */

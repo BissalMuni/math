@@ -4,5 +4,5 @@ import type { Basket } from "./types";
 export const devBasket: Basket = {
   id: "dev",
   title: "DEV",
-  bookIds: ["saas-architecture"],
+  bookIds: ["saas-architecture", "bash", "powershell", "python", "autohotkey"],
 };

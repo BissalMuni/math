@@ -75,6 +75,34 @@ function deriveSaasArchitecturePath(leaf: TreeNode): string {
   return `saas-architecture/${leaf.slug}`;
 }
 
+function deriveBashPath(book: Book, leaf: TreeNode): string | null {
+  const path = findNodePath(book.children, leaf.id);
+  if (!path || path.length < 2) return null;
+  const chapter = path[0]; // 장 slug
+  return `bash/${chapter.slug}/${leaf.slug}`;
+}
+
+function derivePowershellPath(book: Book, leaf: TreeNode): string | null {
+  const path = findNodePath(book.children, leaf.id);
+  if (!path || path.length < 2) return null;
+  const chapter = path[0]; // 장 slug
+  return `powershell/${chapter.slug}/${leaf.slug}`;
+}
+
+function derivePythonPath(book: Book, leaf: TreeNode): string | null {
+  const path = findNodePath(book.children, leaf.id);
+  if (!path || path.length < 2) return null;
+  const chapter = path[0]; // 장 slug
+  return `python/${chapter.slug}/${leaf.slug}`;
+}
+
+function deriveAutohotkeyPath(book: Book, leaf: TreeNode): string | null {
+  const path = findNodePath(book.children, leaf.id);
+  if (!path || path.length < 2) return null;
+  const chapter = path[0]; // 장 slug
+  return `autohotkey/${chapter.slug}/${leaf.slug}`;
+}
+
 function derivePath(book: Book, leaf: TreeNode): string | null {
   switch (book.id) {
     case "middle-school":     return deriveMiddleSchoolPath(book, leaf);
@@ -86,6 +114,10 @@ function derivePath(book: Book, leaf: TreeNode): string | null {
     case "ai-datacenter":     return deriveAiDatacenterPath(book, leaf);
     case "wireless-comm":     return deriveWirelessCommPath(book, leaf);
     case "saas-architecture": return deriveSaasArchitecturePath(leaf);
+    case "bash":              return deriveBashPath(book, leaf);
+    case "powershell":        return derivePowershellPath(book, leaf);
+    case "python":            return derivePythonPath(book, leaf);
+    case "autohotkey":        return deriveAutohotkeyPath(book, leaf);
     default: return null;
   }
 }

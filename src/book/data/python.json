@@ -1,0 +1,115 @@
+{
+  "id": "python",
+  "basePath": "python",
+  "title": "Python 프로그래밍",
+  "description": "읽기 쉬운 범용 언어 Python — 기초 문법·자료구조·제어 흐름·함수·객체지향까지",
+  "children": [
+    {
+      "id": "py-ch1",
+      "slug": "overview",
+      "title": "1장. 개요와 실행",
+      "children": [
+        {
+          "id": "py-s1",
+          "slug": "intro",
+          "title": "Ⅰ. 파이썬이란"
+        },
+        {
+          "id": "py-s2",
+          "slug": "execution",
+          "title": "Ⅱ. 실행과 REPL"
+        }
+      ]
+    },
+    {
+      "id": "py-ch2",
+      "slug": "basics",
+      "title": "2장. 기초 문법",
+      "children": [
+        {
+          "id": "py-s3",
+          "slug": "variables",
+          "title": "Ⅰ. 변수와 자료형"
+        },
+        {
+          "id": "py-s4",
+          "slug": "operators",
+          "title": "Ⅱ. 연산자와 문자열"
+        }
+      ]
+    },
+    {
+      "id": "py-ch3",
+      "slug": "data-structures",
+      "title": "3장. 자료구조",
+      "children": [
+        {
+          "id": "py-s5",
+          "slug": "list-tuple",
+          "title": "Ⅰ. 리스트와 튜플"
+        },
+        {
+          "id": "py-s6",
+          "slug": "dict-set",
+          "title": "Ⅱ. 딕셔너리와 집합"
+        },
+        {
+          "id": "py-s7",
+          "slug": "comprehension",
+          "title": "Ⅲ. 컴프리헨션"
+        }
+      ]
+    },
+    {
+      "id": "py-ch4",
+      "slug": "control-flow",
+      "title": "4장. 제어 흐름",
+      "children": [
+        {
+          "id": "py-s8",
+          "slug": "conditionals",
+          "title": "Ⅰ. 조건문"
+        },
+        {
+          "id": "py-s9",
+          "slug": "loops",
+          "title": "Ⅱ. 반복문"
+        }
+      ]
+    },
+    {
+      "id": "py-ch5",
+      "slug": "functions",
+      "title": "5장. 함수",
+      "children": [
+        {
+          "id": "py-s10",
+          "slug": "functions",
+          "title": "Ⅰ. 함수와 인자"
+        },
+        {
+          "id": "py-s11",
+          "slug": "lambda",
+          "title": "Ⅱ. 람다와 고차함수"
+        }
+      ]
+    },
+    {
+      "id": "py-ch6",
+      "slug": "oop",
+      "title": "6장. 클래스와 모듈",
+      "children": [
+        {
+          "id": "py-s12",
+          "slug": "classes",
+          "title": "Ⅰ. 클래스와 객체"
+        },
+        {
+          "id": "py-s13",
+          "slug": "modules",
+          "title": "Ⅱ. 모듈과 패키지"
+        }
+      ]
+    }
+  ]
+}

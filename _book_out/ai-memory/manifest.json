@@ -1,0 +1,492 @@
+{
+  "book": "ai-memory",
+  "base": "ai-memory",
+  "title": "AI 메모리",
+  "description": "HBM에서 HBF까지 — AI 시대 고대역폭 메모리 기술과 로드맵",
+  "chapter_count": 7,
+  "leaf_total": 26,
+  "leaf_ready": 26,
+  "leaf_stub": 0,
+  "svg_total": 42,
+  "generated_from": "math",
+  "chapters": [
+    {
+      "id": "am-ch1",
+      "slug": "hbm-basics",
+      "title": "1장. HBM 기초",
+      "chapter_order": 1,
+      "leaf_count": 5,
+      "leaves": [
+        {
+          "id": "am-s1",
+          "slug": "what-is-hbm",
+          "title": "Ⅰ. HBM이란",
+          "order_in_chapter": 1,
+          "tsx": "src/content/ai-memory/hbm-basics/what-is-hbm.tsx",
+          "stub": false,
+          "prose": "HBM(High Bandwidth Memory)은 DRAM 다이를 수직으로 쌓아 초고속 대역폭을 구현하는 차세대 메모리 기술입니다. AI 가속기의 핵심 부품으로, GPU 한 개에 수 TB/s의 데이터 처리를 가능하게 합니다.\n■ HBM의 탄생 배경\n● AI가 요구하는 메모리 대역폭\n딥러닝 모델의 학습과 추론은 매 연산마다 수십 GB의 가중치(weight)를 GPU 연산 코어로 공급해야 합니다. 행렬 곱셈(GEMM) 하나만 해도 초당 수백 TB의 데이터를 읽고 써야 합니다.\n① 연산 속도 vs 메모리 속도\nGPU 연산 코어(FLOPs)는 매 세대 2~4배 빠르지만, 메모리 대역폭은 훨씬 느리게 증가해 왔습니다.\n② 메모리 월(Memory Wall)\n연산 코어가 빨라도 데이터 공급이 따라오지 못하면 코어가 대기합니다. 이 병목을 메모리 월이라 합니다.\n● 기존 DRAM의 핀(Pin) 수 한계\nGDDR(그래픽 DDR) 메모리는 칩 가장자리에 금속 핀을 배치해 데이터를 주고받습니다. 핀 수를 늘리려면 칩 면적이 늘어나고, 핀당 배선이 길어져 신호 무결성이 저하됩니다.\n① GDDR6X는 256비트 버스폭이 사실상 한계 → 핀 수 확장 불가.\n② 핀 피치를 줄이면 제조 비용과 신호 누화(crosstalk)가 급증합니다.\n③ HBM은 이 문제를 “옆으로 넓히는 대신 위로 쌓는” 방식으로 해결했습니다.\n💡 HBM은 \"더 빠른 DRAM\"이 아니라 \"더 넓은 DRAM\"입니다. 클럭보다 버스폭을 극대화해 대역폭을 높입니다.\n■ HBM의 핵심 구조 — 수직 적층\nHBM은 여러 장의 DRAM 다이(die)를 TSV(Through-Silicon Via)로 수직 관통 배선해 하나의 스택으로 만듭니다. 이 스택이 실리콘 인터포저 위에 GPU와 나란히 놓입니다.\nHBM3E 기준 — DRAM 다이 8장 적층, TSV로 다이 간 연결, 로직 다이가 I/O 처리\nDRAM 다이\n표준 DRAM 셀을 얇게 가공(50~100 µm). HBM3E는 8~12장 적층.\nTSV\n다이를 관통하는 수십만 개의 구리 기둥. 핀 수를 1024~2048비트로 확장.\n로직 다이\n스택 최하단 베이스 다이. I/O 제어, ECC, 전력 관리 담당.\n■ 메모리 대역폭 비교\n단일 스택 또는 단일 채널 기준 피크 대역폭. HBM3E 1229 GB/s는 GDDR6X의 2배를 넘습니다. 실제 GPU에는 HBM 스택이 4~8개 들어가므로 시스템 총 대역폭은 더 큽니다.\n대역폭 공식: 버스폭(bit) × 동작 클럭(Hz) × 전송 회수(DDR=2) ÷ 8 = GB/s. HBM3E는 버스폭 1024비트 × 9.8 Gbps ÷ 8 ≈ 1,229 GB/s (스택당).\n■ HBM이 탑재된 AI 가속기\n제품제조사HBM총 대역폭HBM 용량H100 SXM5NVIDIAHBM33.35 TB/s80 GBH200 SXM5NVIDIAHBM3E4.8 TB/s141 GBMI300XAMDHBM35.3 TB/s192 GBMI325XAMDHBM3E6.0 TB/s256 GBGaudi 3IntelHBM2E3.7 TB/s128 GB\n💡 H200은 H100보다 HBM 용량이 76% 늘고 대역폭이 43% 증가했습니다. 대형 언어 모델의 KV 캐시 병목을 해소하는 것이 주목적입니다.",
+          "chars": 1236,
+          "svgs": [
+            "svg/hbm-basics__what-is-hbm-1.svg",
+            "svg/hbm-basics__what-is-hbm-2.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s2",
+          "slug": "dram-fundamentals",
+          "title": "Ⅱ. DRAM 기초",
+          "order_in_chapter": 2,
+          "tsx": "src/content/ai-memory/hbm-basics/dram-fundamentals.tsx",
+          "stub": false,
+          "prose": "HBM은 DRAM 다이를 수직으로 쌓은 메모리입니다. 따라서 HBM을 이해하려면 먼저 그 “코어”인 DRAM의 셀 구조·동작 원리·세대 진화를 알아야 합니다. 이 단원은 DRAM의 기본기를 정리합니다.\n■ DRAM 셀: 1T1C 구조\nDRAM(Dynamic RAM)의 한 비트는 트랜지스터 1개 + 커패시터 1개(1T1C)로 저장됩니다. 커패시터에 전하가 차 있으면 1, 비어 있으면 0입니다. 구조가 단순해 셀 하나가 매우 작고, 그래서 같은 면적에 가장 높은 집적도를 얻을 수 있습니다.\nDRAM 셀 = 트랜지스터 1개 + 커패시터 1개(1T1C). 워드라인이 트랜지스터를 열면 커패시터의 전하가 비트라인으로 흐른다.\n① 접근 트랜지스터\n게이트가 워드라인에 연결. 워드라인을 켜면 커패시터와 비트라인이 연결된다.\n② 저장 커패시터\n전하를 담는 그릇(수십 fF). 용량이 작아 누설로 전하가 새어나간다.\n💡 SRAM은 트랜지스터 6개(6T)로 한 비트를 “정적”으로 유지하지만, DRAM은 1T1C로 훨씬 작은 대신 전하가 새므로 주기적 갱신(리프레시)이 필요합니다. 이름의 “Dynamic”이 여기서 옵니다.\n■ 읽기와 파괴적 읽기(Destructive Read)\n● 감지 증폭기로 미세 전압을 판독\n비트라인을 먼저 로 프리차지해 둡니다. 워드라인을 켜면 커패시터의 전하가 비트라인으로 흘러 전압이 아주 조금 오르거나(1) 내립니다(0). 이 미세한 차이를 감지 증폭기(Sense Amplifier)가 기준 전압과 비교해 0/1로 증폭합니다.\n● 읽으면 지워진다 → 되쓰기(Write-back)\n읽기 과정에서 커패시터의 전하가 비트라인으로 빠져나가므로 원래 값이 파괴됩니다. 그래서 감지 증폭기가 증폭한 값을 같은 셀에 곧바로 다시 써넣습니다. 이 되쓰기까지가 한 번의 읽기입니다.\n① 프리차지: 비트라인을 로 맞춤\n② 활성화(ACT): 워드라인 ON → 전하 공유 → 감지 증폭\n③ 되쓰기 + 프리차지(PRE): 행을 닫고 다음 접근 준비\n■ 리프레시 — 잊지 않기 위한 주기적 갱신\n커패시터의 전하는 누설로 시간이 지나면 사라집니다. 데이터가 유지되는 시간을 리텐션(retention)이라 하며, JEDEC 표준은 보통 64 ms 안에 모든 행을 한 번씩 다시 읽고 써서(=리프레시) 전하를 채워 넣도록 규정합니다.\n한 칩에 행이 개라면, 평균 리프레시 간격 는 다음과 같습니다.\n고온에서는 누설이 빨라져 리프레시 주기를 절반(32 ms)으로 당깁니다. 리프레시 동안 해당 뱅크는 접근이 막히므로, 용량이 커질수록 리프레시 오버헤드가 성능·전력의 부담이 됩니다.\n💡 리프레시는 DRAM의 숙명적 비용입니다. HBM처럼 다이를 많이 쌓아 용량을 키울수록 리프레시 관리와 발열이 중요해지며, 이는 뒤 단원의 냉각·베이스 다이 설계로 이어집니다.\n■ 주소 구조: 뱅크 · 행 · 열\nDRAM은 뱅크(bank) → 행(row) → 열(column) 의 2차원 배열로 구성됩니다. 접근은 항상 “행을 먼저 열고(Activate), 그 안에서 열을 고르는(Read/Write)” 순서입니다.\n1행 활성화 (RAS / ACT)\n행 주소를 보내 한 행 전체를 감지 증폭기 묶음(=행 버퍼, row buffer)으로 읽어 올린다.\n2열 선택 (CAS / RD·WR)\n열린 행 버퍼 안에서 원하는 열만 골라 읽거나 쓴다. 같은 행 내 연속 접근은 매우 빠르다(행 히트).\n3프리차지 (PRE)\n행을 닫고 비트라인을 다시 로 충전해 다음 행 접근을 준비한다.\n💡 “같은 행이면 빠르고, 행을 바꾸면 느리다”는 DRAM의 핵심 성질입니다. 메모리 컨트롤러는 접근 순서를 재배열해 행 히트를 최대화합니다.\n■ SDRAM에서 DDR5까지 — 세대 진화\nDRAM 셀(코어) 클럭은 수십 년째 크게 변하지 않았습니다. 대신 프리페치(prefetch) 폭을 넓혀(2n → 16n) 한 번의 코어 접근에서 더 많은 비트를 길어 올리고, 클럭의 양쪽 엣지를 쓰는 DDR(Double Data Rate) 방식으로 전송률을 끌어올렸습니다.\n세대등장프리페치최대 전송률특징SDR19971n166 MT/s클럭 동기화 시작DDR20002n400 MT/s양쪽 엣지 전송DDR220034n1066 MT/sI/O 클럭 2배DDR320078n2133 MT/s저전압(1.5V)DDR420148n3200 MT/s뱅크 그룹 도입DDR5202016n8400 MT/s온다이 ECC·채널 분할\n■ DRAM에서 HBM으로\nDDR 계열이 “핀당 속도”를 높이는 길을 걸었다면, HBM은 “버스폭”을 극단적으로 넓히는 길을 택했습니다. 같은 DRAM 코어를 여러 장 쌓고 TSV로 1024~2048비트의 넓은 통로를 뚫어, 느린 코어 클럭으로도 TB/s급 대역폭을 만듭니다.\nKAIST TERALAB 로드맵 기준 HBM은 다이당 용량이 HBM4 24 Gb → HBM8 80 Gb 로 커지고, 한 스택을 12~24장까지 쌓아 스택당 36 GB → 240 GB 까지 확장됩니다. 그만큼 리프레시·발열 관리가 핵심 과제가 됩니다.\n💡 DRAM은 “작고 싸지만 잊어버리는” 메모리입니다. HBM·HBF는 이 DRAM(과 NAND)을 어떻게 쌓고 연결하고 식히느냐의 공학입니다. 다음 단원에서는 그 수직 연결 기술인 TSV를 다룹니다.",
+          "chars": 2013,
+          "svgs": [
+            "svg/hbm-basics__dram-fundamentals-1.svg",
+            "svg/hbm-basics__dram-fundamentals-2.svg"
+          ],
+          "formulas": [
+            "V_{DD}/2",
+            "V_{DD}/2",
+            "8192",
+            "t_{REFI}",
+            "t_{REFI} = \\frac{64\\,\\text{ms}}{8192\\ \\text{rows}} \\approx 7.8\\,\\mu s",
+            "V_{DD}/2"
+          ]
+        },
+        {
+          "id": "am-s3",
+          "slug": "tsv",
+          "title": "Ⅲ. TSV 기술",
+          "order_in_chapter": 3,
+          "tsx": "src/content/ai-memory/hbm-basics/tsv.tsx",
+          "stub": false,
+          "prose": "HBM이 DRAM을 “위로 쌓을” 수 있는 핵심 기술이 TSV입니다. TSV(Through-Silicon Via)는 실리콘 다이를 수직으로 관통하는 구리 배선으로, 칩 가장자리에 의존하던 기존 연결의 한계를 넘어 넓고 짧은 데이터 통로를 만듭니다.\n■ TSV란 — 다이를 수직 관통하는 구리 기둥\nTSV는 실리콘 웨이퍼에 깊은 구멍을 뚫고 구리로 채워, 다이의 앞면과 뒷면을 전기적으로 잇는 수직 배선입니다. 여러 장의 다이를 TSV로 연결하면, 가장자리 핀이 아니라 다이 전면(全面)을 통해 신호를 주고받을 수 있습니다.\n기존 방식: 칩 가장자리 금속선. 길고 좁아 신호가 느리고 핀 수가 적다.\nTSV: 다이를 수직으로 뚫는 구리 기둥. 짧고 넓어 빠르고 핀(I/O)을 폭발적으로 늘린다.\n💡 핵심은 “옆으로 넓히는 대신 위로 쌓고, 수직으로 뚫는다”는 것입니다. 이 덕분에 HBM은 버스폭을 1024~2048비트까지 넓혀 TB/s급 대역폭을 얻습니다.\n■ 왜 TSV인가 — 넓고 짧은 길\n① 넓은 버스폭\n가장자리가 아닌 면 전체에 수천 개를 배치 → I/O를 1024~2048비트로 확장.\n② 짧은 경로\n신호 거리가 수십 µm로 짧아져 지연(latency)과 비트당 전력이 줄어든다.\n③ 고집적\n평면을 키우지 않고 위로 쌓아 같은 면적에 더 많은 용량을 담는다.\n느린 코어 클럭으로도 대역폭을 키울 수 있는 이유가 여기 있습니다. 대역폭은 이므로, 클럭 대신 버스폭을 키우는 것이 TSV의 전략입니다.\n■ TSV는 어떻게 만드는가 — 공정 흐름 (단계별)\nTSV 제조는 깊은 구멍을 뚫고, 절연·금속 막을 입힌 뒤 구리로 채우고, 웨이퍼를 갈아 뒷면으로 드러내는 순서로 진행됩니다. 아래 단면도에서 각 단계를 눌러 확인하세요.\n초기 상태 — 실리콘 웨이퍼\n두께 약 700 µm의 실리콘 웨이퍼. 회로가 형성된 앞면(front-side)을 위로, 뒷면(back-side)을 아래로 놓습니다. TSV 가공 전 상태입니다.\n← 이전1 / 6다음 →\n파라미터대략값의미직경(지름)약 5~10 µm머리카락의 1/10 수준깊이(다이 두께)약 50 µm웨이퍼를 얇게 갈아냄종횡비(깊이/직경)약 10 : 1깊고 가는 구멍피치(간격)약 40~50 µm촘촘히 배열한 스택의 TSV 수수천~수만 개넓은 버스폭의 원천\n■ 다이를 붙이는 법 — 마이크로범프에서 하이브리드 본딩으로\n● 마이크로범프 (현재 주류, MR-MUF)\nTSV로 신호를 위로 올려도, 다이와 다이는 작은 땜납 범프(마이크로범프)로 이어집니다. SK하이닉스의 MR-MUF(Mass Reflow-Molded Underfill)는 여러 다이를 한 번에 접합하고 보호재로 채워 방열·신뢰성을 높입니다.\n● 범프리스 Cu-Cu 하이브리드 본딩 (차세대)\n범프를 없애고 구리 패드끼리 직접 붙이는 하이브리드 본딩은 다이 간 간격을 더 줄여 더 많은 다이를 더 얇게 쌓고, 전기·열 특성을 개선합니다.\nKAIST TERALAB 로드맵은 다이 접합이 Microbump(MR-MUF) → 범프리스 Cu-Cu Direct bonding으로 전환된다고 봅니다. 적층 수가 12-Hi에서 20~24-Hi로 늘수록 이 전환이 필수가 됩니다.\n■ TSV의 도전 과제\n응력·KOZ\n구리와 실리콘의 열팽창 차이로 응력이 생겨, TSV 주변엔 소자를 두지 않는 금지영역(KOZ)이 필요하다.\n발열\n다이를 많이 쌓을수록 가운데 열이 갇힌다. 로드맵이 D2C·침지·임베디드 냉각으로 가는 이유.\n수율\n수만 개 TSV 중 하나만 불량이어도 스택 전체가 실패할 수 있어, void 없는 충전과 검사가 중요하다.\n💡 TSV는 HBM의 “엘리베이터”입니다. 다음 단원에서는 이 스택을 GPU와 나란히 올려놓는 바닥판, 실리콘 인터포저를 다룹니다.",
+          "chars": 1421,
+          "svgs": [
+            "svg/hbm-basics__tsv-1.svg",
+            "svg/hbm-basics__tsv-2.svg",
+            "svg/hbm-basics__tsv-3.svg"
+          ],
+          "formulas": [
+            "\\text{버스폭} \\times \\text{클럭} \\times 2 \\div 8"
+          ]
+        },
+        {
+          "id": "am-s4",
+          "slug": "interposer",
+          "title": "Ⅳ. 실리콘 인터포저",
+          "order_in_chapter": 4,
+          "tsx": "src/content/ai-memory/hbm-basics/interposer.tsx",
+          "stub": false,
+          "prose": "HBM 스택과 GPU를 “한 판 위에” 나란히 올려 수만 개의 신호를 잇는 실리콘 인터포저는 2.5D 패키징의 핵심입니다. 유기 기판으로는 불가능한 미세 배선 밀도를 가능케 해, 현세대 AI 가속기(A100·H100·B200 등)를 지탱하는 플랫폼입니다.\n■ 실리콘 인터포저란 무엇인가\n실리콘 인터포저(Silicon Interposer)는 HBM 스택들과 GPU 다이를 같은 실리콘 판 위에 나란히 탑재하고, 재배선층(RDL, Redistribution Layer)과 마이크로범프로 수천~수만 개의 신호를 연결하는 패시브(passive) 실리콘 기판입니다.\n인터포저 자체도 TSV(Through-Silicon Via)를 품어, 위(칩)의 신호를 아래 유기 기판(패키지 기판)으로 C4(Controlled Collapse Chip Connection) 범프를 통해 전달합니다. 즉 신호 경로는 칩 → 마이크로범프 → 인터포저 RDL → 인터포저 TSV → C4 범프 → 유기 기판순으로 흐릅니다.\n단면도: 유기 기판(황색) → C4 범프(황금) → 실리콘 인터포저(보라) → 마이크로범프(보라 타원) → GPU(청색)·HBM 스택(녹색)\n■ 왜 유기 기판 대신 실리콘인가\n유기 기판 (Organic Substrate)\nPCB 계열 에폭시 소재. 열팽창계수(CTE)가 크고 배선 최소 피치가 수십~수백 µm 수준으로 고밀도 배선이 어렵다. 비용은 저렴하지만 HBM 수준의 핀 밀도를 지탱하기 어렵다.\n실리콘 인터포저\n반도체 웨이퍼와 동일 소재라 열팽창계수가 칩과 가깝고, 포토리소그래피로 서브마이크로미터 배선(RDL 피치 < 2 µm)을 구현할 수 있다. GPU와 HBM 사이 수만 개의 연결을 짧게 유지한다.\n항목유기 기판실리콘 인터포저배선 최소 피치∼수십 µm< 2 µm (RDL)열팽창계수 (CTE)∼15–20 ppm/°C∼3 ppm/°C (Si와 동일)I/O 밀도낮음매우 높음 (수만 µbump 지원)제조 공정PCB 라인반도체 팹 (포토리소그래피)비용저렴고가\n■ 2.5D 패키징 vs 3D 패키징\n“2.5D”는 칩들이 같은 평면의 인터포저 위에 나란히 올라가는 방식입니다. 완전한 3D(칩 위에 칩)와 달리 각 칩을 따로 테스트(KGD, Known-Good-Die)한 뒤 조립할 수 있어 수율 관리가 쉽습니다. TSMC의 CoWoS(Chip-on-Wafer-on-Substrate)가 대표적인 상용 2.5D 패키지 기술입니다.\nGPU와 HBM이 인터포저 위에서 나란히. 제조가 상대적으로 쉽고 현재 주류.\n로직 다이 위에 DRAM을 직접 쌓는 3D. 거리가 더 짧지만 발열·제조 난도가 크다.\n💡 현세대 AI 가속기(H100·B200·MI300X 등)는 대부분 2.5D 실리콘 인터포저 방식을 씁니다. 3D(로직 위에 DRAM 직접 적층)는 발열·제조 난도가 크지만, KAIST TERALAB 로드맵은 HBM8(2038) 세대에서 Full-3D HBM-Centric Computing으로 진화를 예측합니다.\n■ 인터포저의 한계와 진화 방향\n● 현재의 한계\n① 레티클 크기 제한\n실리콘 인터포저는 단일 노광 레티클로 제조하므로 크기 상한이 있습니다(∼858 mm²). GPU + HBM 여러 개를 덮으려면 “브리지” 타일링이나 포토마스크 이음 기법이 필요합니다.\n② 비용\n반도체 팹에서 포토리소그래피로 만드는 만큼 원가가 높습니다. GPU + 인터포저 + HBM 합산 패키지 비용의 상당 부분을 인터포저가 차지합니다.\n● KAIST TERALAB 로드맵의 진화 경로\nKAIST TERALAB의 HBM 로드맵(ver 1.7)은 아키텍처 진화를 다음과 같이 정의합니다.\nCustom HBM Base DieHBM4~5 (2026–2029)\n베이스 다이 커스텀화, NMC(Near-Memory Computing) 프로세서 내장 시작\nActive / Hybrid InterposerHBM6~7 (2032–2035)\n인터포저에 능동 소자(Active) 또는 이종 소재를 결합한 하이브리드 인터포저 도입\nHBM-Centric InterposerHBM8 (2038)\n컴퓨팅 자체를 HBM 중심으로 재편. Double-side Cooling, Edge-expand Stack 포함\n💡 “패시브 실리콘 기판”이었던 인터포저가 능동 로직과 메모리를 품는 “HBM-Centric Interposer”로 진화합니다. 이는 메모리를 중심에 두는 메모리-중심 컴퓨팅 패러다임 전환의 물리적 구현입니다.",
+          "chars": 1754,
+          "svgs": [
+            "svg/hbm-basics__interposer-1.svg",
+            "svg/hbm-basics__interposer-2.svg",
+            "svg/hbm-basics__interposer-3.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s5",
+          "slug": "stacking",
+          "title": "Ⅴ. 적층 패키징",
+          "order_in_chapter": 5,
+          "tsx": "src/content/ai-memory/hbm-basics/stacking.tsx",
+          "stub": false,
+          "prose": "여러 DRAM 다이를 쌓아 하나의 HBM 스택으로 만드는 “적층 패키징”은 TSV와 함께 HBM의 핵심 공정입니다. 어떻게 쌓는지(본딩 방식)와 얼마나 높이 쌓는지(Hi 수)는 용량·대역폭·발열을 결정하며, 세대마다 진화하고 있습니다.\n■ 적층 높이(Hi)의 세대별 진화\n“12-Hi”는 베이스 다이 1장 + DRAM 다이 12장, 총 13장을 쌓은 스택을 뜻합니다. KAIST TERALAB 로드맵(PDF page 29)에 따르면, HBM 세대가 올라갈수록 Die Stack 수가 증가해 용량과 대역폭을 확장합니다.\n세대Die Stack용량/HBM대역폭/스택HBM4 (2026)12/16-Hi36/48 GB2.0 TB/sHBM5 (2029)16-Hi80 GB4 TB/sHBM6 (2032)16/20-Hi96/120 GB8 TB/sHBM7 (2035)20/24-Hi160/192 GB24 TB/sHBM8 (2038)20/24-Hi200/240 GB64 TB/s\n출처: KAIST TERALAB HBM Roadmap ver 1.7, PDF page 29\n■ 다이 본딩 방식 — MR-MUF에서 Cu-Cu로\n다이와 다이를 어떻게 붙이느냐에 따라 스택 두께, I/O 밀도, 열·신호 특성이 달라집니다. KAIST TERALAB 로드맵은 본딩 방식의 전환을 Microbump(MR-MUF) → Bump-less Cu-Cu Direct bonding으로 명시합니다.\n마이크로범프로 다이를 연결하고 MUF(몰드 언더필)로 채운다. 대량 접합(Mass Reflow)으로 여러 다이를 한 번에 처리.\n범프 없이 구리 패드끼리 직접 접합. 다이 간 간격을 최소화해 더 얇고 많이 쌓을 수 있다.\n● MR-MUF (Mass Reflow — Molded Underfill)\n현재 SK하이닉스 HBM의 주력 공정. 주요 특징은 다음과 같습니다.\n1다이 적재\n베이스 다이 위에 DRAM 다이를 마이크로범프로 정렬해 차례로 올린다.\n2Mass Reflow (대량 리플로우)\n오븐에서 모든 다이를 한 번에 가열해 범프를 동시에 접합한다. 공정 수를 줄여 생산성을 높인다.\n3MUF (몰드 언더필) 충전\n다이 사이 공간에 에폭시 계열 몰드를 주입·경화. 기계적 보강 + 방열 경로 역할을 동시에 한다.\nMR-MUF의 핵심 장점: 배치 처리로 생산성이 높고, 언더필이 방열을 도와 신뢰성이 좋다. 단점: 마이크로범프의 높이(∼20 µm)만큼 다이 간 간격이 생겨 스택 높이가 커진다.\n● TC-NCF (열압착 + 비전도성 필름)\n마이크로범프 본딩 후 NFC(비전도성 접착 필름)를 먼저 라미네이션하고, 열과 압력으로 한 장씩 접합하는 방식입니다. 다이 당 개별 처리라 정밀도는 높지만 생산성이 MR-MUF보다 낮습니다. 삼성이 일부 제품에 활용하며, HBM3E 세대까지 병행 사용됩니다.\n● 범프리스 Cu-Cu 하이브리드 본딩 (차세대)\n마이크로범프를 아예 없애고 다이 표면의 구리 패드끼리 직접 접합하는 방식입니다. “하이브리드”란 구리 패드(전기 접합)와 산화물 표면(기계 접합)을 동시에 붙이기 때문입니다.\n① 더 얇은 스택\n범프 두께(∼20 µm)가 사라져 같은 높이에 더 많은 다이를 넣을 수 있다.\n② 고밀도 I/O\n범프 피치 한계(∼40 µm)를 넘어 구리 패드 피치를 수 µm로 줄여 I/O 수를 폭발적으로 늘릴 수 있다.\n③ 전기·열 특성 개선\n구리-구리 직접 접합으로 저항이 낮아지고, 범프-언더필 계면이 없어져 열 전도가 더 균일해진다.\n💡 KAIST TERALAB 로드맵 기준으로 적층 수가 HBM4의 12/16-Hi에서 HBM7·HBM8의 20/24-Hi로 늘어남에 따라 Cu-Cu 하이브리드 본딩으로의 전환이 필수가 됩니다.\n■ 웨이퍼 박막화와 적층 공정 과제\nDRAM 다이는 TSV(관통 비아)가 뒷면으로 드러나도록 뒷면을 연마해 ∼50 µm 두께로 얇게 만든 뒤 쌓습니다. 이 박막화 과정과 적층 공정은 여러 기술적 과제를 낳습니다.\n휨(Warpage)\n다이가 얇을수록 열·잔류 응력으로 휘기 쉽습니다. 휨이 크면 마이크로범프 정렬이 어긋나 접합 불량이 납니다. 두꺼운 기판이나 지지 웨이퍼(Carrier)로 임시 보강합니다.\n발열 집중\n다이를 많이 쌓을수록 가운데 다이의 열이 빠져나가기 어렵습니다. 로드맵은 D2C(Direct-to-Chip) 액침 → 임베디드 냉각 순으로 냉각 방식이 고도화된다고 봅니다.\n수율·KGD\n불량 다이 하나가 포함된 스택 전체가 폐기되므로, 적층 전 양품 다이만 선별하는 KGD(Known-Good-Die) 테스트가 중요합니다. 적층 수가 늘수록 스택 수율 = (다이 수율)n 으로 급감합니다.\n💡 다이를 높이 쌓을수록 용량·대역폭이 늘지만 발열·휨·수율 문제도 함께 커집니다. 이를 극복하기 위해 Cu-Cu 하이브리드 본딩, 정밀 박막화, 고효율 냉각이 동시에 진화해야 합니다.",
+          "chars": 1868,
+          "svgs": [
+            "svg/hbm-basics__stacking-1.svg",
+            "svg/hbm-basics__stacking-2.svg",
+            "svg/hbm-basics__stacking-3.svg"
+          ],
+          "formulas": []
+        }
+      ]
+    },
+    {
+      "id": "am-ch2",
+      "slug": "hbm-generations",
+      "title": "2장. HBM 세대별 진화",
+      "chapter_order": 2,
+      "leaf_count": 3,
+      "leaves": [
+        {
+          "id": "am-s6",
+          "slug": "hbm1-hbm2",
+          "title": "Ⅰ. HBM1 · HBM2",
+          "order_in_chapter": 1,
+          "tsx": "src/content/ai-memory/hbm-generations/hbm1-hbm2.tsx",
+          "stub": false,
+          "prose": "HBM1(2015)은 세계 최초의 고대역폭 메모리 표준으로, AMD Radeon Fiji GPU에 처음 탑재됐습니다. HBM2(2016)와 HBM2E(2019)로 이어지며 대역폭과 용량이 두 배 이상 성장했고, 이 계보는 JEDEC 표준을 통해 전 업계에 정착했습니다.\n■ HBM1 (2015) — 표준의 시작\n● 탄생 배경\n2013년 JEDEC이 HBM 표준 초안을 발표하고, 2015년 AMD·SK하이닉스가 공동 개발한 HBM1을 Radeon R9 Fury X(코드명 Fiji) GPU에 처음 양산 탑재했습니다. 기존 GDDR5 대비 버스폭을 획기적으로 넓혀 전력 효율과 대역폭을 동시에 끌어올렸습니다.\n● 핵심 사양\n대역폭\n스택당 ~128 GB/s — 동시대 GDDR5의 약 3배.\n버스폭 · 핀당 속도\n1,024-bit 인터페이스, 1 Gbps/핀 — 넓고 느린 전략.\n적층 수 · 용량\n최대 4-Hi(4층 스택), 스택당 4 GB.\n연결 방식\nTSV(Through-Silicon Via) + 실리콘 인터포저 — 2.5D 패키징.\n💡 “넓고 느리게”가 HBM의 철학입니다. 핀당 속도를 낮추는 대신 버스폭을 1,024비트로 늘려 비트당 전력을 줄이면서 총 대역폭을 높입니다.\n■ HBM2 (2016) · HBM2E (2019) — AI 가속기 시대\n● HBM2 — 속도 2배, 용량 2배\n2016년 JEDEC이 HBM2 표준(JESD235)을 확정하고, SK하이닉스·삼성이 양산했습니다. 핀당 속도가 2 Gbps로 배가됐고, 8층 적층(8-Hi)으로 스택당 8 GB까지 늘었습니다. 대역폭은 스택당 ~256 GB/s. NVIDIA V100(Volta, 2017)와 AMD Vega(2017)가 대표 탑재 제품입니다.\nV100은 HBM2 스택 4개를 탑재해 총 대역폭 900 GB/s를 달성했으며, 딥러닝 연구의 표준 플랫폼이 됐습니다.\n● HBM2E — 용량·대역폭 한 번 더 도약\n2019~2020년 등장한 HBM2E(Extended)는 핀당 속도를 ~3.6 Gbps까지 높여 스택당 대역폭 ~460 GB/s, 스택 용량 16 GB를 달성했습니다.\nNVIDIA A100(Ampere, 2020)은 HBM2E 스택 5개를 탑재해 총 대역폭 2 TB/s(5 × 400 GB/s), 총 용량 80 GB로 GPT-3 학습의 주역이 됐습니다.\n■ HBM1 · HBM2 · HBM2E 사양 비교\n세대연도핀당 속도버스폭대역폭/스택최대 적층최대 용량HBM120151 Gbps1,024-bit~128 GB/s4-Hi4 GBHBM22016~2 Gbps1,024-bit~256 GB/s8-Hi8 GBHBM2E2019~~3.6 Gbps1,024-bit~460 GB/s8-Hi16 GB\n※ HBM2E 대역폭은 구현체(SK하이닉스 Hynix4e·삼성 Flashbolt)마다 차이가 있으며, ~410~460 GB/s 범위.\n■ JEDEC 표준화의 의미\nHBM이 특정 기업의 독점 규격이 아닌 업계 공통 표준으로 자리 잡은 것은 JEDEC의 표준화 덕분입니다.\n① 공급망 다양화\nSK하이닉스·삼성·마이크론이 동일 표준 하에 경쟁 → GPU 벤더 선택지 확보.\n② 패키징 생태계\n인터페이스·전기 규격이 표준화 → TSMC·삼성 파운드리 패키지 공정 투자 가능.\n③ 세대 연속성\nHBM1 → HBM2 → HBM2E → HBM3 가 하위 호환 설계 원칙을 유지.\n💡 HBM1·HBM2 세대는 “AI 가속기 메모리”라는 시장 범주 자체를 열었습니다. HBM3·HBM3E(다음 단원)에서는 핀당 속도가 6.4~9.6 Gbps로 훨씬 빠르게 치솟으며 TB/s 시대를 엽니다.",
+          "chars": 1408,
+          "svgs": [
+            "svg/hbm-generations__hbm1-hbm2-1.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s7",
+          "slug": "hbm3-hbm3e",
+          "title": "Ⅱ. HBM3 · HBM3E",
+          "order_in_chapter": 2,
+          "tsx": "src/content/ai-memory/hbm-generations/hbm3-hbm3e.tsx",
+          "stub": false,
+          "prose": "HBM3(2022)는 핀당 속도를 6.4 Gbps로 끌어올려 스택당 대역폭 ~819 GB/s를 달성하며 생성형 AI 붐과 함께 GPU 메모리의 주류가 됐습니다. HBM3E(2024)는 그 한 발 더 나아가 ~9.6 Gbps, ~1.2 TB/s로 처음으로 1 TB/s 벽을 넘었습니다.\n■ HBM3 (2022) — TB/s 시대의 문을 열다\n● 표준 사양\nJEDEC은 2022년 HBM3 표준(JESD238)을 확정했습니다. 핵심 수치는 다음과 같습니다:\n핀당 데이터 속도\n6.4 Gbps — HBM2E(~3.6 Gbps)의 약 1.8배.\n버스폭(I/O)\n1,024-bit 유지 — HBM의 넓은 버스 기준선.\n대역폭/스택\n~819 GB/s(6.4 Gbps × 1,024-bit ÷ 8).\n적층 · 용량\n최대 16-Hi, 스택당 최대 24 GB.\n● NVIDIA H100 탑재\nNVIDIA H100(Hopper, 2022)은 HBM3 스택 5개를 탑재해 총 대역폭 ~3.35 TB/s, 총 용량 80 GB를 달성했습니다. ChatGPT 서비스 급성장 이후 H100 수요가 폭발하면서 HBM3는 사실상 AI 인프라의 기본 부품이 됐습니다.\nAMD MI300X 역시 HBM3 스택 8개(총 192 GB, ~5.3 TB/s)로 엔터프라이즈 AI 시장에 진입했습니다.\n💡 HBM3부터 “스택 수 × 대역폭”이 처음으로 3 TB/s 시스템 대역폭을 넘었습니다. AI 모델의 파라미터 이동량이 주 병목인 추론 워크로드에서 이 수치가 직결됩니다.\n■ HBM3E (2024) — 1 TB/s 돌파\n● HBM3 대비 개선\nHBM3E는 핀당 속도를 ~9.6 Gbps까지 올려 스택당 ~1.2 TB/s를 달성했습니다. 버스폭은 동일한 1,024-bit를 유지해 속도(클럭) 향상이 대역폭 증가의 주 원동력입니다. 용량은 12-Hi 적층(3 GB 다이 12장)으로 스택당 36 GB(8-Hi는 24 GB).\nNVIDIA H200\nHBM3E × 5개 → 총 4.8 TB/s, 141 GB.\nAMD MI325X\nHBM3E × 8개 → 총 ~6.0 TB/s, 256 GB.\nNVIDIA B200\nHBM3E × 8개 → 총 ~8 TB/s, 192 GB.\n● AI 붐과 HBM3E 수요\n2023~2024년 생성형 AI 인프라 투자가 급증하면서 HBM3E 공급 부족이 산업 이슈가 됐습니다. SK하이닉스는 NVIDIA 독점 공급으로 HBM 점유율 50% 이상을 달성했고, 삼성·마이크론도 HBM3E 생산을 서둘렀습니다.\nHBM3E 단계까지 버스폭(1,024-bit)은 고정이었습니다. 다음 HBM4부터 버스폭이 2,048-bit로 2배 확장되며 새 시대를 엽니다.\n■ HBM3 · HBM3E 사양 비교\n세대연도핀당 속도I/O (비트)대역폭/스택최대 Hi용량/스택대표 GPUHBM32022~6.4 Gbps1,024~819 GB/s8-Hi24 GBNVIDIA H100HBM3E2024~~9.6 Gbps1,024~1.2 TB/s12-Hi36 GBH200 · MI325X\n※ 대역폭은 핀당 속도 × 1,024-bit ÷ 8 계산치. 적층수는 양산 제품 기준(HBM3 8-Hi/24 GB, HBM3E 12-Hi/36 GB)이며, JEDEC 표준은 최대 16-Hi까지 허용. 실제 구현체는 일부 차이가 있을 수 있음.\n■ 세대 간 핵심 변화 요약\nHBM2E → HBM3\n핀당 속도 3.6 → 6.4 Gbps(+78%), 용량 16 → 24 GB(8-Hi).\nHBM3 → HBM3E\n핀당 속도 6.4 → 9.6 Gbps(+50%), 용량 24 GB(8-Hi) → 36 GB(12-Hi).\nI/O 버스폭 — 불변\nHBM1~3E 내내 1,024-bit 유지. 대역폭 성장 = 클럭 향상으로만.\nHBM4의 과제\n클럭만으로는 한계 → I/O를 1,024 → 2,048비트로 2배 확장.\n💡 HBM3·HBM3E 세대는 AI 학습/추론 인프라의 표준이 됐으나, 핀당 속도 향상만으로는 TB/s 이상의 점프가 어렵습니다. 다음 단원 HBM4에서 버스폭 혁신이 등장합니다.",
+          "chars": 1561,
+          "svgs": [
+            "svg/hbm-generations__hbm3-hbm3e-1.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s8",
+          "slug": "hbm4",
+          "title": "Ⅲ. HBM4",
+          "order_in_chapter": 3,
+          "tsx": "src/content/ai-memory/hbm-generations/hbm4.tsx",
+          "stub": false,
+          "prose": "HBM4(2026년)는 I/O 버스폭을 1,024-bit에서 2,048-bit로 두 배 확장해 스택당 대역폭 2.0 TB/s를 달성합니다. NVIDIA Rubin(R200) GPU에 HBM4 스택 8개가 탑재되면 총 16~32 TB/s의 시스템 대역폭이 실현됩니다.\n■ HBM4 핵심 사양 (KAIST TERALAB 로드맵 p.29)\nI/O 버스폭\n2,048-bit\nHBM3E(1,024-bit)의 2배. 가장 큰 변화.\n대역폭/스택\n2.0 TB/s\nHBM3E 대비 ~1.67배 향상.\n스택 용량\n36 / 48 GB\n12-Hi(36 GB) 또는 16-Hi(48 GB). 다이당 24 Gb.\n핀당 속도\n8 Gbps — 클럭보다 버스폭 확장이 전략.\n소비전력\n스택당 75 W — 발열 관리가 중요 이슈.\n다이 접합\nMicrobump(MR-MUF) 유지, 이후 세대에서 범프리스로 전환.\n■ I/O 1,024 → 2,048 — 버스폭 2배 확장의 의미\nHBM 대역폭 공식은 다음과 같습니다:\nHBM3E는 9.6 Gbps × 1,024 ÷ 8 ≈ 1.23 TB/s. HBM4는 핀당 속도를 오히려 8 Gbps로 낮추면서도 I/O를 2배로 늘려 8 × 2,048 ÷ 8 = 2.0 TB/s를 달성합니다. 클럭 경쟁 대신 버스폭 확장이 핵심 전략입니다.\n💡 버스폭을 2배로 늘리면 같은 핀당 속도에서 대역폭이 2배가 됩니다. 반면 클럭을 2배 올리면 신호 무결성(SI) 문제가 급격히 심화됩니다. HBM4의 선택은 “더 많은 선, 더 안정적인 신호”입니다.\n■ HBM3E → HBM4 사양 비교\n항목HBM3EHBM4 (KAIST 로드맵)연도2024~2026핀당 속도~9.6 Gbps8 Gbps*I/O (버스폭)1,024-bit2,048-bit ×2대역폭/스택~1.2 TB/s2.0 TB/s다이당 용량—24 GbDie stack16-Hi12/16-Hi스택 용량36 GB36 / 48 GBPower/HBM—75 W베이스 다이표준커스텀 베이스 다이 도입* HBM4 핀당 속도 8 Gbps는 KAIST TERALAB 로드맵(PDF p.29) 기준. 버스폭 2배 확장이 대역폭 도약의 주요인.\n■ 커스텀 베이스 다이 — HBM4의 구조 혁신\n● 기존 구조의 한계\nHBM1~HBM3E는 모든 GPU 벤더에게 동일한 표준 베이스 다이를 제공했습니다. 베이스 다이는 스택 하부에서 PHY(물리 계층)·제어 로직·전력 회로를 담당합니다.\n● HBM4의 커스텀 베이스 다이\nHBM4부터 NVIDIA·AMD·구글 같은 GPU/가속기 설계사가 베이스 다이 내부 로직을 커스터마이징할 수 있게 됩니다. 이는 두 가지 결과를 낳습니다:\n① 시스템 최적화\nGPU 아키텍처에 맞게 PHY 타이밍·전력 설계를 최적화 → 성능·전력 효율 향상.\n② NMC 기능 탑재 준비\n로드맵 상 HBM5(2029)부터 본격화될 NMC(Near-Memory Computing) 프로세서 삽입의 전 단계 — 베이스 다이 커스텀화가 그 시작점.\n■ Rubin R200 (2026) — HBM4×8 시스템\nKAIST TERALAB 로드맵(PDF p.344)에 따르면, NVIDIA Rubin 세대 시스템 R200(2026)은 GPU 다이 2개와 함께 HBM4 스택 8개를 탑재합니다.\n항목Rubin R200 (2026)GPU 다이 수2개HBM 구성HBM4 × 8 스택총 대역폭16 / 32 TB/s총 HBM 용량288 / 384 GB\n스택당 2.0 TB/s × 8 스택 = 총 16 TB/s(36 GB 구성) 또는 32 TB/s(48 GB 구성 시 추정). 이는 HBM3E 기반 H200(총 ~4.8 TB/s × 5 = 24 TB/s 상한선)과 대등하거나 초과하는 규모입니다.\n💡 HBM4 + Rubin은 2026년 AI 가속기 시장의 세대 전환점입니다. 버스폭 2배 확장과 커스텀 베이스 다이라는 두 가지 구조 혁신이 동시에 등장하며, 이후 HBM5(2029)의 4,096-bit·NMC 시대로 향하는 발판이 됩니다.",
+          "chars": 1532,
+          "svgs": [
+            "svg/hbm-generations__hbm4-1.svg"
+          ],
+          "formulas": [
+            "\\text{대역폭} = \\text{핀당 속도(Gbps)} \\times \\text{I/O 비트 수} \\div 8"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "am-ch3",
+      "slug": "hbm-roadmap",
+      "title": "3장. HBM 장기 로드맵",
+      "chapter_order": 3,
+      "leaf_count": 4,
+      "leaves": [
+        {
+          "id": "am-s9",
+          "slug": "hbm5",
+          "title": "Ⅰ. HBM5 (2029)",
+          "order_in_chapter": 1,
+          "tsx": "src/content/ai-memory/hbm-roadmap/hbm5.tsx",
+          "stub": false,
+          "prose": "HBM5(2029년 예상)는 I/O 버스폭을 4,096-bit로 두 배 확장하고 스택당 대역폭 4 TB/s를 달성하는 세대입니다. 아키텍처 면에서는 NMC(Near-Memory Computing)가 본격 도입되어 메모리 안에서 연산을 수행하는 “지능형 HBM”의 시대를 엽니다.\n■ HBM5 핵심 사양 (KAIST TERALAB 로드맵 p.29)\n사양표아키텍처GPU 시스템\n항목HBM5 수치의미Data Rate (핀당)8 GbpsHBM4와 동일 — 버스폭 확장이 핵심I/O (버스폭)4,096-bitHBM4(2,048) 대비 2배대역폭/스택4 TB/sHBM4(2.0) 대비 2배다이당 용량40 GbHBM4(24 Gb) 대비 +67 %Die stack16-Hi16층 적층스택 용량80 GB16-Hi × 40 Gb ÷ 8Power/HBM100 WHBM4(75 W) 대비 +25 W\n■ I/O 2,048 → 4,096 — 버스폭 2배 도약\nHBM5에서도 핀당 속도는 8 Gbps를 유지하면서 I/O 비트 수를 두 배로 늘리는 “버스폭 확장” 전략을 계속합니다:\n💡 HBM4 → HBM5 전환의 핵심은 I/O 2배(2,048 → 4,096)입니다. 핀당 속도를 높이면 신호 무결성 문제가 커지므로, KAIST 로드맵은 일관되게 버스폭 확장을 대역폭 증가의 주요 수단으로 삼습니다.\n■ 대역폭 계산 — HBM4 vs HBM5\n● HBM4 (2026)\n● HBM5 (2029)\n버스폭 2배 → 대역폭 정확히 2배. 핀당 속도 불변이므로 신호 무결성 비용 없음.\n■ HBM5의 도전 과제\n전력 100 W\nHBM4(75 W) 대비 25 W 증가. 스택 8개 탑재 시 총 800 W. D2C 액체 냉각 필수.\nNMC 설계 복잡도\n메모리 다이 안에 프로세서를 심으면 검증·디버깅이 기존 DRAM 대비 훨씬 복잡해진다.\n16-Hi 적층 열\n16층 스택 가운데 다이에서 방열이 어렵다. 로드맵은 이후 세대에서 Immersion 냉각으로 전환.",
+          "chars": 760,
+          "svgs": [
+            "svg/hbm-roadmap__hbm5-1.svg"
+          ],
+          "formulas": [
+            "\\text{대역폭} = 8\\,\\text{Gbps} \\times 4{,}096\\,\\text{bit} \\div 8 = 4\\,\\text{TB/s}",
+            "8\\,\\text{Gbps} \\times 2{,}048 \\div 8 = 2.0\\,\\text{TB/s}",
+            "8\\,\\text{Gbps} \\times 4{,}096 \\div 8 = 4.0\\,\\text{TB/s}"
+          ]
+        },
+        {
+          "id": "am-s10",
+          "slug": "hbm6",
+          "title": "Ⅱ. HBM6 (2032)",
+          "order_in_chapter": 2,
+          "tsx": "src/content/ai-memory/hbm-roadmap/hbm6.tsx",
+          "stub": false,
+          "prose": "HBM6(2032년 예상)은 핀당 속도를 처음으로 16 Gbps로 두 배 올려 스택당 8 TB/s를 달성합니다. 구조 면에서는 Multi-tower HBM과 Active/Hybrid Interposer가 도입되고, 냉각 방식이 침지(Immersion) 냉각으로 전환되는 중요한 세대입니다.\n■ HBM6 핵심 사양 (KAIST TERALAB 로드맵 p.29)\n사양표아키텍처GPU 시스템\n항목HBM6 수치의미Data Rate (핀당)16 GbpsHBM5(8 Gbps) 대비 2배 — 처음으로 속도 도약I/O (버스폭)4,096-bitHBM5와 동일 버스폭 유지대역폭/스택8 TB/s핀당 속도 2배 → 대역폭 2배다이당 용량48 GbHBM5(40 Gb) 대비 +20 %Die stack16/20-Hi최대 20층 적층 옵션 추가스택 용량96 / 120 GB16-Hi(96 GB) 또는 20-Hi(120 GB)Power/HBM120 WHBM5(100 W) 대비 +20 W\n■ HBM4 → HBM5 → HBM6 대역폭 폭발\nHBM6에서는 I/O 비트 수가 아닌 핀당 속도(8 → 16 Gbps)가 두 배가 됩니다. 처음으로 클럭 도약이 주요 수단이 되는 세대입니다:\n💡 HBM5까지는 “버스폭을 2배”하는 전략을 썼다면, HBM6부터는 “핀당 속도를 2배”하는 전략이 추가됩니다. 이 때문에 신호 무결성(SI) 관리 난이도가 올라가고, Active Interposer 수준의 정밀한 인터커넥트가 필요해집니다.\n■ 냉각 방식 전환 — D2C에서 Immersion으로\n● HBM5까지: D2C(Direct-to-Chip) 액체 냉각\n냉각수 튜브를 칩 표면 바로 위에 붙이는 방식. 단일 스택 100 W까지는 이 방법으로 충분하지만, 스택 수 × 전력이 커지면 한계에 도달한다.\n● HBM6+: Immersion(침지) 냉각\n서버 전체 또는 GPU 모듈을 절연 냉각액에 직접 담그는 방식. HBM6 스택당 120 W × 16 스택 = 총 1,920 W를 다루려면 D2C만으로는 한계 — Immersion이 다음 단계.\n로드맵(p.29): Direct-to-Chip → Immersion → Embedded Cooling순서로 냉각 방식이 세대별로 진화.",
+          "chars": 872,
+          "svgs": [
+            "svg/hbm-roadmap__hbm6-1.svg"
+          ],
+          "formulas": [
+            "16\\,\\text{Gbps} \\times 4{,}096\\,\\text{bit} \\div 8 = 8\\,\\text{TB/s}"
+          ]
+        },
+        {
+          "id": "am-s11",
+          "slug": "hbm7",
+          "title": "Ⅲ. HBM7 (2035)",
+          "order_in_chapter": 3,
+          "tsx": "src/content/ai-memory/hbm-roadmap/hbm7.tsx",
+          "stub": false,
+          "prose": "HBM7(2035년 예상)은 I/O 버스폭과 핀당 속도를 동시에 올려 스택당 24 TB/s라는 도약을 이룹니다. 더 중요한 변화는 아키텍처 측에서 HBM-HBF(High Bandwidth Flash) 결합과 Storage Network가 본격 등장해 용량의 물리적 한계를 돌파하는 것입니다.\n■ HBM7 핵심 사양 (KAIST TERALAB 로드맵 p.29)\n항목HBM7 수치의미Data Rate (핀당)24 GbpsHBM6(16 Gbps) 대비 ×1.5I/O (버스폭)8,192-bitHBM6(4,096) 대비 2배대역폭/스택24 TB/sHBM6(8 TB/s) 대비 3배다이당 용량64 GbHBM6(48 Gb) 대비 +33 %Die stack20/24-Hi최대 24층 — 범프리스 Cu-Cu 필수 단계스택 용량160 / 192 GB20-Hi(160 GB) 또는 24-Hi(192 GB)Power/HBM160 WHBM6(120 W) 대비 +40 W\n대역폭 계산:\n■ 대역폭 추이 — HBM3 → HBM7 폭발적 성장\n💡 HBM7(24 TB/s)은 HBM3(819 GB/s) 대비 약 29배 향상입니다. 이 구간(2023→2035)의 대역폭 성장률은 DRAM 클럭 진화보다 훨씬 가파른데, I/O 버스폭과 핀당 속도가 동시에 확장되기 때문입니다.\n■ HBM-HBF 결합 시작 — 용량 한계 돌파 (핵심 혁신)\nHBM만으로는 스택당 192 GB(24-Hi)가 물리적 한계에 근접합니다. HBM7 세대부터 HBF(High Bandwidth Flash)를 GPU 옆에 병치하고 Storage Network로 연결해 용량 문제를 해결하는 전략이 본격화됩니다.\n● HBM vs HBF 역할 분리\nHBM7 — “책꽂이”\n① 속도 최우선: 24 TB/s 대역폭.\n② GPU 바로 옆 배치(초저지연).\n③ 활성 모델 파라미터, KV 캐시를 상주.\nHBF — “도서관”\n① 용량 최우선: 단위당 최대 512 GB.\n② 대역폭 최대 1.638 TB/s(HBM 대비 낮지만 SSD 대비 100배+).\n③ 비활성 모델, 임베딩 테이블, 히스토리 저장.\n● Storage Network (KAIST 로드맵 p.29 특징 항목)\nHBM7 세대의 특징 중 하나로 Storage network가 명시됩니다. 이는 HBF를 단순히 “옆에 놓는” 것이 아니라, 고대역폭 스토리지를 네트워크처럼 연결해 다수의 GPU가 공유하는 구조를 가리킵니다.\n에이전트형 AI의 컨텍스트(1인당 ~100 TB 전망, 2030년대 중반)를 처리하려면 개별 GPU HBM 용량만으로는 턱없이 부족하므로, 네트워크 연결 스토리지를 메모리 계층에 통합하는 이 방향이 필수가 됩니다.\n■ Next-Gen Z800* (2032) — HBM7×32 시스템\n항목Next-Gen Z800* (2032)GPU 다이 수8개HBM 구성HBM7 × 32 스택총 대역폭1,024 TB/s총 HBM 용량5,120 / 6,144 GB\n스택당 24 TB/s × 32 스택 = 768 TB/s(순수 HBM7 계산치). Z800* 총 대역폭 1,024 TB/s(= 1 PB/s)는 인터커넥트 포함 시스템 수치. 총 용량 5~6 TB는 현재의 데이터센터급 메모리를 단일 가속기에 집약한 규모입니다.\n💡 Z800*의 1,024 TB/s는 현재 HBM3E 기반 시스템(수 TB/s 수준) 대비 수백 배 규모입니다. HBM-HBF 결합 없이 HBM 단독으로는 용량을 확보할 수 없어, Storage Network가 Z800* 세대의 필수 구성 요소가 됩니다.\n■ 20/24-Hi 적층 — 범프리스 Cu-Cu Direct Bonding 필수\n● 왜 범프리스인가\n마이크로범프(Microbump) 방식은 범프 자체의 높이가 다이 간 간격을 제한합니다. 24층을 쌓으면 전체 스택 높이가 과도해져 패키지 제약에 걸리므로, 범프 없이 구리 패드끼리 직접 접합하는 Cu-Cu Direct Bonding이 필수입니다.\n● 전환 시점\nKAIST 로드맵(p.29): Microbump(MR-MUF) → Bump-less Cu-Cu Direct Bonding. HBM7의 20/24-Hi는 이 전환이 완료된 단계에 해당하며, 다이 간격이 수 µm 수준으로 줄어들어 전기·열 특성 모두 개선됩니다.",
+          "chars": 1652,
+          "svgs": [
+            "svg/hbm-roadmap__hbm7-1.svg",
+            "svg/hbm-roadmap__hbm7-2.svg"
+          ],
+          "formulas": [
+            "24\\,\\text{Gbps} \\times 8{,}192\\,\\text{bit} \\div 8 = 24.576\\,\\text{TB/s} \\approx 24\\,\\text{TB/s}"
+          ]
+        },
+        {
+          "id": "am-s12",
+          "slug": "hbm8",
+          "title": "Ⅳ. HBM8 (2038)",
+          "order_in_chapter": 4,
+          "tsx": "src/content/ai-memory/hbm-roadmap/hbm8.tsx",
+          "stub": false,
+          "prose": "HBM8(2038년 예상)은 I/O 버스폭 16,384-bit와 핀당 속도 32 Gbps로 스택당 64 TB/s를 달성하며 Peta(페타) 대역폭 시대를 엽니다. 아키텍처 측에서는 Full-3D / HBM-Centric Computing, Double-side & Embedded Cooling이 도입되고, 열결합(thermal coupling) 문제가 설계의 핵심 난제로 부상합니다.\n■ HBM8 핵심 사양 (KAIST TERALAB 로드맵 p.29)\n사양표아키텍처GPU 시스템\n항목HBM8 수치의미Data Rate (핀당)32 GbpsHBM7(24 Gbps) 대비 ×1.33I/O (버스폭)16,384-bitHBM7(8,192) 대비 2배 — 역대 최대대역폭/스택64 TB/sHBM7(24) 대비 ×2.67 — Peta급 진입다이당 용량80 GbHBM7(64 Gb) 대비 +25 %Die stack20/24-HiHBM7과 동일 적층 수 — 품질 심화스택 용량200 / 240 GB20-Hi(200 GB) 또는 24-Hi(240 GB)Power/HBM180 WHBM7(160 W) 대비 +20 W — 임베디드 냉각 필수대역폭 계산:\n■ HBM3 → HBM8 대역폭·I/O 폭발 추세\n대역폭 (TB/s)I/O (bit)\nHBM3(819 GB/s) → HBM8(64 TB/s): 약 78배 증가(2023→2038, 15년). 복리 환산 연평균 약 34 % 성장.\n💡 HBM8에서 I/O 16,384-bit는 현재 PC 메모리 버스(64~128-bit)의 128~256배 너비입니다. 이 수준의 버스를 패키지 안에서 구현하려면 실리콘 인터포저를 넘어 HBM-Centric 인터포저라는 전용 기판이 필요합니다.\n■ 열결합(Thermal Coupling) — Full-3D의 핵심 난제\n● 열결합이란\n3D 적층에서 한 다이의 발열이 인접 다이의 온도를 끌어올리는 현상. 다이 간 거리(d)가 줄어들수록 열결합이 강해져:\nFull-3D HBM-XPU 구조에서 다이 간 거리가 µm 수준이면 열결합이 극도로 심화되어 다이 하나가 과열되면 옆 다이도 동반 과열됩니다.\n● 대응 전략 (로드맵 p.29 아키텍처 특징)\n① Double-side Cooling\n상·하 양면에서 동시 냉각 → 열경로 절반으로 단축.\n② Embedded Cooling\n인터포저/다이 내 마이크로채널 → 발열원 최근접 냉각.\n③ AI 설계 자동화\nLLM 기반 대화형 설계 에이전트로 열-전기 공동 최적화.",
+          "chars": 985,
+          "svgs": [
+            "svg/hbm-roadmap__hbm8-1.svg"
+          ],
+          "formulas": [
+            "32\\,\\text{Gbps} \\times 16{,}384\\,\\text{bit} \\div 8 = 65.536\\,\\text{TB/s} \\approx 64\\,\\text{TB/s}",
+            "\\text{열결합} \\propto \\frac{1}{\\text{다이 간 거리}}",
+            "Q_{\\text{coupling}} \\propto \\frac{1}{d}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "am-ch4",
+      "slug": "hbf-basics",
+      "title": "4장. HBF 기초",
+      "chapter_order": 4,
+      "leaf_count": 4,
+      "leaves": [
+        {
+          "id": "am-s13",
+          "slug": "what-is-hbf",
+          "title": "Ⅰ. HBF란",
+          "order_in_chapter": 1,
+          "tsx": "src/content/ai-memory/hbf-basics/what-is-hbf.tsx",
+          "stub": false,
+          "prose": "HBF(High Bandwidth Flash)는 NAND 플래시를 수직 적층(TSV + 베이스 로직 다이)해 HBM 수준의 대역폭과 SSD급의 대용량을 동시에 제공하는 새로운 메모리 계층입니다. AI 모델 가중치와 KV캐시의 급격한 용량 팽창에 대응하기 위해 등장했습니다.\n■ HBF란 무엇인가\nKAIST TERALAB 로드맵(김정호 교수)은 HBF를 다음과 같이 정의합니다:\nHBF — NAND 플래시 다이를 TSV로 수직 적층하고 최하단 베이스 로직 다이(컨트롤러)를 결합해, HBM 수준의 대역폭과 SSD급의 대용량을 하나의 패키지로 제공하는 차세대 메모리.\n● 핵심 수치 (KAIST TERALAB, 1-C)\n512 GB\n유닛당 최대 용량\n1.638 TB/s\n유닛당 최대 대역폭\n×10\nHBM 대비 용량 배수\n■ 책꽂이 vs 도서관 — HBM과 HBF의 역할 분담\nKAIST TERALAB 로드맵은 GPU 메모리 계층을 아래 비유로 설명합니다:\nHBM — GPU 옆 책꽂이\n• ① DRAM 기반, 빠른 접근 (캐시 역할)\n• ② 수십~수백 GB 용량\n• ③ 지금 당장 연산에 필요한 데이터\n• ④ TB/s급 대역폭, 높은 단가\nHBF — GPU 옆 도서관\n• ① NAND 기반, 대용량 (라이브러리 역할)\n• ② 최대 512 GB/유닛\n• ③ 모델 가중치·KV캐시 전체 보관\n• ④ 최대 1.638 TB/s, HBM보다 낮은 단가\n계층 예시: GPU 앞 100 GB HBM(캐시, 책꽂이) + 1 TB HBF(라이브러리, 도서관). SK하이닉스 H3 아키텍처는 HBM과 HBF를 GPU 옆에 나란히 탑재하는 구조입니다.\n💡 HBM이 “지금 펼쳐놓은 책”이라면, HBF는 “책장 전체”입니다. 두 계층을 함께 써야 대형 AI 모델을 GPU 가까이 둘 수 있습니다.\n■ 왜 HBF가 필요한가 — AI 메모리 수요 폭증\n● AI 모델과 KV캐시 용량 급증\n에이전트형 AI와 컨텍스트 엔지니어링의 확산으로 AI 입력 길이가 100→1,000배 늘었습니다. KV캐시(Key-Value Cache) 크기는 컨텍스트 길이에 비례하므로, 수백 GB ∼ TB 규모의 메모리가 GPU 근처에 필요해졌습니다.\n모델 가중치 급증\n수백억 매개변수 모델의 FP16 가중치만 수백 GB—HBM만으론 부족.\nKV캐시 용량 폭증\n긴 컨텍스트 추론 시 KV캐시가 모델 가중치를 초과하는 상황 발생.\n● SSD는 왜 부족한가\nPCIe 5 NVMe SSD의 대역폭은 약 14 GB/s — HBF 최대 대역폭(1.638 TB/s)의 1/100 수준입니다. GPU–SSD 간 전송 병목이 추론 지연의 주원인이 되며, HBF는 이 공백을 메웁니다.\n💡 HBF는 “SSD보다 100배 빠르고 HBM보다 10배 크다”는 두 가지 성질로 AI 추론 메모리 계층의 빈 자리를 채웁니다.\n■ HBM 로드맵에서 HBF의 위치\nKAIST TERALAB 로드맵은 HBM7(2035) 세대부터 HBM–HBF 결합 구조가 등장한다고 예측합니다. HBF는 HBM과 경쟁하는 것이 아니라 함께 GPU 메모리 계층을 구성하는 파트너입니다.\n주요 일정 (KAIST TERALAB 1-C):\n① 2027 — 엔지니어링 샘플 출시 예정\n② 2028+ — NVIDIA · Google · AMD 채택 전망\n③ 2038 — HBF 시장 규모가 HBM을 추월할 것으로 전망",
+          "chars": 1249,
+          "svgs": [
+            "svg/hbf-basics__what-is-hbf-1.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s14",
+          "slug": "nand-flash",
+          "title": "Ⅱ. 3D NAND 기초",
+          "order_in_chapter": 2,
+          "tsx": "src/content/ai-memory/hbf-basics/nand-flash.tsx",
+          "stub": false,
+          "prose": "HBF의 토대인 3D NAND 플래시를 이해하면 HBF의 특성(비휘발·대용량·쓰기 수명 제한)이 왜 그런지 명확해집니다. DRAM과 비교하면서 차이를 파악합니다.\n■ NAND 플래시 셀 원리 — 전하를 가두는 구조\n● 플로팅 게이트 / 차지 트랩\nNAND 셀은 플로팅 게이트(Floating Gate) 또는 차지 트랩 레이어(Charge Trap Layer)에 전자를 가두어 데이터를 저장합니다. 산화막(Oxide)이 전자를 붙잡아 두기 때문에 전원이 꺼져도 데이터가 유지됩니다.\n셀 구조 (단면)\n① 쓰기(Program): 컨트롤 게이트에 고전압 → 전자가 터널 산화막을 통해 플로팅 게이트로 주입.\n② 읽기(Read): 컨트롤 게이트에 읽기 전압 → 전류 흐름 여부로 전하량(데이터) 판별.\n③ 소거(Erase): 기판에 고전압 → 전자를 플로팅 게이트 밖으로 빼냄. 블록 단위로만 가능.\n● DRAM과의 핵심 차이\n항목DRAMNAND 플래시저장 원리커패시터 전하 (누설)플로팅 게이트 전자 포획비휘발성아니오 (리프레시 필요)예 (전원 꺼도 유지)소거 단위비트/바이트 단위블록(수 MB) 단위속도ns급 (매우 빠름)µs급 (쓰기/소거 느림)내구성사실상 무제한100~10만 회 (셀 종류별 상이)\n💡 NAND의 “비휘발+대용량”은 장점, “블록 단위 소거+유한 수명”은 HBF 설계에서 반드시 관리해야 할 제약입니다.\n■ 3D NAND — 수직 적층으로 용량 키우기\n평면(2D) NAND는 셀 간격을 줄이는 데 물리적 한계에 직면했습니다. 3D NAND는 셀을 수직으로 100층 이상 쌓아 같은 면적에서 용량을 수십 배 늘립니다. HBF는 이 3D NAND 다이를 TSV로 다시 수직 적층해 대역폭을 추가로 높입니다.\n3D NAND: 셀을 수직으로 쌓아 면적 대비 용량을 획기적으로 늘림\n■ 셀 유형 — SLC · MLC · TLC · QLC\n한 셀에 몇 비트를 저장하느냐에 따라 속도·내구성·밀도가 달라집니다. 셀을 선택하면 전하량 상태 다이어그램이 바뀝니다.\nSLCMLCTLCQLC\n유형비트/셀P/E 내구성속도밀도SLC1비트 (2상태)10만+ 회매우 빠름낮음MLC2비트 (4상태)3~1만 회빠름보통TLC3비트 (8상태)1천~3천 회보통높음QLC4비트 (16상태)수백~1천 회느림매우 높음\nHBF는 대용량을 위해 TLC/QLC를 사용하므로 쓰기 내구성이 낮습니다. 이것이 HBF가 “read-heavy(읽기 중심) 운용 모델”을 요구하는 근본 이유입니다.\n💡 셀당 비트를 늘릴수록 용량↑·단가↓, 속도↓·수명↓. HBF는 이 트레이드오프를 웨어레벨링(베이스 로직 다이)과읽기 중심 AI 워크로드로 극복합니다.\n■ 3D NAND에서 HBF로 — 연결고리\nHBF는 3D NAND 다이를 기반으로 HBM의 패키징 철학(TSV + 적층 + 베이스 로직 다이)을 결합한 기술입니다. 3D NAND가 “셀을 위로 쌓는다”면, HBF는 “그 3D NAND 다이 자체를 다시 TSV로 위로 쌓는다”는 2중 적층 구조입니다.\n① 3D NAND\n셀을 수직 100층+ 쌓아 용량 확보\n② TSV 적층\n3D NAND 다이를 TSV로 다시 수직 연결 → 대역폭 확보\n③ 베이스 로직 다이\n최하단 컨트롤러가 웨어레벨링·I/O 관리",
+          "chars": 1241,
+          "svgs": [
+            "svg/hbf-basics__nand-flash-1.svg",
+            "svg/hbf-basics__nand-flash-2.svg",
+            "svg/hbf-basics__nand-flash-3.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s15",
+          "slug": "hbf-packaging",
+          "title": "Ⅲ. HBF 패키징 기술",
+          "order_in_chapter": 3,
+          "tsx": "src/content/ai-memory/hbf-basics/hbf-packaging.tsx",
+          "stub": false,
+          "prose": "HBF의 패키징은 HBM의 철학(TSV 수직 적층 + 베이스 로직 다이)을 NAND 플래시에 적용한 것입니다. SSD 및 HBM 패키징과 비교하며 HBF만의 특성을 파악합니다.\n■ HBF 스택 구조 — NAND 다이 + 베이스 로직 다이\nHBF는 다수의 3D NAND 다이를 TSV(Through-Silicon Via)로 수직 연결하고, 최하단에 베이스 로직 다이(컨트롤러)를 배치합니다. 베이스 로직 다이가 I/O 프로토콜 처리, 웨어레벨링, ECC, 전원 관리를 담당합니다.\n● 베이스 로직 다이의 역할\nI/O 인터페이스\nGPU / 인터포저와의 고속 신호 송수신. HBM과 유사한 광폭 버스 제공.\n웨어레벨링 (Wear Leveling)\nNAND 쓰기를 여러 블록에 고르게 분산시켜 특정 블록만 먼저 닳지 않게 관리.\nECC (오류 정정)\nNAND 특유의 비트 오류를 하드웨어 레벨에서 정정 — AI 추론 신뢰성 보장.\n전원 관리\nNAND 프로그램·소거 전압 생성 및 각 다이별 전력 분배 제어.\n■ SSD · HBF · HBM 패키징 비교\n세 메모리는 서로 다른 방식으로 다이를 연결합니다. HBF와 HBM은 TSV 적층이라는 공통 철학을 공유하지만, 저장 소재(NAND vs DRAM)와 관리 복잡도가 다릅니다.\n개별 NAND 패키지를 PCB 위에 배치 — 와이어/솔더 연결, 낮은 대역폭\nNAND 다이를 TSV로 수직 적층 + 베이스 로직 — 대역폭 ×100 이상\nDRAM 다이를 TSV로 수직 적층 + 베이스 DRAM 다이 — 공통 패키징 철학\n항목SSDHBFHBM저장 소재NAND 플래시NAND 플래시DRAM다이 연결개별 패키지 → PCB 실장TSV 수직 적층TSV 수직 적층대역폭~14 GB/s (PCIe5)최대 1.638 TB/s최대 2+ TB/s쓰기 관리SSD 컨트롤러(별도 칩)베이스 로직 다이 내장불필요 (DRAM 무제한)비휘발성예예아니오\n💡 HBF는 “SSD의 용량 + HBM의 대역폭”을 TSV 패키징으로 결합한 구조입니다. HBM과 제조 공정 철학을 공유하므로 기존 인터포저 생태계를 그대로 활용할 수 있습니다.\n■ HBF 패키징 제조 흐름\nHBF 패키징은 NAND 다이 준비 → TSV 가공 → 적층 → 베이스 로직 결합 순서로 이루어집니다. HBM 패키징과 대부분 동일하며, NAND 특성에 맞는 웨어레벨링 펌웨어가 추가됩니다.\n13D NAND 다이 제조\n수직 100층+ 3D NAND 웨이퍼를 제조한 뒤 얇게 갈아내(박막화) TSV 구멍을 뚫을 준비.\n2TSV 가공\n식각(DRIE) → 절연·배리어 막 코팅 → 구리 전해도금 → CMP 평탄화 순서로 각 NAND 다이에 TSV를 형성.\n3다이 수직 적층\n마이크로범프 또는 Cu-Cu 하이브리드 본딩으로 NAND 다이를 8장 이상 적층. 각 다이의 TSV가 맞닿아 수직 데이터 경로 형성.\n4베이스 로직 다이 결합\n최하단 NAND 다이 아래에 베이스 로직 다이를 접합. 이 다이가 I/O·웨어레벨링·ECC를 모두 처리.\n5인터포저 탑재\n완성된 HBF 스택을 GPU, HBM과 함께 실리콘 인터포저 위에 병렬 배치. SK하이닉스 H3 아키텍처는 이 방식으로 HBM과 HBF를 동일 인터포저에 탑재합니다.\n■ HBM 패키징과의 공통점·차이점\n● 공통점 (TSV · 적층)\n① TSV를 이용한 다이 수직 연결 — 넓은 버스폭으로 높은 대역폭 달성. ② 베이스 다이(로직 다이)가 최하단에 위치해 인터페이스를 담당. ③ 실리콘 인터포저 위에 GPU와 나란히 탑재.\n● 차이점 (NAND 특성·대용량·쓰기 관리)\n① NAND는 블록 단위 소거가 필요해 베이스 로직 다이가 웨어레벨링·ECC를 수행해야 합니다 — HBM의 베이스 DRAM 다이보다 훨씬 복잡한 펌웨어가 필요. ② 비휘발성이므로 전원 차단 후에도 데이터가 유지됩니다. ③ 쓰기 내구성이 유한(~10만 회)해 read-heavy 운용이 전제됩니다. ④ 같은 면적에서 HBM의 약 10배 용량을 제공합니다.\n💡 “TSV로 쌓는다”는 철학은 HBM과 같지만, NAND 특성 때문에 베이스 로직 다이의 역할이 훨씬 크고 AI 프레임워크가 읽기 중심으로 설계되어야 한다는 점이 핵심 차이입니다.",
+          "chars": 1559,
+          "svgs": [
+            "svg/hbf-basics__hbf-packaging-1.svg",
+            "svg/hbf-basics__hbf-packaging-2.svg",
+            "svg/hbf-basics__hbf-packaging-3.svg",
+            "svg/hbf-basics__hbf-packaging-4.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s16",
+          "slug": "hbf-spec",
+          "title": "Ⅳ. HBF 사양과 성능",
+          "order_in_chapter": 4,
+          "tsx": "src/content/ai-memory/hbf-basics/hbf-spec.tsx",
+          "stub": false,
+          "prose": "KAIST TERALAB 로드맵(김정호 교수, 1-C)이 제시하는 HBF 핵심 사양을 정리합니다. 수치는 원본을 그대로 인용하며, PCIe5 NVMe SSD와 HBM4 대비 성능을 비교합니다.\n■ HBF 핵심 사양 (KAIST TERALAB 1-C)\n용량 (유닛당)\n512 GB\n최대. HBM4 48 GB(12-Hi) 대비 약 10배.\n대역폭 (유닛당)\n1.638 TB/s\n최대. PCIe5 NVMe SSD(~14 GB/s) 대비 100배 이상.\n쓰기 내구성\n~10만 회\nP/E(Program/Erase) 사이클. TLC/QLC 기준.\n읽기 내구성\n사실상 무제한\n읽기는 셀을 소모하지 않음 → AI 추론에 최적.\n■ 대역폭 비교 — SSD vs HBF vs HBM\nHBF의 최대 대역폭(1.638 TB/s)은 PCIe5 NVMe SSD(약 14 GB/s)의 100배 이상, HBM4 1스택(최대 2 TB/s)과 유사한 수준입니다. 대용량+고대역폭이라는 조합이 HBF의 핵심 가치입니다.\n출처: KAIST TERALAB 로드맵 1-C (HBF), 1-A (HBM4)\n● 배율 정리\n메모리대역폭SSD 대비PCIe5 NVMe SSD~14 GB/s1×HBF (최대)1,638 GB/s~117×HBM4 (1스택)2,000 GB/s~143×\n💡 HBF는 “SSD보다 100배 빠르고, HBM보다 10배 크다”는 두 숫자가 핵심입니다. 이 두 가지를 동시에 제공하기 때문에 AI 메모리 계층에서 독자적인 위치를 점합니다.\n■ 쓰기 내구성과 read-heavy 운용 모델\nNAND 플래시는 쓰기(Program)/소거(Erase)를 반복할수록 셀이 닳습니다. HBF의 쓰기 내구성은 약 10만 회(≈ TLC 기준)이며, 읽기는 셀을 소모하지 않아 사실상 무제한입니다.\n● read-heavy 모델이 필요한 이유\nAI 추론(Inference) 워크로드는 모델 가중치와 KV캐시를 반복적으로 읽기만 합니다 — 학습이 완료된 가중치는 변하지 않습니다. 즉, HBF는 AI 추론의 “읽기 중심” 특성과 정확히 맞습니다.\nHBF에 적합\nAI 추론(Inference) — 가중치·KV캐시를 반복 읽기. 쓰기는 최초 로드 1회.\nHBF에 부적합\nAI 학습(Training) — 매 스텝마다 그래디언트 업데이트(쓰기) 발생. DRAM·HBM 필요.\n● 웨어레벨링으로 수명 연장\n베이스 로직 다이의 웨어레벨링이 쓰기 횟수를 전체 블록에 고르게 분산해 실질 수명을 늘립니다. AI 추론처럼 읽기가 99%인 워크로드에서는 쓰기가 드물어 10만 회 한도에 도달하는 데 매우 오랜 시간이 걸립니다.\n💡 “쓰기 ~10만 회 / 읽기 사실상 무제한” → HBF는 읽기 중심 AI 추론에 최적화된 메모리입니다. AI 프레임워크는 이 특성을 전제로 HBF를 “읽기 전용 라이브러리”로 다뤄야 합니다.\n■ 실제 활용 계층 예시\nKAIST TERALAB 로드맵(1-C)은 GPU 메모리 구성 예시로 다음을 제시합니다:\nGPU 앞 100 GB HBM(활성 캐시, 책꽂이) + 1 TB HBF(모델 가중치·KV캐시 전체, 도서관)\nSK하이닉스 H3 아키텍처: HBM과 HBF를 GPU 옆 인터포저에 나란히 탑재.\n① 접근 패턴\n자주 쓰는 레이어 → HBM 캐시로 이동. 나머지 → HBF 유지.\n② 쓰기 시점\n모델 배포 시 HBF에 1회 쓰기. 추론 중 쓰기 없음.\n③ 비용 효율\nHBF 단가 < HBM → 대용량 구간은 HBF로 비용 절감.",
+          "chars": 1314,
+          "svgs": [
+            "svg/hbf-basics__hbf-spec-1.svg",
+            "svg/hbf-basics__hbf-spec-2.svg"
+          ],
+          "formulas": []
+        }
+      ]
+    },
+    {
+      "id": "am-ch5",
+      "slug": "hbf-roadmap",
+      "title": "5장. HBF 로드맵",
+      "chapter_order": 5,
+      "leaf_count": 3,
+      "leaves": [
+        {
+          "id": "am-s17",
+          "slug": "hbf-standardization",
+          "title": "Ⅰ. 표준화 동향",
+          "order_in_chapter": 1,
+          "tsx": "src/content/ai-memory/hbf-roadmap/hbf-standardization.tsx",
+          "stub": false,
+          "prose": "HBF(High Bandwidth Flash)는 3D NAND 플래시를 TSV로 수직 적층해 HBM 수준의 대역폭과 SSD급 대용량을 동시에 구현하는 차세대 메모리입니다. 2026년 2월 SK하이닉스와 SanDisk가 공동 표준화 컨소시엄을 결성하며 산업 생태계 형성이 본격화됐습니다.\n■ H3 아키텍처 — GPU + HBM + HBF 병치\nSK하이닉스의 H3 아키텍처는 기존 “GPU + HBM만 인접” 배치에서 나아가 HBF를 GPU 옆에 나란히 추가 배치하는 설계입니다. HBM이 초고속 캐시(책꽂이) 역할을 맡는다면, HBF는 대용량 라이브러리(도서관) 역할을 합니다.\n배치도생태계\n💡 HBM = 100 GB 캐시(초고속, 2 TB/s+) / HBF = 1 TB 라이브러리(대용량, 1.638 TB/s). H3 아키텍처는 두 메모리를 인터포저 위에서 병치해 AI 추론의 “용량 vs 속도” 딜레마를 동시에 해결합니다.\n■ HBF 표준화 컨소시엄 (2026-02)\n● 결성 배경\n2026년 2월, SK하이닉스와 SanDisk(Western Digital)가 HBF 표준화 컨소시엄을 공동 결성했습니다. 목표는 HBF 인터페이스·패키징·전기 특성의 업계 표준을 수립해 다양한 GPU·ASIC 파트너가 동일 규격으로 통합할 수 있도록 생태계를 형성하는 것입니다.\n① 공통 표준 없이는 각 GPU 업체가 독자 인터페이스를 개발해야 하므로 채택 비용이 폭증합니다.\n② JEDEC이 HBM 표준을 정비한 것처럼, HBF도 JEDEC 또는 독자 컨소시엄 경로로 표준화가 진행됩니다.\n③ NVIDIA·Google·AMD·Broadcom이 생태계 파트너로 참여 검토 중입니다.\n● JEDEC과의 관계\nHBM은 JEDEC JESD238 표준으로 정의됩니다. HBF는 HBM과 동일한 TSV·인터포저 패키징 기반을 공유하므로 JEDEC 표준화 경로를 활용할 가능성이 높습니다. 표준 수립은 통상 엔지니어링 샘플 출시(~2027) 이전에 초안을 완성하는 일정으로 진행됩니다.\n■ HBM vs HBF — 역할 비교\n항목HBMHBF메모리 셀DRAM3D NAND 플래시역할 비유책꽂이 (캐시)도서관 (대용량)용량 (유닛당)36~48 GB (HBM4)최대 512 GB대역폭 (유닛당)2.0 TB/s (HBM4)최대 1.638 TB/s내구성사실상 무제한쓰기 ~10만 회 / 읽기 무제한GPU 배치인접 (기존)인접 — H3 아키텍처 추가접속 방식TSV + 인터포저TSV + 베이스 로직 다이",
+          "chars": 969,
+          "svgs": [
+            "svg/hbf-roadmap__hbf-standardization-1.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s18",
+          "slug": "hbf-timeline",
+          "title": "Ⅱ. 상용화 일정",
+          "order_in_chapter": 2,
+          "tsx": "src/content/ai-memory/hbf-roadmap/hbf-timeline.tsx",
+          "stub": false,
+          "prose": "HBF 상용화는 2026년 표준화 컨소시엄 결성을 출발점으로, 2027년 엔지니어링 샘플, 2028년 GPU 파트너 채택, 그리고 2035년 HBM7과의 본격 결합까지 단계적으로 진행됩니다. 2038년에는 HBF 시장이 HBM 시장을 추월할 것으로 전망됩니다.\n■ 2026~2038 HBF 상용화 타임라인\n■ 단계별 일정 상세\n● Phase 1 — 표준화·샘플 (2026~2027)\n1컨소시엄 결성 (2026-02)\nSK하이닉스 + SanDisk가 HBF 표준화 컨소시엄 공동 결성. JEDEC 초안, 전기 인터페이스 사양, 패키징 규격 확정을 목표로 작업 시작.\n2엔지니어링 샘플 공급 (~2027)\nNVIDIA·Google·AMD 등 GPU 파트너에게 엔지니어링 샘플 제공. 시스템 통합·검증·드라이버 개발이 이 시기에 집중됩니다.\n● Phase 2 — 첫 상용 채택 (2028+)\n3NVIDIA·Google·AMD 상용 채택 (2028+)\nNVIDIA Feynman(F400) GPU 세대(HBM5×8, 48 TB/s, 400~500 GB)와 함께 HBF를 보조 대용량 메모리로 탑재하는 구성이 타깃입니다. 에이전트형 AI의 컨텍스트 윈도우 급팽창(입력 100~1000배 증가)이 수요를 견인합니다.\n4생태계 확산 (2028~2032)\nAI 데이터센터·클라우드 사업자로 채택 확산. HBF 기반 메모리 임대(rental) 서비스 모델 논의 시작.\n● Phase 3 — HBM7 결합 본격화 (2035~)\n5HBM7 + HBF 아키텍처 통합 (2035)\nKAIST TERALAB 로드맵(1-A)에 따르면 HBM7(2035)은 HBM-HBF 결합을 핵심 특징으로 명시합니다. HBM7 사양: 데이터 레이트 24 Gbps·I/O 8,192·대역폭 24 TB/s· 용량 160~192 GB. 베이스 다이에 HBF/LPDDR 컨트롤러 + Storage network가 통합됩니다.\n6HBF 시장이 HBM 추월 (~2038)\nHBM8(2038)과 맞물려 HBF 시장 규모가 HBM을 초과할 것으로 전망됩니다. AI 스케일링의 지배적 제약이 “연산”에서 “용량”으로 전환됩니다.\n💡 HBF 채택의 핵심 드라이버는 에이전트형 AI 시대의 “컨텍스트 폭발”입니다. 2030년대 중반 1인당 ~100 TB 메모리 수요를 HBM만으로는 충족할 수 없어 HBF가 필수 계층으로 부상합니다.\n■ HBM7(2035) + HBF 결합 사양 (1-A 인용)\n항목HBM7 (2035)데이터 레이트 (핀당)24 GbpsI/O 수8,192대역폭 (스택당)24 TB/s용량 (die당)64 GbDie stack20/24-Hi용량 (스택당)160/192 GB소비 전력160 W아키텍처 특징HBM-HBF 결합 + HBF/LPDDR Ctrl + Storage network다이 접합범프리스 Cu-Cu Direct bonding",
+          "chars": 1135,
+          "svgs": [
+            "svg/hbf-roadmap__hbf-timeline-1.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s19",
+          "slug": "hbf-market",
+          "title": "Ⅲ. 시장 전망",
+          "order_in_chapter": 3,
+          "tsx": "src/content/ai-memory/hbf-roadmap/hbf-market.tsx",
+          "stub": false,
+          "prose": "HBF 상용화(~2028)로부터 약 10년 후인 2038년, HBF 시장 규모가 HBM 시장을 추월할 것으로 전망됩니다. AI 스케일링의 지배적 제약이 연산에서 메모리 용량으로 이동하는 구조적 전환이 이 성장의 배경입니다.\n■ HBM vs HBF 시장 추세 — 2028~2038 교차 전망\n아래 그래프는 개념적 상대 시장 규모입니다. 2038년 HBF 규모를 100으로 정규화. 절대 수치가 아닌 교차 시점과 성장 기울기가 핵심입니다.\n기본 시나리오가속 시나리오\n에이전트형 AI 보급이 점진적으로 진행되며 2038년 HBF가 HBM을 소폭 추월.\n💡 2038년 HBF 시장이 HBM 시장 추월 — 상용화 약 10년 후. HBM이 DRAM에서 독립적 시장으로 성장한 궤적과 유사합니다.\n■ 수요 드라이버 — 왜 용량이 지배적 제약인가\n● 에이전트형 AI의 컨텍스트 폭발\n생성형 AI(텍스트 생성)에서 에이전트형 AI(계획·실행·기억)로 전환되면 컨텍스트 엔지니어링이 핵심이 됩니다. 에이전트는 태스크 히스토리, 도구 결과, 멀티-턴 대화를 모두 메모리에 유지해야 합니다.\n① 입력 토큰 100~1,000배 증가 → KV 캐시 메모리 수요 폭증.\n② 멀티-에이전트 오케스트레이션 → 수십 개 에이전트가 공유 메모리 사용.\n③ 2030년대 중반 1인당 ~100 TB 메모리 수요 전망(KAIST TERALAB 1-D).\n● HBM 단독으로는 부족한 이유\nHBM4(2026)는 스택당 최대 48 GB, HBM7(2035)도 최대 192 GB입니다. GPU 한 대에 HBM을 8~32스택 탑재해도 수십 TB가 한계입니다. HBF는 유닛당 최대 512 GB로 용량 격차를 채웁니다.\nHBM 용량 한계\nHBM7×32 = 최대 6,144 GB(~6 TB). 100 TB 수요에 부족.\nHBF 확장성\n512 GB/유닛. 다수 유닛 배치로 10~100 TB 메모리 계층 구현.\n읽기 중심 워크로드\nAI 추론 = read-heavy. HBF 읽기 내구성 사실상 무제한 → 추론에 최적.\n● 메모리 임대(Rental) 경제\n용량 중심 AI 시대에는 연산 자원보다 메모리 자원이 더 가치 있는 자원이 될 수 있습니다. 클라우드·데이터센터에서 HBF 기반 메모리 임대 서비스가 새로운 비즈니스 모델로 논의됩니다.\n① GPU 시간 임대(현재) → 메모리 용량 임대(미래)로 과금 축이 이동.\n② SK하이닉스 H3 아키텍처는 HBF 교체·확장이 용이한 모듈형 설계를 지향합니다.\n③ KAIST 김정호 교수 “메모리-중심 패러다임”(1-D)의 핵심 시나리오.\n■ HBF 시장 전망 요약\n시점이정표비고2026-02HBF 컨소시엄 결성SK하이닉스 + SanDisk~2027엔지니어링 샘플GPU 파트너 검증 시작2028+NVIDIA·Google·AMD 채택HBM5 병행 탑재 목표2030년대 중반1인당 ~100 TB 수요AI 에이전트 컨텍스트 급증2035HBM7 + HBF 결합Storage network 통합(1-A)~2038HBF 시장이 HBM 추월상용화 약 10년 후",
+          "chars": 1159,
+          "svgs": [
+            "svg/hbf-roadmap__hbf-market-1.svg"
+          ],
+          "formulas": []
+        }
+      ]
+    },
+    {
+      "id": "am-ch6",
+      "slug": "memory-hierarchy",
+      "title": "6장. AI 메모리 계층",
+      "chapter_order": 6,
+      "leaf_count": 4,
+      "leaves": [
+        {
+          "id": "am-s20",
+          "slug": "memory-wall",
+          "title": "Ⅰ. 메모리 월",
+          "order_in_chapter": 1,
+          "tsx": "src/content/ai-memory/memory-hierarchy/memory-wall.tsx",
+          "stub": false,
+          "prose": "CPU·GPU의 연산 성능(FLOPs)은 수십 년간 무어의 법칙을 따라 빠르게 성장했지만, 메모리 대역폭은 그 속도를 따라가지 못했습니다. 코어가 데이터를 기다리며 노는 이 “메모리 월(Memory Wall)” 현상은 AI 시대에 더욱 심각해졌습니다.\n■ 메모리 월 — 데이터를 기다리는 코어\n메모리 월은 1994년 Wulf & McKee가 처음 명명한 개념으로, 프로세서 속도 > 메모리 대역폭의 격차가 커질수록 코어가 연산보다 데이터를 기다리는 시간이 길어지는 병목을 말합니다.\n▲ 연산 성능(빨강)과 메모리 대역폭(파랑) 증가 격차. 붉은 영역이 “메모리 월”.\n💡 FLOPs가 4,000배 늘 때 대역폭은 32배 증가에 그칩니다. 격차가 클수록 코어의 “유휴 시간”이 늘어납니다.\n■ 루프라인 모델 — 병목이 연산인가 대역폭인가\n루프라인(Roofline) 모델은 커널의 실제 성능이 두 한계 중 낮은 쪽에 제약된다는 분석 틀입니다.\n● 연산 강도 (Arithmetic Intensity)\nAI가 낮으면 “메모리 바운드”, 높으면 “연산 바운드”.\n● 성능 상한\n대역폭이 낮으면 AI를 아무리 높여도 대역폭 곱이 피크 FLOPs보다 먼저 한계에 달합니다. 이 상태를 메모리 바운드라 합니다.\n▼루프라인 그래프 보기\n■ AI에서 더 심각한 이유\n● 거대 가중치\nGPT-4급 모델은 수백 GB의 가중치(파라미터)를 매 토큰 생성마다 메모리에서 읽습니다. 추론 시 연산보다 가중치 로딩 대역폭이 실질적 병목입니다.\n● KV 캐시\n트랜스포머의 키(Key)·값(Value) 캐시는 컨텍스트 길이에 비례해 커집니다. 컨텍스트 100K 토큰 → KV 캐시 수십~수백 GB 필요.\n● 에이전트형 AI\n생성형 → 에이전트형 AI로 진화하면서 컨텍스트 입력이 100~1,000배 증가. 김정호 교수 로드맵: 2030년대 중반 1인당 ~100 TB 메모리 요구.\n💡 HBM(High Bandwidth Memory)은 메모리 월의 완화책입니다. HBM4(2026) 스택당, HBM5(2029)로 대역폭을 빠르게 늘려가는 이유가 여기 있습니다.",
+          "chars": 801,
+          "svgs": [
+            "svg/memory-hierarchy__memory-wall-1.svg"
+          ],
+          "formulas": [
+            "\\text{AI} = \\frac{\\text{FLOPs}}{\\text{메모리 이동량 (bytes)}}",
+            "\\text{달성 가능 성능} \\leq \\min\\!\\bigl(\\text{피크 FLOPs},\\ \\text{대역폭} \\times \\text{AI}\\bigr)",
+            "2.0\\ \\text{TB/s}",
+            "4\\ \\text{TB/s}"
+          ]
+        },
+        {
+          "id": "am-s21",
+          "slug": "hierarchy",
+          "title": "Ⅱ. 캐시 · HBM · HBF · SSD",
+          "order_in_chapter": 2,
+          "tsx": "src/content/ai-memory/memory-hierarchy/hierarchy.tsx",
+          "stub": false,
+          "prose": "컴퓨터 메모리는 “빠를수록 비싸고 작다”는 트레이드오프를 따릅니다. AI 가속기는 SRAM 캐시부터 HBM, HBF, SSD까지 계층을 쌓아 속도와 용량을 동시에 확보합니다. 각 계층을 클릭하면 상세 정보와 대역폭 비교를 확인할 수 있습니다.\n■ 메모리 계층 — 속도 vs 용량 트레이드오프\n▲ 위로 갈수록 빠르고 비싸며 작다. 계층을 클릭하면 상세 정보가 나타납니다.\n대역폭 비교 (로그 스케일, 10 GB/s 기준)\nSRAM 캐시\n수 TB/s\nHBM\n2~4 TB/s\nHBF\n최대 1.638 TB/s\nSSD / NVMe\n~14 GB/s\n■ 각 계층 상세\n계층지연(Latency)대역폭용량비용비유SRAM 캐시< 1 ns수 TB/s수 MB매우 높음책상 위 포스트잇HBM~100 ns2~4 TB/s36~500 GB높음책상 옆 책꽂이HBF수 µs최대 1.638 TB/s최대 512 GB중간바로 옆 도서관SSD / NVMe수십~수백 µs~14 GB/s수 TB낮음건물 내 창고\n■ 책꽂이(HBM)와 도서관(HBF) 비유\n● GPU 앞의 책꽂이 — HBM\nHBM은 GPU 다이 바로 옆 실리콘 인터포저 위에 올라갑니다. 손을 뻗으면 바로 닿는 책상 옆 책꽂이처럼, 낮은 지연과 TB/s급 대역폭으로 자주 쓰는 가중치와 활성화값을 공급합니다.\n척추 예시: GPU 앞 100 GB HBM (캐시)\n● GPU 옆의 도서관 — HBF\nHBF(High Bandwidth Flash)는 NAND 플래시를 수직 적층해 HBM 수준의 대역폭과 SSD급 용량을 결합합니다. 도서관처럼 자주 쓰지 않는 책(가중치 라이브러리)을 대량 보관하다가 필요할 때 빠르게 공급합니다.\n척추 예시: GPU 옆 1 TB HBF (라이브러리). HBF 용량 ≈ HBM의 약 10배.\n● SK하이닉스 H3 아키텍처\nSK하이닉스 H3은 HBM과 HBF를 GPU 옆에 나란히 배치하는 구조입니다. 캐시(HBM) + 라이브러리(HBF) 두 계층이 하나의 패키지 내에서 협동합니다.\n💡 “100 GB HBM(책꽂이) + 1 TB HBF(도서관)” 조합은 단순한 용량 확장이 아닙니다. 핫(hot) 데이터는 HBM에, 콜드(cold) 데이터는 HBF에 두어 대역폭 낭비 없이 모델 전체를 GPU 근방에 올려놓는 전략입니다.\n■ HBF vs NVMe SSD — 무엇이 다른가\nHBF (High Bandwidth Flash)\n① 3D NAND + TSV 수직 적층 → GPU 인터포저 근방 배치\n② 대역폭 최대 1.638 TB/s (NVMe SSD 대비 100배+)\n③ 컨트롤러가 내부에 통합 → 지연 수 µs 수준\nPCIe5 NVMe SSD\n① PCIe 버스 경유 → 지연 수십~수백 µs\n② 대역폭 ~14 GB/s\n③ 용량 수 TB, 비용 낮음",
+          "chars": 1033,
+          "svgs": [
+            "svg/memory-hierarchy__hierarchy-1.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s22",
+          "slug": "memory-centric",
+          "title": "Ⅲ. 메모리 중심 컴퓨팅",
+          "order_in_chapter": 3,
+          "tsx": "src/content/ai-memory/memory-hierarchy/memory-centric.tsx",
+          "stub": false,
+          "prose": "KAIST 김정호 교수는 NVIDIA GPU 중심의 AI 컴퓨팅 패러다임이 메모리 중심(Memory-Centric)으로 전환될 것이라고 제시합니다. “데이터를 연산으로 옮기는” 대신 “연산을 데이터 곁으로 옮기는” 발상의 전환입니다.\n■ GPU 중심 → 메모리 중심 패러다임 전환\n메모리 → GPU 이동 → 대역폭 병목\n연산 → 메모리 이동 → 대역폭 절약\n● GPU 중심 (기존)\n① 거대 GPU가 중심 → 메모리에서 데이터를 끌어와 연산.\n② 데이터 이동에 많은 에너지·시간 소비.\n③ 메모리 대역폭이 병목 → 메모리 월 심화.\n● 메모리 중심 (전환 방향)\n① 메모리(HBM/HBF)가 중심 → 연산 로직을 메모리 내부·근방에 탑재.\n② 데이터 이동 최소화 → 에너지 효율 대폭 개선.\n③ 컴퓨팅 3자원(연산·대역폭·용량)의 균형.\n💡 “연산·대역폭·용량, 세 자원을 균형 있게” — 한 자원이 과잉이고 다른 자원이 부족하면 그 부족한 쪽이 전체 시스템의 병목이 됩니다.\n■ PIM / NMC — 메모리 내·근처 연산\n● PIM (Processing In Memory)\n메모리 셀 어레이 내부 또는 바로 옆에 연산 유닛을 배치합니다. 데이터가 I/O 버스를 아예 벗어나지 않아도 되므로 이동 에너지가 거의 0에 가깝습니다.\n● NMC (Near-Memory Computing)\n메모리 베이스 다이(HBM Base Die 등)에 연산 로직을 통합합니다. KAIST TERALAB 로드맵의 3D NMC-HBM(HBM5 세대부터)이 대표 사례. 메모리와 연산이 동일 패키지 내에서 짧은 TSV 경로로 통신합니다.\n장점\n① 데이터 이동 최소 → 전력 절감\n② 메모리 대역폭을 내부에서 직접 소비\n③ AI 추론 워크로드와 최적 정합\n과제\n① 메모리 공정과 로직 공정의 설계 공동 최적화\n② 열결합(thermal coupling) 관리\n③ 소프트웨어 스택 재설계\n■ Storage Factory — 스토리지 내부 연산\nHBF(High Bandwidth Flash) 기반의 Storage Factory는 스토리지 내부에서 전처리·집계 연산을 수행하는 개념입니다. AI 파이프라인에서 “읽어서 이동 → 처리” 순서를 “스토리지 안에서 처리 → 결과만 이동”으로 뒤집습니다.\nHBF는 쓰기 내구성 약 10만 회 / 읽기 사실상 무제한의 특성 덕분에 AI 추론의 read-heavy(읽기 중심) 패턴과 잘 맞습니다.\n■ Full-3D HBM-Centric Computing — HBM8 세대 비전\nKAIST TERALAB 로드맵의 최종 목표는 Full-3D HBM-Centric Computing(HBM8, 2038년)입니다. HBM이 단순한 메모리를 넘어, 연산·캐시·인터포저·냉각까지 통합한 “시스템 중심”이 됩니다.\n● 주요 특징\n① HBM-Centric Interposer: HBM이 인터포저 기능까지 담당.\n② Double-side Cooling: 3D 적층 발열을 위아래 양면에서 냉각.\n③ Edge-expand Stack: 스택 가장자리 확장으로 I/O 16,384비트(HBM8).\n④ LLM 기반 대화형 설계 에이전트(AI Design Agent)가 자동 최적화.\n💡 메모리-중심 패러다임은 “메모리가 더 빠르면 좋겠다”를 넘어, 컴퓨팅의 무게중심 자체를 메모리로 옮기는 구조 혁신입니다. 2038년 HBF 시장이 HBM 시장을 추월할 것이라는 전망도 이 흐름과 맞닿아 있습니다.",
+          "chars": 1308,
+          "svgs": [
+            "svg/memory-hierarchy__memory-centric-1.svg",
+            "svg/memory-hierarchy__memory-centric-2.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s23",
+          "slug": "gpu-memory",
+          "title": "Ⅳ. GPU와 메모리의 관계",
+          "order_in_chapter": 4,
+          "tsx": "src/content/ai-memory/memory-hierarchy/gpu-memory.tsx",
+          "stub": false,
+          "prose": "KAIST TERALAB의 GPU-HBM 시스템 로드맵(PDF page 344)은 Rubin(2026) → Feynman(2028) → Post-Feynman(2030) → Next-Gen(2032)으로 이어지는 NVIDIA 플랫폼 세대별 HBM 구성·대역폭·용량 전망을 담고 있습니다.\n■ GPU-HBM 시스템 로드맵 (page 344)\nGPU 세대시스템연도GPU die 수HBM 구성총 대역폭총 HBM 용량RubinR20020262HBM4×8288 / 384 GBFeynmanF40020284HBM5×8400 / 500 GBPost-Feynman X*X400*20304HBM6×161.54 / 1.92 PBNext-Gen Z*Z800*20328HBM7×325.12 / 6.14 PB\n* 표시는 예상치. 출처: KAIST TERALAB HBM Roadmap v1.7, page 344.\n■ 세대별 총 대역폭 · 총 HBM 용량 성장\n총 대역폭 (TB/s)총 HBM 용량\nRubin 32 TB/s → Next-Gen Z* 1,024 TB/s, 약 32배 증가 (2026→2032).\n■ 세대별 핵심 변화\n● Rubin (2026) — R200, HBM4×8\nGPU die 2개, HBM4 스택 8개로 총 대역폭 16/32 TB/s, 용량 288/384 GB. HBM4(스택당 , 2,048 I/O)가 처음 양산 적용되는 세대.\n● Feynman (2028) — F400, HBM5×8\nGPU die 4개, HBM5(스택당 )×8로 총 48 TB/s, 400/500 GB. Custom Base Die·3D NMC-HBM 아키텍처가 본격화되는 세대.\n● Post-Feynman X* (2030) — X400*, HBM6×16\nGPU die 4개, HBM6(스택당 )×16로 총 128/256 TB/s, 최대 1,920 GB. Multi-tower HBM·Hybrid Interposer 적용 예상.\n● Next-Gen Z* (2032) — Z800*, HBM7×32\nGPU die 8개, HBM7(스택당 )×32로 총 1,024 TB/s, 최대 6,144 GB. HBM7 세대부터 HBF·Storage network과 결합하는 HBM-HBF 아키텍처 등장.\n■ H3 아키텍처 — HBM + HBF 병치로 확장\nSK하이닉스 H3(HBM + HBF) 아키텍처는 GPU 로드맵의 HBM 계층 옆에 HBF를 나란히 배치해 용량 부족을 보완합니다.\nHBM 역할\n핫(hot) 데이터: 활성 가중치·KV 캐시. 낮은 지연·TB/s급 대역폭.\nHBF 역할\n콜드(cold) 데이터: 가중치 라이브러리 전체. 최대 512 GB / 1.638 TB/s.\n💡 Z800*(2032) 기준 HBM 단독으로도 6 PB에 달하지만, HBF를 병치하면 GPU 근방에서 수십 PB 이상의 모델도 처리 가능해집니다. 메모리 월이 아닌 “메모리 초고속도로” 시대로 가는 경로입니다.",
+          "chars": 1161,
+          "svgs": [
+            "svg/memory-hierarchy__gpu-memory-1.svg"
+          ],
+          "formulas": [
+            "${d.bwHigh}\\\\text{ TB/s}",
+            "${d.bwLow}/{${d.bwHigh}}\\\\text{ TB/s}",
+            "2.0\\ \\text{TB/s}",
+            "4\\ \\text{TB/s}",
+            "8\\ \\text{TB/s}",
+            "24\\ \\text{TB/s}"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "am-ch7",
+      "slug": "industry",
+      "title": "7장. 산업과 전망",
+      "chapter_order": 7,
+      "leaf_count": 3,
+      "leaves": [
+        {
+          "id": "am-s24",
+          "slug": "sk-samsung-micron",
+          "title": "Ⅰ. SK하이닉스 · 삼성 · 마이크론",
+          "order_in_chapter": 1,
+          "tsx": "src/content/ai-memory/industry/sk-samsung-micron.tsx",
+          "stub": false,
+          "prose": "글로벌 AI 가속기 수요가 급증하면서 HBM 공급망의 세 축인 SK하이닉스·삼성전자·마이크론의 역할과 전략이 주목받고 있습니다. 각사의 강점과 현주소를 균형 있게 살펴봅니다.\n■ HBM 시장 경쟁 구도\n현재 HBM 시장은 SK하이닉스·삼성전자·마이크론 세 기업이 주도합니다. 구체적인 점유율 수치는 분기마다 달라지고 공식 공표 값도 기관마다 차이가 있으므로, 여기서는 정성적인 포지셔닝만 기술합니다.\n💡 SK하이닉스는 HBM3E를 NVIDIA에 안정적으로 공급하며 HBM 리더십을 유지하고 있으며, 삼성과 마이크론은 HBM4 세대를 기점으로 추격에 나서고 있습니다.\n■ 3사 전략 비교\n항목SK하이닉스삼성전자마이크론HBM 현황HBM3E 양산 · HBM4 개발HBM3E · HBM4E 개발HBM3E 양산 · HBM4 개발주요 고객NVIDIA 주요 공급HBM 고객 다변화 추진NVIDIA · AI 가속기전략HBM 집중 투자 · MR-MUF 공정DRAM+NAND+파운드리 통합 역량미국 정부 지원(CHIPS Act) 활용과제NAND 경쟁력 상대적으로 낮음HBM 수율 이슈 보도, 추격 중시장 점유 후발 추격 단계\n■ 각사 강점과 과제\n● SK하이닉스 — HBM 집중 전략\nSK하이닉스는 NVIDIA의 H100/H200/Blackwell 시리즈에 HBM3E를 우선 공급하며 HBM 리더십을 굳혔습니다. 독자 개발한 MR-MUF(Mass Reflow-Molded Underfill) 공정으로 다이 적층 시 방열·신뢰성을 개선한 것이 주요 경쟁 요인으로 꼽힙니다. HBM4 이후엔 범프리스 Cu-Cu 본딩으로 전환을 준비 중입니다.\n① 강점: NVIDIA와의 긴밀한 협력, MR-MUF 공정 완성도, HBM 전용 투자 집중\n② 과제: NAND 부문 경쟁력 보완, HBM4E·HBF 세대 기술 선도 유지\n● 삼성전자 — 종합 반도체 역량\n삼성은 DRAM·NAND·파운드리를 아우르는 종합 반도체 역량을 보유합니다. HBM4E 개발과 함께 자체 파운드리(GAA 공정)를 HBM 베이스 다이 제조에 활용하는 방향을 모색하고 있습니다. 다만 HBM3E 수율 문제가 언론에 보도된 바 있어 양산 속도 회복이 과제입니다.\n① 강점: DRAM+NAND+파운드리 통합, 자본력, 고객 포트폴리오 다변화 가능성\n② 과제: HBM 수율 안정화, HBM4E 적기 양산, NVIDIA 공급망 재진입\n● 마이크론 — 미국 유일의 선택지\n마이크론은 미국 내 유일한 DRAM·NAND 제조사로, CHIPS Act를 통한 정부 보조금 수혜와 미국 AI 인프라 공급망 다변화 요구라는 지정학적 이점을 갖습니다. HBM3E 양산을 개시하며 NVIDIA 등 고객사에 공급을 확대하고 있습니다.\n① 강점: 미국 지정학 이점, CHIPS Act 지원, NAND 경쟁력(3D NAND)\n② 과제: HBM 절대 물량·경험에서 한국 2사 대비 후발, 패키징 역량 확충\n■ HBM 경쟁이 의미하는 것\nHBM은 단순한 메모리 제품을 넘어 AI 가속기의 성능을 결정짓는 핵심 부품이 되었습니다. KAIST TERALAB 로드맵이 보여주듯 HBM4(2026)에서 HBM8(2038)까지 세대별 대역폭은 2 TB/s에서 64 TB/s로 32배 확장될 전망입니다.\n이 경쟁에서 누가 각 세대의 수율과 공급 안정성을 먼저 확보하느냐가 AI 인프라 공급망에서의 지위를 결정하게 됩니다. 한국 두 기업의 패키징 기술 주도권이 지속될지, 마이크론이 지정학적 이점을 기술 격차로 전환할 수 있을지가 중기 관전 포인트입니다.\n💡 HBM 경쟁은 “누가 더 많이 쌓느냐”에서 “누가 더 뜨겁지 않게, 더 넓게 연결하느냐”로 진화하고 있습니다. 패키징·냉각·설계 역량이 다음 변수입니다.",
+          "chars": 1413,
+          "svgs": [
+            "svg/industry__sk-samsung-micron-1.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s25",
+          "slug": "kim-jungho",
+          "title": "Ⅱ. 김정호 교수와 TERALAB",
+          "order_in_chapter": 2,
+          "tsx": "src/content/ai-memory/industry/kim-jungho.tsx",
+          "stub": false,
+          "prose": "이 책 “AI 메모리”의 콘텐츠는 KAIST 김정호(Joungho Kim) 교수와 TERALAB의 공개 로드맵을 1차 근거로 삼습니다. 그가 누구인지, 무엇을 공개했는지를 먼저 짚습니다.\n■ 김정호 교수 — ‘HBM의 아버지’\n● KAIST TERALAB\n김정호 교수는 KAIST(한국과학기술원)에서 TERALAB(TeraByte Interconnection and Package Laboratory)을 이끌고 있습니다. 연구실 이름처럼 테라바이트급 인터커넥트와 고속 반도체 패키징이 핵심 연구 분야입니다.\n고속 신호무결성(Signal Integrity), 전원무결성(Power Integrity), TSV 기반 3D 패키징, 그리고 HBM·HBF 같은 차세대 메모리 인터커넥트 기술이 주요 연구 주제입니다.\n● HBM 구조의 기원\n김정호 교수는 DRAM 다이를 TSV(Through-Silicon Via)로 수직 적층하는 HBM의 기본 구조를 고안한 연구자로 알려져 있으며, 이 개념이 2013년 JEDEC HBM 표준화의 토대가 되었습니다. 이 때문에 업계와 학계에서 “HBM의 아버지”로 불립니다.\n※ 표현은 TrendForce 등 복수의 미디어 보도를 근거로 하며, JEDEC 표준화는 다수 기업의 공동 작업임을 부기합니다.\n■ 핵심 기여 정리\nHBM 구조 고안\nDRAM 다이를 TSV로 수직 적층하는 HBM 기본 아키텍처를 제안. 이 개념이 JEDEC 표준(HBM1, 2013)의 토대가 됨.\nTERALAB\nKAIST TeraByte Interconnection and Package Laboratory. 고속 패키지 인터커넥트·신호무결성(SI)·전원무결성(PI) 연구 특화.\nHBM Roadmap Ver 1.7\n2025-06-11 공개(371p). HBM4~HBM8 사양·아키텍처·냉각·AI 설계 에이전트 로드맵 종합. 이 책 전체의 기반 자료.\nHBF 로드맵\n2026-02 설명회. HBF(High Bandwidth Flash) 표준화 방향과 AI 추론용 메모리 계층 구조 제안. SK하이닉스·SanDisk 협력.\n💡 이 책이 인용하는 수치(HBM4 2 TB/s, HBM8 64 TB/s, HBF 1.638 TB/s 등)는 모두 HBM Roadmap Ver 1.7(PDF 371p, 2025-06-11)을 1차 출처로 합니다.\n■ 연구·공개 타임라인\n■ 산학 협력 파트너십\nTERALAB은 순수 학술 연구를 넘어 산업계와 긴밀히 협력합니다. 삼성전자·SK하이닉스·SanDisk·NVIDIA 등이 파트너사로 거론되며, 로드맵 연구가 실제 제품 로드맵 수립에도 참고되는 구조입니다.\nSK하이닉스\nHBM 제조 공정·MR-MUF 협력. HBF 표준화 공동 참여.\n삼성전자\n패키징·인터포저 기술 협력. HBM Base Die 설계 연구.\nSanDisk / NVIDIA\nSanDisk — HBF 표준화 컨소시엄. NVIDIA — GPU-HBM 시스템 로드맵 참고.\n2026년 2월 HBF 기술 로드맵 설명회는 SK하이닉스·SanDisk의 HBF 표준화 컨소시엄 출범과 시기를 같이하며, 학계 로드맵이 산업 표준화를 이끄는 흐름을 보여줍니다.",
+          "chars": 1246,
+          "svgs": [
+            "svg/industry__kim-jungho-1.svg"
+          ],
+          "formulas": []
+        },
+        {
+          "id": "am-s26",
+          "slug": "korea-strategy",
+          "title": "Ⅲ. 한국 메모리 패권 전략",
+          "order_in_chapter": 3,
+          "tsx": "src/content/ai-memory/industry/korea-strategy.tsx",
+          "stub": false,
+          "prose": "KAIST 김정호 교수가 제시하는 메모리-중심(1-D) 패러다임 전환은 한국 메모리 산업에 기회이자 도전입니다. HBM 주도권을 HBF로 이어가는 전략과 그 구조적 과제를 균형 있게 살펴봅니다.\n■ 왜 메모리-중심 전환이 한국의 기회인가\n에이전트형 AI와 컨텍스트 엔지니어링의 확산으로 AI 모델이 처리해야 할 입력 토큰 수가 기존 대비 100~1,000배 늘어난다는 것이 김정호 교수의 진단(1-D)입니다. 이는 곧 대역폭과 용량, 즉 메모리 수요의 폭증을 의미합니다.\n① 대역폭\nHBM8(2038) 64 TB/s — AI 추론 병목이 연산이 아닌 메모리로 이동.\n② 용량\n2030년대 중반 1인당 ~100TB 필요 전망 — HBF가 SSD를 대체하는 새 계층 창출.\n③ 공급망 지위\nHBM 공급망을 선점한 한국 기업이 HBF 표준화까지 주도하면 AI 생태계 핵심 위치 유지 가능.\n■ HBM → HBF 주도권 계승 도식\nSK하이닉스·SanDisk가 2026년 2월 HBF 표준화 컨소시엄을 출범시킨 것은 HBM 이후 메모리 계층에서도 주도권을 잡겠다는 전략적 선언입니다. KAIST 로드맵은 HBM7 세대(2035)부터 HBM-HBF 결합 아키텍처를 명시합니다.\n💡 HBF는 아직 초기 단계입니다. 엔지니어링 샘플 ~2027, 본격 채택 2028+ 일정이므로 “주도권 확보”는 현재진행형 도전이지 완성된 사실이 아닙니다.\n■ 핵심 역량 — 패키징과 생태계\n● 패키징 기술 우위\nSK하이닉스의 MR-MUF, 삼성의 고급 패키징(HBM 베이스 다이 내재화 시도)은 단순 칩 제조를 넘어 시스템 통합 역량을 보여줍니다. KAIST 로드맵이 마이크로범프 → Cu-Cu 하이브리드 본딩으로의 전환을 제시하듯, 이 기술 전환의 주도권이 다음 경쟁의 핵심입니다.\n● H3 아키텍처 · HBF 생태계\nSK하이닉스의 H3 아키텍처 — HBM·HBF를 GPU 옆에 나란히 배치하는 구조 — 는 메모리-중심 컴퓨팅의 구체적 구현 형태입니다. AI 가속기 설계사(NVIDIA·Google·AMD)와의 협력이 이 생태계의 채택 속도를 결정합니다.\n■ SWOT — 균형 있는 평가\n강점 (S)\n• ① SK하이닉스·삼성의 HBM 공정 경험과 MR-MUF 등 독자 기술\n• ② KAIST TERALAB 등 학계-산업 연계 로드맵 선행\n• ③ TSV·고급 패키징 인프라 집적\n약점 (W)\n• ① 반도체 장비 대부분 네덜란드(ASML)·일본 의존\n• ② 팹리스·시스템 반도체 설계 역량 부족\n• ③ HBM 이외 메모리(NAND 등) 경쟁에서 격차 축소 중\n기회 (O)\n• ① AI 에이전트 시대의 메모리 수요 폭증(1-D: 2030년대 1인당 ~100TB 전망)\n• ② HBF 시장 태동 — 표준화 초기 단계에서 주도권 확보 가능\n• ③ NVIDIA 등 AI 칩 기업과 긴밀한 공급망 관계\n위협 (T)\n• ① 마이크론의 CHIPS Act 지원·미국 지정학 이점\n• ② 중국의 DRAM 추격(단기 리스크는 낮으나 중장기 변수)\n• ③ 파운드리 역량 약화 시 HBM Base Die 의존 리스크\n한국 메모리 산업은 HBM에서 입증된 패키징·공정 역량을 HBF로 연장할 구조적 기회를 갖고 있습니다. 그러나 장비 의존·팹리스 부재·지정학 변수는 실질적 리스크로 과소평가해서는 안 됩니다. 전략의 성패는 표준화 주도권을 기술 완성도로 뒷받침할 수 있느냐에 달려 있습니다.",
+          "chars": 1258,
+          "svgs": [
+            "svg/industry__korea-strategy-1.svg"
+          ],
+          "formulas": []
+        }
+      ]
+    }
+  ]
+}

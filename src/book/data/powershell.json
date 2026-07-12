@@ -1,0 +1,98 @@
+{
+  "id": "powershell",
+  "basePath": "powershell",
+  "title": "PowerShell 스크립팅",
+  "description": "윈도우 자동화·관리의 핵심 PowerShell — 객체 파이프라인 중심의 문법과 스크립트 작성",
+  "children": [
+    {
+      "id": "ps-ch1",
+      "slug": "overview",
+      "title": "1장. 개요와 실행",
+      "children": [
+        {
+          "id": "ps-s1",
+          "slug": "intro",
+          "title": "Ⅰ. PowerShell이란"
+        },
+        {
+          "id": "ps-s2",
+          "slug": "cmdlets",
+          "title": "Ⅱ. cmdlet과 실행 정책"
+        }
+      ]
+    },
+    {
+      "id": "ps-ch2",
+      "slug": "variables",
+      "title": "2장. 변수와 자료형",
+      "children": [
+        {
+          "id": "ps-s3",
+          "slug": "variables",
+          "title": "Ⅰ. 변수와 타입"
+        },
+        {
+          "id": "ps-s4",
+          "slug": "operators",
+          "title": "Ⅱ. 연산자"
+        }
+      ]
+    },
+    {
+      "id": "ps-ch3",
+      "slug": "pipeline",
+      "title": "3장. 객체 파이프라인",
+      "children": [
+        {
+          "id": "ps-s5",
+          "slug": "object-pipeline",
+          "title": "Ⅰ. 객체 파이프라인"
+        },
+        {
+          "id": "ps-s6",
+          "slug": "filtering",
+          "title": "Ⅱ. 필터링과 선택"
+        },
+        {
+          "id": "ps-s7",
+          "slug": "sorting",
+          "title": "Ⅲ. 정렬·그룹·측정"
+        }
+      ]
+    },
+    {
+      "id": "ps-ch4",
+      "slug": "control-flow",
+      "title": "4장. 제어 흐름",
+      "children": [
+        {
+          "id": "ps-s8",
+          "slug": "conditionals",
+          "title": "Ⅰ. 조건문"
+        },
+        {
+          "id": "ps-s9",
+          "slug": "loops",
+          "title": "Ⅱ. 반복문"
+        }
+      ]
+    },
+    {
+      "id": "ps-ch5",
+      "slug": "functions",
+      "title": "5장. 함수와 스크립트",
+      "children": [
+        {
+          "id": "ps-s10",
+          "slug": "functions",
+          "title": "Ⅰ. 함수와 매개변수"
+        },
+        {
+          "id": "ps-s11",
+          "slug": "modules",
+          "title": "Ⅱ. 스크립트와 모듈"
+        }
+      ]
+    }
+  ]
+}
